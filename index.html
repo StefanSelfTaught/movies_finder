@@ -13,32 +13,28 @@
     <title>Movie Search</title>
   </head>
   <body>
-    <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
-      <div class="container">
-        <a class="navbar-brand" href="#"
-          ><img src="logo.png" width="130" alt="logo"
-        /></a>
-      </div>
+    <nav class="navbar navbar-expand-lg navbar-dark">
+        <a class="ml-3 navbar-brand" href="#">
+          <img src="logo.png" width="130" alt="logo"/>
+        </a>
+        <span class="logo-title navbar-brand mb-0 p-1 h1">MovieDB Search</span>
     </nav>
 
-    <div class="container">
-      <div class="mt-5 jumbotron">
+    <div class="jumbotron m-0">
+      <div class="container">
         <h1 class="mb-5 text-center">Search for movies</h1>
-        <form id="searchForm">
+        <form onsubmit="return false" id="searchForm">
           <input
             class="form-control mr-sm-2"
             type="text"
             placeholder="Search movies..."
             id="inputSearch"
           />
-          <button class="btn btn-secondary mt-3 pr-4 pl-4" type="submit">
-            Search
-          </button>
         </form>
       </div>
     </div>
 
-    <div id="moviesList" class="row"></div>
+    <div id="moviesList" class="row justify-content-center"></div>
 
     <script
       src="https://code.jquery.com/jquery-3.4.1.min.js"
