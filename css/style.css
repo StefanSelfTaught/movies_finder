@@ -16,10 +16,30 @@ nav {
   background-color: rgba(0, 0, 0, 0.15) !important
 }
 
-.logo-title {
-  font-weight: 700 !important;
-  font-size: 28px !important;
-  margin: 0 !important;
+.navbar .nav-link {
+  border: none !important;
+  font-size: 18px;
+  letter-spacing: 0.5px;
+  margin-left: 10px;
+}
+
+.page-link {
+  margin: 5px;
+}
+
+.pagination {
+  margin: 0 auto;
+  width: 250px;
+  margin-bottom: 30px;
+}
+
+.button-disabled {
+  cursor: not-allowed;
+  opacity: 0.5;
+}
+
+#pagination-container {
+  visibility: hidden;
 }
 
 h1 {
@@ -29,6 +49,10 @@ h1 {
   letter-spacing: 1px;
 }
 
+.logo-container {
+  margin-left: 30px;
+}
+
 .card {
   background-color: #000000 !important;
   overflow: hidden;
@@ -36,6 +60,8 @@ h1 {
   width: 300px;
   height: 450px;
   margin-bottom: 50px;
+  margin-left: 5px;
+  box-sizing: border-box !important;
 }
 
 .card .poster {
@@ -150,3 +176,23 @@ h1 {
     height: 350px
   }
 }
+
+@media screen and (max-width: 767px){
+  h1 {
+    font-size: 35px !important;
+  }
+
+  .logo-container {
+    margin: 0 !important;
+  }
+
+  .logo-container img {
+    width: 110px;
+  }
+  
+  .nav .navlink, #navbarDropdownMenuLink {
+    margin: 0 !important;
+  }
+
+}
+

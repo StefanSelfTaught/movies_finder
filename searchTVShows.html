@@ -13,16 +13,13 @@
     <title>Movie Search</title>
   </head>
   <body>
-    <nav class="navbar navbar-expand-md navbar-dark">
+    <nav class="navbar navbar-expand-lg navbar-dark">
         <a class="logo-container navbar-brand" href="#">
           <img src="logo.png" width="130" alt="logo"/>
         </a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapse_target" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="collapse_target">
+        <div class="collapse navbar-collapse" id="navbarNavDropdown">
           <ul class="navbar-nav">
-            <li class="nav-item dropdown active">
+            <li class="nav-item dropdown">
               <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 Movies
               </a>
@@ -32,7 +29,7 @@
                 <a class="dropdown-item" href="#">Trending</a>
               </div>
             </li>
-            <li class="nav-item dropdown">
+            <li class="nav-item active dropdown">
               <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 TV Shows
               </a>
@@ -48,7 +45,7 @@
 
     <div class="jumbotron m-0">
       <div class="container">
-        <h1 class="mb-5 text-center">Search for movies</h1>
+        <h1 class="mb-5 text-center">Search for TV Shows</h1>
         <form onsubmit="return false" id="searchForm">
           <input
             class="form-control mr-sm-2"
@@ -61,7 +58,7 @@
     </div>
 
     <div id="moviesList" class="row justify-content-around"></div>
-
+    
     <div id="pagination-container">
       <ul class="pagination">
         <li class="page-item">
@@ -74,7 +71,8 @@
     </div>
 
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
-    <script src="js/moviesSearch.js"></script>
+    <script src="js/TVShowsSearch.js"></script>
+    <script src="//raw.github.com/botmonster/jquery-bootpag/master/lib/jquery.bootpag.min.js"></script>
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
   </body>

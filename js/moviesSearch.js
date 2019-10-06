@@ -3,35 +3,53 @@
   const searchForm = document.getElementById('searchForm');
   const inputSearch = document.getElementById('inputSearch');
   const moviesList = document.getElementById('moviesList');
+  const previous = document.getElementById('previous');
+  const next = document.getElementById('next');
 
   inputSearch.addEventListener('input', (e) => {
     e.preventDefault();
-    getMovies(e.target.value);
+    getMovies(e.target.value, 1);
   });
 
-  function getMovies(movie) {
+  function getMovies(movie, page) {
+    if(page == 1){
+      previous.disabled = true;
+      previous.classList.add('button-disabled');
+    } else {
+      previous.disabled = false;
+      previous.classList.remove('button-disabled');
+    }
     if(movie.length > 0) {
        fetch(
-        `https://api.themoviedb.org/3/search/movie?api_key=${apiKey}&query=${movie}`
+        `https://api.themoviedb.org/3/search/movie?api_key=${apiKey}&query=${movie}&page=${page}`
       )
         .then(resp => resp.json())
         .then(data => {
+          if(page === data.total_pages){
+            next.disabled = true;
+            next.classList.add('button-disabled');
+          } else {
+            next.disabled = false;
+            next.classList.remove('button-disabled');
+          }
+          console.log(data);
           let output = '';
           let movies = data.results;
           movies.map(movie => {
-            console.log(movie);
             let descp;
-            if(movie.overview.length > 260){
+            if (movie.overview.length > 260) {
               descp = movie.overview.split(" ").splice(0, 30).join(" ") + '...';
+            } else if (movie.overview == "") {
+              descp = "No description";
             } else {
               descp = movie.overview;
             }
             if(movie.poster_path !== null) {
             output += `
-              <div class="card mr-5">
+              <div class="card">
                 <div class="poster">
                   <img
-                    src="https://image.tmdb.org/t/p/w185/${movie.poster_path}"
+                    src="https://image.tmdb.org/t/p/w300/${movie.poster_path}"
                   />
                 </div>
                 <div class="details">
@@ -54,9 +72,13 @@
             }
           })
           $('#moviesList').html(output);
+           document.getElementById('pagination-container').style.visibility = 'visible';
+           next.addEventListener('click', () => getMovies(inputSearch.value, ++page));
+           previous.addEventListener('click', () => getMovies(inputSearch.value, --page));
         })
     } else {
       $('#moviesList').empty();
+      $('#pagination-container').style.visibility = 'hidden !important';
     }
   }
 })();
