@@ -5,13 +5,18 @@
   const moviesList = document.getElementById('moviesList');
   const previous = document.getElementById('previous');
   const next = document.getElementById('next');
+  const pagination = document.getElementById('pagination-container');
+  const spinner = `
+    <div class="mb-5 spinner-border text-light" style="width: 3rem; height: 3rem;" role="status">
+      <span class="sr-only">Loading...</span>
+    </div>`;
 
   inputSearch.addEventListener('input', (e) => {
     e.preventDefault();
     getMovies(e.target.value, 1);
   });
 
-  function getMovies(movie, page) {
+  const previousDisabled = page => {
     if(page == 1){
       previous.disabled = true;
       previous.classList.add('button-disabled');
@@ -19,19 +24,30 @@
       previous.disabled = false;
       previous.classList.remove('button-disabled');
     }
+  }
+
+  const nextDisabled = (page, totalPages) => {
+    if(page === totalPages){
+      next.disabled = true;
+      next.classList.add('button-disabled');
+    } else {
+      next.disabled = false;
+      next.classList.remove('button-disabled');
+    }
+  }
+
+  const getMovies = (movie, page) => {
+    if(inputSearch.value.length > 0){
+      moviesList.innerHTML = spinner;
+    }
+    previousDisabled(page);
     if(movie.length > 0) {
        fetch(
         `https://api.themoviedb.org/3/search/movie?api_key=${apiKey}&query=${movie}&page=${page}`
       )
         .then(resp => resp.json())
         .then(data => {
-          if(page === data.total_pages){
-            next.disabled = true;
-            next.classList.add('button-disabled');
-          } else {
-            next.disabled = false;
-            next.classList.remove('button-disabled');
-          }
+          nextDisabled(page, data.total_pages);
           console.log(data);
           let output = '';
           let movies = data.results;
@@ -71,14 +87,26 @@
             `;
             }
           })
-          $('#moviesList').html(output);
-           document.getElementById('pagination-container').style.visibility = 'visible';
-           next.addEventListener('click', () => getMovies(inputSearch.value, ++page));
-           previous.addEventListener('click', () => getMovies(inputSearch.value, --page));
+          if(movies.length !== 0){
+            moviesList.innerHTML = output;
+          } else {
+            moviesList.innerHTML = `<h2 class="no-results">No results founded</h2>`;
+            next.disabled = true;
+            next.classList.add('button-disabled');
+          }
+           pagination.style.visibility = 'visible';
+           next.addEventListener('click', () => {
+            window.scrollTo(0, 240);
+            getMovies(inputSearch.value, ++page);
+          });
+          previous.addEventListener('click', () => {
+            window.scrollTo(0, 240);
+            getMovies(inputSearch.value, --page)
+          });
         })
     } else {
-      $('#moviesList').empty();
-      $('#pagination-container').style.visibility = 'hidden !important';
+      moviesList.innerHTML = null;
+      pagination.style.visibility = 'hidden';
     }
   }
 })();
