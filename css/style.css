@@ -162,6 +162,10 @@ h1 {
   margin: 0 auto;
 }
 
+.no-results {
+  margin-bottom: 40px;
+}
+
 .jumbotron {
   background-size: cover;
   background-image: url(http://hboeu.azureedge.net/uiimages/DE39E0B3-5588-431F-BC2A-AB52429F714C/1920.jpg);
