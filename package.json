@@ -1,0 +1,24 @@
+{
+  "name": "movieSearch",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "dev": "parcel *.html",
+    "prod": "parcel build index.html moviesSearch.html searchTVShows.html"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/StefanSelfTaught/movies_finder.git"
+  },
+  "keywords": [],
+  "author": "Pop Stefan",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/StefanSelfTaught/movies_finder/issues"
+  },
+  "homepage": "https://github.com/StefanSelfTaught/movies_finder#readme",
+  "devDependencies": {
+    "parcel-bundler": "^1.12.4"
+  }
+}

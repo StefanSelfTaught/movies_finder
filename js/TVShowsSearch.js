@@ -1,49 +1,40 @@
-(() => {
-  const apiKey = 'ce2eb2231a371296cf6ff11a39206d6e';
-  const searchForm = document.getElementById('searchForm');
-  const inputSearch = document.getElementById('inputSearch');
-  const moviesList = document.getElementById('moviesList');
-  const previous = document.getElementById('previous');
-  const next = document.getElementById('next');
-  const pagination = document.getElementById('pagination-container');
-  const spinner = `
-    <div class="mb-5 spinner-border text-light" style="width: 3rem; height: 3rem;" role="status">
-      <span class="sr-only">Loading...</span>
-    </div>`;
+import * as variables from './variables.js';
 
-  inputSearch.addEventListener('input', (e) => {
+(() => {
+
+  variables.inputSearch.addEventListener('input', (e) => {
     e.preventDefault();
     getMovies(e.target.value, 1);
   });
 
   const previousDisabled = page => {
     if(page == 1){
-      previous.disabled = true;
-      previous.classList.add('button-disabled');
+      variables.previous.disabled = true;
+      variables.previous.classList.add('button-disabled');
     } else {
-      previous.disabled = false;
-      previous.classList.remove('button-disabled');
+      variables.previous.disabled = false;
+      variables.previous.classList.remove('button-disabled');
     }
   }
 
   const nextDisabled = (page, totalPages) => {
     if(page === totalPages){
-      next.disabled = true;
-      next.classList.add('button-disabled');
+      variables.next.disabled = true;
+      variables.next.classList.add('button-disabled');
     } else {
-      next.disabled = false;
-      next.classList.remove('button-disabled');
+      variables.next.disabled = false;
+      variables.next.classList.remove('button-disabled');
     }
   }
 
   const getMovies = (movie, page) => {
-    if(inputSearch.value.length > 0){
-      moviesList.innerHTML = spinner;
+    if(variables.inputSearch.value.length > 0){
+      variables.moviesList.innerHTML = variables.spinner;
     }
     previousDisabled(page);
     if(movie.length > 0) {
        fetch(
-        `https://api.themoviedb.org/3/search/tv?api_key=${apiKey}&query=${movie}&page=${page}`
+        `https://api.themoviedb.org/3/search/tv?api_key=${variables.apiKey}&query=${movie}&page=${page}`
       )
         .then(resp => resp.json())
         .then(data => {
@@ -88,25 +79,25 @@
             }
           })
           if(movies.length !== 0){
-            moviesList.innerHTML = output;
+            variables.moviesList.innerHTML = output;
           } else {
-            moviesList.innerHTML = `<h2 class="no-results">No results founded</h2>`;
-            next.disabled = true;
-            next.classList.add('button-disabled');
+            variables.moviesList.innerHTML = `<h2 class="no-results">No results founded</h2>`;
+            variables.next.disabled = true;
+            variables.next.classList.add('button-disabled');
           }
-          pagination.style.visibility = 'visible';
-          next.addEventListener('click', () => {
+           variables.pagination.style.visibility = 'visible';
+           variables.next.addEventListener('click', () => {
             window.scrollTo(0, 240);
-            getMovies(inputSearch.value, ++page);
+            getMovies(variables.inputSearch.value, ++page);
           });
           previous.addEventListener('click', () => {
-            window.scrollTo(0, 240)
-            getMovies(inputSearch.value, --page)
+            window.scrollTo(0, 240);
+            getMovies(variables.inputSearch.value, --page)
           });
         })
     } else {
-      moviesList.innerHTML = null;
-      pagination.style.visibility = 'hidden';
+      variables.moviesList.innerHTML = null;
+      variables.pagination.style.visibility = 'hidden';
     }
   }
 })();
