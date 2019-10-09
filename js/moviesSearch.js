@@ -51,12 +51,12 @@ import * as variables from './variables.js';
             } else {
               descp = movie.overview;
             }
-            if(movie.poster_path !== null) {
+            if(movie.poster_path !== null && movie.backdrop_path !== null) {
             output += `
               <div class="card">
                 <div class="poster">
                   <img
-                    src="https://image.tmdb.org/t/p/w300/${movie.poster_path}"
+                    src="https://image.tmdb.org/t/p/w300${movie.poster_path}"
                   />
                 </div>
                 <div class="details">

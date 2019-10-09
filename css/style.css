@@ -10,10 +10,8 @@ body {
 }
 
 nav {
-  opacity: 0.9;
-  background-color: rgba(0, 0, 0, 0.15) !important;
+  background-color: rgba(0, 0, 0, 0.90) !important;
   border-bottom: 0.7px solid rgba(255, 255, 255, 0.15) !important;
-  background-color: rgba(0, 0, 0, 0.15) !important
 }
 
 .navbar .nav-link {
@@ -25,6 +23,15 @@ nav {
 
 .page-link {
   margin: 5px;
+}
+
+.main-page {
+  height: 250px !important; 
+}
+
+.message {
+  font-size: 36px !important;
+  opacity: 0.95;
 }
 
 .pagination {
@@ -200,3 +207,29 @@ h1 {
 
 }
 
+.carousel {
+  margin-bottom: 1500px;
+  margin-top: 50px;
+}
+
+.carousel-img {
+  filter: brightness(45%);
+  height: 75vh;
+  object-fit: cover;
+}
+
+.carousel-indicators li {
+  background-clip: initial !important;
+  border-bottom: none !important;
+  height: 2px !important;
+  border-top: 3px solid transparent !important;
+}
+
+.carousel-caption {
+    text-align: left !important;
+}
+
+.movie-det {
+  margin-right: 6px;
+  font-size: 16.5px;
+}
