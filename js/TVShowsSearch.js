@@ -1,6 +1,35 @@
 import * as variables from './variables.js';
+import { genres } from './genres.js';
 
 (() => {
+
+  fetch('https://api.themoviedb.org/3/trending/tv/week?api_key=ce2eb2231a371296cf6ff11a39206d6e')
+    .then(data => data.json())
+    .then(res => {
+      let topRMovies = res.results.splice(0, 8);
+      let output = '';
+      let genresArray = '';
+      topRMovies.map(movie => {
+        genresArray = genres.filter(genre => {
+          if(genre.id === movie.genre_ids[0] || genre.id === movie.genre_ids[1]){
+            return genre.id;
+          }
+        })
+        let genreOutput = genresArray.map(genre => genre.name).join(", ");
+        output +=
+          `
+          <div class="mr-3 card" style="width: 15rem; padding-bottom: 0;">
+              <img class="card-img-top card-img" src="https://image.tmdb.org/t/p/w500${movie.poster_path}" alt="Card image cap">
+              <div class="card-body">
+                <h5 class="card-title card-movie-title">${movie.name}</h5>
+                <p class="card-text card-details">${movie.first_air_date.split("-")[0]} | ${genreOutput}</p>
+              </div>
+          </div>
+          `
+      })
+      variables.trending2.innerHTML = output;
+      variables.trending2.children[0].classList.add("ml-5");
+    })
 
   variables.inputSearch.addEventListener('input', (e) => {
     e.preventDefault();
@@ -33,6 +62,8 @@ import * as variables from './variables.js';
     }
     previousDisabled(page);
     if(movie.length > 0) {
+    variables.trending2.style.display = 'none';
+    document.getElementById('trending-title').style.display = 'none';
        fetch(
         `https://api.themoviedb.org/3/search/tv?api_key=${variables.apiKey}&query=${movie}&page=${page}`
       )
@@ -53,7 +84,7 @@ import * as variables from './variables.js';
             }
             if(movie.poster_path !== null) {
               output += `
-                <div class="card">
+                <div class="card-v2">
                   <div class="poster">
                     <img
                       src="https://image.tmdb.org/t/p/w300/${movie.poster_path}"
@@ -96,6 +127,8 @@ import * as variables from './variables.js';
           });
         })
     } else {
+      variables.trending2.style.display = 'flex';
+      document.getElementById('trending-title').style.display = 'block';
       variables.moviesList.innerHTML = null;
       variables.pagination.style.visibility = 'hidden';
     }

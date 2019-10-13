@@ -23,13 +23,15 @@
         <div class="collapse navbar-collapse" id="collapse_target">
           <ul class="navbar-nav">
             <li class="nav-item dropdown">
-              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              <a class="nav-link dropdown-toggle" href="index.html" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 Movies
               </a>
               <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                <a class="dropdown-item" href="#">Popular</a>
+                <a class="dropdown-item" href="index.html">Movies</a>
                 <a class="dropdown-item" href="moviesSearch.html">Search</a>
-                <a class="dropdown-item" href="#">Trending</a>
+                <a class="dropdown-item" href="#">Popular</a>
+                <a class="dropdown-item" href="">Top Rated</a>
+                <a class="dropdown-item" href="#">Now Playing</a>
               </div>
             </li>
             <li class="nav-item dropdown">
@@ -65,7 +67,7 @@
           <span class="movie-det">|</span>
           <span class="movie-det">Rating: 8 / 10</span>
         </div>
-        </div>
+      </div>
         <div class="carousel-item">
           <img class="carousel-img d-block w-100" src="https://image.tmdb.org/t/p/original/4n0TZfTUSUELqRrOA8sZKWs9bWU.jpg" alt="Third slide">
           <div class="carousel-caption d-none d-md-block">
@@ -118,6 +120,9 @@
 
     <h2 class="ml-5 mb-4 movies-category">Popular</h2>
     <div class="row flex-nowrap" id="popular-movies"></div>
+
+    <h2 class="ml-5 mb-4 movies-category">Now Playing</h2>
+    <div class="row flex-nowrap" id="now-playing"></div>
 
     <script src="js/index.js"></script>
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
