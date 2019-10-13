@@ -64,29 +64,67 @@ h1 {
   margin-left: 30px;
 }
 
-.card {
+.card-v2 {
   background-color: #000000 !important;
-  overflow: hidden;
   box-shadow: 0 5px 10px rgba(0, 0, 0, 0.5);
   width: 300px;
   height: 450px;
   margin-bottom: 50px;
+  overflow: hidden;
   margin-left: 5px;
   box-sizing: border-box !important;
+  position: relative;
+}
+
+.card {
+  background-color: #000000 !important;
+  padding-bottom: 80px;
+  overflow: hidden;
+  margin-left: 5px;
+  box-sizing: border-box !important;
+  position: relative;
+}
+
+.dropdown:hover .dropdown-menu {
+  display: block;
+  margin-top: 0;
+}
+
+.dropdown>.dropdown-toggle:active {
+    pointer-events: none;
 }
 
 .card-movie-title {
   margin: 0 !important;
   color: #fff;
   font-size: 19px;
+  white-space: nowrap;
 }
 
-.card .poster {
+.card-movie-title:hover {
+  cursor: pointer;
+}
+
+.card-img {
+  opacity: 1;
+  transition: all 0.2s ease;
+}
+
+.card-img:hover {
+  opacity: 0.55;
+  cursor: pointer;
+}
+
+.card-details {
+  white-space: nowrap;
+}
+
+.card-v2 .poster {
   position: relative;
   overflow: hidden;
 }
 
-.card .poster:before {
+.card-v2 .poster:before {
   content: '';
   position: absolute;
   bottom: -180px;
@@ -98,17 +136,17 @@ h1 {
   z-index: 1;
 }
 
-.card:hover .poster:before {
+.card-v2:hover .poster:before {
   bottom: 0;
 }
 
-.card .poster img {
+.card-v2 .poster img {
   width: 100%;
   transition: 0.5s;
   border-radius: 5px;
 }
 
-.card:hover .poster img {
+.card-v2:hover .poster img {
   filter: blur(2px);
   transform: translateY(-80px);
 }
@@ -125,7 +163,7 @@ h1 {
   z-index: 2;
 }
 
-.card:hover .details {
+.card-v2:hover .details {
   bottom: 0;
 }
 
@@ -188,7 +226,7 @@ h1 {
   background-image: url(http://hboeu.azureedge.net/uiimages/DE39E0B3-5588-431F-BC2A-AB52429F714C/1920.jpg);
   background-repeat: no-repeat; 
   background-position: center center;
-  height: 450px;
+  height: 370px;
   border: none !important;
 }
 
@@ -215,6 +253,10 @@ h1 {
     margin: 0 !important;
   }
 
+}
+
+.card-body {
+  height: 50px !important;
 }
 
 .carousel {
