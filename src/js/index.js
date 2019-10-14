@@ -22,7 +22,7 @@ import { genres } from './genres.js';
 				let genreOutput = genresArray.map(genre => genre.name).join(", ");
 				output +=
 					`
-					<div class="mr-3 card" style="width: 15rem;">
+					<div class="mr-3 card" style="width: 20rem;">
 				        <img class="card-img-top card-img" src="https://image.tmdb.org/t/p/w500${movie.poster_path}" alt="Card image cap">
 				        <div class="card-body">
 				          <h5 class="card-title card-movie-title">${movie.title}</h5>
@@ -51,7 +51,7 @@ import { genres } from './genres.js';
 				let genreOutput = genresArray.map(genre => genre.name).join(", ");
 				output +=
 					`
-					<div class="mr-3 card" style="width: 15rem;">
+					<div class="mr-3 card" style="width: 20rem;">
 				        <img class="card-img-top card-img" src="https://image.tmdb.org/t/p/w500${movie.poster_path}" alt="Card image cap">
 				        <div class="card-body">
 				          <h5 class="card-title card-movie-title">${movie.title}</h5>
@@ -68,7 +68,7 @@ import { genres } from './genres.js';
 		fetch('https://api.themoviedb.org/3/movie/now_playing?api_key=ce2eb2231a371296cf6ff11a39206d6e&page=1')
 		.then(data => data.json())
 		.then(res => {
-			let topPopularMovies = res.results.splice(0, 7);
+			let topPopularMovies = res.results.splice(9, 7);
 			let output = '';
 			let genresArray = '';
 			topPopularMovies.map(movie => {
@@ -80,7 +80,7 @@ import { genres } from './genres.js';
 				let genreOutput = genresArray.map(genre => genre.name).join(", ");
 				output +=
 					`
-					<div class="mr-3 card" style="width: 15rem;">
+					<div class="mr-3 card" style="width: 20rem;">
 				        <img class="card-img-top card-img" src="https://image.tmdb.org/t/p/w500${movie.poster_path}" alt="Card image cap">
 				        <div class="card-body">
 				          <h5 class="card-title card-movie-title">${movie.title}</h5>

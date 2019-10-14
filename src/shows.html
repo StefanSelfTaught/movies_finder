@@ -13,9 +13,9 @@
     <title>Movie Search</title>
   </head>
   <body>
-    <nav class="navbar navbar-fixed fixed-top navbar-expand-md navbar-dark">
+    <nav class="navbar navbar-fixed fixed-top-fixed navbar-expand-md navbar-dark">
         <a class="logo-container navbar-brand" href="index.html">
-          <img src="images/logo.png" width="130" alt="logo"/>
+          <img src="../images/logo.png" width="130" alt="logo"/>
         </a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapse_target" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
@@ -30,18 +30,20 @@
                 <a class="dropdown-item" href="index.html">Movies</a>
                 <a class="dropdown-item" href="moviesSearch.html">Search</a>
                 <a class="dropdown-item" href="#">Popular</a>
-                <a class="dropdown-item" href="">Top Rated</a>
+                <a class="dropdown-item" href="#">Top Rated</a>
                 <a class="dropdown-item" href="#">Now Playing</a>
               </div>
             </li>
-            <li class="nav-item dropdown">
+            <li class="nav-item dropdown active">
               <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 TV Shows
               </a>
               <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                <a class="dropdown-item" href="#">Popular</a>
+                <a class="dropdown-item" href="shows.html">TV Shows</a>
                 <a class="dropdown-item" href="searchTVShows.html">Search</a>
-                <a class="dropdown-item" href="#">Trending</a>
+                <a class="dropdown-item" href="#">Popular</a>
+                <a class="dropdown-item" href="#">Top Rated</a>
+                <a class="dropdown-item" href="#">On The Air</a> 
               </div>
             </li>
           </ul>
@@ -49,6 +51,9 @@
     </nav>
 
     <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+      <div class="shadow"></div>
+      <div class="shadow2"></div>
+      <div class="shadow3"></div>
       <ol class="carousel-indicators">
         <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
         <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
@@ -115,16 +120,16 @@
       </a>
     </div>
 
-    <h2 class="ml-5 mb-4 movies-category">Top Rated</h2>
-    <div class="row flex-nowrap" id="top-rated-movies"></div>
+    <h2 class="ml-5 mb-4 movies-category">On The Air</h2>
+    <div class="row flex-nowrap" id="on-the-air"></div>
 
     <h2 class="ml-5 mb-4 movies-category">Popular</h2>
-    <div class="row flex-nowrap" id="popular-movies"></div>
+    <div class="row flex-nowrap" id="popular-shows"></div>
 
-    <h2 class="ml-5 mb-4 movies-category">Now Playing</h2>
-    <div class="row flex-nowrap" id="now-playing"></div>
+    <h2 class="ml-5 mb-4 movies-category">Top Rated</h2>
+    <div class="row flex-nowrap" id="top-rated-shows"></div>
 
-    <script src="js/index.js"></script>
+    <script src="js/shows.js"></script>
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
   </body>
