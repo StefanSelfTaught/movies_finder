@@ -10,8 +10,8 @@ body {
 }
 
 nav {
-  background-color: rgba(0, 0, 0, 0.90) !important;
-  border-bottom: 0.7px solid rgba(255, 255, 255, 0.15) !important;
+  background-color: rgba(0, 0, 0, 0.80) !important;
+  backdrop-filter: blur(5px);
 }
 
 .movies-category {
@@ -23,6 +23,11 @@ nav {
   font-size: 18px;
   letter-spacing: 0.5px;
   margin-left: 10px;
+}
+
+.nav-link {
+  padding-bottom: 5px !important;
+  margin-bottom: 11px;
 }
 
 .page-link {
@@ -261,12 +266,63 @@ h1 {
 
 .carousel {
   margin-bottom: 80px;
-  margin-top: 50px;
+  margin-top: 75px;
+}
+
+.carousel::after {
+  content: '';
+  position: absolute;
+  width: 100px;
+  background: linear-gradient(to left, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 1) 100%);
+  top: 0;
+  bottom: 0;
+}
+
+.fixed-top {
+  position: sticky !important;
+}
+
+.shadow {
+  position: absolute;
+  width: 100px;
+  background: linear-gradient(to right, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 1) 100%);
+  z-index: 1;
+  top: 0;
+  bottom: 0;
+  right: 0;
+}
+
+.shadow2 {
+  position: absolute;
+  height: 100px;
+  background: linear-gradient(rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 1) 100%);
+  z-index: 1;
+  bottom: 0;
+  right: 0;
+  left: 0;
+}
+
+.shadow3 {
+  position: absolute;
+  height: 50px;
+  background: linear-gradient(to top, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.95) 100%);
+  z-index: 1;
+  top: 0;
+  right: 0;
+  left: 0;
+}
+
+.fixed-top-fixed {
+  position: fixed !important;
+  top: 0;
+  right: 0;
+  left: 0;
+  z-index: 1030;
 }
 
 .carousel-img {
-  filter: brightness(45%);
-  height: 75vh;
+  filter: brightness(55%);
+  height: 33rem;
   object-fit: cover;
 }
 
@@ -279,6 +335,7 @@ h1 {
 
 .carousel-caption {
     text-align: left !important;
+    margin-bottom: 50px;
 }
 
 .movie-det {

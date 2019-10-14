@@ -4,8 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "dev": "parcel *.html",
-    "prod": "parcel build *.html",
+    "dev": "parcel src/*.html",
+    "prod": "parcel build src/*.html",
     "deploy": "gh-pages -d dist"
   },
   "repository": {
