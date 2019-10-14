@@ -117,34 +117,7 @@ parcelRequire = (function (modules, cache, entry, globalName) {
   }
 
   return newRequire;
-})({"js/variables.js":[function(require,module,exports) {
-"use strict";
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.spinner = exports.trending2 = exports.trending = exports.pagination = exports.next = exports.previous = exports.moviesList = exports.inputSearch = exports.searchForm = exports.apiKey = void 0;
-var apiKey = 'ce2eb2231a371296cf6ff11a39206d6e';
-exports.apiKey = apiKey;
-var searchForm = document.getElementById('searchForm');
-exports.searchForm = searchForm;
-var inputSearch = document.getElementById('inputSearch');
-exports.inputSearch = inputSearch;
-var moviesList = document.getElementById('moviesList');
-exports.moviesList = moviesList;
-var previous = document.getElementById('previous');
-exports.previous = previous;
-var next = document.getElementById('next');
-exports.next = next;
-var pagination = document.getElementById('pagination-container');
-exports.pagination = pagination;
-var trending = document.getElementById('trending-movies');
-exports.trending = trending;
-var trending2 = document.getElementById('trending-shows');
-exports.trending2 = trending2;
-var spinner = "\n    <div class=\"mb-5 spinner-border text-light\" style=\"width: 3rem; height: 3rem;\" role=\"status\">\n      <span class=\"sr-only\">Loading...</span>\n    </div>";
-exports.spinner = spinner;
-},{}],"js/genres.js":[function(require,module,exports) {
+})({"js/genres.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -210,22 +183,20 @@ var genres = [{
   name: "Western"
 }];
 exports.genres = genres;
-},{}],"js/TVShowsSearch.js":[function(require,module,exports) {
+},{}],"js/shows.js":[function(require,module,exports) {
 "use strict";
-
-var variables = _interopRequireWildcard(require("./variables.js"));
 
 var _genres = require("./genres.js");
 
-function _getRequireWildcardCache() { if (typeof WeakMap !== "function") return null; var cache = new WeakMap(); _getRequireWildcardCache = function () { return cache; }; return cache; }
-
-function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } var cache = _getRequireWildcardCache(); if (cache && cache.has(obj)) { return cache.get(obj); } var newObj = {}; if (obj != null) { var hasPropertyDescriptor = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) { var desc = hasPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : null; if (desc && (desc.get || desc.set)) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } } newObj.default = obj; if (cache) { cache.set(obj, newObj); } return newObj; }
-
 (function () {
-  fetch('https://api.themoviedb.org/3/trending/tv/week?api_key=ce2eb2231a371296cf6ff11a39206d6e').then(function (data) {
+  var onTheAir = document.getElementById('on-the-air');
+  var popularShows = document.getElementById('popular-shows');
+  var topRatedShows = document.getElementById('top-rated-shows');
+  var apiKey = 'ce2eb2231a371296cf6ff11a39206d6e';
+  fetch('https://api.themoviedb.org/3/tv/on_the_air?api_key=ce2eb2231a371296cf6ff11a39206d6e&page=1').then(function (data) {
     return data.json();
   }).then(function (res) {
-    var topRMovies = res.results.splice(0, 8);
+    var topRMovies = res.results.splice(9, 6);
     var output = '';
     var genresArray = '';
     topRMovies.map(function (movie) {
@@ -237,96 +208,53 @@ function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj;
       var genreOutput = genresArray.map(function (genre) {
         return genre.name;
       }).join(", ");
-      output += "\n          <div class=\"mr-3 card\" style=\"width: 15rem; padding-bottom: 0;\">\n              <img class=\"card-img-top card-img\" src=\"https://image.tmdb.org/t/p/w500".concat(movie.poster_path, "\" alt=\"Card image cap\">\n              <div class=\"card-body\">\n                <h5 class=\"card-title card-movie-title\">").concat(movie.name, "</h5>\n                <p class=\"card-text card-details\">").concat(movie.first_air_date.split("-")[0], " | ").concat(genreOutput, "</p>\n              </div>\n          </div>\n          ");
+      output += "\n\t\t\t\t\t<div class=\"mr-3 card\" style=\"width: 20rem;\">\n\t\t\t\t        <img class=\"card-img-top card-img\" src=\"https://image.tmdb.org/t/p/w500".concat(movie.poster_path, "\" alt=\"Card image cap\">\n\t\t\t\t        <div class=\"card-body\">\n\t\t\t\t          <h5 class=\"card-title card-movie-title\">").concat(movie.name, "</h5>\n\t\t\t\t          <p class=\"card-text card-details\">").concat(movie.first_air_date.split("-")[0], " | ").concat(genreOutput, "</p>\n\t\t\t\t        </div>\n      \t\t\t\t</div>\n\t\t\t\t\t");
     });
-    variables.trending2.innerHTML = output;
-    variables.trending2.children[0].classList.add("ml-5");
+    onTheAir.innerHTML = output;
+    onTheAir.children[0].classList.add("ml-5");
   });
-  variables.inputSearch.addEventListener('input', function (e) {
-    e.preventDefault();
-    getMovies(e.target.value, 1);
-  });
-
-  var previousDisabled = function previousDisabled(page) {
-    if (page == 1) {
-      variables.previous.disabled = true;
-      variables.previous.classList.add('button-disabled');
-    } else {
-      variables.previous.disabled = false;
-      variables.previous.classList.remove('button-disabled');
-    }
-  };
-
-  var nextDisabled = function nextDisabled(page, totalPages) {
-    if (page === totalPages) {
-      variables.next.disabled = true;
-      variables.next.classList.add('button-disabled');
-    } else {
-      variables.next.disabled = false;
-      variables.next.classList.remove('button-disabled');
-    }
-  };
-
-  var getMovies = function getMovies(movie, page) {
-    if (variables.inputSearch.value.length > 0) {
-      variables.moviesList.innerHTML = variables.spinner;
-    }
-
-    previousDisabled(page);
-
-    if (movie.length > 0) {
-      variables.trending2.style.display = 'none';
-      document.getElementById('trending-title').style.display = 'none';
-      fetch("https://api.themoviedb.org/3/search/tv?api_key=".concat(variables.apiKey, "&query=").concat(movie, "&page=").concat(page)).then(function (resp) {
-        return resp.json();
-      }).then(function (data) {
-        nextDisabled(page, data.total_pages);
-        console.log(data);
-        var output = '';
-        var movies = data.results;
-        movies.map(function (movie) {
-          var descp;
-
-          if (movie.overview.length > 260) {
-            descp = movie.overview.split(" ").splice(0, 30).join(" ") + '...';
-          } else if (movie.overview == "") {
-            descp = "No description";
-          } else {
-            descp = movie.overview;
-          }
-
-          if (movie.poster_path !== null) {
-            output += "\n                <div class=\"card-v2\">\n                  <div class=\"poster\">\n                    <img\n                      src=\"https://image.tmdb.org/t/p/w300/".concat(movie.poster_path, "\"\n                    />\n                  </div>\n                  <div class=\"details\">\n                    <h2>").concat(movie.name, "<br /><span>First Air Date: ").concat(movie.first_air_date, "</span></h2>\n                    <div class=\"rating\">\n                      <i class=\"fas fa-star\"></i>\n                      <span>").concat(movie.vote_average, " / 10</span>\n                    </div>\n                    <div class=\"info\">\n                      <p>\n                        ").concat(descp, "\n                      </p>\n                    </div>\n                    <div class=\"more-info\">\n                      <a href=\"https://www.themoviedb.org/tv/").concat(movie.id, "\" target=\"_blank\" class=\"btn btn-dark\">More Details</a>\n                    </div>\n                  </div>\n                </div>\n              ");
-          }
-        });
-
-        if (movies.length !== 0) {
-          variables.moviesList.innerHTML = output;
-        } else {
-          variables.moviesList.innerHTML = "<h2 class=\"no-results\">No results founded</h2>";
-          variables.next.disabled = true;
-          variables.next.classList.add('button-disabled');
+  fetch('https://api.themoviedb.org/3/tv/popular?api_key=ce2eb2231a371296cf6ff11a39206d6e&page=1').then(function (data) {
+    return data.json();
+  }).then(function (res) {
+    var topPopularMovies = res.results.splice(0, 6);
+    var output = '';
+    var genresArray = '';
+    topPopularMovies.map(function (movie) {
+      genresArray = _genres.genres.filter(function (genre) {
+        if (genre.id === movie.genre_ids[0] || genre.id === movie.genre_ids[1]) {
+          return genre.id;
         }
-
-        variables.pagination.style.visibility = 'visible';
-        variables.next.addEventListener('click', function () {
-          window.scrollTo(0, 240);
-          getMovies(variables.inputSearch.value, ++page);
-        });
-        previous.addEventListener('click', function () {
-          window.scrollTo(0, 240);
-          getMovies(variables.inputSearch.value, --page);
-        });
       });
-    } else {
-      variables.trending2.style.display = 'flex';
-      document.getElementById('trending-title').style.display = 'block';
-      variables.moviesList.innerHTML = null;
-      variables.pagination.style.visibility = 'hidden';
-    }
-  };
+      var genreOutput = genresArray.map(function (genre) {
+        return genre.name;
+      }).join(", ");
+      output += "\n\t\t\t\t\t<div class=\"mr-3 card\" style=\"width: 20rem;\">\n\t\t\t\t        <img class=\"card-img-top card-img\" src=\"https://image.tmdb.org/t/p/w500".concat(movie.poster_path, "\" alt=\"Card image cap\">\n\t\t\t\t        <div class=\"card-body\">\n\t\t\t\t          <h5 class=\"card-title card-movie-title\">").concat(movie.name, "</h5>\n\t\t\t\t          <p class=\"card-text card-details\">").concat(movie.first_air_date.split("-")[0], " | ").concat(genreOutput, "</p>\n\t\t\t\t        </div>\n      \t\t\t\t</div>\n\t\t\t\t");
+    });
+    popularShows.innerHTML = output;
+    popularShows.children[0].classList.add("ml-5");
+  });
+  fetch('https://api.themoviedb.org/3/tv/top_rated?api_key=ce2eb2231a371296cf6ff11a39206d6e&page=1').then(function (data) {
+    return data.json();
+  }).then(function (res) {
+    var topPopularMovies = res.results.splice(0, 7);
+    var output = '';
+    var genresArray = '';
+    topPopularMovies.map(function (movie) {
+      genresArray = _genres.genres.filter(function (genre) {
+        if (genre.id === movie.genre_ids[0] || genre.id === movie.genre_ids[1]) {
+          return genre.id;
+        }
+      });
+      var genreOutput = genresArray.map(function (genre) {
+        return genre.name;
+      }).join(", ");
+      output += "\n\t\t\t\t\t<div class=\"mr-3 card\" style=\"width: 20rem;\">\n\t\t\t\t        <img class=\"card-img-top card-img\" src=\"https://image.tmdb.org/t/p/w500".concat(movie.poster_path, "\" alt=\"Card image cap\">\n\t\t\t\t        <div class=\"card-body\">\n\t\t\t\t          <h5 class=\"card-title card-movie-title\">").concat(movie.name, "</h5>\n\t\t\t\t          <p class=\"card-text card-details\">").concat(movie.first_air_date.split("-")[0], " | ").concat(genreOutput, "</p>\n\t\t\t\t        </div>\n      \t\t\t\t</div>\n\t\t\t\t");
+    });
+    topRatedShows.innerHTML = output;
+    topRatedShows.children[0].classList.add("ml-5");
+  });
 })();
-},{"./variables.js":"js/variables.js","./genres.js":"js/genres.js"}],"../node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
+},{"./genres.js":"js/genres.js"}],"../node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
 var global = arguments[3];
 var OVERLAY_ID = '__parcel__error__overlay__';
 var OldModule = module.bundle.Module;
@@ -530,5 +458,5 @@ function hmrAcceptRun(bundle, id) {
     return true;
   }
 }
-},{}]},{},["../node_modules/parcel-bundler/src/builtins/hmr-runtime.js","js/TVShowsSearch.js"], null)
-//# sourceMappingURL=/TVShowsSearch.fc7b7cc5.js.map
+},{}]},{},["../node_modules/parcel-bundler/src/builtins/hmr-runtime.js","js/shows.js"], null)
+//# sourceMappingURL=/shows.482c53d1.js.map

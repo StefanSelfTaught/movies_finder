@@ -208,7 +208,7 @@ var _genres = require("./genres.js");
       var genreOutput = genresArray.map(function (genre) {
         return genre.name;
       }).join(", ");
-      output += "\n\t\t\t\t\t<div class=\"mr-3 card\" style=\"width: 15rem;\">\n\t\t\t\t        <img class=\"card-img-top card-img\" src=\"https://image.tmdb.org/t/p/w500".concat(movie.poster_path, "\" alt=\"Card image cap\">\n\t\t\t\t        <div class=\"card-body\">\n\t\t\t\t          <h5 class=\"card-title card-movie-title\">").concat(movie.title, "</h5>\n\t\t\t\t          <p class=\"card-text card-details\">").concat(movie.release_date.split("-")[0], " | ").concat(genreOutput, "</p>\n\t\t\t\t        </div>\n      \t\t\t\t</div>\n\t\t\t\t\t");
+      output += "\n\t\t\t\t\t<div class=\"mr-3 card\" style=\"width: 20rem;\">\n\t\t\t\t        <img class=\"card-img-top card-img\" src=\"https://image.tmdb.org/t/p/w500".concat(movie.poster_path, "\" alt=\"Card image cap\">\n\t\t\t\t        <div class=\"card-body\">\n\t\t\t\t          <h5 class=\"card-title card-movie-title\">").concat(movie.title, "</h5>\n\t\t\t\t          <p class=\"card-text card-details\">").concat(movie.release_date.split("-")[0], " | ").concat(genreOutput, "</p>\n\t\t\t\t        </div>\n      \t\t\t\t</div>\n\t\t\t\t\t");
     });
     topMovies.innerHTML = output;
     topMovies.children[0].classList.add("ml-5");
@@ -228,7 +228,7 @@ var _genres = require("./genres.js");
       var genreOutput = genresArray.map(function (genre) {
         return genre.name;
       }).join(", ");
-      output += "\n\t\t\t\t\t<div class=\"mr-3 card\" style=\"width: 15rem;\">\n\t\t\t\t        <img class=\"card-img-top card-img\" src=\"https://image.tmdb.org/t/p/w500".concat(movie.poster_path, "\" alt=\"Card image cap\">\n\t\t\t\t        <div class=\"card-body\">\n\t\t\t\t          <h5 class=\"card-title card-movie-title\">").concat(movie.title, "</h5>\n\t\t\t\t          <p class=\"card-text card-details\">").concat(movie.release_date.split("-")[0], " | ").concat(genreOutput, " </p>\n\t\t\t\t        </div>\n      \t\t\t\t</div>\n\t\t\t\t");
+      output += "\n\t\t\t\t\t<div class=\"mr-3 card\" style=\"width: 20rem;\">\n\t\t\t\t        <img class=\"card-img-top card-img\" src=\"https://image.tmdb.org/t/p/w500".concat(movie.poster_path, "\" alt=\"Card image cap\">\n\t\t\t\t        <div class=\"card-body\">\n\t\t\t\t          <h5 class=\"card-title card-movie-title\">").concat(movie.title, "</h5>\n\t\t\t\t          <p class=\"card-text card-details\">").concat(movie.release_date.split("-")[0], " | ").concat(genreOutput, " </p>\n\t\t\t\t        </div>\n      \t\t\t\t</div>\n\t\t\t\t");
     });
     popularMovies.innerHTML = output;
     popularMovies.children[0].classList.add("ml-5");
@@ -236,7 +236,7 @@ var _genres = require("./genres.js");
   fetch('https://api.themoviedb.org/3/movie/now_playing?api_key=ce2eb2231a371296cf6ff11a39206d6e&page=1').then(function (data) {
     return data.json();
   }).then(function (res) {
-    var topPopularMovies = res.results.splice(0, 7);
+    var topPopularMovies = res.results.splice(9, 7);
     var output = '';
     var genresArray = '';
     topPopularMovies.map(function (movie) {
@@ -248,13 +248,13 @@ var _genres = require("./genres.js");
       var genreOutput = genresArray.map(function (genre) {
         return genre.name;
       }).join(", ");
-      output += "\n\t\t\t\t\t<div class=\"mr-3 card\" style=\"width: 15rem;\">\n\t\t\t\t        <img class=\"card-img-top card-img\" src=\"https://image.tmdb.org/t/p/w500".concat(movie.poster_path, "\" alt=\"Card image cap\">\n\t\t\t\t        <div class=\"card-body\">\n\t\t\t\t          <h5 class=\"card-title card-movie-title\">").concat(movie.title, "</h5>\n\t\t\t\t          <p class=\"card-text card-details\">").concat(movie.release_date.split("-")[0], " | ").concat(genreOutput, " </p>\n\t\t\t\t        </div>\n      \t\t\t\t</div>\n\t\t\t\t");
+      output += "\n\t\t\t\t\t<div class=\"mr-3 card\" style=\"width: 20rem;\">\n\t\t\t\t        <img class=\"card-img-top card-img\" src=\"https://image.tmdb.org/t/p/w500".concat(movie.poster_path, "\" alt=\"Card image cap\">\n\t\t\t\t        <div class=\"card-body\">\n\t\t\t\t          <h5 class=\"card-title card-movie-title\">").concat(movie.title, "</h5>\n\t\t\t\t          <p class=\"card-text card-details\">").concat(movie.release_date.split("-")[0], " | ").concat(genreOutput, " </p>\n\t\t\t\t        </div>\n      \t\t\t\t</div>\n\t\t\t\t");
     });
     nowPlaying.innerHTML = output;
     nowPlaying.children[0].classList.add("ml-5");
   });
 })();
-},{"./genres.js":"js/genres.js"}],"node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
+},{"./genres.js":"js/genres.js"}],"../node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
 var global = arguments[3];
 var OVERLAY_ID = '__parcel__error__overlay__';
 var OldModule = module.bundle.Module;
@@ -282,7 +282,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "1503" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "11109" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
@@ -458,5 +458,5 @@ function hmrAcceptRun(bundle, id) {
     return true;
   }
 }
-},{}]},{},["node_modules/parcel-bundler/src/builtins/hmr-runtime.js","js/index.js"], null)
+},{}]},{},["../node_modules/parcel-bundler/src/builtins/hmr-runtime.js","js/index.js"], null)
 //# sourceMappingURL=/js.00a46daa.js.map
