@@ -1,0 +1,426 @@
+@import url('https://fonts.googleapis.com/css?family=Nunito:300,300i,400,700,800&display=swap');
+
+
+/********** BASE ***************/
+
+* {
+  box-sizing: border-box !important;
+}
+
+body {
+  background-color: #000000 !important;
+  font-family: 'Nunito', sans-serif !important;
+}
+
+h1 {
+  font-size: 50px !important;
+  color: #fff;
+  font-weight: 400 !important;
+  letter-spacing: 1px;
+}
+
+/********** NAVBAR ***************/
+
+nav {
+  background-color: rgba(0, 0, 0, 0.75) !important;
+  backdrop-filter: blur(5px);
+}
+
+.navbar .nav-link {
+  border: none !important;
+  font-size: 18px;
+  letter-spacing: 0.5px;
+  margin-left: 10px;
+}
+
+.fixed-top {
+  position: sticky !important;
+}
+
+.logo-container {
+  margin-left: 30px;
+}
+
+.nav-link {
+  padding-bottom: 5px !important;
+  margin-bottom: 11px;
+}
+
+.dropdown:hover .dropdown-menu {
+  display: block;
+  margin-top: 0;
+}
+
+.dropdown>.dropdown-toggle:active {
+  pointer-events: none;
+}
+
+.fixed-top-fixed {
+  position: fixed !important;
+  top: 0;
+  right: 0;
+  left: 0;
+  z-index: 1030;
+}
+
+/********** NAVBAR-&-CAROUSEL SHADOWS ***************/
+
+.shadow {
+  position: absolute;
+  width: 70px;
+  background: linear-gradient(to right, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 1) 70%);
+  z-index: 1;
+  top: 0;
+  bottom: 0;
+  right: 0;
+}
+
+.shadow2 {
+  position: absolute;
+  height: 100px;
+  background: linear-gradient(rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 1) 100%);
+  z-index: 1;
+  bottom: 0;
+  right: 0;
+  left: 0;
+}
+
+.shadow3 {
+  position: absolute;
+  height: 15px;
+  background: linear-gradient(to top, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 1) 100%);
+  z-index: 1;
+  top: 0;
+  right: 0;
+  left: 0;
+}
+
+
+/********** TOP-CAROUSEL ***************/
+.carousel {
+  margin-bottom: 80px;
+  margin-top: 75px;
+}
+
+.carousel::after {
+  content: '';
+  position: absolute;
+  width: 70px;
+  background: linear-gradient(to left, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 1) 70%);
+  top: 0;
+  bottom: 0;
+}
+
+.carousel-img {
+  filter: brightness(60%);
+  height: 36rem;
+  object-fit: cover;
+}
+
+.carousel-indicators li {
+  background-clip: initial !important;
+  border-bottom: none !important;
+  height: 2px !important;
+  border-top: 3px solid transparent !important;
+}
+
+.carousel-caption {
+  text-align: left !important;
+  margin-bottom: 50px;
+}
+
+.movie-det {
+  margin-right: 6px;
+  font-size: 16.5px;
+}
+
+/********** SLICK-CAROUSEL ***************/
+
+.card {
+  background-color: #000000 !important;
+  overflow: hidden;
+  box-sizing: border-box !important;
+  position: relative;
+}
+
+.card-movie-title {
+  margin: 0 !important;
+  color: #fff;
+  font-size: 19px;
+  white-space: nowrap;
+}
+
+.card-body {
+  height: 50px !important;
+}
+
+.card-movie-title:hover {
+  cursor: pointer;
+}
+
+.card-img {
+  opacity: 1;
+  transition: all 0.2s ease;
+}
+
+.card-img:hover {
+  opacity: 0.55 !important;
+  cursor: pointer;
+}
+
+.card-details {
+  white-space: nowrap;
+}
+
+.movies-category {
+  color: #fff;
+}
+
+.shadow-next {
+  position: absolute;
+  width: 100px;
+  background: linear-gradient(to right, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 1) 100%);
+  right: 0;
+  bottom: 0;
+  top: 0;
+  z-index: 1;
+}
+
+.shadow-prev {
+  position: absolute;
+  width: 70px;
+  background: linear-gradient(to left, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 1) 100%);
+  left: 0;
+  bottom: 0;
+  top: 0;
+  z-index: 1;
+}
+
+.slider-movies {
+  position: relative;
+  margin-bottom: 80px;
+}
+
+.slider-movies .nextTop {
+  position: absolute;
+  top: 50%;
+  z-index: 10;
+  right: 15px;
+  font-size: 2rem;
+  color: white;
+  transition: all 0.2s ease;
+}
+
+.slider-movies .prevTop {
+  position: absolute;
+  top: 50%;
+  z-index: 10;
+  left: 15px;
+  font-size: 2rem;
+  color: white;
+  transition: all 0.2s ease;
+}
+
+.nextPopular {
+  position: absolute;
+  top: 50%;
+  z-index: 10;
+  right: 15px;
+  font-size: 2rem;
+  color: white;
+  transition: all 0.2s ease;
+}
+
+.prevPopular {
+  position: absolute;
+  top: 50%;
+  z-index: 10;
+  left: 15px;
+  font-size: 2rem;
+  color: white;
+  transition: all 0.2s ease;
+}
+
+.nextPlaying {
+  position: absolute;
+  top: 50%;
+  z-index: 10;
+  right: 15px;
+  font-size: 2rem;
+  color: white;
+  transition: all 0.2s ease;
+}
+
+.prevPlaying {
+  position: absolute;
+  top: 50%;
+  z-index: 10;
+  left: 15px;
+  font-size: 2rem;
+  color: white;
+  transition: all 0.2s ease;
+}
+
+.slider-movies .prevTop:hover {
+  color: rgb(1, 210, 119);
+  cursor: pointer;
+}
+
+.slider-movies .nextTop:hover {
+  color: rgb(1, 210, 119);
+  cursor: pointer;
+}
+
+.prevPlaying:hover {
+  color: rgb(1, 210, 119);
+  cursor: pointer;
+}
+
+.nextPlaying:hover {
+  color: rgb(1, 210, 119);
+  cursor: pointer;
+}
+
+.prevPopular:hover {
+  color: rgb(1, 210, 119);
+  cursor: pointer;
+}
+
+.nextPopular:hover {
+  color: rgb(1, 210, 119);
+  cursor: pointer;
+}
+
+.nextAir {
+  position: absolute;
+  top: 50%;
+  z-index: 10;
+  right: 15px;
+  font-size: 2rem;
+  color: white;
+  transition: all 0.2s ease;
+}
+
+.prevAir {
+  position: absolute;
+  top: 50%;
+  z-index: 10;
+  left: 15px;
+  font-size: 2rem;
+  color: white;
+  transition: all 0.2s ease;
+}
+
+.nextPopularShows {
+  position: absolute;
+  top: 50%;
+  z-index: 10;
+  right: 15px;
+  font-size: 2rem;
+  color: white;
+  transition: all 0.2s ease;
+}
+
+.prevPopularShows {
+  position: absolute;
+  top: 50%;
+  z-index: 10;
+  left: 15px;
+  font-size: 2rem;
+  color: white;
+  transition: all 0.2s ease;
+}
+
+.nextTopShows {
+  position: absolute;
+  top: 50%;
+  z-index: 10;
+  right: 15px;
+  font-size: 2rem;
+  color: white;
+  transition: all 0.2s ease;
+}
+
+.prevTopShows {
+  position: absolute;
+  top: 50%;
+  z-index: 10;
+  left: 15px;
+  font-size: 2rem;
+  color: white;
+  transition: all 0.2s ease;
+}
+
+.prevAir:hover {
+  color: rgb(1, 210, 119);
+  cursor: pointer;
+}
+
+.nextAir:hover {
+  color: rgb(1, 210, 119);
+  cursor: pointer;
+}
+
+.prevPopularShows:hover {
+  color: rgb(1, 210, 119);
+  cursor: pointer;
+}
+
+.nextPopularShows:hover {
+  color: rgb(1, 210, 119);
+  cursor: pointer;
+}
+
+.prevTopShows:hover {
+  color: rgb(1, 210, 119);
+  cursor: pointer;
+}
+
+.nextTopShows:hover {
+  color: rgb(1, 210, 119);
+  cursor: pointer;
+}
+
+@media screen and (max-width: 767px){
+  h1 {
+    font-size: 35px !important;
+  }
+
+  .logo-container {
+    margin: 0 !important;
+  }
+
+  .logo-container img {
+    width: 110px;
+  }
+  
+  .nav .navlink, #navbarDropdownMenuLink {
+    margin: 0 !important;
+  }
+
+  .slick-arrow {
+    display:none !important;
+  }
+
+  .movies-category {
+    margin-left: 1rem !important;
+  }
+
+  .shadow-prev {
+    width: 0px !important;
+    display: none !important;
+  }
+
+  .row {
+    margin-left: 1rem !important;
+  }
+
+  .carousel-img {
+    height: 19rem;
+  }
+
+  .navbar .nav-item.active .nav-link {
+    border: none !important;
+  }
+
+}

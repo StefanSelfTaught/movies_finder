@@ -1,5 +1,5 @@
 import * as variables from './variables.js';
-import { genres } from './genres.js';
+import { genres } from './moviesGenres.js';
 
 (() => {
 

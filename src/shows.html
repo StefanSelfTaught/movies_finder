@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-    <link rel="stylesheet" href="css/style.css" />
+    <link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/gh/kenwheeler/slick@1.8.1/slick/slick.css"/>  
     <link rel="stylesheet" href="css/bootstrap.min.css" />
     <script
       src="https://kit.fontawesome.com/28f1a20f77.js"
@@ -59,18 +59,19 @@
         <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
         <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
         <li data-target="#carouselExampleIndicators" data-slide-to="3"></li>
+        <li data-target="#carouselExampleIndicators" data-slide-to="4"></li>
       </ol>
     <div class="carousel-inner">
       <div class="carousel-item active">
-        <img class="carousel-img d-block w-100" src="https://image.tmdb.org/t/p/original/6iUNJZymJBMXXriQyFZfLAKnjO6.jpg" alt="First slide">
+        <img class="carousel-img d-block w-100" src="https://image.tmdb.org/t/p/original/900tHlUYUkp7Ol04XFSoAaEIXcT.jpg" alt="First slide">
         <div class="carousel-caption d-none d-md-block">
           <h5>LATEST</h5>
-          <h1>Wonder Women</h1>
-          <span class="movie-det">2015</span>
+          <h1>Chernobyl</h1>
+          <span class="movie-det">2019</span>
           <span class="movie-det">|</span>
-          <span class="movie-det">action, fantasy</span>
+          <span class="movie-det">drama</span>
           <span class="movie-det">|</span>
-          <span class="movie-det">Rating: 8 / 10</span>
+          <span class="movie-det">Rating: 8.6 / 10</span>
         </div>
       </div>
         <div class="carousel-item">
@@ -86,27 +87,39 @@
         </div> 
         </div>
         <div class="carousel-item">
-          <img class="carousel-img d-block w-100" src="https://image.tmdb.org/t/p/original/cSoHgXGpOS80avHTh2Fx7J43VXB.jpg" alt="Third slide">
+          <img class="carousel-img d-block w-100" src="https://image.tmdb.org/t/p/original/hbgPoI0GBrXJfGjYNV2fMQU0xou.jpg" alt="Third slide">
           <div class="carousel-caption d-none d-md-block">
             <h5>LATEST</h5>
-            <h1>Catch-22</h1>
-            <span class="movie-det">2019</span>
+            <h1>Breaking Bad</h1>
+            <span class="movie-det">2008</span>
             <span class="movie-det">|</span>
-            <span class="movie-det">family, drama</span>
+            <span class="movie-det">drama</span>
             <span class="movie-det">|</span>
-            <span class="movie-det">Rating: 7.9 / 10</span>
+            <span class="movie-det">Rating: 8.4 / 10</span>
         </div> 
         </div>
         <div class="carousel-item">
-          <img class="carousel-img d-block w-100" src="https://image.tmdb.org/t/p/original/pLO4qJdQxhAMPaFJu7q8bgme6R3.jpg" alt="Third slide">
+          <img class="carousel-img d-block w-100" src="https://image.tmdb.org/t/p/original/56v2KjBlU4XaOv9rVYEQypROD7P.jpg" alt="Third slide">
           <div class="carousel-caption d-none d-md-block">
             <h5>LATEST</h5>
-            <h1>Joker</h1>
-            <span class="movie-det">2019</span>
+            <h1>Stranger Things</h1>
+            <span class="movie-det">2016</span>
             <span class="movie-det">|</span>
-            <span class="movie-det">crime, thriller</span>
+            <span class="movie-det">mystery, drama</span>
             <span class="movie-det">|</span>
-            <span class="movie-det">Rating: 8.7 / 10</span>
+            <span class="movie-det">Rating: 8.3 / 10</span>
+        </div> 
+        </div>
+        <div class="carousel-item">
+          <img class="carousel-img d-block w-100" src="https://image.tmdb.org/t/p/original/A2j5g79EcWn1oTNCW9PSo7NZRfv.jpg" alt="Third slide">
+          <div class="carousel-caption d-none d-md-block">
+            <h5>LATEST</h5>
+            <h1>DEATH NOTE</h1>
+            <span class="movie-det">2006</span>
+            <span class="movie-det">|</span>
+            <span class="movie-det">animation, drama</span>
+            <span class="movie-det">|</span>
+            <span class="movie-det">Rating: 8.3 / 10</span>
         </div> 
         </div>
       </div>
@@ -120,17 +133,36 @@
       </a>
     </div>
 
-    <h2 class="ml-5 mb-4 movies-category">On The Air</h2>
-    <div class="row flex-nowrap" id="on-the-air"></div>
+    <div class="slider-movies">
+      <h2 class="ml-5 mb-4 movies-category">On The Air</h2>
+      <i class="fas fa-chevron-left prevAir"></i>
+      <i class="fas fa-chevron-right nextAir"></i>
+      <div class="shadow-next"></div>
+      <div class="shadow-prev"></div>
+      <div class="ml-5 row slick-carousel-air flex-nowrap" id="on-the-air"></div>
+    </div>
 
-    <h2 class="ml-5 mb-4 movies-category">Popular</h2>
-    <div class="row flex-nowrap" id="popular-shows"></div>
+    <div class="slider-movies">
+      <h2 class="ml-5 mb-4 movies-category">Popular</h2>
+      <i class="fas fa-chevron-left prevPopularShows"></i>
+      <i class="fas fa-chevron-right nextPopularShows"></i>
+      <div class="shadow-next"></div>
+      <div class="shadow-prev"></div>
+      <div class="ml-5 row slick-carousel-popularShows flex-nowrap" id="popular-shows"></div>
+    </div>
+    
+    <div class="slider-movies">
+      <h2 class="ml-5 mb-4 movies-category">Top Rated</h2>
+      <i class="fas fa-chevron-left prevTopShows"></i>
+      <i class="fas fa-chevron-right nextTopShows"></i>
+      <div class="shadow-next"></div>
+      <div class="shadow-prev"></div>
+      <div class="ml-5 row slick-carousel-topShows flex-nowrap" id="top-rated-shows"></div>
+    </div>
 
-    <h2 class="ml-5 mb-4 movies-category">Top Rated</h2>
-    <div class="row flex-nowrap" id="top-rated-shows"></div>
-
-    <script src="js/shows.js"></script>
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script type="text/javascript" src="//cdn.jsdelivr.net/gh/kenwheeler/slick@1.8.1/slick/slick.min.js"></script>
+    <script src="js/shows.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
   </body>
 </html>
