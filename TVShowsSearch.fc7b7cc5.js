@@ -144,7 +144,7 @@ var trending2 = document.getElementById('trending-shows');
 exports.trending2 = trending2;
 var spinner = "\n    <div class=\"mb-5 spinner-border text-light\" style=\"width: 3rem; height: 3rem;\" role=\"status\">\n      <span class=\"sr-only\">Loading...</span>\n    </div>";
 exports.spinner = spinner;
-},{}],"js/genres.js":[function(require,module,exports) {
+},{}],"js/showsGenres.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -152,11 +152,8 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.genres = void 0;
 var genres = [{
-  id: 28,
-  name: "Action"
-}, {
-  id: 12,
-  name: "Adventure"
+  id: 10759,
+  name: "Action & Adventure"
 }, {
   id: 16,
   name: "Animation"
@@ -176,35 +173,29 @@ var genres = [{
   id: 10751,
   name: "Family"
 }, {
-  id: 14,
-  name: "Fantasy"
-}, {
-  id: 36,
-  name: "History"
-}, {
-  id: 27,
-  name: "Horror"
-}, {
-  id: 10402,
-  name: "Music"
+  id: 10762,
+  name: "Kids"
 }, {
   id: 9648,
   name: "Mystery"
 }, {
-  id: 10749,
-  name: "Romance"
+  id: 10763,
+  name: "News"
 }, {
-  id: 878,
-  name: "Science Fiction"
+  id: 10764,
+  name: "Reality"
 }, {
-  id: 10770,
-  name: "TV Movie"
+  id: 10765,
+  name: "Sci-Fi & Fantasy"
 }, {
-  id: 53,
-  name: "Thriller"
+  id: 10766,
+  name: "Soap"
 }, {
-  id: 10752,
-  name: "War"
+  id: 10767,
+  name: "Talk"
+}, {
+  id: 10768,
+  name: "War & Politics"
 }, {
   id: 37,
   name: "Western"
@@ -215,7 +206,7 @@ exports.genres = genres;
 
 var variables = _interopRequireWildcard(require("./variables.js"));
 
-var _genres = require("./genres.js");
+var _showsGenres = require("./showsGenres.js");
 
 function _getRequireWildcardCache() { if (typeof WeakMap !== "function") return null; var cache = new WeakMap(); _getRequireWildcardCache = function () { return cache; }; return cache; }
 
@@ -229,7 +220,7 @@ function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj;
     var output = '';
     var genresArray = '';
     topRMovies.map(function (movie) {
-      genresArray = _genres.genres.filter(function (genre) {
+      genresArray = _showsGenres.genres.filter(function (genre) {
         if (genre.id === movie.genre_ids[0] || genre.id === movie.genre_ids[1]) {
           return genre.id;
         }
@@ -326,7 +317,7 @@ function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj;
     }
   };
 })();
-},{"./variables.js":"js/variables.js","./genres.js":"js/genres.js"}],"../node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
+},{"./variables.js":"js/variables.js","./showsGenres.js":"js/showsGenres.js"}],"../node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
 var global = arguments[3];
 var OVERLAY_ID = '__parcel__error__overlay__';
 var OldModule = module.bundle.Module;
@@ -354,7 +345,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "11109" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "8845" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

@@ -144,7 +144,7 @@ var trending2 = document.getElementById('trending-shows');
 exports.trending2 = trending2;
 var spinner = "\n    <div class=\"mb-5 spinner-border text-light\" style=\"width: 3rem; height: 3rem;\" role=\"status\">\n      <span class=\"sr-only\">Loading...</span>\n    </div>";
 exports.spinner = spinner;
-},{}],"js/genres.js":[function(require,module,exports) {
+},{}],"js/moviesGenres.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -215,7 +215,7 @@ exports.genres = genres;
 
 var variables = _interopRequireWildcard(require("./variables.js"));
 
-var _genres = require("./genres.js");
+var _moviesGenres = require("./moviesGenres.js");
 
 function _getRequireWildcardCache() { if (typeof WeakMap !== "function") return null; var cache = new WeakMap(); _getRequireWildcardCache = function () { return cache; }; return cache; }
 
@@ -229,7 +229,7 @@ function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj;
     var output = '';
     var genresArray = '';
     topRMovies.map(function (movie) {
-      genresArray = _genres.genres.filter(function (genre) {
+      genresArray = _moviesGenres.genres.filter(function (genre) {
         if (genre.id === movie.genre_ids[0] || genre.id === movie.genre_ids[1]) {
           return genre.id;
         }
@@ -326,7 +326,7 @@ function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj;
     }
   };
 })();
-},{"./variables.js":"js/variables.js","./genres.js":"js/genres.js"}],"../node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
+},{"./variables.js":"js/variables.js","./moviesGenres.js":"js/moviesGenres.js"}],"../node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
 var global = arguments[3];
 var OVERLAY_ID = '__parcel__error__overlay__';
 var OldModule = module.bundle.Module;
@@ -354,7 +354,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "11109" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "8845" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

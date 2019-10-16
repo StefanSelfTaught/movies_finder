@@ -117,7 +117,7 @@ parcelRequire = (function (modules, cache, entry, globalName) {
   }
 
   return newRequire;
-})({"js/genres.js":[function(require,module,exports) {
+})({"js/showsGenres.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -125,11 +125,8 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.genres = void 0;
 var genres = [{
-  id: 28,
-  name: "Action"
-}, {
-  id: 12,
-  name: "Adventure"
+  id: 10759,
+  name: "Action & Adventure"
 }, {
   id: 16,
   name: "Animation"
@@ -149,44 +146,112 @@ var genres = [{
   id: 10751,
   name: "Family"
 }, {
-  id: 14,
-  name: "Fantasy"
-}, {
-  id: 36,
-  name: "History"
-}, {
-  id: 27,
-  name: "Horror"
-}, {
-  id: 10402,
-  name: "Music"
+  id: 10762,
+  name: "Kids"
 }, {
   id: 9648,
   name: "Mystery"
 }, {
-  id: 10749,
-  name: "Romance"
+  id: 10763,
+  name: "News"
 }, {
-  id: 878,
-  name: "Science Fiction"
+  id: 10764,
+  name: "Reality"
 }, {
-  id: 10770,
-  name: "TV Movie"
+  id: 10765,
+  name: "Sci-Fi & Fantasy"
 }, {
-  id: 53,
-  name: "Thriller"
+  id: 10766,
+  name: "Soap"
 }, {
-  id: 10752,
-  name: "War"
+  id: 10767,
+  name: "Talk"
+}, {
+  id: 10768,
+  name: "War & Politics"
 }, {
   id: 37,
   name: "Western"
 }];
 exports.genres = genres;
-},{}],"js/shows.js":[function(require,module,exports) {
+},{}],"../node_modules/parcel-bundler/src/builtins/bundle-url.js":[function(require,module,exports) {
+var bundleURL = null;
+
+function getBundleURLCached() {
+  if (!bundleURL) {
+    bundleURL = getBundleURL();
+  }
+
+  return bundleURL;
+}
+
+function getBundleURL() {
+  // Attempt to find the URL of the current script and use that as the base URL
+  try {
+    throw new Error();
+  } catch (err) {
+    var matches = ('' + err.stack).match(/(https?|file|ftp|chrome-extension|moz-extension):\/\/[^)\n]+/g);
+
+    if (matches) {
+      return getBaseURL(matches[0]);
+    }
+  }
+
+  return '/';
+}
+
+function getBaseURL(url) {
+  return ('' + url).replace(/^((?:https?|file|ftp|chrome-extension|moz-extension):\/\/.+)\/[^/]+$/, '$1') + '/';
+}
+
+exports.getBundleURL = getBundleURLCached;
+exports.getBaseURL = getBaseURL;
+},{}],"../node_modules/parcel-bundler/src/builtins/css-loader.js":[function(require,module,exports) {
+var bundle = require('./bundle-url');
+
+function updateLink(link) {
+  var newLink = link.cloneNode();
+
+  newLink.onload = function () {
+    link.remove();
+  };
+
+  newLink.href = link.href.split('?')[0] + '?' + Date.now();
+  link.parentNode.insertBefore(newLink, link.nextSibling);
+}
+
+var cssTimeout = null;
+
+function reloadCSS() {
+  if (cssTimeout) {
+    return;
+  }
+
+  cssTimeout = setTimeout(function () {
+    var links = document.querySelectorAll('link[rel="stylesheet"]');
+
+    for (var i = 0; i < links.length; i++) {
+      if (bundle.getBaseURL(links[i].href) === bundle.getBundleURL()) {
+        updateLink(links[i]);
+      }
+    }
+
+    cssTimeout = null;
+  }, 50);
+}
+
+module.exports = reloadCSS;
+},{"./bundle-url":"../node_modules/parcel-bundler/src/builtins/bundle-url.js"}],"css/index.css":[function(require,module,exports) {
+var reloadCSS = require('_css_loader');
+
+module.hot.dispose(reloadCSS);
+module.hot.accept(reloadCSS);
+},{"_css_loader":"../node_modules/parcel-bundler/src/builtins/css-loader.js"}],"js/shows.js":[function(require,module,exports) {
 "use strict";
 
-var _genres = require("./genres.js");
+var _showsGenres = require("./showsGenres.js");
+
+require("../css/index.css");
 
 (function () {
   var onTheAir = document.getElementById('on-the-air');
@@ -196,11 +261,11 @@ var _genres = require("./genres.js");
   fetch('https://api.themoviedb.org/3/tv/on_the_air?api_key=ce2eb2231a371296cf6ff11a39206d6e&page=1').then(function (data) {
     return data.json();
   }).then(function (res) {
-    var topRMovies = res.results.splice(9, 6);
+    var topRMovies = res.results;
     var output = '';
     var genresArray = '';
     topRMovies.map(function (movie) {
-      genresArray = _genres.genres.filter(function (genre) {
+      genresArray = _showsGenres.genres.filter(function (genre) {
         if (genre.id === movie.genre_ids[0] || genre.id === movie.genre_ids[1]) {
           return genre.id;
         }
@@ -208,19 +273,18 @@ var _genres = require("./genres.js");
       var genreOutput = genresArray.map(function (genre) {
         return genre.name;
       }).join(", ");
-      output += "\n\t\t\t\t\t<div class=\"mr-3 card\" style=\"width: 20rem;\">\n\t\t\t\t        <img class=\"card-img-top card-img\" src=\"https://image.tmdb.org/t/p/w500".concat(movie.poster_path, "\" alt=\"Card image cap\">\n\t\t\t\t        <div class=\"card-body\">\n\t\t\t\t          <h5 class=\"card-title card-movie-title\">").concat(movie.name, "</h5>\n\t\t\t\t          <p class=\"card-text card-details\">").concat(movie.first_air_date.split("-")[0], " | ").concat(genreOutput, "</p>\n\t\t\t\t        </div>\n      \t\t\t\t</div>\n\t\t\t\t\t");
+      output += "\n\t\t\t\t\t<div class=\"mr-3 card\" style=\"width: 20rem;\">\n\t\t\t\t        <img class=\"card-img-top card-img\" data-lazy=\"https://image.tmdb.org/t/p/w500".concat(movie.poster_path, "\" alt=\"Card image cap\">\n\t\t\t\t        <div class=\"card-body\">\n\t\t\t\t          <h5 class=\"card-title card-movie-title\">").concat(movie.name, "</h5>\n\t\t\t\t          <p class=\"card-text card-details\">").concat(movie.first_air_date.split("-")[0], " | ").concat(genreOutput, "</p>\n\t\t\t\t        </div>\n      \t\t\t\t</div>\n\t\t\t\t\t");
     });
     onTheAir.innerHTML = output;
-    onTheAir.children[0].classList.add("ml-5");
   });
   fetch('https://api.themoviedb.org/3/tv/popular?api_key=ce2eb2231a371296cf6ff11a39206d6e&page=1').then(function (data) {
     return data.json();
   }).then(function (res) {
-    var topPopularMovies = res.results.splice(0, 6);
+    var topPopularMovies = res.results;
     var output = '';
     var genresArray = '';
     topPopularMovies.map(function (movie) {
-      genresArray = _genres.genres.filter(function (genre) {
+      genresArray = _showsGenres.genres.filter(function (genre) {
         if (genre.id === movie.genre_ids[0] || genre.id === movie.genre_ids[1]) {
           return genre.id;
         }
@@ -228,19 +292,21 @@ var _genres = require("./genres.js");
       var genreOutput = genresArray.map(function (genre) {
         return genre.name;
       }).join(", ");
-      output += "\n\t\t\t\t\t<div class=\"mr-3 card\" style=\"width: 20rem;\">\n\t\t\t\t        <img class=\"card-img-top card-img\" src=\"https://image.tmdb.org/t/p/w500".concat(movie.poster_path, "\" alt=\"Card image cap\">\n\t\t\t\t        <div class=\"card-body\">\n\t\t\t\t          <h5 class=\"card-title card-movie-title\">").concat(movie.name, "</h5>\n\t\t\t\t          <p class=\"card-text card-details\">").concat(movie.first_air_date.split("-")[0], " | ").concat(genreOutput, "</p>\n\t\t\t\t        </div>\n      \t\t\t\t</div>\n\t\t\t\t");
+
+      if (movie.poster_path !== null) {
+        output += "\n\t\t\t\t\t<div class=\"mr-3 card\" style=\"width: 20rem;\">\n\t\t\t\t        <img class=\"card-img-top card-img\" data-lazy=\"https://image.tmdb.org/t/p/w500".concat(movie.poster_path, "\" alt=\"Card image cap\">\n\t\t\t\t        <div class=\"card-body\">\n\t\t\t\t          <h5 class=\"card-title card-movie-title\">").concat(movie.name, "</h5>\n\t\t\t\t          <p class=\"card-text card-details\">").concat(movie.first_air_date.split("-")[0], " | ").concat(genreOutput, "</p>\n\t\t\t\t        </div>\n      \t\t\t\t</div>\n\t\t\t\t\t");
+      }
     });
     popularShows.innerHTML = output;
-    popularShows.children[0].classList.add("ml-5");
   });
   fetch('https://api.themoviedb.org/3/tv/top_rated?api_key=ce2eb2231a371296cf6ff11a39206d6e&page=1').then(function (data) {
     return data.json();
   }).then(function (res) {
-    var topPopularMovies = res.results.splice(0, 7);
+    var topPopularMovies = res.results;
     var output = '';
     var genresArray = '';
     topPopularMovies.map(function (movie) {
-      genresArray = _genres.genres.filter(function (genre) {
+      genresArray = _showsGenres.genres.filter(function (genre) {
         if (genre.id === movie.genre_ids[0] || genre.id === movie.genre_ids[1]) {
           return genre.id;
         }
@@ -248,13 +314,116 @@ var _genres = require("./genres.js");
       var genreOutput = genresArray.map(function (genre) {
         return genre.name;
       }).join(", ");
-      output += "\n\t\t\t\t\t<div class=\"mr-3 card\" style=\"width: 20rem;\">\n\t\t\t\t        <img class=\"card-img-top card-img\" src=\"https://image.tmdb.org/t/p/w500".concat(movie.poster_path, "\" alt=\"Card image cap\">\n\t\t\t\t        <div class=\"card-body\">\n\t\t\t\t          <h5 class=\"card-title card-movie-title\">").concat(movie.name, "</h5>\n\t\t\t\t          <p class=\"card-text card-details\">").concat(movie.first_air_date.split("-")[0], " | ").concat(genreOutput, "</p>\n\t\t\t\t        </div>\n      \t\t\t\t</div>\n\t\t\t\t");
+      output += "\n\t\t\t\t\t<div class=\"mr-3 card\" style=\"width: 20rem;\">\n\t\t\t\t        <img class=\"card-img-top card-img\" data-lazy=\"https://image.tmdb.org/t/p/w500".concat(movie.poster_path, "\" alt=\"Card image cap\">\n\t\t\t\t        <div class=\"card-body\">\n\t\t\t\t          <h5 class=\"card-title card-movie-title\">").concat(movie.name, "</h5>\n\t\t\t\t          <p class=\"card-text card-details\">").concat(movie.first_air_date.split("-")[0], " | ").concat(genreOutput, "</p>\n\t\t\t\t        </div>\n      \t\t\t\t</div>\n\t\t\t\t");
     });
     topRatedShows.innerHTML = output;
-    topRatedShows.children[0].classList.add("ml-5");
   });
+  setTimeout(function () {
+    $('.slick-carousel-air').slick({
+      slidesToShow: 6,
+      lazyLoad: 'progressive',
+      slidesToScroll: 6,
+      infinite: false,
+      nextArrow: $('.nextAir'),
+      focusOnSelect: false,
+      prevArrow: $('.prevAir'),
+      responsive: [{
+        breakpoint: 1300,
+        settings: {
+          slidesToShow: 5,
+          slidesToScroll: 5
+        }
+      }, {
+        breakpoint: 1024,
+        settings: {
+          slidesToShow: 4,
+          slidesToScroll: 4
+        }
+      }, {
+        breakpoint: 750,
+        settings: {
+          slidesToShow: 3,
+          slidesToScroll: 3
+        }
+      }, {
+        breakpoint: 600,
+        settings: {
+          slidesToShow: 2,
+          slidesToScroll: 2
+        }
+      }]
+    });
+    $('.slick-carousel-popularShows').slick({
+      slidesToShow: 6,
+      slidesToScroll: 6,
+      lazyLoad: 'progressive',
+      infinite: false,
+      nextArrow: $('.nextPopularShows'),
+      focusOnSelect: false,
+      prevArrow: $('.prevPopularShows'),
+      responsive: [{
+        breakpoint: 1300,
+        settings: {
+          slidesToShow: 5,
+          slidesToScroll: 5
+        }
+      }, {
+        breakpoint: 1024,
+        settings: {
+          slidesToShow: 4,
+          slidesToScroll: 4
+        }
+      }, {
+        breakpoint: 750,
+        settings: {
+          slidesToShow: 3,
+          slidesToScroll: 3
+        }
+      }, {
+        breakpoint: 600,
+        settings: {
+          slidesToShow: 2,
+          slidesToScroll: 2
+        }
+      }]
+    });
+    $('.slick-carousel-topShows').slick({
+      slidesToShow: 7,
+      slidesToScroll: 7,
+      lazyLoad: 'progressive',
+      infinite: false,
+      nextArrow: $('.nextTopShows'),
+      focusOnSelect: false,
+      prevArrow: $('.prevTopShows'),
+      responsive: [{
+        breakpoint: 1300,
+        settings: {
+          slidesToShow: 5,
+          slidesToScroll: 5
+        }
+      }, {
+        breakpoint: 1024,
+        settings: {
+          slidesToShow: 4,
+          slidesToScroll: 4
+        }
+      }, {
+        breakpoint: 750,
+        settings: {
+          slidesToShow: 3,
+          slidesToScroll: 3
+        }
+      }, {
+        breakpoint: 600,
+        settings: {
+          slidesToShow: 2,
+          slidesToScroll: 2
+        }
+      }]
+    });
+  }, 250);
 })();
-},{"./genres.js":"js/genres.js"}],"../node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
+},{"./showsGenres.js":"js/showsGenres.js","../css/index.css":"css/index.css"}],"../node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
 var global = arguments[3];
 var OVERLAY_ID = '__parcel__error__overlay__';
 var OldModule = module.bundle.Module;
@@ -282,7 +451,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "11109" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "8845" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
