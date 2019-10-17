@@ -4,8 +4,8 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-    <link rel="stylesheet" href="css/style.css" />
     <link rel="stylesheet" href="css/bootstrap.min.css" />
+    <link rel="stylesheet" type="text/css" href="css/slick.min.css" />
     <script
       src="https://kit.fontawesome.com/28f1a20f77.js"
       crossorigin="anonymous"
@@ -66,8 +66,14 @@
 
     <div id="moviesList" class="row justify-content-around"></div>
 
-    <h2 class="ml-5 mb-4 movies-category" id="trending-title">Trending this week</h2>
-    <div class="row flex-nowrap" id="trending-movies"></div>
+    <div id="slider-movies-search" class="slider-movies-search">
+      <h2 class="ml-5 mb-4 movies-category" id="trending-title">Trending this week</h2>
+      <i class="fas fa-chevron-left prevTrendingMovies prev"></i>
+      <i class="fas fa-chevron-right nextTrendingMovies next"></i>
+      <div class="shadow-next"></div>
+      <div class="shadow-prev"></div>
+      <div class="ml-5 slick-trending-movies row flex-nowrap" id="trending-movies"></div>
+    </div>
 
     <div id="pagination-container">
       <ul class="pagination">
@@ -81,7 +87,8 @@
     </div>
 
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
-    <script src="js/moviesSearch.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="//cdn.jsdelivr.net/gh/kenwheeler/slick@1.8.1/slick/slick.min.js"></script>
+    <script src="js/moviesSearch.js"></script>
   </body>
 </html>

@@ -201,37 +201,15 @@ nav {
   margin-bottom: 80px;
 }
 
-.slider-movies .nextTop {
-  position: absolute;
-  top: 50%;
-  z-index: 10;
-  right: 15px;
-  font-size: 2rem;
-  color: white;
-  transition: all 0.2s ease;
+.slider-shows-search {
+  position: relative;
 }
 
-.slider-movies .prevTop {
-  position: absolute;
-  top: 50%;
-  z-index: 10;
-  left: 15px;
-  font-size: 2rem;
-  color: white;
-  transition: all 0.2s ease;
+.slider-movies-search {
+  position: relative;
 }
 
-.nextPopular {
-  position: absolute;
-  top: 50%;
-  z-index: 10;
-  right: 15px;
-  font-size: 2rem;
-  color: white;
-  transition: all 0.2s ease;
-}
-
-.prevPopular {
+.prev {
   position: absolute;
   top: 50%;
   z-index: 10;
@@ -239,9 +217,10 @@ nav {
   font-size: 2rem;
   color: white;
   transition: all 0.2s ease;
+  display: block !important;
 }
 
-.nextPlaying {
+.next {
   position: absolute;
   top: 50%;
   z-index: 10;
@@ -249,136 +228,159 @@ nav {
   font-size: 2rem;
   color: white;
   transition: all 0.2s ease;
+  display: block !important;
 }
 
-.prevPlaying {
+.next:hover, .prev:hover {
+  color: rgb(1, 210, 119);
+  cursor: pointer;
+}
+
+
+/******* JUMBOTRON ********/
+
+
+.jumbotron {
+  background-size: cover;
+  background-image: url(../../images/jumbotron.jpg);
+  background-repeat: no-repeat; 
+  background-position: center center;
+  height: 370px;
+  border: none !important;
+}
+
+
+/******* PAGINATION ********/
+
+.page-link {
+  margin: 3px;
+}
+
+.pagination {
+  margin: 0 auto;
+  width: 250px;
+  margin-bottom: 30px;
+}
+
+.button-disabled {
+  cursor: not-allowed;
+  opacity: 0.5;
+}
+
+#pagination-container {
+  visibility: hidden;
+}
+
+/******* CARD-SEARCH ********/
+
+.card-v2 {
+  background-color: #000000 !important;
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.5);
+  width: 250px;
+  height: 450px;
+  margin-bottom: 50px;
+  overflow: hidden;
+  margin-left: 5px;
+  box-sizing: border-box !important;
+  position: relative;
+}
+
+.card-v2 .poster {
+  position: relative;
+  overflow: hidden;
+}
+
+.card-v2 .poster:before {
+  content: '';
   position: absolute;
-  top: 50%;
-  z-index: 10;
-  left: 15px;
-  font-size: 2rem;
-  color: white;
-  transition: all 0.2s ease;
+  bottom: -180px;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(0deg, #000 50%, transparent);
+  transition: 0.5s;
+  z-index: 1;
 }
 
-.slider-movies .prevTop:hover {
-  color: rgb(1, 210, 119);
-  cursor: pointer;
+.card-v2:hover .poster:before {
+  bottom: 0;
 }
 
-.slider-movies .nextTop:hover {
-  color: rgb(1, 210, 119);
-  cursor: pointer;
+.card-v2 .poster img {
+  width: 100%;
+  transition: 0.5s;
+  border-radius: 5px;
 }
 
-.prevPlaying:hover {
-  color: rgb(1, 210, 119);
-  cursor: pointer;
+.card-v2:hover .poster img {
+  filter: blur(2px);
+  transform: translateY(-80px);
 }
 
-.nextPlaying:hover {
-  color: rgb(1, 210, 119);
-  cursor: pointer;
-}
-
-.prevPopular:hover {
-  color: rgb(1, 210, 119);
-  cursor: pointer;
-}
-
-.nextPopular:hover {
-  color: rgb(1, 210, 119);
-  cursor: pointer;
-}
-
-.nextAir {
+.details {
   position: absolute;
-  top: 50%;
-  z-index: 10;
-  right: 15px;
-  font-size: 2rem;
-  color: white;
-  transition: all 0.2s ease;
+  padding: 20px;
+  width: 100%;
+  height: 80%;
+  bottom: -195px;
+  left: 0;
+  box-sizing: border-box;
+  transition: 0.5s;
+  z-index: 2;
 }
 
-.prevAir {
-  position: absolute;
-  top: 50%;
-  z-index: 10;
-  left: 15px;
-  font-size: 2rem;
-  color: white;
-  transition: all 0.2s ease;
+.card-v2:hover .details {
+  bottom: 0;
 }
 
-.nextPopularShows {
-  position: absolute;
-  top: 50%;
-  z-index: 10;
-  right: 15px;
-  font-size: 2rem;
-  color: white;
-  transition: all 0.2s ease;
+.details h2 {
+  color: #fff;
+  margin: 0;
+  padding: 0;
+  font-size: 20px;
+  font-weight: 700;
+  white-space: nowrap;
 }
 
-.prevPopularShows {
-  position: absolute;
-  top: 50%;
-  z-index: 10;
-  left: 15px;
-  font-size: 2rem;
-  color: white;
-  transition: all 0.2s ease;
+.details h2 span {
+  font-size: 14px;
+  color: #ff9800;
 }
 
-.nextTopShows {
-  position: absolute;
-  top: 50%;
-  z-index: 10;
-  right: 15px;
-  font-size: 2rem;
-  color: white;
-  transition: all 0.2s ease;
+.rating {
+  position: relative;
+  padding: 10px, 0;
+  margin: 5px 0px 5px 0px;
 }
 
-.prevTopShows {
-  position: absolute;
-  top: 50%;
-  z-index: 10;
-  left: 15px;
-  font-size: 2rem;
-  color: white;
-  transition: all 0.2s ease;
+.rating span {
+  color: #fff;
+  padding: 0 2px;
 }
 
-.prevAir:hover {
-  color: rgb(1, 210, 119);
-  cursor: pointer;
+.info {
+  color: #fff;
 }
 
-.nextAir:hover {
-  color: rgb(1, 210, 119);
-  cursor: pointer;
+.info p {
+  margin: 15px, 0, 10px;
 }
 
-.prevPopularShows:hover {
-  color: rgb(1, 210, 119);
-  cursor: pointer;
+.more-info {
+  position: relative;
 }
 
-.nextPopularShows:hover {
-  color: rgb(1, 210, 119);
-  cursor: pointer;
+.fa-star {
+  color: yellow;
 }
 
-.prevTopShows:hover {
-  color: rgb(1, 210, 119);
-  cursor: pointer;
+#moviesList {
+  width: 93%;
+  margin: 0 auto;
 }
 
-.nextTopShows:hover {
-  color: rgb(1, 210, 119);
-  cursor: pointer;
+.no-results {
+  margin-bottom: 40px;
 }
 
 @media screen and (max-width: 767px){
