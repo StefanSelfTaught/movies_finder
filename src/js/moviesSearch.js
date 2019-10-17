@@ -1,12 +1,14 @@
 import * as variables from './variables.js';
 import { genres } from './moviesGenres.js';
+import '../css/index.css';
+
 
 (() => {
 
   fetch('https://api.themoviedb.org/3/trending/movie/week?api_key=ce2eb2231a371296cf6ff11a39206d6e')
     .then(data => data.json())
     .then(res => {
-      let topRMovies = res.results.splice(0, 8);
+      let topRMovies = res.results;
       let output = '';
       let genresArray = '';
       topRMovies.map(movie => {
@@ -27,8 +29,50 @@ import { genres } from './moviesGenres.js';
           </div>
           `
       })
-      variables.trending.innerHTML = output;
-      variables.trending.children[0].classList.add("ml-5");
+      setTimeout(() => {
+        $('.slick-trending-movies').slick({
+          slidesToShow: 8,
+          lazyLoad: 'progressive',
+          slidesToScroll: 8,
+          infinite: false,
+          nextArrow: $('.nextTrendingMovies'),
+          focusOnSelect: false,
+          prevArrow: $('.prevTrendingMovies'),
+          responsive: [
+            {
+              breakpoint: 1300,
+              settings: {
+                slidesToShow: 5,
+                slidesToScroll: 5,
+              }
+            },
+            {
+              breakpoint: 1024,
+              settings: {
+                slidesToShow: 4,
+                slidesToScroll: 4,
+              }
+            },
+            {
+              breakpoint: 750,
+              settings: {
+                slidesToShow: 3,
+                slidesToScroll: 3,
+              }
+            },
+            {
+              breakpoint: 600,
+              settings: {
+                slidesToShow: 2,
+                slidesToScroll: 2
+              }
+            }
+          ]
+        });
+      }, 10)
+      setTimeout(() => {
+         variables.trending.innerHTML = output;
+      }, 9)
     })
 
   variables.inputSearch.addEventListener('input', (e) => {
@@ -62,8 +106,7 @@ import { genres } from './moviesGenres.js';
     }
     previousDisabled(page);
     if(movie.length > 0) {
-    variables.trending.style.display = 'none';
-    document.getElementById('trending-title').style.display = 'none';
+    document.getElementById('slider-movies-search').style.display = 'none';
        fetch(
         `https://api.themoviedb.org/3/search/movie?api_key=${variables.apiKey}&query=${movie}&page=${page}`
       )
@@ -127,8 +170,7 @@ import { genres } from './moviesGenres.js';
           });
         })
     } else {
-      variables.trending.style.display = 'flex';
-      document.getElementById('trending-title').style.display = 'block';
+      document.getElementById('slider-movies-search').style.display = 'block';
       variables.moviesList.innerHTML = null;
       variables.pagination.style.visibility = 'hidden';
     }

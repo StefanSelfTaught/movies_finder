@@ -255,7 +255,7 @@ var reloadCSS = require('_css_loader');
 
 module.hot.dispose(reloadCSS);
 module.hot.accept(reloadCSS);
-},{"_css_loader":"../node_modules/parcel-bundler/src/builtins/css-loader.js"}],"js/index.js":[function(require,module,exports) {
+},{"./..\\..\\images\\jumbotron.jpg":[["jumbotron.104cebb4.jpg","../images/jumbotron.jpg"],"../images/jumbotron.jpg"],"_css_loader":"../node_modules/parcel-bundler/src/builtins/css-loader.js"}],"js/index.js":[function(require,module,exports) {
 "use strict";
 
 var _moviesGenres = require("./moviesGenres.js");
@@ -284,7 +284,45 @@ require("../css/index.css");
       }).join(", ");
       output += "\n\t\t\t\t\t<div class=\"mr-3 card\" style=\"width: 20rem;\">\n\t\t\t\t        <img class=\"card-img-top card-img\" data-lazy=\"https://image.tmdb.org/t/p/w500".concat(movie.poster_path, "\" alt=\"").concat(movie.title, "\">\n\t\t\t\t        <div class=\"card-body\">\n\t\t\t\t          <h5 class=\"card-title card-movie-title\">").concat(movie.title, "</h5>\n\t\t\t\t          <p class=\"card-text card-details\">").concat(movie.release_date.split("-")[0], " | ").concat(genreOutput, "</p>\n\t\t\t\t        </div>\n      \t\t\t\t</div>\n\t\t\t\t\t");
     });
-    topMovies.innerHTML = output;
+    setTimeout(function () {
+      $('.slick-carousel').slick({
+        slidesToShow: 6,
+        lazyLoad: 'progressive',
+        slidesToScroll: 6,
+        infinite: false,
+        nextArrow: $('.nextTop'),
+        focusOnSelect: false,
+        prevArrow: $('.prevTop'),
+        responsive: [{
+          breakpoint: 1300,
+          settings: {
+            slidesToShow: 5,
+            slidesToScroll: 5
+          }
+        }, {
+          breakpoint: 1024,
+          settings: {
+            slidesToShow: 4,
+            slidesToScroll: 4
+          }
+        }, {
+          breakpoint: 750,
+          settings: {
+            slidesToShow: 3,
+            slidesToScroll: 3
+          }
+        }, {
+          breakpoint: 600,
+          settings: {
+            slidesToShow: 2,
+            slidesToScroll: 2
+          }
+        }]
+      });
+    }, 10);
+    setTimeout(function () {
+      topMovies.innerHTML = output;
+    }, 9);
   });
   fetch('https://api.themoviedb.org/3/movie/popular?api_key=ce2eb2231a371296cf6ff11a39206d6e&page=1').then(function (data) {
     return data.json();
@@ -303,8 +341,45 @@ require("../css/index.css");
       }).join(", ");
       output += "\n\t\t\t\t\t<div class=\"mr-3 card\" style=\"width: 20rem;\">\n\t\t\t\t        <img class=\"card-img-top card-img\" data-lazy=\"https://image.tmdb.org/t/p/w500".concat(movie.poster_path, "\" alt=").concat(movie.title, ">\n\t\t\t\t        <div class=\"card-body\">\n\t\t\t\t          <h5 class=\"card-title card-movie-title\">").concat(movie.title, "</h5>\n\t\t\t\t          <p class=\"card-text card-details\">").concat(movie.release_date.split("-")[0], " | ").concat(genreOutput, " </p>\n\t\t\t\t        </div>\n      \t\t\t\t</div>\n\t\t\t\t");
     });
-    popularMovies.innerHTML = output;
-    ;
+    setTimeout(function () {
+      $('.slick-carousel-popular').slick({
+        slidesToShow: 6,
+        slidesToScroll: 6,
+        lazyLoad: 'progressive',
+        infinite: false,
+        nextArrow: $('.nextPopular'),
+        focusOnSelect: false,
+        prevArrow: $('.prevPopular'),
+        responsive: [{
+          breakpoint: 1300,
+          settings: {
+            slidesToShow: 5,
+            slidesToScroll: 5
+          }
+        }, {
+          breakpoint: 1024,
+          settings: {
+            slidesToShow: 4,
+            slidesToScroll: 4
+          }
+        }, {
+          breakpoint: 750,
+          settings: {
+            slidesToShow: 3,
+            slidesToScroll: 3
+          }
+        }, {
+          breakpoint: 600,
+          settings: {
+            slidesToShow: 2,
+            slidesToScroll: 2
+          }
+        }]
+      });
+    }, 10);
+    setTimeout(function () {
+      popularMovies.innerHTML = output;
+    }, 9);
   });
   fetch('https://api.themoviedb.org/3/movie/now_playing?api_key=ce2eb2231a371296cf6ff11a39206d6e&page=1').then(function (data) {
     return data.json();
@@ -323,112 +398,46 @@ require("../css/index.css");
       }).join(", ");
       output += "\n\t\t\t\t\t<div class=\"mr-3 card\" style=\"width: 20rem;\">\n\t\t\t\t        <img class=\"card-img-top card-img\" data-lazy=\"https://image.tmdb.org/t/p/w500".concat(movie.poster_path, "\" alt=").concat(movie.title, ">\n\t\t\t\t        <div class=\"card-body\">\n\t\t\t\t          <h5 class=\"card-title card-movie-title\">").concat(movie.title, "</h5>\n\t\t\t\t          <p class=\"card-text card-details\">").concat(movie.release_date.split("-")[0], " | ").concat(genreOutput, " </p>\n\t\t\t\t        </div>\n      \t\t\t\t</div>\n\t\t\t\t");
     });
-    nowPlaying.innerHTML = output;
+    setTimeout(function () {
+      $('.slick-carousel-playing').slick({
+        slidesToShow: 7,
+        slidesToScroll: 7,
+        lazyLoad: 'progressive',
+        infinite: false,
+        nextArrow: $('.nextPlaying'),
+        focusOnSelect: false,
+        prevArrow: $('.prevPlaying'),
+        responsive: [{
+          breakpoint: 1300,
+          settings: {
+            slidesToShow: 5,
+            slidesToScroll: 5
+          }
+        }, {
+          breakpoint: 1024,
+          settings: {
+            slidesToShow: 4,
+            slidesToScroll: 4
+          }
+        }, {
+          breakpoint: 750,
+          settings: {
+            slidesToShow: 3,
+            slidesToScroll: 3
+          }
+        }, {
+          breakpoint: 600,
+          settings: {
+            slidesToShow: 2,
+            slidesToScroll: 2
+          }
+        }]
+      });
+    }, 10);
+    setTimeout(function () {
+      nowPlaying.innerHTML = output;
+    }, 9);
   });
-  setTimeout(function () {
-    $('.slick-carousel').slick({
-      slidesToShow: 6,
-      lazyLoad: 'progressive',
-      slidesToScroll: 6,
-      infinite: false,
-      nextArrow: $('.nextTop'),
-      focusOnSelect: false,
-      prevArrow: $('.prevTop'),
-      responsive: [{
-        breakpoint: 1300,
-        settings: {
-          slidesToShow: 5,
-          slidesToScroll: 5
-        }
-      }, {
-        breakpoint: 1024,
-        settings: {
-          slidesToShow: 4,
-          slidesToScroll: 4
-        }
-      }, {
-        breakpoint: 750,
-        settings: {
-          slidesToShow: 3,
-          slidesToScroll: 3
-        }
-      }, {
-        breakpoint: 600,
-        settings: {
-          slidesToShow: 2,
-          slidesToScroll: 2
-        }
-      }]
-    });
-    $('.slick-carousel-popular').slick({
-      slidesToShow: 6,
-      slidesToScroll: 6,
-      lazyLoad: 'progressive',
-      infinite: false,
-      nextArrow: $('.nextPopular'),
-      focusOnSelect: false,
-      prevArrow: $('.prevPopular'),
-      responsive: [{
-        breakpoint: 1300,
-        settings: {
-          slidesToShow: 5,
-          slidesToScroll: 5
-        }
-      }, {
-        breakpoint: 1024,
-        settings: {
-          slidesToShow: 4,
-          slidesToScroll: 4
-        }
-      }, {
-        breakpoint: 750,
-        settings: {
-          slidesToShow: 3,
-          slidesToScroll: 3
-        }
-      }, {
-        breakpoint: 600,
-        settings: {
-          slidesToShow: 2,
-          slidesToScroll: 2
-        }
-      }]
-    });
-    $('.slick-carousel-playing').slick({
-      slidesToShow: 7,
-      slidesToScroll: 7,
-      lazyLoad: 'progressive',
-      infinite: false,
-      nextArrow: $('.nextPlaying'),
-      focusOnSelect: false,
-      prevArrow: $('.prevPlaying'),
-      responsive: [{
-        breakpoint: 1300,
-        settings: {
-          slidesToShow: 5,
-          slidesToScroll: 5
-        }
-      }, {
-        breakpoint: 1024,
-        settings: {
-          slidesToShow: 4,
-          slidesToScroll: 4
-        }
-      }, {
-        breakpoint: 750,
-        settings: {
-          slidesToShow: 3,
-          slidesToScroll: 3
-        }
-      }, {
-        breakpoint: 600,
-        settings: {
-          slidesToShow: 2,
-          slidesToScroll: 2
-        }
-      }]
-    });
-  }, 250);
 })();
 },{"./moviesGenres.js":"js/moviesGenres.js","../css/index.css":"css/index.css"}],"../node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
 var global = arguments[3];
@@ -458,7 +467,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "8845" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "2248" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

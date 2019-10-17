@@ -1,8 +1,8 @@
 import { genres } from './showsGenres.js';
 import '../css/index.css';
 
-(() => {
 
+(() => {
 	const onTheAir = document.getElementById('on-the-air');
 	const popularShows = document.getElementById('popular-shows');
 	const topRatedShows = document.getElementById('top-rated-shows');
@@ -32,7 +32,50 @@ import '../css/index.css';
       				</div>
 					`
 			})
-			onTheAir.innerHTML = output;
+			setTimeout(() => {
+				$('.slick-carousel-air').slick({
+				  slidesToShow: 6,
+				  lazyLoad: 'progressive',
+				  slidesToScroll: 6,
+				  infinite: false,
+				  nextArrow: $('.nextAir'),
+				  focusOnSelect: false,
+				  prevArrow: $('.prevAir'),
+				  responsive: [
+				  	{
+				      breakpoint: 1300,
+				      settings: {
+				        slidesToShow: 5,
+				        slidesToScroll: 5,
+				      }
+				    },
+				    {
+				      breakpoint: 1024,
+				      settings: {
+				        slidesToShow: 4,
+				        slidesToScroll: 4,
+				      }
+				    },
+				    {
+				      breakpoint: 750,
+				      settings: {
+				        slidesToShow: 3,
+				        slidesToScroll: 3,
+				      }
+				    },
+				    {
+				      breakpoint: 600,
+				      settings: {
+				        slidesToShow: 2,
+				        slidesToScroll: 2
+				      }
+				    }
+				  ]
+				});
+			}, 10)
+			setTimeout(() => {
+				onTheAir.innerHTML = output;
+			}, 9)
 		})
 
 
@@ -62,7 +105,50 @@ import '../css/index.css';
 					`		
 				}	
 			})
-			popularShows.innerHTML = output;
+			setTimeout(() => {
+				$('.slick-carousel-popularShows').slick({
+				  slidesToShow: 6,
+				  slidesToScroll: 6,
+				  lazyLoad: 'progressive',
+				  infinite: false,
+				  nextArrow: $('.nextPopularShows'),
+				  focusOnSelect: false,
+				  prevArrow: $('.prevPopularShows'),
+				  responsive: [
+				  	{
+				      breakpoint: 1300,
+				      settings: {
+				        slidesToShow: 5,
+				        slidesToScroll: 5,
+				      }
+				    },
+				    {
+				      breakpoint: 1024,
+				      settings: {
+				        slidesToShow: 4,
+				        slidesToScroll: 4,
+				      }
+				    },
+				    {
+				      breakpoint: 750,
+				      settings: {
+				        slidesToShow: 3,
+				        slidesToScroll: 3,
+				      }
+				    },
+				    {
+				      breakpoint: 600,
+				      settings: {
+				        slidesToShow: 2,
+				        slidesToScroll: 2
+				      }
+				    }
+				  ]
+				});
+			}, 10)
+			setTimeout(() => {
+				popularShows.innerHTML = output;
+			}, 9)
 		})
 
 
@@ -80,7 +166,7 @@ import '../css/index.css';
 				})
 				let genreOutput = genresArray.map(genre => genre.name).join(", ");
 				output +=
-					`
+				`
 					<div class="mr-3 card" style="width: 20rem;">
 				        <img class="card-img-top card-img" data-lazy="https://image.tmdb.org/t/p/w500${movie.poster_path}" alt="Card image cap">
 				        <div class="card-body">
@@ -90,126 +176,49 @@ import '../css/index.css';
       				</div>
 				`
 			})
-			topRatedShows.innerHTML = output;
+			setTimeout(() => {
+				$('.slick-carousel-topShows').slick({
+				  slidesToShow: 7,
+				  slidesToScroll: 7,
+				  lazyLoad: 'progressive',
+				  infinite: false,
+				  nextArrow: $('.nextTopShows'),
+				  focusOnSelect: false,
+				  prevArrow: $('.prevTopShows'),
+				  responsive: [
+				  	{
+				      breakpoint: 1300,
+				      settings: {
+				        slidesToShow: 5,
+				        slidesToScroll: 5,
+				      }
+				    },
+				    {
+				      breakpoint: 1024,
+				      settings: {
+				        slidesToShow: 4,
+				        slidesToScroll: 4,
+				      }
+				    },
+				    {
+				      breakpoint: 750,
+				      settings: {
+				        slidesToShow: 3,
+				        slidesToScroll: 3,
+				      }
+				    },
+				    {
+				      breakpoint: 600,
+				      settings: {
+				        slidesToShow: 2,
+				        slidesToScroll: 2
+				      }
+				    }
+				  ]
+				});
+			}, 10)
+			setTimeout(() => {
+				topRatedShows.innerHTML = output;
+			}, 9)
 		})
-
-		setTimeout(() => {
-			$('.slick-carousel-air').slick({
-			  slidesToShow: 6,
-			  lazyLoad: 'progressive',
-			  slidesToScroll: 6,
-			  infinite: false,
-			  nextArrow: $('.nextAir'),
-			  focusOnSelect: false,
-			  prevArrow: $('.prevAir'),
-			  responsive: [
-			  	{
-			      breakpoint: 1300,
-			      settings: {
-			        slidesToShow: 5,
-			        slidesToScroll: 5,
-			      }
-			    },
-			    {
-			      breakpoint: 1024,
-			      settings: {
-			        slidesToShow: 4,
-			        slidesToScroll: 4,
-			      }
-			    },
-			    {
-			      breakpoint: 750,
-			      settings: {
-			        slidesToShow: 3,
-			        slidesToScroll: 3,
-			      }
-			    },
-			    {
-			      breakpoint: 600,
-			      settings: {
-			        slidesToShow: 2,
-			        slidesToScroll: 2
-			      }
-			    }
-			  ]
-			});
-			$('.slick-carousel-popularShows').slick({
-			  slidesToShow: 6,
-			  slidesToScroll: 6,
-			  lazyLoad: 'progressive',
-			  infinite: false,
-			  nextArrow: $('.nextPopularShows'),
-			  focusOnSelect: false,
-			  prevArrow: $('.prevPopularShows'),
-			  responsive: [
-			  	{
-			      breakpoint: 1300,
-			      settings: {
-			        slidesToShow: 5,
-			        slidesToScroll: 5,
-			      }
-			    },
-			    {
-			      breakpoint: 1024,
-			      settings: {
-			        slidesToShow: 4,
-			        slidesToScroll: 4,
-			      }
-			    },
-			    {
-			      breakpoint: 750,
-			      settings: {
-			        slidesToShow: 3,
-			        slidesToScroll: 3,
-			      }
-			    },
-			    {
-			      breakpoint: 600,
-			      settings: {
-			        slidesToShow: 2,
-			        slidesToScroll: 2
-			      }
-			    }
-			  ]
-			});
-			$('.slick-carousel-topShows').slick({
-			  slidesToShow: 7,
-			  slidesToScroll: 7,
-			  lazyLoad: 'progressive',
-			  infinite: false,
-			  nextArrow: $('.nextTopShows'),
-			  focusOnSelect: false,
-			  prevArrow: $('.prevTopShows'),
-			  responsive: [
-			  	{
-			      breakpoint: 1300,
-			      settings: {
-			        slidesToShow: 5,
-			        slidesToScroll: 5,
-			      }
-			    },
-			    {
-			      breakpoint: 1024,
-			      settings: {
-			        slidesToShow: 4,
-			        slidesToScroll: 4,
-			      }
-			    },
-			    {
-			      breakpoint: 750,
-			      settings: {
-			        slidesToShow: 3,
-			        slidesToScroll: 3,
-			      }
-			    },
-			    {
-			      breakpoint: 600,
-			      settings: {
-			        slidesToShow: 2,
-			        slidesToScroll: 2
-			      }
-			    }
-			  ]
-			});
-		}, 250)
-})();	
+})()

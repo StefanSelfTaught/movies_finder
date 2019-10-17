@@ -210,12 +210,86 @@ var genres = [{
   name: "Western"
 }];
 exports.genres = genres;
-},{}],"js/moviesSearch.js":[function(require,module,exports) {
+},{}],"../node_modules/parcel-bundler/src/builtins/bundle-url.js":[function(require,module,exports) {
+var bundleURL = null;
+
+function getBundleURLCached() {
+  if (!bundleURL) {
+    bundleURL = getBundleURL();
+  }
+
+  return bundleURL;
+}
+
+function getBundleURL() {
+  // Attempt to find the URL of the current script and use that as the base URL
+  try {
+    throw new Error();
+  } catch (err) {
+    var matches = ('' + err.stack).match(/(https?|file|ftp|chrome-extension|moz-extension):\/\/[^)\n]+/g);
+
+    if (matches) {
+      return getBaseURL(matches[0]);
+    }
+  }
+
+  return '/';
+}
+
+function getBaseURL(url) {
+  return ('' + url).replace(/^((?:https?|file|ftp|chrome-extension|moz-extension):\/\/.+)\/[^/]+$/, '$1') + '/';
+}
+
+exports.getBundleURL = getBundleURLCached;
+exports.getBaseURL = getBaseURL;
+},{}],"../node_modules/parcel-bundler/src/builtins/css-loader.js":[function(require,module,exports) {
+var bundle = require('./bundle-url');
+
+function updateLink(link) {
+  var newLink = link.cloneNode();
+
+  newLink.onload = function () {
+    link.remove();
+  };
+
+  newLink.href = link.href.split('?')[0] + '?' + Date.now();
+  link.parentNode.insertBefore(newLink, link.nextSibling);
+}
+
+var cssTimeout = null;
+
+function reloadCSS() {
+  if (cssTimeout) {
+    return;
+  }
+
+  cssTimeout = setTimeout(function () {
+    var links = document.querySelectorAll('link[rel="stylesheet"]');
+
+    for (var i = 0; i < links.length; i++) {
+      if (bundle.getBaseURL(links[i].href) === bundle.getBundleURL()) {
+        updateLink(links[i]);
+      }
+    }
+
+    cssTimeout = null;
+  }, 50);
+}
+
+module.exports = reloadCSS;
+},{"./bundle-url":"../node_modules/parcel-bundler/src/builtins/bundle-url.js"}],"css/index.css":[function(require,module,exports) {
+var reloadCSS = require('_css_loader');
+
+module.hot.dispose(reloadCSS);
+module.hot.accept(reloadCSS);
+},{"./..\\..\\images\\jumbotron.jpg":[["jumbotron.104cebb4.jpg","../images/jumbotron.jpg"],"../images/jumbotron.jpg"],"_css_loader":"../node_modules/parcel-bundler/src/builtins/css-loader.js"}],"js/moviesSearch.js":[function(require,module,exports) {
 "use strict";
 
 var variables = _interopRequireWildcard(require("./variables.js"));
 
 var _moviesGenres = require("./moviesGenres.js");
+
+require("../css/index.css");
 
 function _getRequireWildcardCache() { if (typeof WeakMap !== "function") return null; var cache = new WeakMap(); _getRequireWildcardCache = function () { return cache; }; return cache; }
 
@@ -225,7 +299,7 @@ function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj;
   fetch('https://api.themoviedb.org/3/trending/movie/week?api_key=ce2eb2231a371296cf6ff11a39206d6e').then(function (data) {
     return data.json();
   }).then(function (res) {
-    var topRMovies = res.results.splice(0, 8);
+    var topRMovies = res.results;
     var output = '';
     var genresArray = '';
     topRMovies.map(function (movie) {
@@ -239,8 +313,45 @@ function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj;
       }).join(", ");
       output += "\n          <div class=\"mr-3 card\" style=\"width: 15rem; padding-bottom: 0;\">\n              <img class=\"card-img-top card-img\" src=\"https://image.tmdb.org/t/p/w500".concat(movie.poster_path, "\" alt=\"Card image cap\">\n              <div class=\"card-body\">\n                <h5 class=\"card-title card-movie-title\">").concat(movie.title, "</h5>\n                <p class=\"card-text card-details\">").concat(movie.release_date.split("-")[0], " | ").concat(genreOutput, "</p>\n              </div>\n          </div>\n          ");
     });
-    variables.trending.innerHTML = output;
-    variables.trending.children[0].classList.add("ml-5");
+    setTimeout(function () {
+      $('.slick-trending-movies').slick({
+        slidesToShow: 8,
+        lazyLoad: 'progressive',
+        slidesToScroll: 8,
+        infinite: false,
+        nextArrow: $('.nextTrendingMovies'),
+        focusOnSelect: false,
+        prevArrow: $('.prevTrendingMovies'),
+        responsive: [{
+          breakpoint: 1300,
+          settings: {
+            slidesToShow: 5,
+            slidesToScroll: 5
+          }
+        }, {
+          breakpoint: 1024,
+          settings: {
+            slidesToShow: 4,
+            slidesToScroll: 4
+          }
+        }, {
+          breakpoint: 750,
+          settings: {
+            slidesToShow: 3,
+            slidesToScroll: 3
+          }
+        }, {
+          breakpoint: 600,
+          settings: {
+            slidesToShow: 2,
+            slidesToScroll: 2
+          }
+        }]
+      });
+    }, 10);
+    setTimeout(function () {
+      variables.trending.innerHTML = output;
+    }, 9);
   });
   variables.inputSearch.addEventListener('input', function (e) {
     e.preventDefault();
@@ -275,8 +386,7 @@ function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj;
     previousDisabled(page);
 
     if (movie.length > 0) {
-      variables.trending.style.display = 'none';
-      document.getElementById('trending-title').style.display = 'none';
+      document.getElementById('slider-movies-search').style.display = 'none';
       fetch("https://api.themoviedb.org/3/search/movie?api_key=".concat(variables.apiKey, "&query=").concat(movie, "&page=").concat(page)).then(function (resp) {
         return resp.json();
       }).then(function (data) {
@@ -319,14 +429,13 @@ function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj;
         });
       });
     } else {
-      variables.trending.style.display = 'flex';
-      document.getElementById('trending-title').style.display = 'block';
+      document.getElementById('slider-movies-search').style.display = 'block';
       variables.moviesList.innerHTML = null;
       variables.pagination.style.visibility = 'hidden';
     }
   };
 })();
-},{"./variables.js":"js/variables.js","./moviesGenres.js":"js/moviesGenres.js"}],"../node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
+},{"./variables.js":"js/variables.js","./moviesGenres.js":"js/moviesGenres.js","../css/index.css":"css/index.css"}],"../node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
 var global = arguments[3];
 var OVERLAY_ID = '__parcel__error__overlay__';
 var OldModule = module.bundle.Module;
@@ -354,7 +463,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "8845" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "2248" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
