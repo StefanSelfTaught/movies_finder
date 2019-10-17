@@ -117,100 +117,7 @@ parcelRequire = (function (modules, cache, entry, globalName) {
   }
 
   return newRequire;
-})({"js/variables.js":[function(require,module,exports) {
-"use strict";
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.spinner = exports.trending2 = exports.trending = exports.pagination = exports.next = exports.previous = exports.moviesList = exports.inputSearch = exports.searchForm = exports.apiKey = void 0;
-var apiKey = 'ce2eb2231a371296cf6ff11a39206d6e';
-exports.apiKey = apiKey;
-var searchForm = document.getElementById('searchForm');
-exports.searchForm = searchForm;
-var inputSearch = document.getElementById('inputSearch');
-exports.inputSearch = inputSearch;
-var moviesList = document.getElementById('moviesList');
-exports.moviesList = moviesList;
-var previous = document.getElementById('previous');
-exports.previous = previous;
-var next = document.getElementById('next');
-exports.next = next;
-var pagination = document.getElementById('pagination-container');
-exports.pagination = pagination;
-var trending = document.getElementById('trending-movies');
-exports.trending = trending;
-var trending2 = document.getElementById('trending-shows');
-exports.trending2 = trending2;
-var spinner = "\n    <div class=\"mb-5 spinner-border text-light\" style=\"width: 3rem; height: 3rem;\" role=\"status\">\n      <span class=\"sr-only\">Loading...</span>\n    </div>";
-exports.spinner = spinner;
-},{}],"js/moviesGenres.js":[function(require,module,exports) {
-"use strict";
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.genres = void 0;
-var genres = [{
-  id: 28,
-  name: "Action"
-}, {
-  id: 12,
-  name: "Adventure"
-}, {
-  id: 16,
-  name: "Animation"
-}, {
-  id: 35,
-  name: "Comedy"
-}, {
-  id: 80,
-  name: "Crime"
-}, {
-  id: 99,
-  name: "Documentary"
-}, {
-  id: 18,
-  name: "Drama"
-}, {
-  id: 10751,
-  name: "Family"
-}, {
-  id: 14,
-  name: "Fantasy"
-}, {
-  id: 36,
-  name: "History"
-}, {
-  id: 27,
-  name: "Horror"
-}, {
-  id: 10402,
-  name: "Music"
-}, {
-  id: 9648,
-  name: "Mystery"
-}, {
-  id: 10749,
-  name: "Romance"
-}, {
-  id: 878,
-  name: "Science Fiction"
-}, {
-  id: 10770,
-  name: "TV Movie"
-}, {
-  id: 53,
-  name: "Thriller"
-}, {
-  id: 10752,
-  name: "War"
-}, {
-  id: 37,
-  name: "Western"
-}];
-exports.genres = genres;
-},{}],"../node_modules/parcel-bundler/src/builtins/bundle-url.js":[function(require,module,exports) {
+})({"../node_modules/parcel-bundler/src/builtins/bundle-url.js":[function(require,module,exports) {
 var bundleURL = null;
 
 function getBundleURLCached() {
@@ -282,160 +189,7 @@ var reloadCSS = require('_css_loader');
 
 module.hot.dispose(reloadCSS);
 module.hot.accept(reloadCSS);
-},{"./..\\..\\images\\jumbotron.jpg":[["jumbotron.104cebb4.jpg","../images/jumbotron.jpg"],"../images/jumbotron.jpg"],"_css_loader":"../node_modules/parcel-bundler/src/builtins/css-loader.js"}],"js/moviesSearch.js":[function(require,module,exports) {
-"use strict";
-
-var variables = _interopRequireWildcard(require("./variables.js"));
-
-var _moviesGenres = require("./moviesGenres.js");
-
-require("../css/index.css");
-
-function _getRequireWildcardCache() { if (typeof WeakMap !== "function") return null; var cache = new WeakMap(); _getRequireWildcardCache = function () { return cache; }; return cache; }
-
-function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } var cache = _getRequireWildcardCache(); if (cache && cache.has(obj)) { return cache.get(obj); } var newObj = {}; if (obj != null) { var hasPropertyDescriptor = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) { var desc = hasPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : null; if (desc && (desc.get || desc.set)) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } } newObj.default = obj; if (cache) { cache.set(obj, newObj); } return newObj; }
-
-(function () {
-  fetch('https://api.themoviedb.org/3/trending/movie/week?api_key=ce2eb2231a371296cf6ff11a39206d6e').then(function (data) {
-    return data.json();
-  }).then(function (res) {
-    var topRMovies = res.results;
-    var output = '';
-    var genresArray = '';
-    topRMovies.map(function (movie) {
-      genresArray = _moviesGenres.genres.filter(function (genre) {
-        if (genre.id === movie.genre_ids[0] || genre.id === movie.genre_ids[1]) {
-          return genre.id;
-        }
-      });
-      var genreOutput = genresArray.map(function (genre) {
-        return genre.name;
-      }).join(", ");
-      output += "\n          <div class=\"mr-3 card\" style=\"width: 15rem; padding-bottom: 0;\">\n              <img class=\"card-img-top card-img\" src=\"https://image.tmdb.org/t/p/w500".concat(movie.poster_path, "\" alt=\"Card image cap\">\n              <div class=\"card-body\">\n                <h5 class=\"card-title card-movie-title\">").concat(movie.title, "</h5>\n                <p class=\"card-text card-details\">").concat(movie.release_date.split("-")[0], " | ").concat(genreOutput, "</p>\n              </div>\n          </div>\n          ");
-    });
-    setTimeout(function () {
-      $('.slick-trending-movies').slick({
-        slidesToShow: 8,
-        lazyLoad: 'progressive',
-        slidesToScroll: 8,
-        infinite: false,
-        nextArrow: $('.nextTrendingMovies'),
-        focusOnSelect: false,
-        prevArrow: $('.prevTrendingMovies'),
-        responsive: [{
-          breakpoint: 1300,
-          settings: {
-            slidesToShow: 5,
-            slidesToScroll: 5
-          }
-        }, {
-          breakpoint: 1024,
-          settings: {
-            slidesToShow: 4,
-            slidesToScroll: 4
-          }
-        }, {
-          breakpoint: 750,
-          settings: {
-            slidesToShow: 3,
-            slidesToScroll: 3
-          }
-        }, {
-          breakpoint: 600,
-          settings: {
-            slidesToShow: 2,
-            slidesToScroll: 2
-          }
-        }]
-      });
-    }, 10);
-    setTimeout(function () {
-      variables.trending.innerHTML = output;
-    }, 9);
-  });
-  variables.inputSearch.addEventListener('input', function (e) {
-    e.preventDefault();
-    getMovies(e.target.value, 1);
-  });
-
-  var previousDisabled = function previousDisabled(page) {
-    if (page == 1) {
-      variables.previous.disabled = true;
-      variables.previous.classList.add('button-disabled');
-    } else {
-      variables.previous.disabled = false;
-      variables.previous.classList.remove('button-disabled');
-    }
-  };
-
-  var nextDisabled = function nextDisabled(page, totalPages) {
-    if (page === totalPages) {
-      variables.next.disabled = true;
-      variables.next.classList.add('button-disabled');
-    } else {
-      variables.next.disabled = false;
-      variables.next.classList.remove('button-disabled');
-    }
-  };
-
-  var getMovies = function getMovies(movie, page) {
-    if (variables.inputSearch.value.length > 0) {
-      variables.moviesList.innerHTML = variables.spinner;
-    }
-
-    previousDisabled(page);
-
-    if (movie.length > 0) {
-      document.getElementById('slider-movies-search').style.display = 'none';
-      fetch("https://api.themoviedb.org/3/search/movie?api_key=".concat(variables.apiKey, "&query=").concat(movie, "&page=").concat(page)).then(function (resp) {
-        return resp.json();
-      }).then(function (data) {
-        nextDisabled(page, data.total_pages);
-        console.log(data);
-        var output = '';
-        var movies = data.results;
-        movies.map(function (movie) {
-          var descp;
-
-          if (movie.overview.length > 260) {
-            descp = movie.overview.split(" ").splice(0, 30).join(" ") + '...';
-          } else if (movie.overview == "") {
-            descp = "No description";
-          } else {
-            descp = movie.overview;
-          }
-
-          if (movie.poster_path !== null && movie.backdrop_path !== null) {
-            output += "\n              <div class=\"card-v2\">\n                <div class=\"poster\">\n                  <img\n                    src=\"https://image.tmdb.org/t/p/w300".concat(movie.poster_path, "\"\n                  />\n                </div>\n                <div class=\"details\">\n                  <h2>").concat(movie.title, "<br /><span>Relased in: ").concat(movie.release_date, "</span></h2>\n                  <div class=\"rating\">\n                    <i class=\"fas fa-star\"></i>\n                    <span>").concat(movie.vote_average, " / 10</span>\n                  </div>\n                  <div class=\"info\">\n                    <p>\n                      ").concat(descp, "\n                    </p>\n                  </div>\n                  <div class=\"more-info\">\n                    <a href=\"https://www.themoviedb.org/movie/").concat(movie.id, "\" target=\"_blank\" class=\"btn btn-dark\">More Details</a>\n                  </div>\n                </div>\n              </div>\n            ");
-          }
-        });
-
-        if (movies.length !== 0) {
-          variables.moviesList.innerHTML = output;
-        } else {
-          variables.moviesList.innerHTML = "<h2 class=\"no-results\">No results founded</h2>";
-          variables.next.disabled = true;
-          variables.next.classList.add('button-disabled');
-        }
-
-        variables.pagination.style.visibility = 'visible';
-        variables.next.addEventListener('click', function () {
-          window.scrollTo(0, 240);
-          getMovies(variables.inputSearch.value, ++page);
-        });
-        previous.addEventListener('click', function () {
-          window.scrollTo(0, 240);
-          getMovies(variables.inputSearch.value, --page);
-        });
-      });
-    } else {
-      document.getElementById('slider-movies-search').style.display = 'block';
-      variables.moviesList.innerHTML = null;
-      variables.pagination.style.visibility = 'hidden';
-    }
-  };
-})();
-},{"./variables.js":"js/variables.js","./moviesGenres.js":"js/moviesGenres.js","../css/index.css":"css/index.css"}],"../node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
+},{"_css_loader":"../node_modules/parcel-bundler/src/builtins/css-loader.js"}],"../node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
 var global = arguments[3];
 var OVERLAY_ID = '__parcel__error__overlay__';
 var OldModule = module.bundle.Module;
@@ -463,7 +217,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "2248" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "11704" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
@@ -639,5 +393,5 @@ function hmrAcceptRun(bundle, id) {
     return true;
   }
 }
-},{}]},{},["../node_modules/parcel-bundler/src/builtins/hmr-runtime.js","js/moviesSearch.js"], null)
-//# sourceMappingURL=/moviesSearch.6465a4d8.js.map
+},{}]},{},["../node_modules/parcel-bundler/src/builtins/hmr-runtime.js"], null)
+//# sourceMappingURL=/css.967bad95.js.map

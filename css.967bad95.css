@@ -205,10 +205,6 @@ nav {
   position: relative;
 }
 
-.slider-movies-search {
-  position: relative;
-}
-
 .prev {
   position: absolute;
   top: 50%;
@@ -242,7 +238,7 @@ nav {
 
 .jumbotron {
   background-size: cover;
-  background-image: url(/jumbotron.104cebb4.jpg);
+  background-image: url(http://hboeu.azureedge.net/uiimages/DE39E0B3-5588-431F-BC2A-AB52429F714C/1920.jpg);
   background-repeat: no-repeat; 
   background-position: center center;
   height: 370px;
@@ -427,4 +423,4 @@ nav {
 
 }
 
-/*# sourceMappingURL=/js.00a46daa.css.map */
+/*# sourceMappingURL=/css.967bad95.css.map */
