@@ -145,7 +145,7 @@ import '../css/index.css';
                     </p>
                   </div>
                   <div class="more-info">
-                    <a href="https://www.themoviedb.org/movie/${movie.id}" target="_blank" class="btn btn-dark">More Details</a>
+                    <a onclick="test(${movie.id})" target="_blank" class="btn btn-dark">More Details</a>
                   </div>
                 </div>
               </div>
@@ -175,4 +175,5 @@ import '../css/index.css';
       variables.pagination.style.visibility = 'hidden';
     }
   }
+
 })();

@@ -4,13 +4,18 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "dev": "parcel src/*.html",
+    "dev": "parcel ./src/index.html",
     "prod": "parcel build src/*.html",
     "deploy": "gh-pages -d dist"
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/StefanSelfTaught/movies_finder.git"
+  },
+  "babel": {
+    "presets": [
+      "@babel/preset-react"
+    ]
   },
   "keywords": [],
   "author": "Pop Stefan",
@@ -20,10 +25,17 @@
   },
   "homepage": "https://github.com/StefanSelfTaught/movies_finder#readme",
   "devDependencies": {
+    "@babel/plugin-transform-runtime": "^7.6.2",
+    "@babel/runtime": "^7.6.3",
+    "babel-plugin-transform-runtime": "^6.23.0",
     "gh-pages": "^2.1.1",
     "parcel-bundler": "^1.12.4"
   },
   "dependencies": {
+    "@babel/preset-react": "^7.6.3",
+    "babel-core": "^7.0.0-bridge.0",
+    "babel-polyfill": "^6.26.0",
+    "babel-preset-env": "^1.7.0",
     "jquery": "^3.4.1"
   }
 }

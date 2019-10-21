@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<div id="movie"></div>
+</head>
+<body>
+	<script type="text/javascript">
+		let id = sessionStorage.getItem("id");
+		let api = 'ce2eb2231a371296cf6ff11a39206d6e';
+		fetch(
+			`https://api.themoviedb.org/3/movie/${id}?api_key=${api}&language=en-US&append_to_response=reviews,videos,images`
+		)
+			.then(res => res.json())
+			.then(data => {
+				let output = '';
+				output = 
+				`
+					<div>
+						<p>${data.title}</p>
+						<p>${data.vote_average}</p>
+						<p>${data.adult}</p>
+					</div>
+				`
+				document.getElementById('movie').innerHTML = output;
+			})
+	</script>
+</body>
+</html>
