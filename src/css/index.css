@@ -23,6 +23,17 @@ h1 {
   outline: none;
 }
 
+.flex {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.col-form-label {
+  color: white;
+  font-size: 16px;
+}
+
 /********** NAVBAR ***************/
 
 nav {
@@ -247,6 +258,22 @@ nav {
 .jumbotron {
   background-size: cover;
   background-image: url(../../images/jumbotron.jpg);
+  background-repeat: no-repeat; 
+  background-position: center center;
+  height: 370px;
+  border: none !important;
+}
+
+.dropdown-menu {
+  background-color: #081C24;
+  box-shadow: 0 2px 10px -2px rgba(0,0,0,1);
+  border: none !important;
+  border-radius: 0.45rem;
+}
+
+.jum-2 {
+  background-size: cover;
+  background-image: linear-gradient(rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0.75)), url(../../images/jumbotron-2.jpg);
   background-repeat: no-repeat; 
   background-position: center center;
   height: 370px;
