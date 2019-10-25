@@ -1,49 +1,18 @@
 import { genres } from './moviesGenres.js';
 import '../css/index.css';
-import request from './requests.js';
 import "@babel/polyfill";
+import { request } from './requests.js';
 
 (() => {
-
-	// function abc() {
-	// 	console.log('apel f abc');
-	// 	return new Promise((resolve, reject) => {
-	// 		console.log('in')
-	// 		let x = 1;
-	// 		let y = 2;
-	// 		if(x === y){
-	// 			resolve({r: 1})
-	// 		} else {
-	// 			reject({r: 2})
-	// 		}
-	// 	})
-	// }
-
-	// console.log(1);
-
-	// // console.log(abc());
-
-	// console.log(2);
-
-	// async function doWork(){
-	// 	let result = await abc()
-	// 	console.log(result);
-	// }
-
-	// doWork()
 
 	const topMovies = document.getElementById('top-rated-movies');
 	const popularMovies = document.getElementById('popular-movies');
 	const nowPlaying = document.getElementById('now-playing');
-	const apiKey = 'ce2eb2231a371296cf6ff11a39206d6e';
 
-	async function fetchTopMovies() {
-		const request = await fetch('https://api.themoviedb.org/3/movie/top_rated?api_key=ce2eb2231a371296cf6ff11a39206d6e&page=1')
-		const res = await request.json();
-		const data = await res.results;
+	request.fetchTopMovies().then(data => {
 		let output = '';
 		let genresArray = '';
-		data.map(movie => {
+		data.results.map(movie => {
 			genresArray = genres.filter(genre => {
 				if(genre.id === movie.genre_ids[0] || genre.id === movie.genre_ids[1]){
 					return genre.id;
@@ -102,17 +71,13 @@ import "@babel/polyfill";
 				    }
 				  ]
 				});
-	}
+	})
 
-	fetchTopMovies()
 
-	async function fetchPopularMovies(){
-		const request = await fetch('https://api.themoviedb.org/3/movie/popular?api_key=ce2eb2231a371296cf6ff11a39206d6e&page=1')
-		const res = await request.json();
-		const data = await res.results;
+	request.fetchPopularMovies().then(data => {
 		let output = '';
 		let genresArray = '';
-		data.map(movie => {
+		data.results.map(movie => {
 			genresArray = genres.filter(genre => {
 				if(genre.id === movie.genre_ids[0] || genre.id === movie.genre_ids[1]){
 					return genre.id;
@@ -131,7 +96,7 @@ import "@babel/polyfill";
 				`		
 		})
 		popularMovies.innerHTML = output;
-				$('.slick-carousel-popular').slick({
+			$('.slick-carousel-popular').slick({
 				  slidesToShow: 6,
 				  slidesToScroll: 6,
 				  lazyLoad: 'progressive',
@@ -170,17 +135,13 @@ import "@babel/polyfill";
 				    }
 				  ]
 				});
-	}
+	})
 
-	fetchPopularMovies()
 
-	async function fetchMovies(){
-		const request = await fetch('https://api.themoviedb.org/3/movie/now_playing?api_key=ce2eb2231a371296cf6ff11a39206d6e&page=1')
-		const res = await request.json();
-		const data = await res.results;
+	request.fetchPlayingMovies().then(data => {
 		let output = '';
 		let genresArray = '';
-		data.map(movie => {
+		data.results.map(movie => {
 			genresArray = genres.filter(genre => {
 				if(genre.id === movie.genre_ids[0] || genre.id === movie.genre_ids[1]){
 					return genre.id;
@@ -238,8 +199,6 @@ import "@babel/polyfill";
 					    }
 					]
 				});
-		}
-
-		fetchMovies();
+	})
 
 })()

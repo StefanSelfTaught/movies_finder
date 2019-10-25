@@ -246,7 +246,7 @@ var reloadCSS = require('_css_loader');
 
 module.hot.dispose(reloadCSS);
 module.hot.accept(reloadCSS);
-},{"./..\\..\\images\\jumbotron.jpg":[["jumbotron.104cebb4.jpg","../images/jumbotron.jpg"],"../images/jumbotron.jpg"],"_css_loader":"../node_modules/parcel-bundler/src/builtins/css-loader.js"}],"js/shows.js":[function(require,module,exports) {
+},{"./..\\..\\images\\jumbotron.jpg":[["jumbotron.104cebb4.jpg","../images/jumbotron.jpg"],"../images/jumbotron.jpg"],"./..\\..\\images\\jumbotron-2.jpg":[["jumbotron-2.32e69707.jpg","../images/jumbotron-2.jpg"],"../images/jumbotron-2.jpg"],"_css_loader":"../node_modules/parcel-bundler/src/builtins/css-loader.js"}],"js/shows.js":[function(require,module,exports) {
 "use strict";
 
 var _showsGenres = require("./showsGenres.js");
@@ -461,7 +461,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "2248" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "5320" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
