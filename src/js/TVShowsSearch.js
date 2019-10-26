@@ -23,8 +23,8 @@ import '../css/index.css';
           <div class="mr-3 card" style="width: 15rem; padding-bottom: 0;">
               <img class="card-img-top card-img" src="https://image.tmdb.org/t/p/w500${movie.poster_path}" alt="Card image cap">
               <div class="card-body">
-                <h5 class="card-title card-movie-title">${movie.name}</h5>
-                <p class="card-text card-details">${movie.first_air_date.split("-")[0]} | ${genreOutput}</p>
+                <h5 class="card-title card-small-title">${movie.name}</h5>
+                <p class="card-text card-small-details">${movie.first_air_date.split("-")[0]} | ${genreOutput}</p>
               </div>
           </div>
           `

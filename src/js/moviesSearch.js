@@ -23,8 +23,8 @@ import '../css/index.css';
           <div class="mr-3 card" style="width: 15rem; padding-bottom: 0;">
               <img class="card-img-top card-img" src="https://image.tmdb.org/t/p/w500${movie.poster_path}" alt="Card image cap">
               <div class="card-body">
-                <h5 class="card-title card-movie-title">${movie.title}</h5>
-                <p class="card-text card-details">${movie.release_date.split("-")[0]} | ${genreOutput}</p>
+                <h5 class="card-title card-small-title">${movie.title}</h5>
+                <p class="card-text card-small-details">${movie.release_date.split("-")[0]} | ${genreOutput}</p>
               </div>
           </div>
           `
@@ -113,7 +113,6 @@ import '../css/index.css';
         .then(resp => resp.json())
         .then(data => {
           nextDisabled(page, data.total_pages);
-          console.log(data);
           let output = '';
           let movies = data.results;
           movies.map(movie => {

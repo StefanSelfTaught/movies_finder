@@ -34,6 +34,53 @@ h1 {
   font-size: 16px;
 }
 
+.search-btn {
+  border: none;
+  display: block;
+  text-align: center;
+  cursor: pointer;
+  text-transform: uppercase;
+  outline: none;
+  overflow: hidden;
+  position: relative;
+  color: #fff;
+  font-weight: 700;
+  font-size: 15px;
+  background: #222;
+  padding: 15px 60px;
+  border-radius: 15px;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.20);
+  transition: all .5s ease-in-out;
+}
+
+.search-btn span {
+  position: relative; 
+  z-index: 1;
+}
+
+.search-btn:after {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0;
+  height: 490%;
+  width: 140%;
+  background: rgb(1, 210, 119);
+  -webkit-transition: all .5s ease-in-out;
+  transition: all .5s ease-in-out;
+  -webkit-transform: translateX(-98%) translateY(-25%) rotate(45deg);
+  transform: translateX(-98%) translateY(-25%) rotate(45deg);
+}
+
+.search-btn:hover {
+  border: 1px solid black;
+}
+
+.search-btn:hover:after {
+  -webkit-transform: translateX(-9%) translateY(-25%) rotate(45deg);
+  transform: translateX(-9%) translateY(-25%) rotate(45deg);
+}
+
 /********** NAVBAR ***************/
 
 nav {
@@ -165,11 +212,22 @@ nav {
   white-space: nowrap;
 }
 
+.card-small-title {
+  margin: 0 !important;
+  color: #fff;
+  font-size: 16.5px;
+  white-space: nowrap;
+}
+
 .card-body {
   height: 50px !important;
 }
 
 .card-movie-title:hover {
+  cursor: pointer;
+}
+
+.card-small-title:hover {
   cursor: pointer;
 }
 
@@ -184,6 +242,11 @@ nav {
 }
 
 .card-details {
+  white-space: nowrap;
+}
+
+.card-small-details {
+  font-size: 14.5px !important;
   white-space: nowrap;
 }
 
@@ -269,15 +332,6 @@ nav {
   box-shadow: 0 2px 10px -2px rgba(0,0,0,1);
   border: none !important;
   border-radius: 0.45rem;
-}
-
-.jum-2 {
-  background-size: cover;
-  background-image: linear-gradient(rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0.75)), url(/jumbotron-2.32e69707.jpg);
-  background-repeat: no-repeat; 
-  background-position: center center;
-  height: 370px;
-  border: none !important;
 }
 
 
