@@ -1,19 +1,17 @@
 import * as variables from './variables.js';
 import { genres } from './showsGenres.js';
+import { request } from './requests.js';
 import '../css/index.css';
-
+import "@babel/polyfill";
 
 (() => {
 
-  fetch('https://api.themoviedb.org/3/trending/tv/week?api_key=ce2eb2231a371296cf6ff11a39206d6e')
-    .then(data => data.json())
-    .then(res => {
-      let topRMovies = res.results;
+  request.fetchSearchShowsDefault().then(data => {
       let output = '';
       let genresArray = '';
-      topRMovies.map(movie => {
+      data.results.map(movie => {
         genresArray = genres.filter(genre => {
-          if(genre.id === movie.genre_ids[0] || genre.id === movie.genre_ids[1] || genre.id === movie.genre_ids[2]){
+          if(genre.id === movie.genre_ids[0] || genre.id === movie.genre_ids[1]){
             return genre.id;
           }
         })
@@ -29,7 +27,7 @@ import '../css/index.css';
           </div>
           `
       })
-      setTimeout(() => {
+        variables.trending2.innerHTML = output;
         $('.slick-trending-shows').slick({
           slidesToShow: 8,
           lazyLoad: 'progressive',
@@ -69,15 +67,22 @@ import '../css/index.css';
             }
           ]
         });
-      }, 10)
-      setTimeout(() => {
-         variables.trending2.innerHTML = output;
-      }, 9)
     })
 
   variables.inputSearch.addEventListener('input', (e) => {
     e.preventDefault();
     getMovies(e.target.value, 1);
+  });
+
+  let page = 1;
+
+  variables.next.addEventListener('click', () => {
+    window.scrollTo(0, 240);
+    getMovies(variables.inputSearch.value, ++page);
+  });
+  variables.previous.addEventListener('click', () => {
+    window.scrollTo(0, 240);
+    getMovies(variables.inputSearch.value, --page)
   });
 
   const previousDisabled = page => {
@@ -101,22 +106,20 @@ import '../css/index.css';
   }
 
   const getMovies = (movie, page) => {
+
     if(variables.inputSearch.value.length > 0){
       variables.moviesList.innerHTML = variables.spinner;
     }
+
     previousDisabled(page);
+
     if(movie.length > 0) {
     document.getElementById('slider-shows-search').style.display = 'none';
-       fetch(
-        `https://api.themoviedb.org/3/search/tv?api_key=${variables.apiKey}&query=${movie}&page=${page}`
-      )
-        .then(resp => resp.json())
-        .then(data => {
+
+      request.fetchSearchShows(movie, page).then(data => {
           nextDisabled(page, data.total_pages);
-          console.log(data);
           let output = '';
-          let movies = data.results;
-          movies.map(movie => {
+          data.results.map(movie => {
             let descp;
             if(movie.overview.length > 200){
               descp = movie.overview.split(" ").splice(0, 30).join(" ") + '...';
@@ -125,7 +128,6 @@ import '../css/index.css';
             } else {
               descp = movie.overview;
             }
-            if(movie.poster_path !== null) {
               output += `
                 <div class="card-v2">
                   <div class="poster">
@@ -150,9 +152,8 @@ import '../css/index.css';
                   </div>
                 </div>
               `;
-            }
           })
-          if(movies.length !== 0){
+          if(data.results.length !== 0){
             variables.moviesList.innerHTML = output;
           } else {
             variables.moviesList.innerHTML = `<h2 class="no-results">No results founded</h2>`;
@@ -160,14 +161,6 @@ import '../css/index.css';
             variables.next.classList.add('button-disabled');
           }
            variables.pagination.style.visibility = 'visible';
-           variables.next.addEventListener('click', () => {
-            window.scrollTo(0, 240);
-            getMovies(variables.inputSearch.value, ++page);
-          });
-          previous.addEventListener('click', () => {
-            window.scrollTo(0, 240);
-            getMovies(variables.inputSearch.value, --page)
-          });
         })
     } else {
       document.getElementById('slider-shows-search').style.display = 'block';

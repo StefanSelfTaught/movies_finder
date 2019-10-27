@@ -6716,17 +6716,17 @@ var request = {
 
     return fetchPlayingMovies;
   }(),
-  fetchDiscoverMovies: function () {
-    var _fetchDiscoverMovies = _asyncToGenerator(
+  fetchAirShows: function () {
+    var _fetchAirShows = _asyncToGenerator(
     /*#__PURE__*/
-    regeneratorRuntime.mark(function _callee4(sortBy, year, vote, genres, page) {
+    regeneratorRuntime.mark(function _callee4() {
       var request, res;
       return regeneratorRuntime.wrap(function _callee4$(_context4) {
         while (1) {
           switch (_context4.prev = _context4.next) {
             case 0:
               _context4.next = 2;
-              return fetch("https://api.themoviedb.org/3/discover/movie?api_key=".concat(apiKey, "&sort_by=").concat(sortBy, "&year=").concat(year, "&vote_average.gte=").concat(vote, "&with_genres=").concat(genres, "&page=").concat(page));
+              return fetch("https://api.themoviedb.org/3/tv/on_the_air?api_key=".concat(apiKey, "&page=1"));
 
             case 2:
               request = _context4.sent;
@@ -6745,14 +6745,14 @@ var request = {
       }, _callee4);
     }));
 
-    function fetchDiscoverMovies(_x, _x2, _x3, _x4, _x5) {
-      return _fetchDiscoverMovies.apply(this, arguments);
+    function fetchAirShows() {
+      return _fetchAirShows.apply(this, arguments);
     }
 
-    return fetchDiscoverMovies;
+    return fetchAirShows;
   }(),
-  fetchDiscoverMoviesDefault: function () {
-    var _fetchDiscoverMoviesDefault = _asyncToGenerator(
+  fetchPopularShows: function () {
+    var _fetchPopularShows = _asyncToGenerator(
     /*#__PURE__*/
     regeneratorRuntime.mark(function _callee5() {
       var request, res;
@@ -6761,7 +6761,7 @@ var request = {
           switch (_context5.prev = _context5.next) {
             case 0:
               _context5.next = 2;
-              return fetch("https://api.themoviedb.org/3/discover/movie?api_key=".concat(apiKey, "&sort_by=popularity.desc&year=&vote_average.gte=&with_genres=&page=1}"));
+              return fetch("https://api.themoviedb.org/3/tv/popular?api_key=".concat(apiKey, "&page=1"));
 
             case 2:
               request = _context5.sent;
@@ -6780,23 +6780,23 @@ var request = {
       }, _callee5);
     }));
 
-    function fetchDiscoverMoviesDefault() {
-      return _fetchDiscoverMoviesDefault.apply(this, arguments);
+    function fetchPopularShows() {
+      return _fetchPopularShows.apply(this, arguments);
     }
 
-    return fetchDiscoverMoviesDefault;
+    return fetchPopularShows;
   }(),
-  fetchDiscoverShows: function () {
-    var _fetchDiscoverShows = _asyncToGenerator(
+  fetchTopShows: function () {
+    var _fetchTopShows = _asyncToGenerator(
     /*#__PURE__*/
-    regeneratorRuntime.mark(function _callee6(sortBy, year, vote, genres, page) {
+    regeneratorRuntime.mark(function _callee6() {
       var request, res;
       return regeneratorRuntime.wrap(function _callee6$(_context6) {
         while (1) {
           switch (_context6.prev = _context6.next) {
             case 0:
               _context6.next = 2;
-              return fetch("https://api.themoviedb.org/3/discover/tv?api_key=".concat(apiKey, "&sort_by=").concat(sortBy, "&first_air_date_year=").concat(year, "&vote_average.gte=").concat(vote, "&with_genres=").concat(genres, "&page=").concat(page));
+              return fetch("https://api.themoviedb.org/3/tv/top_rated?api_key=".concat(apiKey, "&page=1"));
 
             case 2:
               request = _context6.sent;
@@ -6815,23 +6815,23 @@ var request = {
       }, _callee6);
     }));
 
-    function fetchDiscoverShows(_x6, _x7, _x8, _x9, _x10) {
-      return _fetchDiscoverShows.apply(this, arguments);
+    function fetchTopShows() {
+      return _fetchTopShows.apply(this, arguments);
     }
 
-    return fetchDiscoverShows;
+    return fetchTopShows;
   }(),
-  fetchDiscoverShowsDefault: function () {
-    var _fetchDiscoverShowsDefault = _asyncToGenerator(
+  fetchDiscoverMovies: function () {
+    var _fetchDiscoverMovies = _asyncToGenerator(
     /*#__PURE__*/
-    regeneratorRuntime.mark(function _callee7() {
+    regeneratorRuntime.mark(function _callee7(sortBy, year, vote, genres, page) {
       var request, res;
       return regeneratorRuntime.wrap(function _callee7$(_context7) {
         while (1) {
           switch (_context7.prev = _context7.next) {
             case 0:
               _context7.next = 2;
-              return fetch("https://api.themoviedb.org/3/discover/tv?api_key=".concat(apiKey, "&sort_by=popularity.desc&first_air_date_year=&vote_average.gte=&with_genres=&page=1"));
+              return fetch("https://api.themoviedb.org/3/discover/movie?api_key=".concat(apiKey, "&sort_by=").concat(sortBy, "&year=").concat(year, "&vote_average.gte=").concat(vote, "&with_genres=").concat(genres, "&page=").concat(page));
 
             case 2:
               request = _context7.sent;
@@ -6850,11 +6850,256 @@ var request = {
       }, _callee7);
     }));
 
+    function fetchDiscoverMovies(_x, _x2, _x3, _x4, _x5) {
+      return _fetchDiscoverMovies.apply(this, arguments);
+    }
+
+    return fetchDiscoverMovies;
+  }(),
+  fetchDiscoverMoviesDefault: function () {
+    var _fetchDiscoverMoviesDefault = _asyncToGenerator(
+    /*#__PURE__*/
+    regeneratorRuntime.mark(function _callee8() {
+      var request, res;
+      return regeneratorRuntime.wrap(function _callee8$(_context8) {
+        while (1) {
+          switch (_context8.prev = _context8.next) {
+            case 0:
+              _context8.next = 2;
+              return fetch("https://api.themoviedb.org/3/discover/movie?api_key=".concat(apiKey, "&sort_by=popularity.desc&year=&vote_average.gte=&with_genres=&page=1}"));
+
+            case 2:
+              request = _context8.sent;
+              _context8.next = 5;
+              return request.json();
+
+            case 5:
+              res = _context8.sent;
+              return _context8.abrupt("return", res);
+
+            case 7:
+            case "end":
+              return _context8.stop();
+          }
+        }
+      }, _callee8);
+    }));
+
+    function fetchDiscoverMoviesDefault() {
+      return _fetchDiscoverMoviesDefault.apply(this, arguments);
+    }
+
+    return fetchDiscoverMoviesDefault;
+  }(),
+  fetchDiscoverShows: function () {
+    var _fetchDiscoverShows = _asyncToGenerator(
+    /*#__PURE__*/
+    regeneratorRuntime.mark(function _callee9(sortBy, year, vote, genres, page) {
+      var request, res;
+      return regeneratorRuntime.wrap(function _callee9$(_context9) {
+        while (1) {
+          switch (_context9.prev = _context9.next) {
+            case 0:
+              _context9.next = 2;
+              return fetch("https://api.themoviedb.org/3/discover/tv?api_key=".concat(apiKey, "&sort_by=").concat(sortBy, "&first_air_date_year=").concat(year, "&vote_average.gte=").concat(vote, "&with_genres=").concat(genres, "&page=").concat(page));
+
+            case 2:
+              request = _context9.sent;
+              _context9.next = 5;
+              return request.json();
+
+            case 5:
+              res = _context9.sent;
+              return _context9.abrupt("return", res);
+
+            case 7:
+            case "end":
+              return _context9.stop();
+          }
+        }
+      }, _callee9);
+    }));
+
+    function fetchDiscoverShows(_x6, _x7, _x8, _x9, _x10) {
+      return _fetchDiscoverShows.apply(this, arguments);
+    }
+
+    return fetchDiscoverShows;
+  }(),
+  fetchDiscoverShowsDefault: function () {
+    var _fetchDiscoverShowsDefault = _asyncToGenerator(
+    /*#__PURE__*/
+    regeneratorRuntime.mark(function _callee10() {
+      var request, res;
+      return regeneratorRuntime.wrap(function _callee10$(_context10) {
+        while (1) {
+          switch (_context10.prev = _context10.next) {
+            case 0:
+              _context10.next = 2;
+              return fetch("https://api.themoviedb.org/3/discover/tv?api_key=".concat(apiKey, "&sort_by=popularity.desc&first_air_date_year=&vote_average.gte=&with_genres=&page=1"));
+
+            case 2:
+              request = _context10.sent;
+              _context10.next = 5;
+              return request.json();
+
+            case 5:
+              res = _context10.sent;
+              return _context10.abrupt("return", res);
+
+            case 7:
+            case "end":
+              return _context10.stop();
+          }
+        }
+      }, _callee10);
+    }));
+
     function fetchDiscoverShowsDefault() {
       return _fetchDiscoverShowsDefault.apply(this, arguments);
     }
 
     return fetchDiscoverShowsDefault;
+  }(),
+  fetchSearchMoviesDefault: function () {
+    var _fetchSearchMoviesDefault = _asyncToGenerator(
+    /*#__PURE__*/
+    regeneratorRuntime.mark(function _callee11() {
+      var request, res;
+      return regeneratorRuntime.wrap(function _callee11$(_context11) {
+        while (1) {
+          switch (_context11.prev = _context11.next) {
+            case 0:
+              _context11.next = 2;
+              return fetch("https://api.themoviedb.org/3/trending/movie/week?api_key=".concat(apiKey));
+
+            case 2:
+              request = _context11.sent;
+              _context11.next = 5;
+              return request.json();
+
+            case 5:
+              res = _context11.sent;
+              return _context11.abrupt("return", res);
+
+            case 7:
+            case "end":
+              return _context11.stop();
+          }
+        }
+      }, _callee11);
+    }));
+
+    function fetchSearchMoviesDefault() {
+      return _fetchSearchMoviesDefault.apply(this, arguments);
+    }
+
+    return fetchSearchMoviesDefault;
+  }(),
+  fetchSearchMovies: function () {
+    var _fetchSearchMovies = _asyncToGenerator(
+    /*#__PURE__*/
+    regeneratorRuntime.mark(function _callee12(movie, page) {
+      var request, res;
+      return regeneratorRuntime.wrap(function _callee12$(_context12) {
+        while (1) {
+          switch (_context12.prev = _context12.next) {
+            case 0:
+              _context12.next = 2;
+              return fetch("https://api.themoviedb.org/3/search/movie?api_key=".concat(apiKey, "&query=").concat(movie, "&page=").concat(page));
+
+            case 2:
+              request = _context12.sent;
+              _context12.next = 5;
+              return request.json();
+
+            case 5:
+              res = _context12.sent;
+              return _context12.abrupt("return", res);
+
+            case 7:
+            case "end":
+              return _context12.stop();
+          }
+        }
+      }, _callee12);
+    }));
+
+    function fetchSearchMovies(_x11, _x12) {
+      return _fetchSearchMovies.apply(this, arguments);
+    }
+
+    return fetchSearchMovies;
+  }(),
+  fetchSearchShowsDefault: function () {
+    var _fetchSearchShowsDefault = _asyncToGenerator(
+    /*#__PURE__*/
+    regeneratorRuntime.mark(function _callee13() {
+      var request, res;
+      return regeneratorRuntime.wrap(function _callee13$(_context13) {
+        while (1) {
+          switch (_context13.prev = _context13.next) {
+            case 0:
+              _context13.next = 2;
+              return fetch("https://api.themoviedb.org/3/trending/tv/week?api_key=".concat(apiKey));
+
+            case 2:
+              request = _context13.sent;
+              _context13.next = 5;
+              return request.json();
+
+            case 5:
+              res = _context13.sent;
+              return _context13.abrupt("return", res);
+
+            case 7:
+            case "end":
+              return _context13.stop();
+          }
+        }
+      }, _callee13);
+    }));
+
+    function fetchSearchShowsDefault() {
+      return _fetchSearchShowsDefault.apply(this, arguments);
+    }
+
+    return fetchSearchShowsDefault;
+  }(),
+  fetchSearchShows: function () {
+    var _fetchSearchShows = _asyncToGenerator(
+    /*#__PURE__*/
+    regeneratorRuntime.mark(function _callee14(movie, page) {
+      var request, res;
+      return regeneratorRuntime.wrap(function _callee14$(_context14) {
+        while (1) {
+          switch (_context14.prev = _context14.next) {
+            case 0:
+              _context14.next = 2;
+              return fetch("https://api.themoviedb.org/3/search/tv?api_key=".concat(apiKey, "&query=").concat(movie, "&page=").concat(page));
+
+            case 2:
+              request = _context14.sent;
+              _context14.next = 5;
+              return request.json();
+
+            case 5:
+              res = _context14.sent;
+              return _context14.abrupt("return", res);
+
+            case 7:
+            case "end":
+              return _context14.stop();
+          }
+        }
+      }, _callee14);
+    }));
+
+    function fetchSearchShows(_x13, _x14) {
+      return _fetchSearchShows.apply(this, arguments);
+    }
+
+    return fetchSearchShows;
   }()
 };
 exports.request = request;
@@ -7197,6 +7442,7 @@ var _moviesGenres = require("./moviesGenres.js");
   var previous = document.getElementById('previous');
   var next = document.getElementById('next');
   var pagination = document.getElementById('pagination-container');
+  var spinner = "\n\t    <div class=\"mb-5 spinner-border text-light\" style=\"width: 3rem; height: 3rem;\" role=\"status\">\n\t      <span class=\"sr-only\">Loading...</span>\n\t    </div>\n\t";
 
   _requests.request.fetchDiscoverMoviesDefault().then(function (data) {
     var output = '';
@@ -7210,7 +7456,7 @@ var _moviesGenres = require("./moviesGenres.js");
       var genreOutput = genresArray.map(function (genre) {
         return genre.name;
       }).join(", ");
-      output += "\n\t\t\t<div onclick=\"test(".concat(movie.id, ")\" class=\"mb-5 mr-3 ml-3 card\" id=").concat(movie.id, " style=\"width: 13rem;\">\n\t\t\t<img class=\"card-img-top card-img\" style=\"height: 19.5rem;\" src=\"https://image.tmdb.org/t/p/w500").concat(movie.poster_path, "\" alt=\"").concat(movie.title, "\">\n\t\t\t<div class=\"card-body\">\n\t\t\t<h5 class=\"card-title card-small-title\">").concat(movie.title, "</h5>\n\t\t\t<p class=\"card-text card-small-details\">").concat(movie.release_date.split("-")[0], " | ").concat(genreOutput, "</p>\n\t\t\t</div>\n\t\t\t</div>\n\t\t\t");
+      output += "\n\t\t\t\t<div onclick=\"test(".concat(movie.id, ")\" class=\"mb-5 mr-3 ml-3 card\" id=").concat(movie.id, " style=\"width: 13rem;\">\n\t\t\t\t\t<img class=\"card-img-top card-img\" style=\"height: 19.5rem;\" src=\"https://image.tmdb.org/t/p/w500").concat(movie.poster_path, "\" alt=\"").concat(movie.title, "\">\n\t\t\t\t\t\t<div class=\"card-body\">\n\t\t\t\t\t\t<h5 class=\"card-title card-small-title\">").concat(movie.title, "</h5>\n\t\t\t\t\t\t<p class=\"card-text card-small-details\">").concat(movie.release_date.split("-")[0], " | ").concat(genreOutput, "</p>\n\t\t\t\t\t</div>\n\t\t\t\t</div>\n\t\t\t\t");
     });
     moviesContainer.innerHTML = output;
     pagination.style.visibility = 'visible';
@@ -7229,6 +7475,15 @@ var _moviesGenres = require("./moviesGenres.js");
     var genreValue = genre.options[genre.selectedIndex].value;
     e.preventDefault();
     renderMovies(sortByValue, year, vote, genreValue, 1);
+    var page = 1;
+    next.addEventListener('click', function () {
+      window.scrollTo(0, 240);
+      renderMovies(sortByValue, year, vote, genreValue, ++page);
+    });
+    previous.addEventListener('click', function () {
+      window.scrollTo(0, 240);
+      renderMovies(sortByValue, year, vote, genreValue, --page);
+    });
   });
 
   var previousDisabled = function previousDisabled(page) {
@@ -7252,6 +7507,7 @@ var _moviesGenres = require("./moviesGenres.js");
   };
 
   function renderMovies(sortByValue, year, vote, genreValue, page) {
+    moviesContainer.innerHTML = spinner;
     previousDisabled(page);
 
     _requests.request.fetchDiscoverMovies(sortByValue, year, vote, genreValue, page).then(function (data) {
@@ -7267,10 +7523,7 @@ var _moviesGenres = require("./moviesGenres.js");
         var genreOutput = genresArray.map(function (genre) {
           return genre.name;
         }).join(", ");
-
-        if (movie.poster_path !== null) {
-          output += "\n\t\t\t\t<div onclick=\"test(".concat(movie.id, ")\" class=\"mb-5 mr-3 ml-3 card\" id=").concat(movie.id, " style=\"width: 13rem;\">\n\t\t\t\t\t<img class=\"card-img-top card-img\" style=\"height: 19.5rem;\" src=\"https://image.tmdb.org/t/p/w500").concat(movie.poster_path, "\" alt=\"").concat(movie.title, "\">\n\t\t\t\t\t<div class=\"card-body\">\n\t\t\t\t\t<h5 class=\"card-title card-small-title\">").concat(movie.title, "</h5>\n\t\t\t\t\t<p class=\"card-text card-small-details\">").concat(movie.release_date.split("-")[0], " | ").concat(genreOutput, "</p>\n\t\t\t\t\t</div>\n\t\t\t\t</div>\n\t\t\t\t");
-        }
+        output += "\n\t\t\t\t<div onclick=\"test(".concat(movie.id, ")\" class=\"mb-5 mr-3 ml-3 card\" id=").concat(movie.id, " style=\"width: 13rem;\">\n\t\t\t\t\t<img class=\"card-img-top card-img\" style=\"height: 19.5rem;\" src=\"https://image.tmdb.org/t/p/w500").concat(movie.poster_path, "\" alt=\"").concat(movie.title, "\">\n\t\t\t\t\t<div class=\"card-body\">\n\t\t\t\t\t<h5 class=\"card-title card-small-title\">").concat(movie.title, "</h5>\n\t\t\t\t\t<p class=\"card-text card-small-details\">").concat(movie.release_date.split("-")[0], " | ").concat(genreOutput, "</p>\n\t\t\t\t\t</div>\n\t\t\t\t</div>\n\t\t\t\t");
       });
 
       if (data.results.length !== 0) {
@@ -7282,14 +7535,6 @@ var _moviesGenres = require("./moviesGenres.js");
       }
 
       pagination.style.visibility = 'visible';
-      next.addEventListener('click', function () {
-        window.scrollTo(0, 240);
-        renderMovies(sortByValue, year, vote, genreValue, ++page);
-      });
-      previous.addEventListener('click', function () {
-        window.scrollTo(0, 240);
-        renderMovies(sortByValue, year, vote, genreValue, --page);
-      });
     });
   }
 })();
@@ -7321,7 +7566,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "14555" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "7743" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
