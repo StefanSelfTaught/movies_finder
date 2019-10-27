@@ -1,87 +1,92 @@
 import * as variables from './variables.js';
 import { genres } from './moviesGenres.js';
+import { request } from './requests.js';
 import '../css/index.css';
-
+import "@babel/polyfill";
 
 (() => {
 
-  fetch('https://api.themoviedb.org/3/trending/movie/week?api_key=ce2eb2231a371296cf6ff11a39206d6e')
-    .then(data => data.json())
-    .then(res => {
-      let topRMovies = res.results;
-      let output = '';
-      let genresArray = '';
-      topRMovies.map(movie => {
-        genresArray = genres.filter(genre => {
-          if(genre.id === movie.genre_ids[0] || genre.id === movie.genre_ids[1]){
-            return genre.id;
-          }
-        })
-        let genreOutput = genresArray.map(genre => genre.name).join(", ");
-        output +=
-          `
-          <div class="mr-3 card" style="width: 15rem; padding-bottom: 0;">
-              <img class="card-img-top card-img" src="https://image.tmdb.org/t/p/w500${movie.poster_path}" alt="Card image cap">
-              <div class="card-body">
-                <h5 class="card-title card-small-title">${movie.title}</h5>
-                <p class="card-text card-small-details">${movie.release_date.split("-")[0]} | ${genreOutput}</p>
-              </div>
-          </div>
-          `
+  request.fetchSearchMoviesDefault().then(data => {
+    let output = '';
+    let genresArray = '';
+    data.results.map(movie => {
+      genresArray = genres.filter(genre => {
+        if (genre.id === movie.genre_ids[0] || genre.id === movie.genre_ids[1]) {
+          return genre.id;
+        }
       })
-      setTimeout(() => {
-        $('.slick-trending-movies').slick({
-          slidesToShow: 8,
-          lazyLoad: 'progressive',
-          slidesToScroll: 8,
-          infinite: false,
-          nextArrow: $('.nextTrendingMovies'),
-          focusOnSelect: false,
-          prevArrow: $('.prevTrendingMovies'),
-          responsive: [
-            {
-              breakpoint: 1300,
-              settings: {
-                slidesToShow: 5,
-                slidesToScroll: 5,
-              }
-            },
-            {
-              breakpoint: 1024,
-              settings: {
-                slidesToShow: 4,
-                slidesToScroll: 4,
-              }
-            },
-            {
-              breakpoint: 750,
-              settings: {
-                slidesToShow: 3,
-                slidesToScroll: 3,
-              }
-            },
-            {
-              breakpoint: 600,
-              settings: {
-                slidesToShow: 2,
-                slidesToScroll: 2
-              }
-            }
-          ]
-        });
-      }, 10)
-      setTimeout(() => {
-         variables.trending.innerHTML = output;
-      }, 9)
+      let genreOutput = genresArray.map(genre => genre.name).join(", ");
+      output +=
+        `
+       <div class="mr-3 card" style="width: 15rem; padding-bottom: 0;">
+           <img class="card-img-top card-img" src="https://image.tmdb.org/t/p/w500${movie.poster_path}" alt="Card image cap">
+               <div class="card-body">
+               <h5 class="card-title card-small-title">${movie.title}</h5>
+               <p class="card-text card-small-details">${movie.release_date.split("-")[0]} | ${genreOutput}</p>
+           </div>
+       </div>
+       `
     })
+    variables.trending.innerHTML = output;
+    $('.slick-trending-movies').slick({
+      slidesToShow: 8,
+      lazyLoad: 'progressive',
+      slidesToScroll: 8,
+      infinite: false,
+      nextArrow: $('.nextTrendingMovies'),
+      focusOnSelect: false,
+      prevArrow: $('.prevTrendingMovies'),
+      responsive: [
+        {
+          breakpoint: 1300,
+          settings: {
+            slidesToShow: 5,
+            slidesToScroll: 5,
+          }
+        },
+        {
+          breakpoint: 1024,
+          settings: {
+            slidesToShow: 4,
+            slidesToScroll: 4,
+          }
+        },
+        {
+          breakpoint: 750,
+          settings: {
+            slidesToShow: 3,
+            slidesToScroll: 3,
+          }
+        },
+        {
+          breakpoint: 600,
+          settings: {
+            slidesToShow: 2,
+            slidesToScroll: 2
+          }
+        }
+      ]
+    })
+  })
 
   variables.inputSearch.addEventListener('input', (e) => {
     e.preventDefault();
     getMovies(e.target.value, 1);
   });
 
+  let page = 1;
+
+  variables.next.addEventListener('click', () => {
+    window.scrollTo(0, 240);
+    getMovies(variables.inputSearch.value, ++page);
+  });
+  variables.previous.addEventListener('click', () => {
+    window.scrollTo(0, 240);
+    getMovies(variables.inputSearch.value, --page)
+  });
+
   const previousDisabled = page => {
-    if(page == 1){
+    if (page == 1) {
       variables.previous.disabled = true;
       variables.previous.classList.add('button-disabled');
     } else {
@@ -91,7 +96,7 @@ import '../css/index.css';
   }
 
   const nextDisabled = (page, totalPages) => {
-    if(page === totalPages){
+    if (page === totalPages) {
       variables.next.disabled = true;
       variables.next.classList.add('button-disabled');
     } else {
@@ -100,22 +105,21 @@ import '../css/index.css';
     }
   }
 
-  const getMovies = (movie, page) => {
-    if(variables.inputSearch.value.length > 0){
+  const getMovies = (movie, page) => { 
+
+    if (variables.inputSearch.value.length > 0) {
       variables.moviesList.innerHTML = variables.spinner;
     }
+
     previousDisabled(page);
-    if(movie.length > 0) {
-    document.getElementById('slider-movies-search').style.display = 'none';
-       fetch(
-        `https://api.themoviedb.org/3/search/movie?api_key=${variables.apiKey}&query=${movie}&page=${page}`
-      )
-        .then(resp => resp.json())
-        .then(data => {
+
+    if (movie.length > 0) {
+      document.getElementById('slider-movies-search').style.display = 'none';
+
+      request.fetchSearchMovies(movie, page).then(data => {
           nextDisabled(page, data.total_pages);
           let output = '';
-          let movies = data.results;
-          movies.map(movie => {
+          data.results.map(movie => {
             let descp;
             if (movie.overview.length > 260) {
               descp = movie.overview.split(" ").splice(0, 30).join(" ") + '...';
@@ -124,55 +128,41 @@ import '../css/index.css';
             } else {
               descp = movie.overview;
             }
-            if(movie.poster_path !== null && movie.backdrop_path !== null) {
-            output += `
+              output += `
               <div class="card-v2">
-                <div class="poster">
-                  <img
-                    src="https://image.tmdb.org/t/p/w300${movie.poster_path}"
-                  />
-                </div>
-                <div class="details">
-                  <h2>${movie.title}<br /><span>Relased in: ${movie.release_date}</span></h2>
-                  <div class="rating">
-                    <i class="fas fa-star"></i>
-                    <span>${movie.vote_average} / 10</span>
+                  <div class="poster">
+                      <img src="https://image.tmdb.org/t/p/w300${movie.poster_path}"/>
+                      </div>
+                          <div class="details">
+                          <h2>${movie.title}<br /><span>Relased in: ${movie.release_date}</span></h2>
+                          <div class="rating">
+                          <i class="fas fa-star"></i>
+                          <span>${movie.vote_average} / 10</span>
+                      </div>
+                      <div class="info">
+                          <p>${descp}</p>
+                      </div>
+                      <div class="more-info">
+                        <a onclick="test(${movie.id})" target="_blank" class="btn btn-dark">More Details</a>
+                      </div>
                   </div>
-                  <div class="info">
-                    <p>
-                      ${descp}
-                    </p>
-                  </div>
-                  <div class="more-info">
-                    <a onclick="test(${movie.id})" target="_blank" class="btn btn-dark">More Details</a>
-                  </div>
-                </div>
               </div>
-            `;
-            }
-          })
-          if(movies.length !== 0){
+              `;
+        })
+          if (data.results.length !== 0) {
             variables.moviesList.innerHTML = output;
           } else {
             variables.moviesList.innerHTML = `<h2 class="no-results">No results founded</h2>`;
             variables.next.disabled = true;
             variables.next.classList.add('button-disabled');
           }
-           variables.pagination.style.visibility = 'visible';
-           variables.next.addEventListener('click', () => {
-            window.scrollTo(0, 240);
-            getMovies(variables.inputSearch.value, ++page);
-          });
-          previous.addEventListener('click', () => {
-            window.scrollTo(0, 240);
-            getMovies(variables.inputSearch.value, --page)
-          });
-        })
+            variables.pagination.style.visibility = 'visible';
+      })
     } else {
       document.getElementById('slider-movies-search').style.display = 'block';
       variables.moviesList.innerHTML = null;
       variables.pagination.style.visibility = 'hidden';
     }
-  }
+}
 
 })();

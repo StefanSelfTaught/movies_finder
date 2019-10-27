@@ -5,10 +5,15 @@ import "@babel/polyfill";
 (() => {
 
 	const form = document.getElementById('discoverForm');
-	const moviesContainer = document.getElementById('discover-shows');
+	const showsContainer = document.getElementById('discover-shows');
 	const previous = document.getElementById('previous');
 	const next = document.getElementById('next');
 	const pagination = document.getElementById('pagination-container');
+	const spinner = `
+		<div class="mb-5 spinner-border text-light" style="width: 3rem; height: 3rem;" role="status">
+			<span class="sr-only">Loading...</span>
+		</div>
+	`;
 
 	request.fetchDiscoverShowsDefault().then(data => {
 		let output = '';
@@ -25,20 +30,21 @@ import "@babel/polyfill";
 			`
 			<div class="mb-5 mr-3 ml-3 card" id=${movie.id} style="width: 13rem;">
 				<img class="card-img-top card-img" style="height: 19.5rem;" src="https://image.tmdb.org/t/p/w500${movie.poster_path}" alt="Card image cap">
-				    <div class="card-body">
-				       	<h5 class="card-title card-small-title">${movie.name}</h5>
-				        <p class="card-text card-small-details">${movie.first_air_date.split("-")[0]} | ${genreOutput}</p>
-				   	</div>
-      		</div>
+					<div class="card-body">
+					<h5 class="card-title card-small-title">${movie.name}</h5>
+					<p class="card-text card-small-details">${movie.first_air_date.split("-")[0]} | ${genreOutput}</p>
+				</div>
+			</div>
 			`
 		})
-		moviesContainer.innerHTML = output;
+		showsContainer.innerHTML = output;
 		pagination.style.visibility = 'visible';
 		previous.disabled = true;
 		next.disabled = true;
 		next.classList.add('button-disabled');
 		previous.classList.add('button-disabled');
 	})
+
 
 	form.addEventListener('submit', (e) => {
 
@@ -54,10 +60,21 @@ import "@babel/polyfill";
 
 		e.preventDefault();
 		renderMovies(sortByValue, year, vote, genreValue, 1);
+
+		let page = 1;
+
+		next.addEventListener('click', () => {
+			window.scrollTo(0, 240);
+			renderMovies(sortByValue, year, vote, genreValue, ++page);
+		});
+		previous.addEventListener('click', () => {
+			window.scrollTo(0, 240);
+			renderMovies(sortByValue, year, vote, genreValue, --page);
+		});
 	})
 
 	const previousDisabled = page => {
-		if(page == 1){
+		if(page === 1){
 			previous.disabled = true;
 			previous.classList.add('button-disabled');
 		} else {
@@ -77,6 +94,9 @@ import "@babel/polyfill";
 	}
 
 	function renderMovies(sortByValue, year, vote, genreValue, page) {
+
+		showsContainer.innerHTML = spinner;
+
 		previousDisabled(page);
 
 		request.fetchDiscoverShows(sortByValue, year, vote, genreValue, page).then(data => {
@@ -95,29 +115,21 @@ import "@babel/polyfill";
 				`
 				<div class="mb-5 mr-3 ml-3 card" id=${movie.id} style="width: 13rem;">
 					<img class="card-img-top card-img" style="height: 19.5rem;" src="https://image.tmdb.org/t/p/w500${movie.poster_path}" alt="Card image cap">
-				    <div class="card-body">
-				       	<h5 class="card-title card-small-title">${movie.name}</h5>
-				        <p class="card-text card-small-details">${movie.first_air_date.split("-")[0]} | ${genreOutput}</p>
-				   	</div>
-      			</div>
+						<div class="card-body">
+						<h5 class="card-title card-small-title">${movie.name}</h5>
+						<p class="card-text card-small-details">${movie.first_air_date.split("-")[0]} | ${genreOutput}</p>
+					</div>
+				</div>
 				`
 			})
 			if(data.results.length !== 0){
-				moviesContainer.innerHTML = output;
+				showsContainer.innerHTML = output;
 			} else {
-				moviesContainer.innerHTML = `<h2 class="no-results">No results founded</h2>`;
+				showsContainer.innerHTML = `<h2 class="no-results">No results founded</h2>`;
 				next.disabled = true;
 				next.classList.add('button-disabled');
 			}
 			pagination.style.visibility = 'visible';
-			next.addEventListener('click', () => {
-				window.scrollTo(0, 240);
-				renderMovies(sortByValue, year, vote, genreValue, ++page);
-			});
-			previous.addEventListener('click', () => {
-				window.scrollTo(0, 240);
-				renderMovies(sortByValue, year, vote, genreValue, --page);
-			});
 		})
 	}
 

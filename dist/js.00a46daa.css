@@ -34,6 +34,11 @@ h1 {
   font-size: 16px;
 }
 
+.search-btn:focus {
+  border: none;
+  outline: none;
+}
+
 .search-btn {
   border: none;
   display: block;
@@ -65,15 +70,11 @@ h1 {
   top: 0;
   height: 490%;
   width: 140%;
-  background: rgb(1, 210, 119);
+  background: #01d277;
   -webkit-transition: all .5s ease-in-out;
   transition: all .5s ease-in-out;
   -webkit-transform: translateX(-98%) translateY(-25%) rotate(45deg);
   transform: translateX(-98%) translateY(-25%) rotate(45deg);
-}
-
-.search-btn:hover {
-  border: 1px solid black;
 }
 
 .search-btn:hover:after {
