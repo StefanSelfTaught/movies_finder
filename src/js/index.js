@@ -151,7 +151,7 @@ import { request } from './requests.js';
 			output +=
 				`
 				<div onclick="test(${movie.id})" class="mr-3 card" style="width: 20rem;">
-				    <img class="card-img-top card-img" data-lazy="https://image.tmdb.org/t/p/w500${movie.poster_path}" alt=${movie.title}>
+				    <img style="min-height: 18rem;" class="card-img-top card-img" data-lazy="https://image.tmdb.org/t/p/w500${movie.poster_path}" alt=${movie.title}>
 				    <div class="card-body">
 				        <h5 class="card-title card-movie-title">${movie.title}</h5>
 				        <p class="card-text card-details">${movie.release_date.split("-")[0]} | ${genreOutput} </p>
