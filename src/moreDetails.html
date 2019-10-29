@@ -4,6 +4,16 @@
 	<meta charset="UTF-8">
 	<title>Document</title>
 	<div id="movie"></div>
+	<style>
+		#movie {
+			height: 80vh;
+			width: 100%;
+		}
+		img {
+			height: 100%;
+			height: 80vh;
+		}
+	</style>
 </head>
 <body>
 	<script type="text/javascript">
@@ -14,14 +24,10 @@
 		)
 			.then(res => res.json())
 			.then(data => {
+				console.log(data);
 				let output = '';
-				output = 
-				`
-					<div>
-						<p>${data.title}</p>
-						<p>${data.vote_average}</p>
-						<p>${data.adult}</p>
-					</div>
+				output = `
+					<img src="https://image.tmdb.org/t/p/original${data.backdrop_path}" />
 				`
 				document.getElementById('movie').innerHTML = output;
 			})

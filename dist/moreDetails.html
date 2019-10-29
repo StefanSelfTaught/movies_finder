@@ -4,6 +4,14 @@
 	<meta charset="UTF-8">
 	<title>Document</title>
 	<div id="movie"></div>
+	<style>#movie {
+			height: 80vh;
+			width: 100%;
+		}
+		img {
+			height: 100%;
+			height: 80vh;
+		}</style>
 </head>
 <body>
 	<script>var id = sessionStorage.getItem("id");
@@ -11,8 +19,9 @@ var api = 'ce2eb2231a371296cf6ff11a39206d6e';
 fetch("https://api.themoviedb.org/3/movie/".concat(id, "?api_key=").concat(api, "&language=en-US&append_to_response=reviews,videos,images")).then(function (res) {
   return res.json();
 }).then(function (data) {
+  console.log(data);
   var output = '';
-  output = "\n\t\t\t\t\t<div>\n\t\t\t\t\t\t<p>".concat(data.title, "</p>\n\t\t\t\t\t\t<p>").concat(data.vote_average, "</p>\n\t\t\t\t\t\t<p>").concat(data.adult, "</p>\n\t\t\t\t\t</div>\n\t\t\t\t");
+  output = "\n\t\t\t\t\t<img src=\"https://image.tmdb.org/t/p/original".concat(data.backdrop_path, "\" />\n\t\t\t\t");
   document.getElementById('movie').innerHTML = output;
 });</script>
 </body>
