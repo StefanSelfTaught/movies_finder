@@ -7527,7 +7527,7 @@ var _requests = require("./requests.js");
       var genreOutput = genresArray.map(function (genre) {
         return genre.name;
       }).join(", ");
-      output += "\n\t\t\t\t<div onclick=\"test(".concat(movie.id, ")\" class=\"mr-3 card\" id=").concat(movie.id, " style=\"width: 20rem;\">\n\t\t\t\t\t    <img class=\"card-img-top card-img\" src=\"https://image.tmdb.org/t/p/w500").concat(movie.poster_path, "\" alt=\"").concat(movie.title, "\">\n\t\t\t\t\t    <div class=\"card-body\">\n\t\t\t\t\t        <h5 class=\"card-title card-movie-title\">").concat(movie.title, "</h5>\n\t\t\t\t\t        <p class=\"card-text card-details\">").concat(movie.release_date.split("-")[0], " | ").concat(genreOutput, "</p>\n\t\t\t\t\t    </div>\n      \t\t\t</div>\n\t\t\t\t");
+      output += "\n\t\t\t\t<div onclick=\"e(".concat(movie.id, ")\" class=\"mr-3 card\" id=").concat(movie.id, " style=\"width: 20rem;\">\n\t\t\t\t\t    <img class=\"card-img-top card-img\" src=\"https://image.tmdb.org/t/p/w500").concat(movie.poster_path, "\" alt=\"").concat(movie.title, "\">\n\t\t\t\t\t    <div class=\"card-body\">\n\t\t\t\t\t        <h5 class=\"card-title card-movie-title\">").concat(movie.title, "</h5>\n\t\t\t\t\t        <p class=\"card-text card-details\">").concat(movie.release_date.split("-")[0], " | ").concat(genreOutput, "</p>\n\t\t\t\t\t    </div>\n      \t\t\t</div>\n\t\t\t\t");
     });
     topMovies.innerHTML = output;
     $('.slick-carousel').slick({
@@ -7578,7 +7578,7 @@ var _requests = require("./requests.js");
       var genreOutput = genresArray.map(function (genre) {
         return genre.name;
       }).join(", ");
-      output += "\n\t\t\t\t<div onclick=\"test(".concat(movie.id, ")\" class=\"mr-3 card\" style=\"width: 20rem;\">\n\t\t\t\t    <img class=\"card-img-top card-img\" data-lazy=\"https://image.tmdb.org/t/p/w500").concat(movie.poster_path, "\">\n\t\t\t\t    <div class=\"card-body\">\n\t\t\t\t        <h5 class=\"card-title card-movie-title\">").concat(movie.title, "</h5>\n\t\t\t\t        <p class=\"card-text card-details\">").concat(movie.release_date.split("-")[0], " | ").concat(genreOutput, " </p>\n\t\t\t\t    </div>\n      \t\t\t</div>\n\t\t\t\t");
+      output += "\n\t\t\t\t<div onclick=\"e(".concat(movie.id, ")\" class=\"mr-3 card\" style=\"width: 20rem;\">\n\t\t\t\t    <img class=\"card-img-top card-img\" data-lazy=\"https://image.tmdb.org/t/p/w500").concat(movie.poster_path, "\">\n\t\t\t\t    <div class=\"card-body\">\n\t\t\t\t        <h5 class=\"card-title card-movie-title\">").concat(movie.title, "</h5>\n\t\t\t\t        <p class=\"card-text card-details\">").concat(movie.release_date.split("-")[0], " | ").concat(genreOutput, " </p>\n\t\t\t\t    </div>\n      \t\t\t</div>\n\t\t\t\t");
     });
     popularMovies.innerHTML = output;
     $('.slick-carousel-popular').slick({
@@ -7629,7 +7629,7 @@ var _requests = require("./requests.js");
       var genreOutput = genresArray.map(function (genre) {
         return genre.name;
       }).join(", ");
-      output += "\n\t\t\t\t<div onclick=\"test(".concat(movie.id, ")\" class=\"mr-3 card\" style=\"width: 20rem;\">\n\t\t\t\t    <img style=\"min-height: 18rem;\" class=\"card-img-top card-img\" data-lazy=\"https://image.tmdb.org/t/p/w500").concat(movie.poster_path, "\" alt=").concat(movie.title, ">\n\t\t\t\t    <div class=\"card-body\">\n\t\t\t\t        <h5 class=\"card-title card-movie-title\">").concat(movie.title, "</h5>\n\t\t\t\t        <p class=\"card-text card-details\">").concat(movie.release_date.split("-")[0], " | ").concat(genreOutput, " </p>\n\t\t\t\t    </div>\n      \t\t\t</div>\n\t\t\t\t");
+      output += "\n\t\t\t\t<div onclick=\"e(".concat(movie.id, ")\" class=\"mr-3 card\" style=\"width: 20rem;\">\n\t\t\t\t    <img style=\"min-height: 18rem;\" class=\"card-img-top card-img\" data-lazy=\"https://image.tmdb.org/t/p/w500").concat(movie.poster_path, "\" alt=").concat(movie.title, ">\n\t\t\t\t    <div class=\"card-body\">\n\t\t\t\t        <h5 class=\"card-title card-movie-title\">").concat(movie.title, "</h5>\n\t\t\t\t        <p class=\"card-text card-details\">").concat(movie.release_date.split("-")[0], " | ").concat(genreOutput, " </p>\n\t\t\t\t    </div>\n      \t\t\t</div>\n\t\t\t\t");
     });
     nowPlaying.innerHTML = output;
     $('.slick-carousel-playing').slick({
@@ -7696,7 +7696,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "6961" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "10837" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

@@ -117,7 +117,83 @@ parcelRequire = (function (modules, cache, entry, globalName) {
   }
 
   return newRequire;
-})({"js/moreDetails.js":[function(require,module,exports) {
+})({"../node_modules/parcel-bundler/src/builtins/bundle-url.js":[function(require,module,exports) {
+var bundleURL = null;
+
+function getBundleURLCached() {
+  if (!bundleURL) {
+    bundleURL = getBundleURL();
+  }
+
+  return bundleURL;
+}
+
+function getBundleURL() {
+  // Attempt to find the URL of the current script and use that as the base URL
+  try {
+    throw new Error();
+  } catch (err) {
+    var matches = ('' + err.stack).match(/(https?|file|ftp|chrome-extension|moz-extension):\/\/[^)\n]+/g);
+
+    if (matches) {
+      return getBaseURL(matches[0]);
+    }
+  }
+
+  return '/';
+}
+
+function getBaseURL(url) {
+  return ('' + url).replace(/^((?:https?|file|ftp|chrome-extension|moz-extension):\/\/.+)\/[^/]+$/, '$1') + '/';
+}
+
+exports.getBundleURL = getBundleURLCached;
+exports.getBaseURL = getBaseURL;
+},{}],"../node_modules/parcel-bundler/src/builtins/css-loader.js":[function(require,module,exports) {
+var bundle = require('./bundle-url');
+
+function updateLink(link) {
+  var newLink = link.cloneNode();
+
+  newLink.onload = function () {
+    link.remove();
+  };
+
+  newLink.href = link.href.split('?')[0] + '?' + Date.now();
+  link.parentNode.insertBefore(newLink, link.nextSibling);
+}
+
+var cssTimeout = null;
+
+function reloadCSS() {
+  if (cssTimeout) {
+    return;
+  }
+
+  cssTimeout = setTimeout(function () {
+    var links = document.querySelectorAll('link[rel="stylesheet"]');
+
+    for (var i = 0; i < links.length; i++) {
+      if (bundle.getBaseURL(links[i].href) === bundle.getBundleURL()) {
+        updateLink(links[i]);
+      }
+    }
+
+    cssTimeout = null;
+  }, 50);
+}
+
+module.exports = reloadCSS;
+},{"./bundle-url":"../node_modules/parcel-bundler/src/builtins/bundle-url.js"}],"css/index.css":[function(require,module,exports) {
+var reloadCSS = require('_css_loader');
+
+module.hot.dispose(reloadCSS);
+module.hot.accept(reloadCSS);
+},{"./..\\..\\images\\jumbotron.jpg":[["jumbotron.104cebb4.jpg","../images/jumbotron.jpg"],"../images/jumbotron.jpg"],"_css_loader":"../node_modules/parcel-bundler/src/builtins/css-loader.js"}],"js/moreDetails.js":[function(require,module,exports) {
+"use strict";
+
+require("../css/index.css");
+
 var id = sessionStorage.getItem("id");
 var api = 'ce2eb2231a371296cf6ff11a39206d6e';
 fetch("https://api.themoviedb.org/3/movie/".concat(id, "?api_key=").concat(api, "&language=en-US&append_to_response=reviews,videos,images")).then(function (res) {
@@ -125,10 +201,11 @@ fetch("https://api.themoviedb.org/3/movie/".concat(id, "?api_key=").concat(api, 
 }).then(function (data) {
   console.log(data);
   var output = '';
-  output = "\n\t\t\t<div id=\"movie\" style=\"background-image: url(https://image.tmdb.org/t/p/original".concat(data.backdrop_path, ")\"></div>\n\t\t");
+  output = "\n\t\t\t<div id=\"movie\">\n\t\t\t\t<div class=\"movie-infos\">\n\t\t\t\t\t<h1>".concat(data.title, "</h1>\n\t\t\t\t\t<p>").concat(data.genres[0].name + ', ' + data.genres[1].name, "</p>\n\t\t\t\t</div>\n\t\t\t</div>\n\t\t");
   document.body.innerHTML = output;
+  document.getElementById('movie').setAttribute("style", "background: linear-gradient(0deg, rgb(0, 0, 0) 5%, rgba(0, 0, 0, 0.45) 92%) no-repeat center/cover, url(https://image.tmdb.org/t/p/original".concat(data.backdrop_path, ") no-repeat center top/cover rgb(255, 255, 255)"));
 });
-},{}],"../node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
+},{"../css/index.css":"css/index.css"}],"../node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
 var global = arguments[3];
 var OVERLAY_ID = '__parcel__error__overlay__';
 var OldModule = module.bundle.Module;
@@ -156,7 +233,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "6961" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "10837" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
