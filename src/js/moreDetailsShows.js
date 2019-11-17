@@ -25,11 +25,10 @@ window.onload = function() {
 let id = sessionStorage.getItem("id");
 let api = "ce2eb2231a371296cf6ff11a39206d6e";
 fetch(
-	`https://api.themoviedb.org/3/movie/${id}?api_key=${api}&language=en-US&append_to_response=reviews,videos,images`
+	`https://api.themoviedb.org/3/tv/${id}?api_key=${api}&language=en-US&append_to_response=reviews,videos,images`
 )
 	.then(res => res.json())
 	.then(data => {
-		console.log(data);
 		let output = "";
 		output = `
 			<div class="lax" data-lax-opacity="0 1, 500 0" data-lax-translate-y="0 0, 400 -400" id="movie">
@@ -37,12 +36,13 @@ fetch(
 					<a onclick="window.history.back()"><span class="carousel-control-prev-icon back-arrow" aria-hidden="true"></span></a>
 				</div>
 				<div class="lax movie-infos">
-					<h1 class="main-movie-title">${data.title}</h1>
+					<h1 class="main-movie-title">${data.name}</h1>
 					<p class="main-movie-details">
-						${data.release_date.split("-")[0]} &nbsp | &nbsp
+						${data.first_air_date.split("-")[0]} &nbsp | &nbsp
 						${data.genres.slice(0, 2).map(genre => ' ' + genre.name )} &nbsp | &nbsp
 						${data.original_language.toUpperCase()} &nbsp | &nbsp 
-						${data.runtime ? data.runtime + ' mins ' : ''}			
+						${data.episode_run_time.length ? data.episode_run_time[0] + ' mins per episode' : ''} &nbsp | &nbsp 
+						${data.number_of_seasons + ' season(s) '}	
 					</p>
 					<p class="main-movie-rating">Rating: &nbsp ${
 						data.vote_average

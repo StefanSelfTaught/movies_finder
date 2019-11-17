@@ -11,3 +11,7 @@ export const spinner = `
     <div class="mb-5 spinner-border text-light" style="width: 3rem; height: 3rem;" role="status">
       <span class="sr-only">Loading...</span>
     </div>`;
+export const spinner2 = `
+    <div style="margin: 0 auto" class="mb-5 spinner-border text-light" style="width: 5rem !important; height: 5rem !important;" role="status">
+      <span class="sr-only">Loading...</span>
+    </div>`;

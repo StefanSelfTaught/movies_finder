@@ -6,6 +6,7 @@ import "@babel/polyfill";
 
 (() => {
 
+  variables.trending2.innerHTML = variables.spinner2;
   request.fetchSearchShowsDefault().then(data => {
       let output = '';
       let genresArray = '';
@@ -18,7 +19,7 @@ import "@babel/polyfill";
         let genreOutput = genresArray.map(genre => genre.name).join(", ");
         output +=
           `
-          <div class="mr-3 card" style="width: 15rem; padding-bottom: 0;">
+          <div onclick="e(${movie.id})" class="mr-3 card" style="width: 15rem; padding-bottom: 0;">
               <img class="card-img-top card-img" src="https://image.tmdb.org/t/p/w500${movie.poster_path}" alt="Card image cap">
               <div class="card-body">
                 <h5 class="card-title card-small-title">${movie.name}</h5>
@@ -147,7 +148,7 @@ import "@babel/polyfill";
                       </p>
                     </div>
                     <div class="more-info">
-                      <a href="https://www.themoviedb.org/tv/${movie.id}" target="_blank" class="btn btn-dark">More Details</a>
+                      <a onclick="e(${movie.id})" target="_blank" class="btn btn-dark">More Details</a>
                     </div>
                   </div>
                 </div>

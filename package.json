@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.html",
   "scripts": {
-    "dev": "parcel ./src/*.html",
+    "dev": "parcel ./src/index.html",
     "prod": "parcel build src/*.html",
     "deploy": "gh-pages -d dist"
   },
@@ -25,6 +25,10 @@
   },
   "dependencies": {
     "babel-polyfill": "^6.26.0",
-    "jquery": "^3.4.1"
+    "bootstrap": "^4.3.1",
+    "jquery": "^3.4.1",
+    "lax.js": "^1.2.5",
+    "popper": "^1.0.1",
+    "popper.js": "^1.16.0"
   }
 }
