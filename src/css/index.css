@@ -1,30 +1,70 @@
 @import url('https://fonts.googleapis.com/css?family=Nunito:300,300i,400,700,800&display=swap');
 
-/********** BASE ***************/
+/********** SCROLLBAR ***************/
 
+/* total width */
+body::-webkit-scrollbar {
+    background-color:#fff;
+    width:16px
+}
+
+/* background of the scrollbar except button or resizer */
+body::-webkit-scrollbar-track {
+    background-color:#fff
+}
+
+/* scrollbar itself */
+body::-webkit-scrollbar-thumb {
+    background-color: #011627;
+    border-radius:16px;
+    border:4px solid #fff
+}
+
+/* set button(top and bottom of the scrollbar) */
+body::-webkit-scrollbar-button {display:none}
+
+/********** BASE ***************/
 #movie {
   height: 100vh;
   width: 100%;
+  display: -webkit-box;
   display: flex;
-  flex-direction: column;
-  justify-content: space-between;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+          flex-direction: column;
+  -webkit-box-pack: justify;
+          justify-content: space-between;
   align-content: space-between;
   padding: 90px;
 }
 
+.logo-companies {
+  position: absolute;
+  right: 70px;
+  top: 35px;
+}
+
+.logo-companies > img {
+  border-radius: 10px;
+}
+
 .back-arrow {
-  width: 45px;
-  height: 43px;
+  width: 35px !important;
+  height: 43px !important;
+  -webkit-transition: -webkit-transform 0.2s ease;
+  transition: -webkit-transform 0.2s ease;
   transition: transform 0.2s ease;
+  transition: transform 0.2s ease, -webkit-transform 0.2s ease;
 }
 
 .back-arrow:hover {
-  transform: scale(1.1);
+  -webkit-transform: scale(1.1);
+          transform: scale(1.1);
   cursor: pointer;
 }
 
 .movie-infos {
-  /* margin: 0px 0px 85px 125px; */
+  position: relative;
 }
 
 .back-arrow {
@@ -58,6 +98,10 @@
   box-sizing: border-box !important;
 }
 
+.content {
+  height: 500px;
+}
+
 body {
   background-color: #000000 !important;
   font-family: 'Nunito', sans-serif !important;
@@ -75,9 +119,12 @@ h1 {
 }
 
 .flex {
+  display: -webkit-box;
   display: flex;
-  justify-content: center;
-  align-items: center;
+  -webkit-box-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+          align-items: center;
 }
 
 .col-form-label {
@@ -106,6 +153,7 @@ h1 {
   padding: 15px 60px;
   border-radius: 15px;
   box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+  -webkit-transition: all 0.5s ease-in-out;
   transition: all 0.5s ease-in-out;
 }
 
@@ -137,7 +185,8 @@ h1 {
 
 nav {
   background-color: rgba(0, 0, 0, 0.75) !important;
-  backdrop-filter: blur(5px);
+  -webkit-backdrop-filter: blur(5px);
+          backdrop-filter: blur(5px);
   border: none !important;
 }
 
@@ -149,6 +198,7 @@ nav {
 }
 
 .fixed-top {
+  position: -webkit-sticky !important;
   position: sticky !important;
 }
 
@@ -183,6 +233,12 @@ nav {
 .shadow {
   position: absolute;
   width: 70px;
+  background: -webkit-gradient(
+    linear,
+    left top, right top,
+    from(rgba(0, 0, 0, 0)),
+    color-stop(70%, rgba(0, 0, 0, 1))
+  );
   background: linear-gradient(
     to right,
     rgba(0, 0, 0, 0) 0%,
@@ -197,6 +253,7 @@ nav {
 .shadow2 {
   position: absolute;
   height: 100px;
+  background: -webkit-gradient(linear, left top, left bottom, from(rgba(0, 0, 0, 0)), to(rgba(0, 0, 0, 1)));
   background: linear-gradient(rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 1) 100%);
   z-index: 1;
   bottom: 0;
@@ -207,6 +264,12 @@ nav {
 .shadow3 {
   position: absolute;
   height: 15px;
+  background: -webkit-gradient(
+    linear,
+    left bottom, left top,
+    from(rgba(0, 0, 0, 0)),
+    to(rgba(0, 0, 0, 1))
+  );
   background: linear-gradient(
     to top,
     rgba(0, 0, 0, 0) 0%,
@@ -228,6 +291,12 @@ nav {
   content: '';
   position: absolute;
   width: 70px;
+  background: -webkit-gradient(
+    linear,
+    right top, left top,
+    from(rgba(0, 0, 0, 0)),
+    color-stop(70%, rgba(0, 0, 0, 1))
+  );
   background: linear-gradient(
     to left,
     rgba(0, 0, 0, 0) 0%,
@@ -238,9 +307,11 @@ nav {
 }
 
 .carousel-img {
-  filter: brightness(60%);
+  -webkit-filter: brightness(60%);
+          filter: brightness(60%);
   height: 36rem;
-  object-fit: cover;
+  -o-object-fit: cover;
+     object-fit: cover;
 }
 
 .carousel-indicators li {
@@ -297,6 +368,7 @@ nav {
 
 .card-img {
   opacity: 1;
+  -webkit-transition: all 0.2s ease;
   transition: all 0.2s ease;
 }
 
@@ -321,6 +393,12 @@ nav {
 .shadow-next {
   position: absolute;
   width: 100px;
+  background: -webkit-gradient(
+    linear,
+    left top, right top,
+    from(rgba(0, 0, 0, 0)),
+    to(rgba(0, 0, 0, 1))
+  );
   background: linear-gradient(
     to right,
     rgba(0, 0, 0, 0) 0%,
@@ -335,6 +413,12 @@ nav {
 .shadow-prev {
   position: absolute;
   width: 70px;
+  background: -webkit-gradient(
+    linear,
+    right top, left top,
+    from(rgba(0, 0, 0, 0)),
+    to(rgba(0, 0, 0, 1))
+  );
   background: linear-gradient(
     to left,
     rgba(0, 0, 0, 0) 0%,
@@ -367,6 +451,7 @@ nav {
   height: 25px;
   width: 25px;
   color: white;
+  -webkit-transition: all 0.2s ease;
   transition: all 0.2s ease;
   display: block !important;
 }
@@ -383,6 +468,7 @@ nav {
   width: 25px;
   height: 25px;
   color: white;
+  -webkit-transition: all 0.2s ease;
   transition: all 0.2s ease;
   display: block !important;
 }
@@ -449,6 +535,10 @@ nav {
   position: relative;
 }
 
+.btn-dark:hover {
+  cursor: pointer !important;
+}
+
 .card-v2 .poster {
   position: relative;
   overflow: hidden;
@@ -461,7 +551,9 @@ nav {
   left: 0;
   width: 100%;
   height: 100%;
+  background: -webkit-gradient(linear, left bottom, left top, color-stop(50%, #000), to(transparent));
   background: linear-gradient(0deg, #000 50%, transparent);
+  -webkit-transition: 0.5s;
   transition: 0.5s;
   z-index: 1;
 }
@@ -472,13 +564,16 @@ nav {
 
 .card-v2 .poster img {
   width: 100%;
+  -webkit-transition: 0.5s;
   transition: 0.5s;
   border-radius: 5px;
 }
 
 .card-v2:hover .poster img {
-  filter: blur(2px);
-  transform: translateY(-80px);
+  -webkit-filter: blur(2px);
+          filter: blur(2px);
+  -webkit-transform: translateY(-80px);
+          transform: translateY(-80px);
 }
 
 .details {
@@ -489,6 +584,7 @@ nav {
   bottom: -225px;
   left: 0;
   box-sizing: border-box;
+  -webkit-transition: 0.5s;
   transition: 0.5s;
   z-index: 2;
 }
