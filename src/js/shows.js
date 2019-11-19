@@ -33,7 +33,7 @@ import { request } from './requests.js';
 		onTheAir.innerHTML = output;
 		$('.slick-carousel-air').slick({
 			slidesToShow: 6,
-			lazyLoad: 'progressive',
+			lazyLoad: 'ondemand',
 			slidesToScroll: 6,
 			infinite: false,
 			nextArrow: $('.nextAir'),
@@ -99,7 +99,7 @@ import { request } from './requests.js';
 		$('.slick-carousel-popularShows').slick({
 			slidesToShow: 6,
 			slidesToScroll: 6,
-			lazyLoad: 'progressive',
+			lazyLoad: 'ondemand',
 			infinite: false,
 			nextArrow: $('.nextPopularShows'),
 			focusOnSelect: false,
@@ -162,7 +162,7 @@ import { request } from './requests.js';
 		$('.slick-carousel-topShows').slick({
 			slidesToShow: 7,
 			slidesToScroll: 7,
-			lazyLoad: 'progressive',
+			lazyLoad: 'ondemand',
 			infinite: false,
 			nextArrow: $('.nextTopShows'),
 			focusOnSelect: false,
