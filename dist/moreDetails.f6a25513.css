@@ -31,6 +31,31 @@ body::-webkit-scrollbar-thumb {
 body::-webkit-scrollbar-button {display:none}
 
 /********** BASE ***************/
+.blur {
+  filter: blur(100px);
+  transition: all 0.8s;
+}
+
+.noblur {
+  transition: all 0.8s;
+}
+
+.blur2 {
+  filter: blur(100px);
+  transition: all 0.8s;
+}
+
+.noblur2 {
+  transition: all 0.8s;
+}
+
+#spinner-blur {
+  position: absolute;
+  top: 46%;
+  left: 46.5%;
+  z-index: 9999999;
+}
+
 #movie {
   height: 100vh;
   width: 100%;

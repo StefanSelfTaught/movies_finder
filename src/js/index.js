@@ -8,6 +8,9 @@ import { request } from './requests.js';
   const popularMovies = document.getElementById('popular-movies');
   const nowPlaying = document.getElementById('now-playing');
 
+  document.getElementById('my-container').classList.remove('blur2');
+  document.getElementById('my-container').classList.add('noblur2');
+
   request.fetchTopMovies().then(data => {
     let output = '';
     let genresArray = '';
@@ -41,7 +44,7 @@ import { request } from './requests.js';
     topMovies.innerHTML = output;
     $('.slick-carousel').slick({
       slidesToShow: 6,
-      lazyLoad: 'progressive',
+      lazyLoad: 'ondemand',
       slidesToScroll: 6,
       infinite: false,
       nextArrow: $('.nextTop'),
@@ -112,7 +115,7 @@ import { request } from './requests.js';
     $('.slick-carousel-popular').slick({
       slidesToShow: 6,
       slidesToScroll: 6,
-      lazyLoad: 'progressive',
+      lazyLoad: 'ondemand',
       infinite: false,
       nextArrow: $('.nextPopular'),
       focusOnSelect: false,
@@ -181,7 +184,7 @@ import { request } from './requests.js';
     $('.slick-carousel-playing').slick({
       slidesToShow: 7,
       slidesToScroll: 7,
-      lazyLoad: 'progressive',
+      lazyLoad: 'ondemand',
       infinite: false,
       nextArrow: $('.nextPlaying'),
       focusOnSelect: false,

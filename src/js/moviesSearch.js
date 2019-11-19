@@ -31,7 +31,7 @@ import "@babel/polyfill";
     variables.trending.innerHTML = output;
     $('.slick-trending-movies').slick({
       slidesToShow: 8,
-      lazyLoad: 'progressive',
+      lazyLoad: 'ondemand',
       slidesToScroll: 8,
       infinite: false,
       nextArrow: $('.nextTrendingMovies'),
