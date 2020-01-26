@@ -6696,7 +6696,7 @@ var reloadCSS = require('_css_loader');
 
 module.hot.dispose(reloadCSS);
 module.hot.accept(reloadCSS);
-},{"./..\\..\\images\\jumbotron.jpg":[["jumbotron.104cebb4.jpg","../images/jumbotron.jpg"],"../images/jumbotron.jpg"],"_css_loader":"C:/Users/Emil/AppData/Roaming/npm/node_modules/parcel-bundler/src/builtins/css-loader.js"}],"js/requests.js":[function(require,module,exports) {
+},{"./..\\..\\images\\share-solid.svg":[["share-solid.127c42d4.svg","../images/share-solid.svg"],"../images/share-solid.svg"],"./..\\..\\images\\jumbotron.jpg":[["jumbotron.104cebb4.jpg","../images/jumbotron.jpg"],"../images/jumbotron.jpg"],"_css_loader":"C:/Users/Emil/AppData/Roaming/npm/node_modules/parcel-bundler/src/builtins/css-loader.js"}],"js/requests.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -7487,7 +7487,7 @@ var _requests = require("./requests.js");
     onTheAir.innerHTML = output;
     $('.slick-carousel-air').slick({
       slidesToShow: 6,
-      lazyLoad: 'progressive',
+      lazyLoad: 'ondemand',
       slidesToScroll: 6,
       infinite: false,
       nextArrow: $('.nextAir'),
@@ -7542,7 +7542,7 @@ var _requests = require("./requests.js");
     $('.slick-carousel-popularShows').slick({
       slidesToShow: 6,
       slidesToScroll: 6,
-      lazyLoad: 'progressive',
+      lazyLoad: 'ondemand',
       infinite: false,
       nextArrow: $('.nextPopularShows'),
       focusOnSelect: false,
@@ -7593,7 +7593,7 @@ var _requests = require("./requests.js");
     $('.slick-carousel-topShows').slick({
       slidesToShow: 7,
       slidesToScroll: 7,
-      lazyLoad: 'progressive',
+      lazyLoad: 'ondemand',
       infinite: false,
       nextArrow: $('.nextTopShows'),
       focusOnSelect: false,
@@ -7654,7 +7654,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "5797" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "6042" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

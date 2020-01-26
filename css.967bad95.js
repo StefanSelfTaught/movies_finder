@@ -189,7 +189,7 @@ var reloadCSS = require('_css_loader');
 
 module.hot.dispose(reloadCSS);
 module.hot.accept(reloadCSS);
-},{"./..\\..\\images\\jumbotron.jpg":[["jumbotron.104cebb4.jpg","../images/jumbotron.jpg"],"../images/jumbotron.jpg"],"_css_loader":"C:/Users/Emil/AppData/Roaming/npm/node_modules/parcel-bundler/src/builtins/css-loader.js"}],"C:/Users/Emil/AppData/Roaming/npm/node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
+},{"./..\\..\\images\\share-solid.svg":[["share-solid.127c42d4.svg","../images/share-solid.svg"],"../images/share-solid.svg"],"./..\\..\\images\\jumbotron.jpg":[["jumbotron.104cebb4.jpg","../images/jumbotron.jpg"],"../images/jumbotron.jpg"],"_css_loader":"C:/Users/Emil/AppData/Roaming/npm/node_modules/parcel-bundler/src/builtins/css-loader.js"}],"C:/Users/Emil/AppData/Roaming/npm/node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
 var global = arguments[3];
 var OVERLAY_ID = '__parcel__error__overlay__';
 var OldModule = module.bundle.Module;
@@ -217,7 +217,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "5797" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "6042" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
