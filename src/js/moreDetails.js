@@ -157,7 +157,7 @@ fetch(
 						<li class="details-li">Spoken Languages: ${spokenLanguages}</li>
 						<li class="details-li">Production Countries: ${productionCountries}</li>
 						<li class="details-li">Production Companies: ${productionCompanies}</li>
-						<li class="details-li"><a target="_blank" href="https://www.imdb.com/title/${data.imdb_id}"></a> View on IMDB </li>
+						<li class="details-li"><a target="_blank" href="https://www.imdb.com/title/${data.imdb_id}">View on IMDB</a></li>
 					</ul>
 				</div>
 				<div>
