@@ -10,7 +10,20 @@
 
   <body>
   	<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
-	<script defer src="//cdn.jsdelivr.net/gh/kenwheeler/slick@1.8.1/slick/slick.min.js"></script>
+	  <script defer src="//cdn.jsdelivr.net/gh/kenwheeler/slick@1.8.1/slick/slick.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/lax.js" ></script>
     <script src="js/moreDetailsShows.js"></script>
+    <script>
+      setTimeout(function() {
+        lax.setup(); // init
+
+        const updateLax = () => {
+          lax.update(window.scrollY);
+          window.requestAnimationFrame(updateLax);
+        };
+
+        window.requestAnimationFrame(updateLax);
+      }, 1000)
+    </script>
   </body>
 </html>

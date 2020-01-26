@@ -2,19 +2,18 @@ import "jquery/dist/jquery.min.js";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap/dist/js/bootstrap.min.js";
 import "../css/index.css";
+import lax from "lax.js";
 
-// import lax from "lax.js";
+window.onload = function() {
+	lax.setup(); // init
 
-// window.onload = function() {
-// 	lax.setup(); // init
+	const updateLax = () => {
+		lax.update(window.scrollY);
+		window.requestAnimationFrame(updateLax);
+	};
 
-// 	const updateLax = () => {
-// 		lax.update(window.scrollY);
-// 		window.requestAnimationFrame(updateLax);
-// 	};
-
-// 	window.requestAnimationFrame(updateLax);
-// }
+	window.requestAnimationFrame(updateLax);
+}
 
 let id = sessionStorage.getItem("id");
 let api = "ce2eb2231a371296cf6ff11a39206d6e";
@@ -103,7 +102,7 @@ fetch(
 		})
 
 		output = `
-			<div class="" data-lax-opacity="0 1, 500 0" data-lax-translate-y="0 0, 400 -400" id="movie">
+			<div class="lax" data-lax-opacity="0 1, 150 0" data-lax-translate-y="0 0, 50 -150" id="movie">
 				<div>
 					<a onclick="window.history.back()"><span class="carousel-control-prev-icon back-arrow" aria-hidden="true"></span></a>
 				</div>
@@ -123,6 +122,7 @@ fetch(
 		})</span>  </p> 
 				</div>
 			</div>
+		<div class="lax" data-lax-translate-y="0 0, 500 -130">
 			<div class="container">
 				<h2 class="first-sub-header">DESCRIPTION</h2>
 				<p class="sub-header-content"> ${data.overview} </p>
@@ -156,6 +156,7 @@ fetch(
 					${reviews}
 				</div>
 			</div>
+		</div>
 		`;
 
 		document.body.innerHTML = output;
