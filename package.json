@@ -2,6 +2,9 @@
   "name": "movieSearch",
   "version": "1.0.0",
   "description": "",
+  "publishConfig": {
+    "registry": "https://npm.pkg.github.com/"
+  },
   "main": "index.html",
   "scripts": {
     "dev": "parcel ./src/index.html",
@@ -20,15 +23,15 @@
   },
   "homepage": "https://github.com/StefanSelfTaught/movies_finder#readme",
   "devDependencies": {
-    "gh-pages": "^2.1.1",
+    "gh-pages": "^2.2.0",
     "parcel-bundler": "^1.12.4"
   },
   "dependencies": {
     "babel-polyfill": "^6.26.0",
-    "bootstrap": "^4.3.1",
+    "bootstrap": "^4.4.1",
     "jquery": "^3.4.1",
     "lax.js": "^1.2.5",
     "popper": "^1.0.1",
-    "popper.js": "^1.16.0"
+    "popper.js": "^1.16.1"
   }
 }

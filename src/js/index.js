@@ -8,8 +8,8 @@ import { request } from './requests.js';
   const popularMovies = document.getElementById('popular-movies');
   const nowPlaying = document.getElementById('now-playing');
 
-  document.getElementById('my-container').classList.remove('blur2');
-  document.getElementById('my-container').classList.add('noblur2');
+  // document.getElementById('my-container').classList.remove('blur2');
+  // document.getElementById('my-container').classList.add('noblur2');
 
   request.fetchTopMovies().then(data => {
     let output = '';
