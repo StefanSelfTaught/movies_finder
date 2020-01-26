@@ -29,7 +29,7 @@ import "@babel/polyfill";
 			let genreOutput = genresArray.map(genre => genre.name).join(", ");
 			output +=
 			`
-			<div onclick="e(${movie.id})" class="mb-5 mr-3 ml-3 card" id=${movie.id} style="width: 13rem;">
+			<div onclick="o(${movie.id})" class="mb-5 mr-3 ml-3 card" id=${movie.id} style="width: 13rem;">
 				<img class="card-img-top card-img" style="height: 19.5rem;" src="https://image.tmdb.org/t/p/w500${movie.poster_path}" alt="Card image cap">
 					<div class="card-body">
 					<h5 class="card-title card-small-title">${movie.name}</h5>
@@ -114,7 +114,7 @@ import "@babel/polyfill";
 				let genreOutput = genresArray.map(genre => genre.name).join(", ");
 				output +=
 				`
-				<div onclick="e(${movie.id})" class="mb-5 mr-3 ml-3 card" id=${movie.id} style="width: 13rem;">
+				<div onclick="o(${movie.id})" class="mb-5 mr-3 ml-3 card" id=${movie.id} style="width: 13rem;">
 					<img class="card-img-top card-img" style="height: 19.5rem;" src="https://image.tmdb.org/t/p/w500${movie.poster_path}" alt="Card image cap">
 						<div class="card-body">
 						<h5 class="card-title card-small-title">${movie.name}</h5>

@@ -21,7 +21,7 @@ import { request } from './requests.js';
 			let genreOutput = genresArray.map(genre => genre.name).join(", ");
 			output +=
 			`
-			<div onclick="e(${movie.id})" class="mr-3 card" style="width: 20rem;">
+			<div onclick="o(${movie.id})" class="mr-3 card" style="width: 20rem;">
 				<img class="card-img-top card-img" data-lazy="https://image.tmdb.org/t/p/w500${movie.poster_path}" alt="Card image cap">
 					<div class="card-body">
 					<h5 class="card-title card-movie-title">${movie.name}</h5>
@@ -85,7 +85,7 @@ import { request } from './requests.js';
 			if(movie.poster_path !== null){
 				output +=
 				`
-				<div onclick="e(${movie.id})" class="mr-3 card" style="width: 20rem;">
+				<div onclick="o(${movie.id})" class="mr-3 card" style="width: 20rem;">
 					<img class="card-img-top card-img" data-lazy="https://image.tmdb.org/t/p/w500${movie.poster_path}" alt="Card image cap">
 						<div class="card-body">
 						<h5 class="card-title card-movie-title">${movie.name}</h5>
@@ -149,7 +149,7 @@ import { request } from './requests.js';
 			let genreOutput = genresArray.map(genre => genre.name).join(", ");
 			output +=
 			`
-			<div onclick="e(${movie.id})" class="mr-3 card" style="width: 20rem;">
+			<div onclick="o(${movie.id})" class="mr-3 card" style="width: 20rem;">
 				<img class="card-img-top card-img" data-lazy="https://image.tmdb.org/t/p/w500${movie.poster_path}" alt="Card image cap">
 					<div class="card-body">
 					<h5 class="card-title card-movie-title">${movie.name}</h5>
