@@ -4,17 +4,6 @@ import "bootstrap/dist/js/bootstrap.min.js";
 import "../css/index.css";
 import lax from "lax.js";
 
-window.onload = function() {
-	lax.setup(); // init
-
-	const updateLax = () => {
-		lax.update(window.scrollY);
-		window.requestAnimationFrame(updateLax);
-	};
-
-	window.requestAnimationFrame(updateLax);
-}
-
 let id = sessionStorage.getItem("id");
 let api = "ce2eb2231a371296cf6ff11a39206d6e";
 
@@ -195,8 +184,19 @@ fetch(
 			document.getElementById("movie").classList.add('noblur');
 			document.getElementById("spinner-blur").style.display = "none";
 
-		}, 500)
+		}, 200)
 
-	}); 
+	})
+	.catch(err => console.log(err))
+	.finally(() => {
+	        lax.setup(); // init
+
+	        const updateLax = () => {
+	          lax.update(window.scrollY);
+	          window.requestAnimationFrame(updateLax);
+	        };
+	        
+	        window.requestAnimationFrame(updateLax);
+	})
 
 

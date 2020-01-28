@@ -4,17 +4,6 @@ import "bootstrap/dist/js/bootstrap.min.js";
 import "../css/index.css";
 import lax from "lax.js";
 
-window.onload = function() {
-	lax.setup(); // init
-
-	const updateLax = () => {
-		lax.update(window.scrollY);
-		window.requestAnimationFrame(updateLax);
-	};
-
-	window.requestAnimationFrame(updateLax);
-}
-
 let id = sessionStorage.getItem("id");
 let api = "ce2eb2231a371296cf6ff11a39206d6e";
 
@@ -102,7 +91,10 @@ fetch(
 		})
 
 		output = `
-			<div class="lax" data-lax-opacity="0 1, 150 0" data-lax-translate-y="0 0, 50 -150" id="movie">
+			<div id="spinner-blur" style="margin: 0 auto" class="mb-5 spinner-border text-light" style="width: 5rem !important; height: 5rem !important;" role="status">
+     			<span class="sr-only">Loading...</span>
+    		</div>
+			<div class="blur lax" data-lax-opacity="0 1, 150 0" data-lax-translate-y="0 0, 50 -150" id="movie">
 				<div>
 					<a onclick="window.history.back()"><span class="carousel-control-prev-icon back-arrow" aria-hidden="true"></span></a>
 				</div>
@@ -179,15 +171,26 @@ fetch(
 
 		document.getElementById("movie").setAttribute("style", background);
 
-		// setTimeout(function() {
+		setTimeout(function() {
 
-		// 	document.getElementById("movie").classList.remove('blur');
-		// 	document.getElementById("movie").classList.add('noblur');
-		// 	document.getElementById("spinner-blur").style.display = "none";
+			document.getElementById("movie").classList.remove('blur');
+			document.getElementById("movie").classList.add('noblur');
+			document.getElementById("spinner-blur").style.display = "none";
 
-		// }, 500)
+		}, 200)
 
-	}); 
+	})	
+	.catch(err => console.log(err))
+	.finally(() => {
+	        lax.setup(); // init
+
+	        const updateLax = () => {
+	          lax.update(window.scrollY);
+	          window.requestAnimationFrame(updateLax);
+	        };
+	        
+	        window.requestAnimationFrame(updateLax);
+	})
 
 
 

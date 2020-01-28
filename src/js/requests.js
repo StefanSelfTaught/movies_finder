@@ -83,5 +83,43 @@ export const request = {
 		const request = await fetch(`https://api.themoviedb.org/3/search/tv?api_key=${apiKey}&query=${movie}&page=${page}`);
 		const res = await request.json();
 		return res;
+	},
+
+	fetchAllPopularMovies: async function fetchAllPopularMovies(type){
+		const urls = [
+			`https://api.themoviedb.org/3/movie/${type}?api_key=${apiKey}&language=en-US&page=1`,
+			`https://api.themoviedb.org/3/movie/${type}?api_key=${apiKey}&language=en-US&page=2`,
+			`https://api.themoviedb.org/3/movie/${type}?api_key=${apiKey}&language=en-US&page=3`,
+			`https://api.themoviedb.org/3/movie/${type}?api_key=${apiKey}&language=en-US&page=4`,
+			`https://api.themoviedb.org/3/movie/${type}?api_key=${apiKey}&language=en-US&page=5`,
+			`https://api.themoviedb.org/3/movie/${type}?api_key=${apiKey}&language=en-US&page=6`
+		]
+		const [ result1, result2, result3, result4, result5, result6 ] = await Promise.all(urls.map( async (url) => {
+			const request = await fetch(url)
+			const res = await request.json();
+			return res
+		}))
+		return (
+			Promise.resolve([...result1.results, ...result2.results, ...result3.results, ...result4.results, ...result5.results, ...result6.results])
+		)
+	},
+
+	fetchAllPopularShows: async function fetchAllPopularShows(type){
+		const urls = [
+			`https://api.themoviedb.org/3/tv/${type}?api_key=${apiKey}&language=en-US&page=1`,
+			`https://api.themoviedb.org/3/tv/${type}?api_key=${apiKey}&language=en-US&page=2`,
+			`https://api.themoviedb.org/3/tv/${type}?api_key=${apiKey}&language=en-US&page=3`,
+			`https://api.themoviedb.org/3/tv/${type}?api_key=${apiKey}&language=en-US&page=4`,
+			`https://api.themoviedb.org/3/tv/${type}?api_key=${apiKey}&language=en-US&page=5`,
+			`https://api.themoviedb.org/3/tv/${type}?api_key=${apiKey}&language=en-US&page=6`
+		]
+		const [ result1, result2, result3, result4, result5, result6 ] = await Promise.all(urls.map( async (url) => {
+			const request = await fetch(url)
+			const res = await request.json();
+			return res
+		}))
+		return (
+			Promise.resolve([...result1.results, ...result2.results, ...result3.results, ...result4.results, ...result5.results, ...result6.results])
+		)
 	}
 }
