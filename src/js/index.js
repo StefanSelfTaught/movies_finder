@@ -1,15 +1,15 @@
-import { genres } from './moviesGenres.js';
-import '../css/index.css';
+import { genres } from './includes/moviesGenres.js';
+import { request } from './includes/requests.js';
+// import '../css/vendor/bootstrap.min.css';
+// import '../css/vendor/slick.min.css';
+// import '../css/index.css';
 import '@babel/polyfill';
-import { request } from './requests.js';
+
 
 (() => {
   const topMovies = document.getElementById('top-rated-movies');
   const popularMovies = document.getElementById('popular-movies');
   const nowPlaying = document.getElementById('now-playing');
-
-  // document.getElementById('my-container').classList.remove('blur2');
-  // document.getElementById('my-container').classList.add('noblur2');
 
   request.fetchTopMovies().then(data => {
     let output = '';

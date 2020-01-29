@@ -1,7 +1,9 @@
-import { request } from './requests.js';
+import { genres } from './includes/moviesGenres.js';
+import { request } from './includes/requests.js';
+import '../css/vendor/bootstrap.min.css';
+import '../css/vendor/slick.min.css';
 import '../css/index.css';
-import { genres } from './moviesGenres.js';
-import "@babel/polyfill";
+import '@babel/polyfill';
 
 (() => {
 
@@ -65,10 +67,10 @@ import "@babel/polyfill";
 			const imgObserver = new IntersectionObserver((entries, imgObserver) => {
 				entries.forEach(entry => {
 					if(!entry.isIntersecting) {
-						return
+						return;
 					} else {
 						preloadImage(entry.target);
-						entry.target.classList.add('lazy-load-fade');
+						entry.target.style.animation = 'lazyLoad .5s ease-in-out';
 						imgObserver.unobserve(entry.target);
 					}
 				})
