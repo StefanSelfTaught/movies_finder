@@ -189,6 +189,18 @@ var reloadCSS = require('_css_loader');
 
 module.hot.dispose(reloadCSS);
 module.hot.accept(reloadCSS);
+module.exports = {
+  "slick-slider": "_slick-slider_a3163",
+  "slick-list": "_slick-list_a3163",
+  "dragging": "_dragging_a3163",
+  "slick-track": "_slick-track_a3163",
+  "slick-loading": "_slick-loading_a3163",
+  "slick-slide": "_slick-slide_a3163",
+  "slick-initialized": "_slick-initialized_a3163",
+  "slick-vertical": "_slick-vertical_a3163",
+  "slick-arrow": "_slick-arrow_a3163",
+  "slick-hidden": "_slick-hidden_a3163"
+};
 },{"_css_loader":"../node_modules/parcel-bundler/src/builtins/css-loader.js"}],"../node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
 var global = arguments[3];
 var OVERLAY_ID = '__parcel__error__overlay__';
@@ -217,7 +229,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "4201" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "7833" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

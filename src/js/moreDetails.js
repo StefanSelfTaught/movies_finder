@@ -1,8 +1,9 @@
-import "jquery/dist/jquery.min.js";
-import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap/dist/js/bootstrap.min.js";
+import '../css/vendor/bootstrap.min.css';
+import '../css/vendor/slick.min.css';
 import "../css/index.css";
 import lax from "lax.js";
+import '@babel/polyfill';
 
 let id = sessionStorage.getItem("id");
 let api = "ce2eb2231a371296cf6ff11a39206d6e";
@@ -13,16 +14,27 @@ fetch(
 	.then(res => res.json())
 	.then(data => {
 
-		console.log(data);
-
 		let spokenLanguages = ""
+		let trailer;
 		let reviews = "";
 		let output = "";
 		let castOutput = "";
 		let productionCountries = ""
 		let productionCompanies = "";
 		let casts = data.credits.cast.slice(0, 15).filter(cast => cast.profile_path !== null); 
-		let companies = data.production_companies.slice(0, 3)  
+		let companies = data.production_companies.slice(0, 3)
+
+		if(data.videos.results.length) {
+			trailer = `
+			<div class="embed-responsive embed-responsive-21by9">
+				<iframe width="200" height="100" style="border: 1px solid white; border-radius: 10px" class="embed-responsive-item" 
+		  				src=https://www.youtube.com/embed/${data.videos.results[0].key}?rel=0 allowfullscreen>
+		  		</iframe>
+	  		</div>
+	  		`
+		} else {
+			trailer = '<p>No trailer available</p>'
+		}
 
 		data.spoken_languages
 			.slice(0, 2)
@@ -133,10 +145,7 @@ fetch(
 				</div>
 				<div>
 					<h2 class="sub-header">TRAILER</h2>
-					<div class="embed-responsive embed-responsive-21by9">
-	  					<iframe width="200" height="100" style="border: 1px solid white; border-radius: 10px" class="embed-responsive-item" 
-	  						src=https://www.youtube.com/embed/${data.videos.results[0].key}?rel=0 allowfullscreen></iframe>
-					</div>
+	  				${trailer}
 				</div>
 				<div>
 					<h2 class="sub-header">OTHER DETAILS</h2>

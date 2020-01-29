@@ -1,6 +1,9 @@
-import { request } from './requests.js';
-import { genres } from './moviesGenres.js';
-import "@babel/polyfill";
+import { genres } from './includes/moviesGenres.js';
+import { request } from './includes/requests.js';
+import '../css/vendor/bootstrap.min.css';
+import '../css/vendor/slick.min.css';
+import '../css/index.css';
+import '@babel/polyfill';
 
 (() => {
 
