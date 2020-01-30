@@ -1,8 +1,5 @@
 import { genres } from './includes/showsGenres.js';
 import { request } from './includes/requests.js';
-import '../css/vendor/bootstrap.min.css';
-import '../css/vendor/slick.min.css';
-import '../css/index.css';
 import '@babel/polyfill';
 
 (() => {

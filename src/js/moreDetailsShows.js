@@ -1,7 +1,4 @@
 import "bootstrap/dist/js/bootstrap.min.js";
-import '../css/vendor/bootstrap.min.css';
-import '../css/vendor/slick.min.css';
-import "../css/index.css";
 import lax from "lax.js";
 import '@babel/polyfill';
 
@@ -60,7 +57,7 @@ fetch(
 				<div class="review-container">
 					<p class="review-author">A review by ${review.author}</p>
 					<p class="review-content">${reviewContent}</p>
-					<a target="_blank" href="https://www.themoviedb.org/review/${review.id}">View full review</a>
+					<a class="blank-link" target="_blank" href="https://www.themoviedb.org/review/${review.id}">View full review</a>
 				</div>
 			`	
 
@@ -160,6 +157,11 @@ fetch(
 				</div>
 			</div>
 		</div>
+		<hr>
+		<footer>
+		   <p class="designed">Designed and developed by Pop Stefan & Alex Popescu
+		   <p class="copy">&copy; 2020 Eco Network. All Rights Reserved. This site may contain mature content.</p>
+		</footer>
 		`;
 
 		document.body.innerHTML = output;

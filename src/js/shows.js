@@ -1,8 +1,5 @@
 import { genres } from './includes/showsGenres.js';
 import { request } from './includes/requests.js';
-import '../css/vendor/bootstrap.min.css';
-import '../css/vendor/slick.min.css';
-import '../css/index.css';
 import '@babel/polyfill';
 
 (() => {
@@ -34,9 +31,9 @@ import '@babel/polyfill';
 		})
 		onTheAir.innerHTML = output;
 		$('.slick-carousel-air').slick({
-			slidesToShow: 6,
+			slidesToShow: 7,
 			lazyLoad: 'ondemand',
-			slidesToScroll: 6,
+			slidesToScroll: 7,
 			infinite: false,
 			nextArrow: $('.nextAir'),
 			focusOnSelect: false,
@@ -99,8 +96,8 @@ import '@babel/polyfill';
 		})
 		popularShows.innerHTML = output;
 		$('.slick-carousel-popularShows').slick({
-			slidesToShow: 6,
-			slidesToScroll: 6,
+			slidesToShow: 7,
+			slidesToScroll: 7,
 			lazyLoad: 'ondemand',
 			infinite: false,
 			nextArrow: $('.nextPopularShows'),

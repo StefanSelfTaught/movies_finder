@@ -7619,9 +7619,9 @@ var _requests = require("./includes/requests.js");
     });
     topMovies.innerHTML = output;
     $('.slick-carousel').slick({
-      slidesToShow: 6,
+      slidesToShow: 7,
+      slidesToScroll: 7,
       lazyLoad: 'ondemand',
-      slidesToScroll: 6,
       infinite: false,
       nextArrow: $('.nextTop'),
       focusOnSelect: false,
@@ -7670,8 +7670,8 @@ var _requests = require("./includes/requests.js");
     });
     popularMovies.innerHTML = output;
     $('.slick-carousel-popular').slick({
-      slidesToShow: 6,
-      slidesToScroll: 6,
+      slidesToShow: 7,
+      slidesToScroll: 7,
       lazyLoad: 'ondemand',
       infinite: false,
       nextArrow: $('.nextPopular'),
@@ -7784,7 +7784,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "8332" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "11238" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
