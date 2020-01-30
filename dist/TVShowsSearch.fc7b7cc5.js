@@ -7639,7 +7639,7 @@ function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj;
       var genreOutput = genresArray.map(function (genre) {
         return genre.name;
       }).join(", ");
-      output += "\n          <div onclick=\"e(".concat(movie.id, ")\" class=\"mr-3 card\" style=\"width: 15rem; padding-bottom: 0;\">\n              <img class=\"card-img-top card-img\" src=\"https://image.tmdb.org/t/p/w500").concat(movie.poster_path, "\" alt=\"Card image cap\">\n              <div class=\"card-body\">\n                <h5 class=\"card-title card-small-title\">").concat(movie.name, "</h5>\n                <p class=\"card-text card-small-details\">").concat(movie.first_air_date.split("-")[0], " | ").concat(genreOutput, "</p>\n              </div>\n          </div>\n          ");
+      output += "\n          <div onclick=\"o(".concat(movie.id, ")\" class=\"mr-3 card\" style=\"width: 15rem; padding-bottom: 0;\">\n              <img class=\"card-img-top card-img\" src=\"https://image.tmdb.org/t/p/w500").concat(movie.poster_path, "\" alt=\"Card image cap\">\n              <div class=\"card-body\">\n                <h5 class=\"card-title card-small-title\">").concat(movie.name, "</h5>\n                <p class=\"card-text card-small-details\">").concat(movie.first_air_date.split("-")[0], " | ").concat(genreOutput, "</p>\n              </div>\n          </div>\n          ");
     });
     variables.trending2.innerHTML = output;
     $('.slick-trending-shows').slick({
@@ -7736,7 +7736,7 @@ function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj;
             descp = movie.overview;
           }
 
-          output += "\n                <div class=\"card-v2\">\n                  <div class=\"poster\">\n                    <img\n                      data-src=\"https://image.tmdb.org/t/p/w300/".concat(movie.poster_path, "\"\n                    />\n                  </div>\n                  <div class=\"details\">\n                    <h2>").concat(movie.name, "<br /><span>First Air Date: ").concat(movie.first_air_date, "</span></h2>\n                    <div class=\"rating\">\n                      <i class=\"fas fa-star\"></i>\n                      <span>").concat(movie.vote_average, " / 10</span>\n                    </div>\n                    <div class=\"info\">\n                      <p>\n                        ").concat(descp, "\n                      </p>\n                    </div>\n                    <div class=\"more-info\">\n                      <a onclick=\"e(").concat(movie.id, ")\" target=\"_blank\" class=\"btn btn-dark\">More Details</a>\n                    </div>\n                  </div>\n                </div>\n              ");
+          output += "\n                <div class=\"card-v2\">\n                  <div class=\"poster\">\n                    <img\n                      data-src=\"https://image.tmdb.org/t/p/w300/".concat(movie.poster_path, "\"\n                    />\n                  </div>\n                  <div class=\"details\">\n                    <h2>").concat(movie.name, "<br /><span>First Air Date: ").concat(movie.first_air_date, "</span></h2>\n                    <div class=\"rating\">\n                      <i class=\"fas fa-star\"></i>\n                      <span>").concat(movie.vote_average, " / 10</span>\n                    </div>\n                    <div class=\"info\">\n                      <p>\n                        ").concat(descp, "\n                      </p>\n                    </div>\n                    <div class=\"more-info\">\n                      <a onclick=\"o(").concat(movie.id, ")\" target=\"_blank\" class=\"btn btn-dark\">More Details</a>\n                    </div>\n                  </div>\n                </div>\n              ");
         });
 
         if (data.results.length !== 0) {
@@ -7812,7 +7812,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "11238" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "12443" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
