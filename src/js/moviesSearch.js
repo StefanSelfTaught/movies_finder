@@ -1,9 +1,6 @@
 import * as variables from './includes/variables.js';
 import { genres } from './includes/moviesGenres.js';
 import { request } from './includes/requests.js';
-import '../css/vendor/bootstrap.min.css';
-import '../css/vendor/slick.min.css';
-import '../css/index.css';
 import '@babel/polyfill';
 
 (() => {
@@ -134,7 +131,7 @@ import '@babel/polyfill';
               output += `
               <div class="card-v2">
                   <div class="poster">
-                      <img src="https://image.tmdb.org/t/p/w300${movie.poster_path}"/>
+                      <img data-src="https://image.tmdb.org/t/p/w300${movie.poster_path}"/>
                       </div>
                           <div class="details">
                           <h2>${movie.title}<br /><span>Relased in: ${movie.release_date}</span></h2>
@@ -161,6 +158,39 @@ import '@babel/polyfill';
           }
             variables.pagination.style.visibility = 'visible';
       })
+      .finally(() => {
+
+        const images = document.querySelectorAll("[data-src]");
+
+        function preloadImage(img){
+          const src = img.getAttribute("data-src")
+          if(!src){
+            return;
+          }
+
+          img.src = src;
+        }
+
+        const imgOptions = {};
+
+        const imgObserver = new IntersectionObserver((entries, imgObserver) => {
+          entries.forEach(entry => {
+            if(!entry.isIntersecting) {
+              return;
+            } else {
+              preloadImage(entry.target);
+              entry.target.style.animation = 'lazyLoad .5s ease-in-out';
+              imgObserver.unobserve(entry.target);
+            }
+          })
+        }, imgOptions)
+
+        images.forEach(image => {
+          imgObserver.observe(image);
+        })
+
+      })
+
     } else {
       document.getElementById('slider-movies-search').style.display = 'block';
       variables.moviesList.innerHTML = null;

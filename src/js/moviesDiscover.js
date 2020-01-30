@@ -1,8 +1,5 @@
 import { genres } from './includes/moviesGenres.js';
 import { request } from './includes/requests.js';
-import '../css/vendor/bootstrap.min.css';
-import '../css/vendor/slick.min.css';
-import '../css/index.css';
 import '@babel/polyfill';
 
 (() => {
@@ -33,7 +30,7 @@ import '@babel/polyfill';
 				output +=
 				`
 				<div onclick="e(${movie.id})" class="mb-5 mr-3 ml-3 card" id=${movie.id} style="width: 13rem;">
-					<img class="card-img-top card-img" style="height: 19.5rem;" src="https://image.tmdb.org/t/p/w500${movie.poster_path}" alt="${movie.title}">
+					<img class="card-img-top card-img" style="height: 19.5rem;" data-src="https://image.tmdb.org/t/p/w500${movie.poster_path}" alt="${movie.title}">
 						<div class="card-body">
 						<h5 class="card-title card-small-title">${movie.title}</h5>
 						<p class="card-text card-small-details">${movie.release_date.split("-")[0]} | ${genreOutput}</p>
@@ -47,6 +44,36 @@ import '@babel/polyfill';
 			next.disabled = true;
 			next.classList.add('button-disabled');
 			previous.classList.add('button-disabled');
+		})
+		.finally(() => {
+			const images = document.querySelectorAll("[data-src]");
+
+			function preloadImage(img){
+				const src = img.getAttribute("data-src")
+				if(!src){
+					return;
+				}
+
+				img.src = src;
+			}
+
+			const imgOptions = {};
+
+			const imgObserver = new IntersectionObserver((entries, imgObserver) => {
+				entries.forEach(entry => {
+					if(!entry.isIntersecting) {
+						return;
+					} else {
+						preloadImage(entry.target);
+						entry.target.style.animation = 'lazyLoad .5s ease-in-out';
+						imgObserver.unobserve(entry.target);
+					}
+				})
+			}, imgOptions)
+
+			images.forEach(image => {
+				imgObserver.observe(image);
+			})
 		})
 
 	form.addEventListener('submit', (e) => {
@@ -117,7 +144,7 @@ import '@babel/polyfill';
 				output +=
 				`
 				<div onclick="e(${movie.id})" class="mb-5 mr-3 ml-3 card" id=${movie.id} style="width: 13rem;">
-					<img class="card-img-top card-img" style="height: 19.5rem;" src="https://image.tmdb.org/t/p/w500${movie.poster_path}" alt="${movie.title}">
+					<img class="card-img-top card-img" style="height: 19.5rem;" data-src="https://image.tmdb.org/t/p/w500${movie.poster_path}" alt="${movie.title}">
 					<div class="card-body">
 					<h5 class="card-title card-small-title">${movie.title}</h5>
 					<p class="card-text card-small-details">${movie.release_date.split("-")[0]} | ${genreOutput}</p>
@@ -133,6 +160,36 @@ import '@babel/polyfill';
 				next.classList.add('button-disabled');
 			}
 			pagination.style.visibility = 'visible';
+		})
+		.finally(() => {
+			const images = document.querySelectorAll("[data-src]");
+
+			function preloadImage(img){
+				const src = img.getAttribute("data-src")
+				if(!src){
+					return;
+				}
+
+				img.src = src;
+			}
+
+			const imgOptions = {};
+
+			const imgObserver = new IntersectionObserver((entries, imgObserver) => {
+				entries.forEach(entry => {
+					if(!entry.isIntersecting) {
+						return;
+					} else {
+						preloadImage(entry.target);
+						entry.target.style.animation = 'lazyLoad .5s ease-in-out';
+						imgObserver.unobserve(entry.target);
+					}
+				})
+			}, imgOptions)
+
+			images.forEach(image => {
+				imgObserver.observe(image);
+			})
 		})
 	}
 

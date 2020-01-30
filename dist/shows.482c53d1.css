@@ -71,9 +71,8 @@ iframe {
 }
 
 h1 {
-  font-size: 50px !important;
   color: #fff;
-  font-weight: 700 !important;
+  font-weight: 600 !important;
   letter-spacing: 1px;
 }
 
@@ -83,6 +82,11 @@ nav {
   -moz-backdrop-filter: blur(5px);
        backdrop-filter: blur(5px);
   border: none !important;
+}
+
+.big-title {
+  font-size: 53px !important;
+  font-weight: 800 !important;
 }
 
 .navbar .nav-link {
@@ -204,6 +208,10 @@ nav {
   height: 36rem;
   -o-object-fit: cover;
      object-fit: cover;
+}
+
+.carousel-item:hover {
+  cursor: pointer;
 }
 
 .carousel-indicators li {
@@ -900,6 +908,7 @@ nav {
     opacity: 1;
   }
 }
+
 
 
 

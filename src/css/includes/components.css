@@ -23,9 +23,8 @@ iframe {
 }
 
 h1 {
-  font-size: 50px !important;
   color: #fff;
-  font-weight: 700 !important;
+  font-weight: 600 !important;
   letter-spacing: 1px;
 }
 
@@ -35,6 +34,24 @@ nav {
   -moz-backdrop-filter: blur(5px);
        backdrop-filter: blur(5px);
   border: none !important;
+}
+
+footer {
+  margin: 0 auto;
+  width: 35%;
+  text-align: center;
+}
+
+hr {
+  border: 1px solid #282525;
+  width: 35%;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.big-title {
+  font-size: 50px !important;
+  font-weight: 800 !important;
 }
 
 .navbar .nav-link {
@@ -61,6 +78,17 @@ nav {
 .dropdown:hover .dropdown-menu {
   display: block;
   margin-top: 0;
+}
+
+.designed {
+  font-size: 14.5px;
+  margin-bottom: 8px !important;
+  color: #7A8288;
+}
+
+.copy {
+  font-size: 12px;
+  color: #55595E;
 }
 
 .dropdown > .dropdown:active {
@@ -126,6 +154,10 @@ nav {
   left: 0;
 }
 
+.blank-link {
+  color: #00d474 !important;
+}
+
 .carousel {
   margin-bottom: 80px;
   margin-top: 75px;
@@ -158,6 +190,10 @@ nav {
      object-fit: cover;
 }
 
+.carousel-item:hover {
+  cursor: pointer;
+}
+
 .carousel-indicators li {
   background-clip: initial !important;
   border-bottom: none !important;
@@ -185,7 +221,7 @@ nav {
 .card-movie-title {
   margin: 0 !important;
   color: #fff;
-  font-size: 18px;
+  font-size: 16.5px;
   white-space: nowrap;
 }
 
@@ -263,6 +299,7 @@ nav {
 
 .card-details {
   white-space: nowrap;
+  font-size: 14.7px;
 }
 
 .card-small-details {
@@ -651,7 +688,8 @@ nav {
 }
 
 .main-movie-title {
-  font-weight: 700 !important;
+  font-weight: 800 !important;
+  font-size: 48px;
 }
 
 .content {
@@ -753,6 +791,7 @@ nav {
 .sub-header-content {
   line-height: 1.7;
   color: #A9A9A9 !important;
+  font-size: 16px;
 }
 
 .cast-container {
@@ -797,6 +836,7 @@ nav {
 
 .review-content {
   color: #A9A9A9;
+  font-size: 16px;
 }
 
 @media screen and (max-width: 767px) {
