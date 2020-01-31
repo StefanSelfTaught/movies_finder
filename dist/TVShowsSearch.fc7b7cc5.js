@@ -6597,35 +6597,6 @@ try {
   Function("r", "regeneratorRuntime = r")(runtime);
 }
 
-},{}],"js/includes/variables.js":[function(require,module,exports) {
-"use strict";
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.spinner2 = exports.spinner = exports.trending2 = exports.trending = exports.pagination = exports.next = exports.previous = exports.moviesList = exports.inputSearch = exports.searchForm = exports.apiKey = void 0;
-var apiKey = 'ce2eb2231a371296cf6ff11a39206d6e';
-exports.apiKey = apiKey;
-var searchForm = document.getElementById('searchForm');
-exports.searchForm = searchForm;
-var inputSearch = document.getElementById('inputSearch');
-exports.inputSearch = inputSearch;
-var moviesList = document.getElementById('moviesList');
-exports.moviesList = moviesList;
-var previous = document.getElementById('previous');
-exports.previous = previous;
-var next = document.getElementById('next');
-exports.next = next;
-var pagination = document.getElementById('pagination-container');
-exports.pagination = pagination;
-var trending = document.getElementById('trending-movies');
-exports.trending = trending;
-var trending2 = document.getElementById('trending-shows');
-exports.trending2 = trending2;
-var spinner = "\n    <div class=\"mb-5 spinner-border text-light\" style=\"width: 3rem; height: 3rem;\" role=\"status\">\n      <span class=\"sr-only\">Loading...</span>\n    </div>";
-exports.spinner = spinner;
-var spinner2 = "\n    <div style=\"margin: 0 auto\" class=\"mb-5 spinner-border text-light\" style=\"width: 5rem !important; height: 5rem !important;\" role=\"status\">\n      <span class=\"sr-only\">Loading...</span>\n    </div>";
-exports.spinner2 = spinner2;
 },{}],"js/includes/showsGenres.js":[function(require,module,exports) {
 "use strict";
 
@@ -6633,6 +6604,7 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 exports.genres = void 0;
+// ID-urile fac referita la genul serialului ( info de la TMDB API )
 var genres = [{
   id: 10759,
   name: "Action & Adventure"
@@ -6711,35 +6683,45 @@ function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try
 
 function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
 
-var apiKey = 'ce2eb2231a371296cf6ff11a39206d6e';
+var apiKey = 'ce2eb2231a371296cf6ff11a39206d6e'; // Toate request-urile facut catre TMDB API
+// Daca in timpul request-ului exista o eroare se v-a executa blocul catch
+// Se intelege ce request se executa si pe ce pagina dupa numele functiei
+
 var request = {
   fetchTopMovies: function () {
     var _fetchTopMovies = _asyncToGenerator(
     /*#__PURE__*/
     regeneratorRuntime.mark(function _callee() {
-      var request, res;
+      var _request, res;
+
       return regeneratorRuntime.wrap(function _callee$(_context) {
         while (1) {
           switch (_context.prev = _context.next) {
             case 0:
-              _context.next = 2;
+              _context.prev = 0;
+              _context.next = 3;
               return fetch("https://api.themoviedb.org/3/movie/top_rated?api_key=".concat(apiKey, "&page=1"));
 
-            case 2:
-              request = _context.sent;
-              _context.next = 5;
-              return request.json();
+            case 3:
+              _request = _context.sent;
+              _context.next = 6;
+              return _request.json();
 
-            case 5:
+            case 6:
               res = _context.sent;
               return _context.abrupt("return", res);
 
-            case 7:
+            case 10:
+              _context.prev = 10;
+              _context.t0 = _context["catch"](0);
+              alert('Data could not be fetched!' + ' ' + _context.t0);
+
+            case 13:
             case "end":
               return _context.stop();
           }
         }
-      }, _callee);
+      }, _callee, null, [[0, 10]]);
     }));
 
     function fetchTopMovies() {
@@ -6752,29 +6734,36 @@ var request = {
     var _fetchPopularMovies = _asyncToGenerator(
     /*#__PURE__*/
     regeneratorRuntime.mark(function _callee2() {
-      var request, res;
+      var _request2, res;
+
       return regeneratorRuntime.wrap(function _callee2$(_context2) {
         while (1) {
           switch (_context2.prev = _context2.next) {
             case 0:
-              _context2.next = 2;
+              _context2.prev = 0;
+              _context2.next = 3;
               return fetch("https://api.themoviedb.org/3/movie/popular?api_key=".concat(apiKey, "&page=1"));
 
-            case 2:
-              request = _context2.sent;
-              _context2.next = 5;
-              return request.json();
+            case 3:
+              _request2 = _context2.sent;
+              _context2.next = 6;
+              return _request2.json();
 
-            case 5:
+            case 6:
               res = _context2.sent;
               return _context2.abrupt("return", res);
 
-            case 7:
+            case 10:
+              _context2.prev = 10;
+              _context2.t0 = _context2["catch"](0);
+              alert('Data could not be fetched!' + ' ' + _context2.t0);
+
+            case 13:
             case "end":
               return _context2.stop();
           }
         }
-      }, _callee2);
+      }, _callee2, null, [[0, 10]]);
     }));
 
     function fetchPopularMovies() {
@@ -6787,29 +6776,36 @@ var request = {
     var _fetchPlayingMovies = _asyncToGenerator(
     /*#__PURE__*/
     regeneratorRuntime.mark(function _callee3() {
-      var request, res;
+      var _request3, res;
+
       return regeneratorRuntime.wrap(function _callee3$(_context3) {
         while (1) {
           switch (_context3.prev = _context3.next) {
             case 0:
-              _context3.next = 2;
+              _context3.prev = 0;
+              _context3.next = 3;
               return fetch("https://api.themoviedb.org/3/movie/now_playing?api_key=".concat(apiKey, "&page=1"));
 
-            case 2:
-              request = _context3.sent;
-              _context3.next = 5;
-              return request.json();
+            case 3:
+              _request3 = _context3.sent;
+              _context3.next = 6;
+              return _request3.json();
 
-            case 5:
+            case 6:
               res = _context3.sent;
               return _context3.abrupt("return", res);
 
-            case 7:
+            case 10:
+              _context3.prev = 10;
+              _context3.t0 = _context3["catch"](0);
+              alert('Data could not be fetched!' + ' ' + _context3.t0);
+
+            case 13:
             case "end":
               return _context3.stop();
           }
         }
-      }, _callee3);
+      }, _callee3, null, [[0, 10]]);
     }));
 
     function fetchPlayingMovies() {
@@ -6822,29 +6818,36 @@ var request = {
     var _fetchAirShows = _asyncToGenerator(
     /*#__PURE__*/
     regeneratorRuntime.mark(function _callee4() {
-      var request, res;
+      var _request4, res;
+
       return regeneratorRuntime.wrap(function _callee4$(_context4) {
         while (1) {
           switch (_context4.prev = _context4.next) {
             case 0:
-              _context4.next = 2;
+              _context4.prev = 0;
+              _context4.next = 3;
               return fetch("https://api.themoviedb.org/3/tv/on_the_air?api_key=".concat(apiKey, "&page=1"));
 
-            case 2:
-              request = _context4.sent;
-              _context4.next = 5;
-              return request.json();
+            case 3:
+              _request4 = _context4.sent;
+              _context4.next = 6;
+              return _request4.json();
 
-            case 5:
+            case 6:
               res = _context4.sent;
               return _context4.abrupt("return", res);
 
-            case 7:
+            case 10:
+              _context4.prev = 10;
+              _context4.t0 = _context4["catch"](0);
+              alert('Data could not be fetched!' + ' ' + _context4.t0);
+
+            case 13:
             case "end":
               return _context4.stop();
           }
         }
-      }, _callee4);
+      }, _callee4, null, [[0, 10]]);
     }));
 
     function fetchAirShows() {
@@ -6857,29 +6860,36 @@ var request = {
     var _fetchPopularShows = _asyncToGenerator(
     /*#__PURE__*/
     regeneratorRuntime.mark(function _callee5() {
-      var request, res;
+      var _request5, res;
+
       return regeneratorRuntime.wrap(function _callee5$(_context5) {
         while (1) {
           switch (_context5.prev = _context5.next) {
             case 0:
-              _context5.next = 2;
+              _context5.prev = 0;
+              _context5.next = 3;
               return fetch("https://api.themoviedb.org/3/tv/popular?api_key=".concat(apiKey, "&page=1"));
 
-            case 2:
-              request = _context5.sent;
-              _context5.next = 5;
-              return request.json();
+            case 3:
+              _request5 = _context5.sent;
+              _context5.next = 6;
+              return _request5.json();
 
-            case 5:
+            case 6:
               res = _context5.sent;
               return _context5.abrupt("return", res);
 
-            case 7:
+            case 10:
+              _context5.prev = 10;
+              _context5.t0 = _context5["catch"](0);
+              alert('Data could not be fetched!' + ' ' + _context5.t0);
+
+            case 13:
             case "end":
               return _context5.stop();
           }
         }
-      }, _callee5);
+      }, _callee5, null, [[0, 10]]);
     }));
 
     function fetchPopularShows() {
@@ -6892,29 +6902,36 @@ var request = {
     var _fetchTopShows = _asyncToGenerator(
     /*#__PURE__*/
     regeneratorRuntime.mark(function _callee6() {
-      var request, res;
+      var _request6, res;
+
       return regeneratorRuntime.wrap(function _callee6$(_context6) {
         while (1) {
           switch (_context6.prev = _context6.next) {
             case 0:
-              _context6.next = 2;
+              _context6.prev = 0;
+              _context6.next = 3;
               return fetch("https://api.themoviedb.org/3/tv/top_rated?api_key=".concat(apiKey, "&page=1"));
 
-            case 2:
-              request = _context6.sent;
-              _context6.next = 5;
-              return request.json();
+            case 3:
+              _request6 = _context6.sent;
+              _context6.next = 6;
+              return _request6.json();
 
-            case 5:
+            case 6:
               res = _context6.sent;
               return _context6.abrupt("return", res);
 
-            case 7:
+            case 10:
+              _context6.prev = 10;
+              _context6.t0 = _context6["catch"](0);
+              alert('Data could not be fetched!' + ' ' + _context6.t0);
+
+            case 13:
             case "end":
               return _context6.stop();
           }
         }
-      }, _callee6);
+      }, _callee6, null, [[0, 10]]);
     }));
 
     function fetchTopShows() {
@@ -6927,29 +6944,36 @@ var request = {
     var _fetchDiscoverMovies = _asyncToGenerator(
     /*#__PURE__*/
     regeneratorRuntime.mark(function _callee7(sortBy, year, vote, genres, page) {
-      var request, res;
+      var _request7, res;
+
       return regeneratorRuntime.wrap(function _callee7$(_context7) {
         while (1) {
           switch (_context7.prev = _context7.next) {
             case 0:
-              _context7.next = 2;
+              _context7.prev = 0;
+              _context7.next = 3;
               return fetch("https://api.themoviedb.org/3/discover/movie?api_key=".concat(apiKey, "&sort_by=").concat(sortBy, "&year=").concat(year, "&vote_average.gte=").concat(vote, "&with_genres=").concat(genres, "&page=").concat(page));
 
-            case 2:
-              request = _context7.sent;
-              _context7.next = 5;
-              return request.json();
+            case 3:
+              _request7 = _context7.sent;
+              _context7.next = 6;
+              return _request7.json();
 
-            case 5:
+            case 6:
               res = _context7.sent;
               return _context7.abrupt("return", res);
 
-            case 7:
+            case 10:
+              _context7.prev = 10;
+              _context7.t0 = _context7["catch"](0);
+              alert('Data could not be fetched!' + ' ' + _context7.t0);
+
+            case 13:
             case "end":
               return _context7.stop();
           }
         }
-      }, _callee7);
+      }, _callee7, null, [[0, 10]]);
     }));
 
     function fetchDiscoverMovies(_x, _x2, _x3, _x4, _x5) {
@@ -6958,33 +6982,41 @@ var request = {
 
     return fetchDiscoverMovies;
   }(),
+  // Default = ce filme se afiseaza pe pagina daca nu cauti nimic
   fetchDiscoverMoviesDefault: function () {
     var _fetchDiscoverMoviesDefault = _asyncToGenerator(
     /*#__PURE__*/
     regeneratorRuntime.mark(function _callee8() {
-      var request, res;
+      var _request8, res;
+
       return regeneratorRuntime.wrap(function _callee8$(_context8) {
         while (1) {
           switch (_context8.prev = _context8.next) {
             case 0:
-              _context8.next = 2;
+              _context8.prev = 0;
+              _context8.next = 3;
               return fetch("https://api.themoviedb.org/3/discover/movie?api_key=".concat(apiKey, "&sort_by=popularity.desc&year=&vote_average.gte=&with_genres=&page=1}"));
 
-            case 2:
-              request = _context8.sent;
-              _context8.next = 5;
-              return request.json();
+            case 3:
+              _request8 = _context8.sent;
+              _context8.next = 6;
+              return _request8.json();
 
-            case 5:
+            case 6:
               res = _context8.sent;
               return _context8.abrupt("return", res);
 
-            case 7:
+            case 10:
+              _context8.prev = 10;
+              _context8.t0 = _context8["catch"](0);
+              alert('Data could not be fetched!' + ' ' + _context8.t0);
+
+            case 13:
             case "end":
               return _context8.stop();
           }
         }
-      }, _callee8);
+      }, _callee8, null, [[0, 10]]);
     }));
 
     function fetchDiscoverMoviesDefault() {
@@ -6997,29 +7029,36 @@ var request = {
     var _fetchDiscoverShows = _asyncToGenerator(
     /*#__PURE__*/
     regeneratorRuntime.mark(function _callee9(sortBy, year, vote, genres, page) {
-      var request, res;
+      var _request9, res;
+
       return regeneratorRuntime.wrap(function _callee9$(_context9) {
         while (1) {
           switch (_context9.prev = _context9.next) {
             case 0:
-              _context9.next = 2;
+              _context9.prev = 0;
+              _context9.next = 3;
               return fetch("https://api.themoviedb.org/3/discover/tv?api_key=".concat(apiKey, "&sort_by=").concat(sortBy, "&first_air_date_year=").concat(year, "&vote_average.gte=").concat(vote, "&with_genres=").concat(genres, "&page=").concat(page));
 
-            case 2:
-              request = _context9.sent;
-              _context9.next = 5;
-              return request.json();
+            case 3:
+              _request9 = _context9.sent;
+              _context9.next = 6;
+              return _request9.json();
 
-            case 5:
+            case 6:
               res = _context9.sent;
               return _context9.abrupt("return", res);
 
-            case 7:
+            case 10:
+              _context9.prev = 10;
+              _context9.t0 = _context9["catch"](0);
+              alert('Data could not be fetched!' + ' ' + _context9.t0);
+
+            case 13:
             case "end":
               return _context9.stop();
           }
         }
-      }, _callee9);
+      }, _callee9, null, [[0, 10]]);
     }));
 
     function fetchDiscoverShows(_x6, _x7, _x8, _x9, _x10) {
@@ -7028,33 +7067,41 @@ var request = {
 
     return fetchDiscoverShows;
   }(),
+  // Default = ce seriale se afiseaza pe pagina daca nu cauti nimic
   fetchDiscoverShowsDefault: function () {
     var _fetchDiscoverShowsDefault = _asyncToGenerator(
     /*#__PURE__*/
     regeneratorRuntime.mark(function _callee10() {
-      var request, res;
+      var _request10, res;
+
       return regeneratorRuntime.wrap(function _callee10$(_context10) {
         while (1) {
           switch (_context10.prev = _context10.next) {
             case 0:
-              _context10.next = 2;
+              _context10.prev = 0;
+              _context10.next = 3;
               return fetch("https://api.themoviedb.org/3/discover/tv?api_key=".concat(apiKey, "&sort_by=popularity.desc&first_air_date_year=&vote_average.gte=&with_genres=&page=1"));
 
-            case 2:
-              request = _context10.sent;
-              _context10.next = 5;
-              return request.json();
+            case 3:
+              _request10 = _context10.sent;
+              _context10.next = 6;
+              return _request10.json();
 
-            case 5:
+            case 6:
               res = _context10.sent;
               return _context10.abrupt("return", res);
 
-            case 7:
+            case 10:
+              _context10.prev = 10;
+              _context10.t0 = _context10["catch"](0);
+              alert('Data could not be fetched!' + ' ' + _context10.t0);
+
+            case 13:
             case "end":
               return _context10.stop();
           }
         }
-      }, _callee10);
+      }, _callee10, null, [[0, 10]]);
     }));
 
     function fetchDiscoverShowsDefault() {
@@ -7063,33 +7110,41 @@ var request = {
 
     return fetchDiscoverShowsDefault;
   }(),
+  // Default = ce filme se afiseaza pe pagina daca nu cauti nimic
   fetchSearchMoviesDefault: function () {
     var _fetchSearchMoviesDefault = _asyncToGenerator(
     /*#__PURE__*/
     regeneratorRuntime.mark(function _callee11() {
-      var request, res;
+      var _request11, res;
+
       return regeneratorRuntime.wrap(function _callee11$(_context11) {
         while (1) {
           switch (_context11.prev = _context11.next) {
             case 0:
-              _context11.next = 2;
+              _context11.prev = 0;
+              _context11.next = 3;
               return fetch("https://api.themoviedb.org/3/trending/movie/week?api_key=".concat(apiKey));
 
-            case 2:
-              request = _context11.sent;
-              _context11.next = 5;
-              return request.json();
+            case 3:
+              _request11 = _context11.sent;
+              _context11.next = 6;
+              return _request11.json();
 
-            case 5:
+            case 6:
               res = _context11.sent;
               return _context11.abrupt("return", res);
 
-            case 7:
+            case 10:
+              _context11.prev = 10;
+              _context11.t0 = _context11["catch"](0);
+              alert('Data could not be fetched!' + ' ' + _context11.t0);
+
+            case 13:
             case "end":
               return _context11.stop();
           }
         }
-      }, _callee11);
+      }, _callee11, null, [[0, 10]]);
     }));
 
     function fetchSearchMoviesDefault() {
@@ -7102,29 +7157,36 @@ var request = {
     var _fetchSearchMovies = _asyncToGenerator(
     /*#__PURE__*/
     regeneratorRuntime.mark(function _callee12(movie, page) {
-      var request, res;
+      var _request12, res;
+
       return regeneratorRuntime.wrap(function _callee12$(_context12) {
         while (1) {
           switch (_context12.prev = _context12.next) {
             case 0:
-              _context12.next = 2;
+              _context12.prev = 0;
+              _context12.next = 3;
               return fetch("https://api.themoviedb.org/3/search/movie?api_key=".concat(apiKey, "&query=").concat(movie, "&page=").concat(page));
 
-            case 2:
-              request = _context12.sent;
-              _context12.next = 5;
-              return request.json();
+            case 3:
+              _request12 = _context12.sent;
+              _context12.next = 6;
+              return _request12.json();
 
-            case 5:
+            case 6:
               res = _context12.sent;
               return _context12.abrupt("return", res);
 
-            case 7:
+            case 10:
+              _context12.prev = 10;
+              _context12.t0 = _context12["catch"](0);
+              alert('Data could not be fetched!' + ' ' + _context12.t0);
+
+            case 13:
             case "end":
               return _context12.stop();
           }
         }
-      }, _callee12);
+      }, _callee12, null, [[0, 10]]);
     }));
 
     function fetchSearchMovies(_x11, _x12) {
@@ -7133,33 +7195,41 @@ var request = {
 
     return fetchSearchMovies;
   }(),
+  // Default = ce seriale se afiseaza pe pagina daca nu cauti nimic
   fetchSearchShowsDefault: function () {
     var _fetchSearchShowsDefault = _asyncToGenerator(
     /*#__PURE__*/
     regeneratorRuntime.mark(function _callee13() {
-      var request, res;
+      var _request13, res;
+
       return regeneratorRuntime.wrap(function _callee13$(_context13) {
         while (1) {
           switch (_context13.prev = _context13.next) {
             case 0:
-              _context13.next = 2;
+              _context13.prev = 0;
+              _context13.next = 3;
               return fetch("https://api.themoviedb.org/3/trending/tv/week?api_key=".concat(apiKey));
 
-            case 2:
-              request = _context13.sent;
-              _context13.next = 5;
-              return request.json();
+            case 3:
+              _request13 = _context13.sent;
+              _context13.next = 6;
+              return _request13.json();
 
-            case 5:
+            case 6:
               res = _context13.sent;
               return _context13.abrupt("return", res);
 
-            case 7:
+            case 10:
+              _context13.prev = 10;
+              _context13.t0 = _context13["catch"](0);
+              alert('Data could not be fetched!' + ' ' + _context13.t0);
+
+            case 13:
             case "end":
               return _context13.stop();
           }
         }
-      }, _callee13);
+      }, _callee13, null, [[0, 10]]);
     }));
 
     function fetchSearchShowsDefault() {
@@ -7172,29 +7242,36 @@ var request = {
     var _fetchSearchShows = _asyncToGenerator(
     /*#__PURE__*/
     regeneratorRuntime.mark(function _callee14(movie, page) {
-      var request, res;
+      var _request14, res;
+
       return regeneratorRuntime.wrap(function _callee14$(_context14) {
         while (1) {
           switch (_context14.prev = _context14.next) {
             case 0:
-              _context14.next = 2;
+              _context14.prev = 0;
+              _context14.next = 3;
               return fetch("https://api.themoviedb.org/3/search/tv?api_key=".concat(apiKey, "&query=").concat(movie, "&page=").concat(page));
 
-            case 2:
-              request = _context14.sent;
-              _context14.next = 5;
-              return request.json();
+            case 3:
+              _request14 = _context14.sent;
+              _context14.next = 6;
+              return _request14.json();
 
-            case 5:
+            case 6:
               res = _context14.sent;
               return _context14.abrupt("return", res);
 
-            case 7:
+            case 10:
+              _context14.prev = 10;
+              _context14.t0 = _context14["catch"](0);
+              alert('Data could not be fetched!' + ' ' + _context14.t0);
+
+            case 13:
             case "end":
               return _context14.stop();
           }
         }
-      }, _callee14);
+      }, _callee14, null, [[0, 10]]);
     }));
 
     function fetchSearchShows(_x13, _x14) {
@@ -7203,56 +7280,148 @@ var request = {
 
     return fetchSearchShows;
   }(),
-  fetchAllPopularMovies: function () {
-    var _fetchAllPopularMovies = _asyncToGenerator(
+  fetchMovieDetails: function () {
+    var _fetchMovieDetails = _asyncToGenerator(
     /*#__PURE__*/
-    regeneratorRuntime.mark(function _callee16(type) {
-      var urls, _ref, _ref2, result1, result2, result3, result4, result5, result6;
+    regeneratorRuntime.mark(function _callee15(movieId) {
+      var _request15, res;
+
+      return regeneratorRuntime.wrap(function _callee15$(_context15) {
+        while (1) {
+          switch (_context15.prev = _context15.next) {
+            case 0:
+              _context15.prev = 0;
+              _context15.next = 3;
+              return fetch("https://api.themoviedb.org/3/movie/".concat(movieId, "?api_key=").concat(apiKey, "&language=en-US&append_to_response=reviews,videos,credits"));
+
+            case 3:
+              _request15 = _context15.sent;
+              _context15.next = 6;
+              return _request15.json();
+
+            case 6:
+              res = _context15.sent;
+              return _context15.abrupt("return", res);
+
+            case 10:
+              _context15.prev = 10;
+              _context15.t0 = _context15["catch"](0);
+              alert('Data could not be fetched!' + ' ' + _context15.t0);
+
+            case 13:
+            case "end":
+              return _context15.stop();
+          }
+        }
+      }, _callee15, null, [[0, 10]]);
+    }));
+
+    function fetchMovieDetails(_x15) {
+      return _fetchMovieDetails.apply(this, arguments);
+    }
+
+    return fetchMovieDetails;
+  }(),
+  fetchShowDetails: function () {
+    var _fetchShowDetails = _asyncToGenerator(
+    /*#__PURE__*/
+    regeneratorRuntime.mark(function _callee16(showId) {
+      var _request16, res;
 
       return regeneratorRuntime.wrap(function _callee16$(_context16) {
         while (1) {
           switch (_context16.prev = _context16.next) {
             case 0:
-              urls = ["https://api.themoviedb.org/3/movie/".concat(type, "?api_key=").concat(apiKey, "&language=en-US&page=1"), "https://api.themoviedb.org/3/movie/".concat(type, "?api_key=").concat(apiKey, "&language=en-US&page=2"), "https://api.themoviedb.org/3/movie/".concat(type, "?api_key=").concat(apiKey, "&language=en-US&page=3"), "https://api.themoviedb.org/3/movie/".concat(type, "?api_key=").concat(apiKey, "&language=en-US&page=4"), "https://api.themoviedb.org/3/movie/".concat(type, "?api_key=").concat(apiKey, "&language=en-US&page=5"), "https://api.themoviedb.org/3/movie/".concat(type, "?api_key=").concat(apiKey, "&language=en-US&page=6")];
+              _context16.prev = 0;
               _context16.next = 3;
+              return fetch("https://api.themoviedb.org/3/tv/".concat(showId, "?api_key=").concat(apiKey, "&language=en-US&append_to_response=reviews,videos,credits"));
+
+            case 3:
+              _request16 = _context16.sent;
+              _context16.next = 6;
+              return _request16.json();
+
+            case 6:
+              res = _context16.sent;
+              return _context16.abrupt("return", res);
+
+            case 10:
+              _context16.prev = 10;
+              _context16.t0 = _context16["catch"](0);
+              alert('Data could not be fetched!' + ' ' + _context16.t0);
+
+            case 13:
+            case "end":
+              return _context16.stop();
+          }
+        }
+      }, _callee16, null, [[0, 10]]);
+    }));
+
+    function fetchShowDetails(_x16) {
+      return _fetchShowDetails.apply(this, arguments);
+    }
+
+    return fetchShowDetails;
+  }(),
+  // type = popular || top rated || now playing etc
+  fetchAllTypeMovies: function () {
+    var _fetchAllTypeMovies = _asyncToGenerator(
+    /*#__PURE__*/
+    regeneratorRuntime.mark(function _callee18(type) {
+      var urls, _ref, _ref2, result1, result2, result3, result4, result5, result6;
+
+      return regeneratorRuntime.wrap(function _callee18$(_context18) {
+        while (1) {
+          switch (_context18.prev = _context18.next) {
+            case 0:
+              urls = ["https://api.themoviedb.org/3/movie/".concat(type, "?api_key=").concat(apiKey, "&language=en-US&page=1"), "https://api.themoviedb.org/3/movie/".concat(type, "?api_key=").concat(apiKey, "&language=en-US&page=2"), "https://api.themoviedb.org/3/movie/".concat(type, "?api_key=").concat(apiKey, "&language=en-US&page=3"), "https://api.themoviedb.org/3/movie/".concat(type, "?api_key=").concat(apiKey, "&language=en-US&page=4"), "https://api.themoviedb.org/3/movie/".concat(type, "?api_key=").concat(apiKey, "&language=en-US&page=5"), "https://api.themoviedb.org/3/movie/".concat(type, "?api_key=").concat(apiKey, "&language=en-US&page=6")];
+              _context18.next = 3;
               return Promise.all(urls.map(
               /*#__PURE__*/
               function () {
                 var _ref3 = _asyncToGenerator(
                 /*#__PURE__*/
-                regeneratorRuntime.mark(function _callee15(url) {
-                  var request, res;
-                  return regeneratorRuntime.wrap(function _callee15$(_context15) {
+                regeneratorRuntime.mark(function _callee17(url) {
+                  var _request17, res;
+
+                  return regeneratorRuntime.wrap(function _callee17$(_context17) {
                     while (1) {
-                      switch (_context15.prev = _context15.next) {
+                      switch (_context17.prev = _context17.next) {
                         case 0:
-                          _context15.next = 2;
+                          _context17.prev = 0;
+                          _context17.next = 3;
                           return fetch(url);
 
-                        case 2:
-                          request = _context15.sent;
-                          _context15.next = 5;
-                          return request.json();
+                        case 3:
+                          _request17 = _context17.sent;
+                          _context17.next = 6;
+                          return _request17.json();
 
-                        case 5:
-                          res = _context15.sent;
-                          return _context15.abrupt("return", res);
+                        case 6:
+                          res = _context17.sent;
+                          return _context17.abrupt("return", res);
 
-                        case 7:
+                        case 10:
+                          _context17.prev = 10;
+                          _context17.t0 = _context17["catch"](0);
+                          alert('Data could not be fetched!' + ' ' + _context17.t0);
+
+                        case 13:
                         case "end":
-                          return _context15.stop();
+                          return _context17.stop();
                       }
                     }
-                  }, _callee15);
+                  }, _callee17, null, [[0, 10]]);
                 }));
 
-                return function (_x16) {
+                return function (_x18) {
                   return _ref3.apply(this, arguments);
                 };
               }()));
 
             case 3:
-              _ref = _context16.sent;
+              _ref = _context18.sent;
               _ref2 = _slicedToArray(_ref, 6);
               result1 = _ref2[0];
               result2 = _ref2[1];
@@ -7260,79 +7429,6 @@ var request = {
               result4 = _ref2[3];
               result5 = _ref2[4];
               result6 = _ref2[5];
-              return _context16.abrupt("return", Promise.resolve([].concat(_toConsumableArray(result1.results), _toConsumableArray(result2.results), _toConsumableArray(result3.results), _toConsumableArray(result4.results), _toConsumableArray(result5.results), _toConsumableArray(result6.results))));
-
-            case 12:
-            case "end":
-              return _context16.stop();
-          }
-        }
-      }, _callee16);
-    }));
-
-    function fetchAllPopularMovies(_x15) {
-      return _fetchAllPopularMovies.apply(this, arguments);
-    }
-
-    return fetchAllPopularMovies;
-  }(),
-  fetchAllPopularShows: function () {
-    var _fetchAllPopularShows = _asyncToGenerator(
-    /*#__PURE__*/
-    regeneratorRuntime.mark(function _callee18(type) {
-      var urls, _ref4, _ref5, result1, result2, result3, result4, result5, result6;
-
-      return regeneratorRuntime.wrap(function _callee18$(_context18) {
-        while (1) {
-          switch (_context18.prev = _context18.next) {
-            case 0:
-              urls = ["https://api.themoviedb.org/3/tv/".concat(type, "?api_key=").concat(apiKey, "&language=en-US&page=1"), "https://api.themoviedb.org/3/tv/".concat(type, "?api_key=").concat(apiKey, "&language=en-US&page=2"), "https://api.themoviedb.org/3/tv/".concat(type, "?api_key=").concat(apiKey, "&language=en-US&page=3"), "https://api.themoviedb.org/3/tv/".concat(type, "?api_key=").concat(apiKey, "&language=en-US&page=4"), "https://api.themoviedb.org/3/tv/".concat(type, "?api_key=").concat(apiKey, "&language=en-US&page=5"), "https://api.themoviedb.org/3/tv/".concat(type, "?api_key=").concat(apiKey, "&language=en-US&page=6")];
-              _context18.next = 3;
-              return Promise.all(urls.map(
-              /*#__PURE__*/
-              function () {
-                var _ref6 = _asyncToGenerator(
-                /*#__PURE__*/
-                regeneratorRuntime.mark(function _callee17(url) {
-                  var request, res;
-                  return regeneratorRuntime.wrap(function _callee17$(_context17) {
-                    while (1) {
-                      switch (_context17.prev = _context17.next) {
-                        case 0:
-                          _context17.next = 2;
-                          return fetch(url);
-
-                        case 2:
-                          request = _context17.sent;
-                          _context17.next = 5;
-                          return request.json();
-
-                        case 5:
-                          res = _context17.sent;
-                          return _context17.abrupt("return", res);
-
-                        case 7:
-                        case "end":
-                          return _context17.stop();
-                      }
-                    }
-                  }, _callee17);
-                }));
-
-                return function (_x18) {
-                  return _ref6.apply(this, arguments);
-                };
-              }()));
-
-            case 3:
-              _ref4 = _context18.sent;
-              _ref5 = _slicedToArray(_ref4, 6);
-              result1 = _ref5[0];
-              result2 = _ref5[1];
-              result3 = _ref5[2];
-              result4 = _ref5[3];
-              result5 = _ref5[4];
-              result6 = _ref5[5];
               return _context18.abrupt("return", Promise.resolve([].concat(_toConsumableArray(result1.results), _toConsumableArray(result2.results), _toConsumableArray(result3.results), _toConsumableArray(result4.results), _toConsumableArray(result5.results), _toConsumableArray(result6.results))));
 
             case 12:
@@ -7343,11 +7439,92 @@ var request = {
       }, _callee18);
     }));
 
-    function fetchAllPopularShows(_x17) {
-      return _fetchAllPopularShows.apply(this, arguments);
+    function fetchAllTypeMovies(_x17) {
+      return _fetchAllTypeMovies.apply(this, arguments);
     }
 
-    return fetchAllPopularShows;
+    return fetchAllTypeMovies;
+  }(),
+  // type = popular || top rated || now playing etc
+  fetchAllTypeShows: function () {
+    var _fetchAllTypeShows = _asyncToGenerator(
+    /*#__PURE__*/
+    regeneratorRuntime.mark(function _callee20(type) {
+      var urls, _ref4, _ref5, result1, result2, result3, result4, result5, result6;
+
+      return regeneratorRuntime.wrap(function _callee20$(_context20) {
+        while (1) {
+          switch (_context20.prev = _context20.next) {
+            case 0:
+              urls = ["https://api.themoviedb.org/3/tv/".concat(type, "?api_key=").concat(apiKey, "&language=en-US&page=1"), "https://api.themoviedb.org/3/tv/".concat(type, "?api_key=").concat(apiKey, "&language=en-US&page=2"), "https://api.themoviedb.org/3/tv/".concat(type, "?api_key=").concat(apiKey, "&language=en-US&page=3"), "https://api.themoviedb.org/3/tv/".concat(type, "?api_key=").concat(apiKey, "&language=en-US&page=4"), "https://api.themoviedb.org/3/tv/".concat(type, "?api_key=").concat(apiKey, "&language=en-US&page=5"), "https://api.themoviedb.org/3/tv/".concat(type, "?api_key=").concat(apiKey, "&language=en-US&page=6")];
+              _context20.next = 3;
+              return Promise.all(urls.map(
+              /*#__PURE__*/
+              function () {
+                var _ref6 = _asyncToGenerator(
+                /*#__PURE__*/
+                regeneratorRuntime.mark(function _callee19(url) {
+                  var _request18, res;
+
+                  return regeneratorRuntime.wrap(function _callee19$(_context19) {
+                    while (1) {
+                      switch (_context19.prev = _context19.next) {
+                        case 0:
+                          _context19.prev = 0;
+                          _context19.next = 3;
+                          return fetch(url);
+
+                        case 3:
+                          _request18 = _context19.sent;
+                          _context19.next = 6;
+                          return _request18.json();
+
+                        case 6:
+                          res = _context19.sent;
+                          return _context19.abrupt("return", res);
+
+                        case 10:
+                          _context19.prev = 10;
+                          _context19.t0 = _context19["catch"](0);
+                          alert('Data could not be fetched!' + ' ' + _context19.t0);
+
+                        case 13:
+                        case "end":
+                          return _context19.stop();
+                      }
+                    }
+                  }, _callee19, null, [[0, 10]]);
+                }));
+
+                return function (_x20) {
+                  return _ref6.apply(this, arguments);
+                };
+              }()));
+
+            case 3:
+              _ref4 = _context20.sent;
+              _ref5 = _slicedToArray(_ref4, 6);
+              result1 = _ref5[0];
+              result2 = _ref5[1];
+              result3 = _ref5[2];
+              result4 = _ref5[3];
+              result5 = _ref5[4];
+              result6 = _ref5[5];
+              return _context20.abrupt("return", Promise.resolve([].concat(_toConsumableArray(result1.results), _toConsumableArray(result2.results), _toConsumableArray(result3.results), _toConsumableArray(result4.results), _toConsumableArray(result5.results), _toConsumableArray(result6.results))));
+
+            case 12:
+            case "end":
+              return _context20.stop();
+          }
+        }
+      }, _callee20);
+    }));
+
+    function fetchAllTypeShows(_x19) {
+      return _fetchAllTypeShows.apply(this, arguments);
+    }
+
+    return fetchAllTypeShows;
   }()
 };
 exports.request = request;
@@ -7614,18 +7791,20 @@ require("core-js/modules/web.dom.iterable");
 
 require("regenerator-runtime/runtime");
 
-var variables = _interopRequireWildcard(require("./includes/variables.js"));
-
 var _showsGenres = require("./includes/showsGenres.js");
 
 var _requests = require("./includes/requests.js");
 
-function _getRequireWildcardCache() { if (typeof WeakMap !== "function") return null; var cache = new WeakMap(); _getRequireWildcardCache = function () { return cache; }; return cache; }
-
-function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } var cache = _getRequireWildcardCache(); if (cache && cache.has(obj)) { return cache.get(obj); } var newObj = {}; if (obj != null) { var hasPropertyDescriptor = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) { var desc = hasPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : null; if (desc && (desc.get || desc.set)) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } } newObj.default = obj; if (cache) { cache.set(obj, newObj); } return newObj; }
-
 (function () {
-  variables.trending2.innerHTML = variables.spinner2;
+  var spinner = "\n    <div class=\"mb-5 spinner-border text-light\" style=\"width: 3rem; height: 3rem;\" role=\"status\">\n      <span class=\"sr-only\">Loading...</span>\n    </div>";
+  var spinner2 = "\n    <div style=\"margin: 0 auto\" class=\"mb-5 spinner-border text-light\" style=\"width: 5rem !important; height: 5rem !important;\" role=\"status\">\n      <span class=\"sr-only\">Loading...</span>\n    </div>";
+  var inputSearch = document.getElementById('inputSearch');
+  var trending2 = document.getElementById('trending-shows');
+  var previous = document.getElementById('previous');
+  var next = document.getElementById('next');
+  var moviesList = document.getElementById('moviesList');
+  var pagination = document.getElementById('pagination-container');
+  trending2.innerHTML = spinner2;
 
   _requests.request.fetchSearchShowsDefault().then(function (data) {
     var output = '';
@@ -7641,7 +7820,7 @@ function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj;
       }).join(", ");
       output += "\n          <div onclick=\"o(".concat(movie.id, ")\" class=\"mr-3 card\" style=\"width: 15rem; padding-bottom: 0;\">\n              <img class=\"card-img-top card-img\" src=\"https://image.tmdb.org/t/p/w500").concat(movie.poster_path, "\" alt=\"Card image cap\">\n              <div class=\"card-body\">\n                <h5 class=\"card-title card-small-title\">").concat(movie.name, "</h5>\n                <p class=\"card-text card-small-details\">").concat(movie.first_air_date.split("-")[0], " | ").concat(genreOutput, "</p>\n              </div>\n          </div>\n          ");
     });
-    variables.trending2.innerHTML = output;
+    trending2.innerHTML = output;
     $('.slick-trending-shows').slick({
       slidesToShow: 8,
       lazyLoad: 'ondemand',
@@ -7678,43 +7857,43 @@ function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj;
     });
   });
 
-  variables.inputSearch.addEventListener('input', function (e) {
+  inputSearch.addEventListener('input', function (e) {
     e.preventDefault();
     getMovies(e.target.value, 1);
   });
   var page = 1;
-  variables.next.addEventListener('click', function () {
+  next.addEventListener('click', function () {
     window.scrollTo(0, 240);
-    getMovies(variables.inputSearch.value, ++page);
+    getMovies(inputSearch.value, ++page);
   });
-  variables.previous.addEventListener('click', function () {
+  previous.addEventListener('click', function () {
     window.scrollTo(0, 240);
-    getMovies(variables.inputSearch.value, --page);
+    getMovies(inputSearch.value, --page);
   });
 
   var previousDisabled = function previousDisabled(page) {
     if (page == 1) {
-      variables.previous.disabled = true;
-      variables.previous.classList.add('button-disabled');
+      previous.disabled = true;
+      previous.classList.add('button-disabled');
     } else {
-      variables.previous.disabled = false;
-      variables.previous.classList.remove('button-disabled');
+      previous.disabled = false;
+      previous.classList.remove('button-disabled');
     }
   };
 
   var nextDisabled = function nextDisabled(page, totalPages) {
     if (page === totalPages) {
-      variables.next.disabled = true;
-      variables.next.classList.add('button-disabled');
+      next.disabled = true;
+      next.classList.add('button-disabled');
     } else {
-      variables.next.disabled = false;
-      variables.next.classList.remove('button-disabled');
+      next.disabled = false;
+      next.classList.remove('button-disabled');
     }
   };
 
   var getMovies = function getMovies(movie, page) {
-    if (variables.inputSearch.value.length > 0) {
-      variables.moviesList.innerHTML = variables.spinner;
+    if (inputSearch.value.length > 0) {
+      moviesList.innerHTML = spinner;
     }
 
     previousDisabled(page);
@@ -7736,19 +7915,21 @@ function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj;
             descp = movie.overview;
           }
 
-          output += "\n                <div class=\"card-v2\">\n                  <div class=\"poster\">\n                    <img\n                      data-src=\"https://image.tmdb.org/t/p/w300/".concat(movie.poster_path, "\"\n                    />\n                  </div>\n                  <div class=\"details\">\n                    <h2>").concat(movie.name, "<br /><span>First Air Date: ").concat(movie.first_air_date, "</span></h2>\n                    <div class=\"rating\">\n                      <i class=\"fas fa-star\"></i>\n                      <span>").concat(movie.vote_average, " / 10</span>\n                    </div>\n                    <div class=\"info\">\n                      <p>\n                        ").concat(descp, "\n                      </p>\n                    </div>\n                    <div class=\"more-info\">\n                      <a onclick=\"o(").concat(movie.id, ")\" target=\"_blank\" class=\"btn btn-dark\">More Details</a>\n                    </div>\n                  </div>\n                </div>\n              ");
+          output += "\n                <div class=\"card-v2\">\n                  <div class=\"poster\">\n                    <img\n                      data-src=\"https://image.tmdb.org/t/p/w300/".concat(movie.poster_path, "\"\n                    />\n                  </div>\n                  <div class=\"details\">\n                    <h2>").concat(movie.name, "<br /><span>First Air Date: ").concat(movie.first_air_date, "</span></h2>\n                    <div class=\"rating\">\n                      <span class=\"card-v2-rating>").concat(movie.vote_average, " / 10</span>\n                    </div>\n                    <div class=\"info\">\n                      <p>\n                        ").concat(descp, "\n                      </p>\n                    </div>\n                    <div class=\"more-info\">\n                      <a onclick=\"o(").concat(movie.id, ")\" target=\"_blank\" class=\"btn btn-dark\">More Details</a>\n                    </div>\n                  </div>\n                </div>\n              ");
         });
 
         if (data.results.length !== 0) {
-          variables.moviesList.innerHTML = output;
+          moviesList.innerHTML = output;
         } else {
-          variables.moviesList.innerHTML = "<h2 class=\"no-results\">No results founded</h2>";
-          variables.next.disabled = true;
-          variables.next.classList.add('button-disabled');
+          moviesList.innerHTML = "<h2 class=\"no-results\">No results founded</h2>";
+          next.disabled = true;
+          next.classList.add('button-disabled');
         }
 
-        variables.pagination.style.visibility = 'visible';
+        pagination.style.visibility = 'visible';
       }).finally(function () {
+        // Lazy-Load pentru imagni
+        // Imaginile sunt prezente doar cand user-ul este in viewport-ul unde se afla acestea
         var images = document.querySelectorAll("[data-src]");
 
         function preloadImage(img) {
@@ -7779,12 +7960,12 @@ function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj;
       });
     } else {
       document.getElementById('slider-shows-search').style.display = 'block';
-      variables.moviesList.innerHTML = null;
-      variables.pagination.style.visibility = 'hidden';
+      moviesList.innerHTML = null;
+      pagination.style.visibility = 'hidden';
     }
   };
 })();
-},{"core-js/modules/es6.array.copy-within":"../node_modules/core-js/modules/es6.array.copy-within.js","core-js/modules/es6.array.fill":"../node_modules/core-js/modules/es6.array.fill.js","core-js/modules/es6.array.find":"../node_modules/core-js/modules/es6.array.find.js","core-js/modules/es6.array.find-index":"../node_modules/core-js/modules/es6.array.find-index.js","core-js/modules/es7.array.flat-map":"../node_modules/core-js/modules/es7.array.flat-map.js","core-js/modules/es6.array.from":"../node_modules/core-js/modules/es6.array.from.js","core-js/modules/es7.array.includes":"../node_modules/core-js/modules/es7.array.includes.js","core-js/modules/es6.array.iterator":"../node_modules/core-js/modules/es6.array.iterator.js","core-js/modules/es6.array.of":"../node_modules/core-js/modules/es6.array.of.js","core-js/modules/es6.array.sort":"../node_modules/core-js/modules/es6.array.sort.js","core-js/modules/es6.array.species":"../node_modules/core-js/modules/es6.array.species.js","core-js/modules/es6.date.to-json":"../node_modules/core-js/modules/es6.date.to-json.js","core-js/modules/es6.date.to-primitive":"../node_modules/core-js/modules/es6.date.to-primitive.js","core-js/modules/es6.function.has-instance":"../node_modules/core-js/modules/es6.function.has-instance.js","core-js/modules/es6.function.name":"../node_modules/core-js/modules/es6.function.name.js","core-js/modules/es6.map":"../node_modules/core-js/modules/es6.map.js","core-js/modules/es6.math.acosh":"../node_modules/core-js/modules/es6.math.acosh.js","core-js/modules/es6.math.asinh":"../node_modules/core-js/modules/es6.math.asinh.js","core-js/modules/es6.math.atanh":"../node_modules/core-js/modules/es6.math.atanh.js","core-js/modules/es6.math.cbrt":"../node_modules/core-js/modules/es6.math.cbrt.js","core-js/modules/es6.math.clz32":"../node_modules/core-js/modules/es6.math.clz32.js","core-js/modules/es6.math.cosh":"../node_modules/core-js/modules/es6.math.cosh.js","core-js/modules/es6.math.expm1":"../node_modules/core-js/modules/es6.math.expm1.js","core-js/modules/es6.math.fround":"../node_modules/core-js/modules/es6.math.fround.js","core-js/modules/es6.math.hypot":"../node_modules/core-js/modules/es6.math.hypot.js","core-js/modules/es6.math.imul":"../node_modules/core-js/modules/es6.math.imul.js","core-js/modules/es6.math.log1p":"../node_modules/core-js/modules/es6.math.log1p.js","core-js/modules/es6.math.log10":"../node_modules/core-js/modules/es6.math.log10.js","core-js/modules/es6.math.log2":"../node_modules/core-js/modules/es6.math.log2.js","core-js/modules/es6.math.sign":"../node_modules/core-js/modules/es6.math.sign.js","core-js/modules/es6.math.sinh":"../node_modules/core-js/modules/es6.math.sinh.js","core-js/modules/es6.math.tanh":"../node_modules/core-js/modules/es6.math.tanh.js","core-js/modules/es6.math.trunc":"../node_modules/core-js/modules/es6.math.trunc.js","core-js/modules/es6.number.constructor":"../node_modules/core-js/modules/es6.number.constructor.js","core-js/modules/es6.number.epsilon":"../node_modules/core-js/modules/es6.number.epsilon.js","core-js/modules/es6.number.is-finite":"../node_modules/core-js/modules/es6.number.is-finite.js","core-js/modules/es6.number.is-integer":"../node_modules/core-js/modules/es6.number.is-integer.js","core-js/modules/es6.number.is-nan":"../node_modules/core-js/modules/es6.number.is-nan.js","core-js/modules/es6.number.is-safe-integer":"../node_modules/core-js/modules/es6.number.is-safe-integer.js","core-js/modules/es6.number.max-safe-integer":"../node_modules/core-js/modules/es6.number.max-safe-integer.js","core-js/modules/es6.number.min-safe-integer":"../node_modules/core-js/modules/es6.number.min-safe-integer.js","core-js/modules/es6.number.parse-float":"../node_modules/core-js/modules/es6.number.parse-float.js","core-js/modules/es6.number.parse-int":"../node_modules/core-js/modules/es6.number.parse-int.js","core-js/modules/es6.object.assign":"../node_modules/core-js/modules/es6.object.assign.js","core-js/modules/es7.object.define-getter":"../node_modules/core-js/modules/es7.object.define-getter.js","core-js/modules/es7.object.define-setter":"../node_modules/core-js/modules/es7.object.define-setter.js","core-js/modules/es7.object.entries":"../node_modules/core-js/modules/es7.object.entries.js","core-js/modules/es6.object.freeze":"../node_modules/core-js/modules/es6.object.freeze.js","core-js/modules/es6.object.get-own-property-descriptor":"../node_modules/core-js/modules/es6.object.get-own-property-descriptor.js","core-js/modules/es7.object.get-own-property-descriptors":"../node_modules/core-js/modules/es7.object.get-own-property-descriptors.js","core-js/modules/es6.object.get-own-property-names":"../node_modules/core-js/modules/es6.object.get-own-property-names.js","core-js/modules/es6.object.get-prototype-of":"../node_modules/core-js/modules/es6.object.get-prototype-of.js","core-js/modules/es7.object.lookup-getter":"../node_modules/core-js/modules/es7.object.lookup-getter.js","core-js/modules/es7.object.lookup-setter":"../node_modules/core-js/modules/es7.object.lookup-setter.js","core-js/modules/es6.object.prevent-extensions":"../node_modules/core-js/modules/es6.object.prevent-extensions.js","core-js/modules/es6.object.to-string":"../node_modules/core-js/modules/es6.object.to-string.js","core-js/modules/es6.object.is":"../node_modules/core-js/modules/es6.object.is.js","core-js/modules/es6.object.is-frozen":"../node_modules/core-js/modules/es6.object.is-frozen.js","core-js/modules/es6.object.is-sealed":"../node_modules/core-js/modules/es6.object.is-sealed.js","core-js/modules/es6.object.is-extensible":"../node_modules/core-js/modules/es6.object.is-extensible.js","core-js/modules/es6.object.keys":"../node_modules/core-js/modules/es6.object.keys.js","core-js/modules/es6.object.seal":"../node_modules/core-js/modules/es6.object.seal.js","core-js/modules/es6.object.set-prototype-of":"../node_modules/core-js/modules/es6.object.set-prototype-of.js","core-js/modules/es7.object.values":"../node_modules/core-js/modules/es7.object.values.js","core-js/modules/es6.promise":"../node_modules/core-js/modules/es6.promise.js","core-js/modules/es7.promise.finally":"../node_modules/core-js/modules/es7.promise.finally.js","core-js/modules/es6.reflect.apply":"../node_modules/core-js/modules/es6.reflect.apply.js","core-js/modules/es6.reflect.construct":"../node_modules/core-js/modules/es6.reflect.construct.js","core-js/modules/es6.reflect.define-property":"../node_modules/core-js/modules/es6.reflect.define-property.js","core-js/modules/es6.reflect.delete-property":"../node_modules/core-js/modules/es6.reflect.delete-property.js","core-js/modules/es6.reflect.get":"../node_modules/core-js/modules/es6.reflect.get.js","core-js/modules/es6.reflect.get-own-property-descriptor":"../node_modules/core-js/modules/es6.reflect.get-own-property-descriptor.js","core-js/modules/es6.reflect.get-prototype-of":"../node_modules/core-js/modules/es6.reflect.get-prototype-of.js","core-js/modules/es6.reflect.has":"../node_modules/core-js/modules/es6.reflect.has.js","core-js/modules/es6.reflect.is-extensible":"../node_modules/core-js/modules/es6.reflect.is-extensible.js","core-js/modules/es6.reflect.own-keys":"../node_modules/core-js/modules/es6.reflect.own-keys.js","core-js/modules/es6.reflect.prevent-extensions":"../node_modules/core-js/modules/es6.reflect.prevent-extensions.js","core-js/modules/es6.reflect.set":"../node_modules/core-js/modules/es6.reflect.set.js","core-js/modules/es6.reflect.set-prototype-of":"../node_modules/core-js/modules/es6.reflect.set-prototype-of.js","core-js/modules/es6.regexp.constructor":"../node_modules/core-js/modules/es6.regexp.constructor.js","core-js/modules/es6.regexp.flags":"../node_modules/core-js/modules/es6.regexp.flags.js","core-js/modules/es6.regexp.match":"../node_modules/core-js/modules/es6.regexp.match.js","core-js/modules/es6.regexp.replace":"../node_modules/core-js/modules/es6.regexp.replace.js","core-js/modules/es6.regexp.split":"../node_modules/core-js/modules/es6.regexp.split.js","core-js/modules/es6.regexp.search":"../node_modules/core-js/modules/es6.regexp.search.js","core-js/modules/es6.regexp.to-string":"../node_modules/core-js/modules/es6.regexp.to-string.js","core-js/modules/es6.set":"../node_modules/core-js/modules/es6.set.js","core-js/modules/es6.symbol":"../node_modules/core-js/modules/es6.symbol.js","core-js/modules/es7.symbol.async-iterator":"../node_modules/core-js/modules/es7.symbol.async-iterator.js","core-js/modules/es6.string.anchor":"../node_modules/core-js/modules/es6.string.anchor.js","core-js/modules/es6.string.big":"../node_modules/core-js/modules/es6.string.big.js","core-js/modules/es6.string.blink":"../node_modules/core-js/modules/es6.string.blink.js","core-js/modules/es6.string.bold":"../node_modules/core-js/modules/es6.string.bold.js","core-js/modules/es6.string.code-point-at":"../node_modules/core-js/modules/es6.string.code-point-at.js","core-js/modules/es6.string.ends-with":"../node_modules/core-js/modules/es6.string.ends-with.js","core-js/modules/es6.string.fixed":"../node_modules/core-js/modules/es6.string.fixed.js","core-js/modules/es6.string.fontcolor":"../node_modules/core-js/modules/es6.string.fontcolor.js","core-js/modules/es6.string.fontsize":"../node_modules/core-js/modules/es6.string.fontsize.js","core-js/modules/es6.string.from-code-point":"../node_modules/core-js/modules/es6.string.from-code-point.js","core-js/modules/es6.string.includes":"../node_modules/core-js/modules/es6.string.includes.js","core-js/modules/es6.string.italics":"../node_modules/core-js/modules/es6.string.italics.js","core-js/modules/es6.string.iterator":"../node_modules/core-js/modules/es6.string.iterator.js","core-js/modules/es6.string.link":"../node_modules/core-js/modules/es6.string.link.js","core-js/modules/es7.string.pad-start":"../node_modules/core-js/modules/es7.string.pad-start.js","core-js/modules/es7.string.pad-end":"../node_modules/core-js/modules/es7.string.pad-end.js","core-js/modules/es6.string.raw":"../node_modules/core-js/modules/es6.string.raw.js","core-js/modules/es6.string.repeat":"../node_modules/core-js/modules/es6.string.repeat.js","core-js/modules/es6.string.small":"../node_modules/core-js/modules/es6.string.small.js","core-js/modules/es6.string.starts-with":"../node_modules/core-js/modules/es6.string.starts-with.js","core-js/modules/es6.string.strike":"../node_modules/core-js/modules/es6.string.strike.js","core-js/modules/es6.string.sub":"../node_modules/core-js/modules/es6.string.sub.js","core-js/modules/es6.string.sup":"../node_modules/core-js/modules/es6.string.sup.js","core-js/modules/es7.string.trim-left":"../node_modules/core-js/modules/es7.string.trim-left.js","core-js/modules/es7.string.trim-right":"../node_modules/core-js/modules/es7.string.trim-right.js","core-js/modules/es6.typed.array-buffer":"../node_modules/core-js/modules/es6.typed.array-buffer.js","core-js/modules/es6.typed.int8-array":"../node_modules/core-js/modules/es6.typed.int8-array.js","core-js/modules/es6.typed.uint8-array":"../node_modules/core-js/modules/es6.typed.uint8-array.js","core-js/modules/es6.typed.uint8-clamped-array":"../node_modules/core-js/modules/es6.typed.uint8-clamped-array.js","core-js/modules/es6.typed.int16-array":"../node_modules/core-js/modules/es6.typed.int16-array.js","core-js/modules/es6.typed.uint16-array":"../node_modules/core-js/modules/es6.typed.uint16-array.js","core-js/modules/es6.typed.int32-array":"../node_modules/core-js/modules/es6.typed.int32-array.js","core-js/modules/es6.typed.uint32-array":"../node_modules/core-js/modules/es6.typed.uint32-array.js","core-js/modules/es6.typed.float32-array":"../node_modules/core-js/modules/es6.typed.float32-array.js","core-js/modules/es6.typed.float64-array":"../node_modules/core-js/modules/es6.typed.float64-array.js","core-js/modules/es6.weak-map":"../node_modules/core-js/modules/es6.weak-map.js","core-js/modules/es6.weak-set":"../node_modules/core-js/modules/es6.weak-set.js","core-js/modules/web.timers":"../node_modules/core-js/modules/web.timers.js","core-js/modules/web.immediate":"../node_modules/core-js/modules/web.immediate.js","core-js/modules/web.dom.iterable":"../node_modules/core-js/modules/web.dom.iterable.js","regenerator-runtime/runtime":"../node_modules/regenerator-runtime/runtime.js","./includes/variables.js":"js/includes/variables.js","./includes/showsGenres.js":"js/includes/showsGenres.js","./includes/requests.js":"js/includes/requests.js"}],"../node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
+},{"core-js/modules/es6.array.copy-within":"../node_modules/core-js/modules/es6.array.copy-within.js","core-js/modules/es6.array.fill":"../node_modules/core-js/modules/es6.array.fill.js","core-js/modules/es6.array.find":"../node_modules/core-js/modules/es6.array.find.js","core-js/modules/es6.array.find-index":"../node_modules/core-js/modules/es6.array.find-index.js","core-js/modules/es7.array.flat-map":"../node_modules/core-js/modules/es7.array.flat-map.js","core-js/modules/es6.array.from":"../node_modules/core-js/modules/es6.array.from.js","core-js/modules/es7.array.includes":"../node_modules/core-js/modules/es7.array.includes.js","core-js/modules/es6.array.iterator":"../node_modules/core-js/modules/es6.array.iterator.js","core-js/modules/es6.array.of":"../node_modules/core-js/modules/es6.array.of.js","core-js/modules/es6.array.sort":"../node_modules/core-js/modules/es6.array.sort.js","core-js/modules/es6.array.species":"../node_modules/core-js/modules/es6.array.species.js","core-js/modules/es6.date.to-json":"../node_modules/core-js/modules/es6.date.to-json.js","core-js/modules/es6.date.to-primitive":"../node_modules/core-js/modules/es6.date.to-primitive.js","core-js/modules/es6.function.has-instance":"../node_modules/core-js/modules/es6.function.has-instance.js","core-js/modules/es6.function.name":"../node_modules/core-js/modules/es6.function.name.js","core-js/modules/es6.map":"../node_modules/core-js/modules/es6.map.js","core-js/modules/es6.math.acosh":"../node_modules/core-js/modules/es6.math.acosh.js","core-js/modules/es6.math.asinh":"../node_modules/core-js/modules/es6.math.asinh.js","core-js/modules/es6.math.atanh":"../node_modules/core-js/modules/es6.math.atanh.js","core-js/modules/es6.math.cbrt":"../node_modules/core-js/modules/es6.math.cbrt.js","core-js/modules/es6.math.clz32":"../node_modules/core-js/modules/es6.math.clz32.js","core-js/modules/es6.math.cosh":"../node_modules/core-js/modules/es6.math.cosh.js","core-js/modules/es6.math.expm1":"../node_modules/core-js/modules/es6.math.expm1.js","core-js/modules/es6.math.fround":"../node_modules/core-js/modules/es6.math.fround.js","core-js/modules/es6.math.hypot":"../node_modules/core-js/modules/es6.math.hypot.js","core-js/modules/es6.math.imul":"../node_modules/core-js/modules/es6.math.imul.js","core-js/modules/es6.math.log1p":"../node_modules/core-js/modules/es6.math.log1p.js","core-js/modules/es6.math.log10":"../node_modules/core-js/modules/es6.math.log10.js","core-js/modules/es6.math.log2":"../node_modules/core-js/modules/es6.math.log2.js","core-js/modules/es6.math.sign":"../node_modules/core-js/modules/es6.math.sign.js","core-js/modules/es6.math.sinh":"../node_modules/core-js/modules/es6.math.sinh.js","core-js/modules/es6.math.tanh":"../node_modules/core-js/modules/es6.math.tanh.js","core-js/modules/es6.math.trunc":"../node_modules/core-js/modules/es6.math.trunc.js","core-js/modules/es6.number.constructor":"../node_modules/core-js/modules/es6.number.constructor.js","core-js/modules/es6.number.epsilon":"../node_modules/core-js/modules/es6.number.epsilon.js","core-js/modules/es6.number.is-finite":"../node_modules/core-js/modules/es6.number.is-finite.js","core-js/modules/es6.number.is-integer":"../node_modules/core-js/modules/es6.number.is-integer.js","core-js/modules/es6.number.is-nan":"../node_modules/core-js/modules/es6.number.is-nan.js","core-js/modules/es6.number.is-safe-integer":"../node_modules/core-js/modules/es6.number.is-safe-integer.js","core-js/modules/es6.number.max-safe-integer":"../node_modules/core-js/modules/es6.number.max-safe-integer.js","core-js/modules/es6.number.min-safe-integer":"../node_modules/core-js/modules/es6.number.min-safe-integer.js","core-js/modules/es6.number.parse-float":"../node_modules/core-js/modules/es6.number.parse-float.js","core-js/modules/es6.number.parse-int":"../node_modules/core-js/modules/es6.number.parse-int.js","core-js/modules/es6.object.assign":"../node_modules/core-js/modules/es6.object.assign.js","core-js/modules/es7.object.define-getter":"../node_modules/core-js/modules/es7.object.define-getter.js","core-js/modules/es7.object.define-setter":"../node_modules/core-js/modules/es7.object.define-setter.js","core-js/modules/es7.object.entries":"../node_modules/core-js/modules/es7.object.entries.js","core-js/modules/es6.object.freeze":"../node_modules/core-js/modules/es6.object.freeze.js","core-js/modules/es6.object.get-own-property-descriptor":"../node_modules/core-js/modules/es6.object.get-own-property-descriptor.js","core-js/modules/es7.object.get-own-property-descriptors":"../node_modules/core-js/modules/es7.object.get-own-property-descriptors.js","core-js/modules/es6.object.get-own-property-names":"../node_modules/core-js/modules/es6.object.get-own-property-names.js","core-js/modules/es6.object.get-prototype-of":"../node_modules/core-js/modules/es6.object.get-prototype-of.js","core-js/modules/es7.object.lookup-getter":"../node_modules/core-js/modules/es7.object.lookup-getter.js","core-js/modules/es7.object.lookup-setter":"../node_modules/core-js/modules/es7.object.lookup-setter.js","core-js/modules/es6.object.prevent-extensions":"../node_modules/core-js/modules/es6.object.prevent-extensions.js","core-js/modules/es6.object.to-string":"../node_modules/core-js/modules/es6.object.to-string.js","core-js/modules/es6.object.is":"../node_modules/core-js/modules/es6.object.is.js","core-js/modules/es6.object.is-frozen":"../node_modules/core-js/modules/es6.object.is-frozen.js","core-js/modules/es6.object.is-sealed":"../node_modules/core-js/modules/es6.object.is-sealed.js","core-js/modules/es6.object.is-extensible":"../node_modules/core-js/modules/es6.object.is-extensible.js","core-js/modules/es6.object.keys":"../node_modules/core-js/modules/es6.object.keys.js","core-js/modules/es6.object.seal":"../node_modules/core-js/modules/es6.object.seal.js","core-js/modules/es6.object.set-prototype-of":"../node_modules/core-js/modules/es6.object.set-prototype-of.js","core-js/modules/es7.object.values":"../node_modules/core-js/modules/es7.object.values.js","core-js/modules/es6.promise":"../node_modules/core-js/modules/es6.promise.js","core-js/modules/es7.promise.finally":"../node_modules/core-js/modules/es7.promise.finally.js","core-js/modules/es6.reflect.apply":"../node_modules/core-js/modules/es6.reflect.apply.js","core-js/modules/es6.reflect.construct":"../node_modules/core-js/modules/es6.reflect.construct.js","core-js/modules/es6.reflect.define-property":"../node_modules/core-js/modules/es6.reflect.define-property.js","core-js/modules/es6.reflect.delete-property":"../node_modules/core-js/modules/es6.reflect.delete-property.js","core-js/modules/es6.reflect.get":"../node_modules/core-js/modules/es6.reflect.get.js","core-js/modules/es6.reflect.get-own-property-descriptor":"../node_modules/core-js/modules/es6.reflect.get-own-property-descriptor.js","core-js/modules/es6.reflect.get-prototype-of":"../node_modules/core-js/modules/es6.reflect.get-prototype-of.js","core-js/modules/es6.reflect.has":"../node_modules/core-js/modules/es6.reflect.has.js","core-js/modules/es6.reflect.is-extensible":"../node_modules/core-js/modules/es6.reflect.is-extensible.js","core-js/modules/es6.reflect.own-keys":"../node_modules/core-js/modules/es6.reflect.own-keys.js","core-js/modules/es6.reflect.prevent-extensions":"../node_modules/core-js/modules/es6.reflect.prevent-extensions.js","core-js/modules/es6.reflect.set":"../node_modules/core-js/modules/es6.reflect.set.js","core-js/modules/es6.reflect.set-prototype-of":"../node_modules/core-js/modules/es6.reflect.set-prototype-of.js","core-js/modules/es6.regexp.constructor":"../node_modules/core-js/modules/es6.regexp.constructor.js","core-js/modules/es6.regexp.flags":"../node_modules/core-js/modules/es6.regexp.flags.js","core-js/modules/es6.regexp.match":"../node_modules/core-js/modules/es6.regexp.match.js","core-js/modules/es6.regexp.replace":"../node_modules/core-js/modules/es6.regexp.replace.js","core-js/modules/es6.regexp.split":"../node_modules/core-js/modules/es6.regexp.split.js","core-js/modules/es6.regexp.search":"../node_modules/core-js/modules/es6.regexp.search.js","core-js/modules/es6.regexp.to-string":"../node_modules/core-js/modules/es6.regexp.to-string.js","core-js/modules/es6.set":"../node_modules/core-js/modules/es6.set.js","core-js/modules/es6.symbol":"../node_modules/core-js/modules/es6.symbol.js","core-js/modules/es7.symbol.async-iterator":"../node_modules/core-js/modules/es7.symbol.async-iterator.js","core-js/modules/es6.string.anchor":"../node_modules/core-js/modules/es6.string.anchor.js","core-js/modules/es6.string.big":"../node_modules/core-js/modules/es6.string.big.js","core-js/modules/es6.string.blink":"../node_modules/core-js/modules/es6.string.blink.js","core-js/modules/es6.string.bold":"../node_modules/core-js/modules/es6.string.bold.js","core-js/modules/es6.string.code-point-at":"../node_modules/core-js/modules/es6.string.code-point-at.js","core-js/modules/es6.string.ends-with":"../node_modules/core-js/modules/es6.string.ends-with.js","core-js/modules/es6.string.fixed":"../node_modules/core-js/modules/es6.string.fixed.js","core-js/modules/es6.string.fontcolor":"../node_modules/core-js/modules/es6.string.fontcolor.js","core-js/modules/es6.string.fontsize":"../node_modules/core-js/modules/es6.string.fontsize.js","core-js/modules/es6.string.from-code-point":"../node_modules/core-js/modules/es6.string.from-code-point.js","core-js/modules/es6.string.includes":"../node_modules/core-js/modules/es6.string.includes.js","core-js/modules/es6.string.italics":"../node_modules/core-js/modules/es6.string.italics.js","core-js/modules/es6.string.iterator":"../node_modules/core-js/modules/es6.string.iterator.js","core-js/modules/es6.string.link":"../node_modules/core-js/modules/es6.string.link.js","core-js/modules/es7.string.pad-start":"../node_modules/core-js/modules/es7.string.pad-start.js","core-js/modules/es7.string.pad-end":"../node_modules/core-js/modules/es7.string.pad-end.js","core-js/modules/es6.string.raw":"../node_modules/core-js/modules/es6.string.raw.js","core-js/modules/es6.string.repeat":"../node_modules/core-js/modules/es6.string.repeat.js","core-js/modules/es6.string.small":"../node_modules/core-js/modules/es6.string.small.js","core-js/modules/es6.string.starts-with":"../node_modules/core-js/modules/es6.string.starts-with.js","core-js/modules/es6.string.strike":"../node_modules/core-js/modules/es6.string.strike.js","core-js/modules/es6.string.sub":"../node_modules/core-js/modules/es6.string.sub.js","core-js/modules/es6.string.sup":"../node_modules/core-js/modules/es6.string.sup.js","core-js/modules/es7.string.trim-left":"../node_modules/core-js/modules/es7.string.trim-left.js","core-js/modules/es7.string.trim-right":"../node_modules/core-js/modules/es7.string.trim-right.js","core-js/modules/es6.typed.array-buffer":"../node_modules/core-js/modules/es6.typed.array-buffer.js","core-js/modules/es6.typed.int8-array":"../node_modules/core-js/modules/es6.typed.int8-array.js","core-js/modules/es6.typed.uint8-array":"../node_modules/core-js/modules/es6.typed.uint8-array.js","core-js/modules/es6.typed.uint8-clamped-array":"../node_modules/core-js/modules/es6.typed.uint8-clamped-array.js","core-js/modules/es6.typed.int16-array":"../node_modules/core-js/modules/es6.typed.int16-array.js","core-js/modules/es6.typed.uint16-array":"../node_modules/core-js/modules/es6.typed.uint16-array.js","core-js/modules/es6.typed.int32-array":"../node_modules/core-js/modules/es6.typed.int32-array.js","core-js/modules/es6.typed.uint32-array":"../node_modules/core-js/modules/es6.typed.uint32-array.js","core-js/modules/es6.typed.float32-array":"../node_modules/core-js/modules/es6.typed.float32-array.js","core-js/modules/es6.typed.float64-array":"../node_modules/core-js/modules/es6.typed.float64-array.js","core-js/modules/es6.weak-map":"../node_modules/core-js/modules/es6.weak-map.js","core-js/modules/es6.weak-set":"../node_modules/core-js/modules/es6.weak-set.js","core-js/modules/web.timers":"../node_modules/core-js/modules/web.timers.js","core-js/modules/web.immediate":"../node_modules/core-js/modules/web.immediate.js","core-js/modules/web.dom.iterable":"../node_modules/core-js/modules/web.dom.iterable.js","regenerator-runtime/runtime":"../node_modules/regenerator-runtime/runtime.js","./includes/showsGenres.js":"js/includes/showsGenres.js","./includes/requests.js":"js/includes/requests.js"}],"../node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
 var global = arguments[3];
 var OVERLAY_ID = '__parcel__error__overlay__';
 var OldModule = module.bundle.Module;
@@ -7812,7 +7993,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "12443" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "3568" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

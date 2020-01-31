@@ -2,8 +2,8 @@ import { genres } from './includes/moviesGenres.js';
 import { request } from './includes/requests.js';
 import '@babel/polyfill';
 
-
 (() => {
+
   const topMovies = document.getElementById('top-rated-movies');
   const popularMovies = document.getElementById('popular-movies');
   const nowPlaying = document.getElementById('now-playing');
@@ -23,19 +23,13 @@ import '@babel/polyfill';
 
       let genreOutput = genresArray.map(genre => genre.name).join(', ');
       output += `
-				<div onclick="e(${movie.id})" class="mr-3 card" id=${
-        movie.id
-      } style="width: 20rem;">
-					    <img class="card-img-top card-img" src="https://image.tmdb.org/t/p/w500${
-                movie.poster_path
-              }" alt="${movie.title}">
-					    <div class="card-body">
-					        <h5 class="card-title card-movie-title">${movie.title}</h5>
-					        <p class="card-text card-details">${
-                    movie.release_date.split('-')[0]
-                  } | ${genreOutput}</p>
-					    </div>
-      			</div>
+				<div onclick="e(${movie.id})" class="mr-3 card" id=${movie.id} style="width: 20rem;">
+					   <img class="card-img-top card-img" src="https://image.tmdb.org/t/p/w500${movie.poster_path}" alt="${movie.title}">
+					   <div class="card-body">
+					       <h5 class="card-title card-movie-title">${movie.title}</h5>
+					       <p class="card-text card-details">${movie.release_date.split('-')[0]} | ${genreOutput}</p>
+					   </div>
+      	</div>
 				`;
     });
     topMovies.innerHTML = output;
@@ -94,17 +88,13 @@ import '@babel/polyfill';
       });
       let genreOutput = genresArray.map(genre => genre.name).join(', ');
       output += `
-				<div onclick="e(${movie.id})" class="mr-3 card" style="width: 20rem;">
-				    <img class="card-img-top card-img" data-lazy="https://image.tmdb.org/t/p/w500${
-              movie.poster_path
-            }">
-				    <div class="card-body">
-				        <h5 class="card-title card-movie-title">${movie.title}</h5>
-				        <p class="card-text card-details">${
-                  movie.release_date.split('-')[0]
-                } | ${genreOutput} </p>
-				    </div>
-      	</div>
+        <div onclick="e(${movie.id})" class="mr-3 card" id=${movie.id} style="width: 20rem;">
+             <img class="card-img-top card-img" src="https://image.tmdb.org/t/p/w500${movie.poster_path}" alt="${movie.title}">
+             <div class="card-body">
+                 <h5 class="card-title card-movie-title">${movie.title}</h5>
+                 <p class="card-text card-details">${movie.release_date.split('-')[0]} | ${genreOutput}</p>
+             </div>
+        </div>
 				`;
     });
 
@@ -164,17 +154,13 @@ import '@babel/polyfill';
       });
       let genreOutput = genresArray.map(genre => genre.name).join(', ');
       output += `
-				<div onclick="e(${movie.id})" class="mr-3 card" style="width: 20rem;">
-				    <img style="min-height: 18rem;" class="card-img-top card-img" data-lazy="https://image.tmdb.org/t/p/w500${
-              movie.poster_path
-            }" alt=${movie.title}>
-				    <div class="card-body">
-				        <h5 class="card-title card-movie-title">${movie.title}</h5>
-				        <p class="card-text card-details">${
-                  movie.release_date.split('-')[0]
-                } | ${genreOutput} </p>
-				    </div>
-      			</div>
+        <div onclick="e(${movie.id})" class="mr-3 card" id=${movie.id} style="width: 20rem;">
+             <img class="card-img-top card-img" src="https://image.tmdb.org/t/p/w500${movie.poster_path}" alt="${movie.title}">
+             <div class="card-body">
+                 <h5 class="card-title card-movie-title">${movie.title}</h5>
+                 <p class="card-text card-details">${movie.release_date.split('-')[0]} | ${genreOutput}</p>
+             </div>
+        </div>
 				`;
     });
     nowPlaying.innerHTML = output;

@@ -14,7 +14,7 @@ import '@babel/polyfill';
 
 		moviesContainer.innerHTML = spinner;
 
-		request.fetchAllPopularMovies('now_playing').then(data => {
+		request.fetchAllTypeMovies('now_playing').then(data => {
 
 			let output = '';
 			let genresArray = '';
@@ -30,7 +30,7 @@ import '@babel/polyfill';
 				output +=
 				`
 				<div onclick="e(${movie.id})" class="mb-5 mr-3 ml-3 card" id=${movie.id} style="width: 11rem;">
-					<img class="card-img-lazy" style="height: 16.5rem;" data-src="https://image.tmdb.org/t/p/w300${movie.poster_path}" alt="Loading Image">
+					<img class="card-img-lazy" style="height: 16.5rem;" data-src="https://image.tmdb.org/t/p/w300${movie.poster_path}" alt="${movie.name}">
 					<div class="card-body">
 					<h5 class="card-title card-small-title">${movie.title}</h5>
 					<p class="card-text card-small-details">${movie.release_date.split("-")[0]} | ${genreOutput}</p>
@@ -47,6 +47,10 @@ import '@babel/polyfill';
 
 		})
 		.finally(() => {
+
+			// Lazy-Load pentru imagni
+
+        	// Imaginile sunt prezente doar cand user-ul este in viewport-ul unde se afla acestea
 
 			const images = document.querySelectorAll("[data-src]");
 
