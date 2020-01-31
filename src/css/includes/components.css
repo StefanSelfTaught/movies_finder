@@ -794,6 +794,14 @@ hr {
   font-size: 16px;
 }
 
+.list-details {
+  margin-bottom: 0px !important;
+}
+
+.sub-header-content {
+  margin-bottom: 0px !important;
+}
+
 .cast-container {
   margin: 0 30px;
 }
@@ -880,6 +888,58 @@ hr {
 
   .navbar .nav-item.active .nav-link {
     border: none !important;
+  }
+}
+
+@media screen and (max-width: 900px) {
+  footer {
+    width: 80%;
+  }
+}
+
+@media screen and (max-width: 400px) {
+  .cast-image {
+    width: 130px;
+  }
+}
+
+@media screen and (max-width: 620px) {
+  .list-details {
+    margin-left: 22px;
+  }
+
+  .review-container {
+    margin: 30px;
+  }
+}
+
+@media screen and (max-width: 650px) {
+  #movie {
+    padding: 50px !important;
+  }
+}
+
+@media screen and (max-width: 450px) {
+  #movie {
+    padding: 30px !important;
+  }
+
+  .main-movie-details {
+    font-size: 14px;
+  }
+
+  .main-movie-rating {
+    font-size: 13px;
+  }
+
+  .main-movie-title {
+    font-size: 15.5px;
+  }
+}
+
+@media screen and (max-width: 390px) {
+  #movie {
+    padding: 20px !important;
   }
 }
 

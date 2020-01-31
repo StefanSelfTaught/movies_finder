@@ -22114,6 +22114,879 @@ function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterat
 });
 },{"jquery":"../node_modules/jquery/dist/jquery.js","popper.js":"../node_modules/popper.js/dist/esm/popper.js"}],"../node_modules/lax.js/lib/lax.min.js":[function(require,module,exports) {
 "use strict";function _slicedToArray(t,a){return _arrayWithHoles(t)||_iterableToArrayLimit(t,a)||_nonIterableRest()}function _nonIterableRest(){throw new TypeError("Invalid attempt to destructure non-iterable instance")}function _iterableToArrayLimit(t,a){var n=[],e=!0,r=!1,o=void 0;try{for(var l,i=t[Symbol.iterator]();!(e=(l=i.next()).done)&&(n.push(l.value),!a||n.length!==a);e=!0);}catch(t){r=!0,o=t}finally{try{e||null==i.return||i.return()}finally{if(r)throw o}}return n}function _arrayWithHoles(t){if(Array.isArray(t))return t}!function(){var lax=function(){for(var lax={elements:[]},lastY=0,currentBreakpoint="default",breakpointsSeparator="_",transformFns={"data-lax-opacity":function(t,a){t.opacity=a},"data-lax-translate":function(t,a){t.transform+=" translate(".concat(a,"px, ").concat(a,"px)")},"data-lax-translate-x":function(t,a){t.transform+=" translateX(".concat(a,"px)")},"data-lax-translate-y":function(t,a){t.transform+=" translateY(".concat(a,"px)")},"data-lax-scale":function(t,a){t.transform+=" scale(".concat(a,")")},"data-lax-scale-x":function(t,a){t.transform+=" scaleX(".concat(a,")")},"data-lax-scale-y":function(t,a){t.transform+=" scaleY(".concat(a,")")},"data-lax-skew":function(t,a){t.transform+=" skew(".concat(a,"deg, ").concat(a,"deg)")},"data-lax-skew-x":function(t,a){t.transform+=" skewX(".concat(a,"deg)")},"data-lax-skew-y":function(t,a){t.transform+=" skewY(".concat(a,"deg)")},"data-lax-rotate":function(t,a){t.transform+=" rotate(".concat(a,"deg)")},"data-lax-rotate-x":function(t,a){t.transform+=" rotateX(".concat(a,"deg)")},"data-lax-rotate-y":function(t,a){t.transform+=" rotateY(".concat(a,"deg)")},"data-lax-brightness":function(t,a){t.filter+=" brightness(".concat(a,"%)")},"data-lax-contrast":function(t,a){t.filter+=" contrast(".concat(a,"%)")},"data-lax-hue-rotate":function(t,a){t.filter+=" hue-rotate(".concat(a,"deg)")},"data-lax-blur":function(t,a){t.filter+=" blur(".concat(a,"px)")},"data-lax-invert":function(t,a){t.filter+="  invert(".concat(a,"%)")},"data-lax-saturate":function(t,a){t.filter+="  saturate(".concat(a,"%)")},"data-lax-grayscale":function(t,a){t.filter+="  grayscale(".concat(a,"%)")},"data-lax-bg-pos":function(t,a){t.backgroundPosition="".concat(a,"px ").concat(a,"px")},"data-lax-bg-pos-x":function(t,a){t.backgroundPositionX="".concat(a,"px")},"data-lax-bg-pos-y":function(t,a){t.backgroundPositionY="".concat(a,"px")}},_crazy="",i=0;i<20;i++)_crazy+=" "+5*i+" "+47*i%360+", ";function intrp(t,a){for(var n=0;t[n][0]<=a&&void 0!==t[n+1];)n+=1;var e=t[n][0],r=void 0===t[n-1]?e:t[n-1][0],o=t[n][1],l=void 0===t[n-1]?o:t[n-1][1];return Math.min(Math.max((a-r)/(e-r),0),1)*(o-l)+l}function fnOrVal(s){return"("===s[0]?eval(s):parseFloat(s)}return lax.presets={linger:function(t){return{"data-lax-translate-y":"(vh*0.7) 0, 0 200, -500 0"}},lazy:function(t){return{"data-lax-translate-y":"(vh) 0, (-elh) ".concat(0<arguments.length&&void 0!==t?t:100)}},eager:function(t){return{"data-lax-translate-y":"(vh) 0, (-elh) -".concat(0<arguments.length&&void 0!==t?t:100)}},slalom:function(t){var a=0<arguments.length&&void 0!==t?t:50;return{"data-lax-translate-x":"vh ".concat(a,", (vh*0.8) ").concat(-a,", (vh*0.6) ").concat(a,", (vh*0.4) ").concat(-a,", (vh*0.2) ").concat(a,", (vh*0) ").concat(-a,", (-elh) ").concat(a)}},crazy:function(t){return{"data-lax-hue-rotate":"".concat(_crazy," | loop=20")}},spin:function(t){return{"data-lax-rotate":"(vh) 0, (-elh) ".concat(0<arguments.length&&void 0!==t?t:360)}},spinRev:function(t){return{"data-lax-rotate":"(vh) 0, (-elh) ".concat(-(0<arguments.length&&void 0!==t?t:360))}},spinIn:function(t){return{"data-lax-rotate":"vh ".concat(0<arguments.length&&void 0!==t?t:360,", (vh*0.5) 0")}},spinOut:function(t){return{"data-lax-rotate":"(vh*0.5) 0, -elh ".concat(0<arguments.length&&void 0!==t?t:360)}},blurInOut:function(t){var a=0<arguments.length&&void 0!==t?t:40;return{"data-lax-blur":"(vh) ".concat(a,", (vh*0.8) 0, (vh*0.2) 0, 0 ").concat(a)}},blurIn:function(t){return{"data-lax-blur":"(vh) ".concat(0<arguments.length&&void 0!==t?t:40,", (vh*0.7) 0")}},blurOut:function(t){return{"data-lax-blur":"(vh*0.3) 0, 0 ".concat(0<arguments.length&&void 0!==t?t:40)}},fadeInOut:function(){return{"data-lax-opacity":"(vh) 0, (vh*0.8) 1, (vh*0.2) 1, 0 0"}},fadeIn:function(){return{"data-lax-opacity":"(vh) 0, (vh*0.7) 1"}},fadeOut:function(){return{"data-lax-opacity":"(vh*0.3) 1, 0 0"}},driftLeft:function(t){var a=0<arguments.length&&void 0!==t?t:100;return{"data-lax-translate-x":"vh ".concat(a,", -elh ").concat(-a)}},driftRight:function(t){var a=0<arguments.length&&void 0!==t?t:100;return{"data-lax-translate-x":"vh ".concat(-a,", -elh ").concat(a)}},leftToRight:function(t){return{"data-lax-translate-x":"vh 0, -elh (vw*".concat(0<arguments.length&&void 0!==t?t:1,")")}},rightToLeft:function(t){return{"data-lax-translate-x":"vh 0, -elh (vw*".concat(-(0<arguments.length&&void 0!==t?t:1),")")}},zoomInOut:function(t){var a=0<arguments.length&&void 0!==t?t:.2;return{"data-lax-scale":"(vh) ".concat(a,", (vh*0.8) 1, (vh*0.2) 1, -elh ").concat(a)}},zoomIn:function(t){return{"data-lax-scale":"(vh) ".concat(0<arguments.length&&void 0!==t?t:.2,", (vh*0.7) 1")}},zoomOut:function(t){return{"data-lax-scale":"(vh*0.3) 1, -elh ".concat(0<arguments.length&&void 0!==t?t:.2)}},speedy:function(t){var a=0<arguments.length&&void 0!==t?t:30;return{"data-lax-skew-x":"(vh) ".concat(a,", -elh ").concat(-a)}},swing:function(t){var a=0<arguments.length&&void 0!==t?t:30;return{"data-lax-skew-y":"(vh) ".concat(a,", -elh ").concat(-a)}}},lax.addPreset=function(t,a){lax.presets[t]=a},lax.setup=function(){var t=0<arguments.length&&void 0!==arguments[0]?arguments[0]:{};lax.breakpoints=t.breakpoints||{},lax.selector=t.selector||".lax",lax.populateElements()},lax.removeElement=function(a){var t=lax.elements.findIndex(function(t){return t.el=a});-1<t&&lax.elements.splice(t,1)},lax.createLaxObject=function(t){return{el:t,originalStyle:{transform:t.style.transform,filter:t.style.filter},transforms:{}}},lax.calcTransforms=function(l){for(var i=l.el,r=[],t=0;t<i.attributes.length;t++){var a=i.attributes[t];-1<a.name.indexOf("data-lax-preset")&&r.push(a)}for(var n=function(t){var a=r[t],n=a.name.split(breakpointsSeparator),o=n[1]?"".concat(breakpointsSeparator).concat(n[1]):"";a.value.split(" ").forEach(function(t){var a=t.split("-"),n=lax.presets[a[0]];if(n){var e=n(a[1]);for(var r in e)i.setAttribute("".concat(r).concat(o),e[r])}else console.log("lax error: preset ".concat(a[0]," is not defined"))});var e=i.getAttribute("data-lax-anchor");e&&""!==e||i.setAttribute("data-lax-anchor","self"),i.attributes.removeNamedItem(a.name)},e=0;e<r.length;e++)n(e);if(!(i.attributes["data-lax-use-gpu"]&&"false"===i.attributes["data-lax-use-gpu"].value)&&(i.style["backface-visibility"]="hidden",i.style["-webkit-backface-visibility"]="hidden"),i.attributes["data-lax-use-gpu"]&&i.attributes.removeNamedItem("data-lax-use-gpu"),l.optimise=!1,i.attributes["data-lax-optimize"]&&"true"===i.attributes["data-lax-optimize"].value){l.optimise=!0;var o=i.getBoundingClientRect();i.setAttribute("data-lax-opacity","".concat(-o.height-1," 0, ").concat(-o.height," 1, ").concat(window.innerHeight," 1, ").concat(window.innerHeight+1," 0")),i.attributes.removeNamedItem("data-lax-optimize")}for(var c=0;c<i.attributes.length;c++){var s=i.attributes[c];if(!(s.name.indexOf("data-lax")<0)){var u=s.name.split(breakpointsSeparator),f=u[0].split("-"),d=u[1]||"default";if("lax"===f[1])if("data-lax-anchor"===s.name){l["data-lax-anchor"]="self"===s.value?i:document.querySelector(s.value);var x=l["data-lax-anchor"].getBoundingClientRect();l.anchorTop=Math.floor(x.top)+window.scrollY}else!function(){var t=_slicedToArray(s.value.replace(/vw/g,window.innerWidth).replace(/vh/g,window.innerHeight).replace(/elh/g,i.clientHeight).replace(/elw/g,i.clientWidth).replace(/\s+/g," ").split("|"),2),a=t[0],n=t[1],r={};n&&n.split(" ").forEach(function(t){var a=_slicedToArray(t.split("="),2),n=a[0],e=a[1];r[n]=n&&fnOrVal(e)});var e=u[0],o=a.split(",").map(function(t){return t.trim().split(" ").map(fnOrVal)}).sort(function(t,a){return t[0]-a[0]});l.transforms[e]||(l.transforms[e]={}),l.transforms[e][d]={valueMap:o,options:r}}()}}var v=i.attributes["data-lax-sprite-data"]&&i.attributes["data-lax-sprite-data"].value;if(v){l.spriteData=v.split(",").map(function(t){return parseInt(t)}),i.style.height=l.spriteData[1]+"px",i.style.width=l.spriteData[0]+"px";var p=i.attributes["data-lax-sprite-image"]&&i.attributes["data-lax-sprite-image"].value;p&&(i.style.backgroundImage="url(".concat(p,")"))}return l},lax.addElement=function(t){var a=lax.calcTransforms(lax.createLaxObject(t));lax.elements.push(a),lax.updateElement(a)},lax.populateElements=function(){lax.elements=[],document.querySelectorAll(lax.selector).forEach(lax.addElement),currentBreakpoint=lax.getCurrentBreakPoint()},lax.updateElements=function(){lax.elements.forEach(function(t){lax.calcTransforms(t),lax.updateElement(t)}),currentBreakpoint=lax.getCurrentBreakPoint()},lax.getCurrentBreakPoint=function(){var t="default",a=window.innerWidth;for(var n in lax.breakpoints){if(!(parseFloat(lax.breakpoints[n])<=a))break;t=n}return t},lax.updateElement=function(t){var a=t.originalStyle,n=t.anchorTop,e=t.transforms,r=t.spriteData,o=t.el,l=n?n-lastY:lastY,i={transform:a.transform,filter:a.filter};for(var c in e){var s=e[c][currentBreakpoint]||e[c].default;if(s){var u=l;s.options.offset&&(u+=s.options.offset),s.options.speed&&(u*=s.options.speed),s.options.loop&&(u%=s.options.loop);var f=transformFns[c],d=intrp(s.valueMap,u);f&&f(i,d)}}if(r){var x=_slicedToArray(r,5),v=x[0],p=x[1],h=x[2],m=x[3],g=x[4],b=Math.floor(lastY/g)%h,y=b%m,k=Math.floor(b/m);i.backgroundPosition="-".concat(y*v,"px -").concat(k*p,"px")}if(0===i.opacity)o.style.opacity=0;else for(var w in i)o.style[w]=i[w]},lax.update=function(t){lastY!==t&&(lastY=t,lax.elements.forEach(lax.updateElement))},lax}();"undefined"!=typeof module&&void 0!==module.exports?module.exports=lax:window.lax=lax}();
+},{}],"js/includes/requests.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.request = void 0;
+
+function _toConsumableArray(arr) { return _arrayWithoutHoles(arr) || _iterableToArray(arr) || _nonIterableSpread(); }
+
+function _nonIterableSpread() { throw new TypeError("Invalid attempt to spread non-iterable instance"); }
+
+function _iterableToArray(iter) { if (Symbol.iterator in Object(iter) || Object.prototype.toString.call(iter) === "[object Arguments]") return Array.from(iter); }
+
+function _arrayWithoutHoles(arr) { if (Array.isArray(arr)) { for (var i = 0, arr2 = new Array(arr.length); i < arr.length; i++) { arr2[i] = arr[i]; } return arr2; } }
+
+function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _nonIterableRest(); }
+
+function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance"); }
+
+function _iterableToArrayLimit(arr, i) { if (!(Symbol.iterator in Object(arr) || Object.prototype.toString.call(arr) === "[object Arguments]")) { return; } var _arr = []; var _n = true; var _d = false; var _e = undefined; try { for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"] != null) _i["return"](); } finally { if (_d) throw _e; } } return _arr; }
+
+function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
+
+function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
+
+function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
+
+var apiKey = 'ce2eb2231a371296cf6ff11a39206d6e'; // Toate request-urile facut catre TMDB API
+// Daca in timpul request-ului exista o eroare se v-a executa blocul catch
+// Se intelege ce request se executa si pe ce pagina dupa numele functiei
+
+var request = {
+  fetchTopMovies: function () {
+    var _fetchTopMovies = _asyncToGenerator(
+    /*#__PURE__*/
+    regeneratorRuntime.mark(function _callee() {
+      var _request, res;
+
+      return regeneratorRuntime.wrap(function _callee$(_context) {
+        while (1) {
+          switch (_context.prev = _context.next) {
+            case 0:
+              _context.prev = 0;
+              _context.next = 3;
+              return fetch("https://api.themoviedb.org/3/movie/top_rated?api_key=".concat(apiKey, "&page=1"));
+
+            case 3:
+              _request = _context.sent;
+              _context.next = 6;
+              return _request.json();
+
+            case 6:
+              res = _context.sent;
+              return _context.abrupt("return", res);
+
+            case 10:
+              _context.prev = 10;
+              _context.t0 = _context["catch"](0);
+              alert('Data could not be fetched!' + ' ' + _context.t0);
+
+            case 13:
+            case "end":
+              return _context.stop();
+          }
+        }
+      }, _callee, null, [[0, 10]]);
+    }));
+
+    function fetchTopMovies() {
+      return _fetchTopMovies.apply(this, arguments);
+    }
+
+    return fetchTopMovies;
+  }(),
+  fetchPopularMovies: function () {
+    var _fetchPopularMovies = _asyncToGenerator(
+    /*#__PURE__*/
+    regeneratorRuntime.mark(function _callee2() {
+      var _request2, res;
+
+      return regeneratorRuntime.wrap(function _callee2$(_context2) {
+        while (1) {
+          switch (_context2.prev = _context2.next) {
+            case 0:
+              _context2.prev = 0;
+              _context2.next = 3;
+              return fetch("https://api.themoviedb.org/3/movie/popular?api_key=".concat(apiKey, "&page=1"));
+
+            case 3:
+              _request2 = _context2.sent;
+              _context2.next = 6;
+              return _request2.json();
+
+            case 6:
+              res = _context2.sent;
+              return _context2.abrupt("return", res);
+
+            case 10:
+              _context2.prev = 10;
+              _context2.t0 = _context2["catch"](0);
+              alert('Data could not be fetched!' + ' ' + _context2.t0);
+
+            case 13:
+            case "end":
+              return _context2.stop();
+          }
+        }
+      }, _callee2, null, [[0, 10]]);
+    }));
+
+    function fetchPopularMovies() {
+      return _fetchPopularMovies.apply(this, arguments);
+    }
+
+    return fetchPopularMovies;
+  }(),
+  fetchPlayingMovies: function () {
+    var _fetchPlayingMovies = _asyncToGenerator(
+    /*#__PURE__*/
+    regeneratorRuntime.mark(function _callee3() {
+      var _request3, res;
+
+      return regeneratorRuntime.wrap(function _callee3$(_context3) {
+        while (1) {
+          switch (_context3.prev = _context3.next) {
+            case 0:
+              _context3.prev = 0;
+              _context3.next = 3;
+              return fetch("https://api.themoviedb.org/3/movie/now_playing?api_key=".concat(apiKey, "&page=1"));
+
+            case 3:
+              _request3 = _context3.sent;
+              _context3.next = 6;
+              return _request3.json();
+
+            case 6:
+              res = _context3.sent;
+              return _context3.abrupt("return", res);
+
+            case 10:
+              _context3.prev = 10;
+              _context3.t0 = _context3["catch"](0);
+              alert('Data could not be fetched!' + ' ' + _context3.t0);
+
+            case 13:
+            case "end":
+              return _context3.stop();
+          }
+        }
+      }, _callee3, null, [[0, 10]]);
+    }));
+
+    function fetchPlayingMovies() {
+      return _fetchPlayingMovies.apply(this, arguments);
+    }
+
+    return fetchPlayingMovies;
+  }(),
+  fetchAirShows: function () {
+    var _fetchAirShows = _asyncToGenerator(
+    /*#__PURE__*/
+    regeneratorRuntime.mark(function _callee4() {
+      var _request4, res;
+
+      return regeneratorRuntime.wrap(function _callee4$(_context4) {
+        while (1) {
+          switch (_context4.prev = _context4.next) {
+            case 0:
+              _context4.prev = 0;
+              _context4.next = 3;
+              return fetch("https://api.themoviedb.org/3/tv/on_the_air?api_key=".concat(apiKey, "&page=1"));
+
+            case 3:
+              _request4 = _context4.sent;
+              _context4.next = 6;
+              return _request4.json();
+
+            case 6:
+              res = _context4.sent;
+              return _context4.abrupt("return", res);
+
+            case 10:
+              _context4.prev = 10;
+              _context4.t0 = _context4["catch"](0);
+              alert('Data could not be fetched!' + ' ' + _context4.t0);
+
+            case 13:
+            case "end":
+              return _context4.stop();
+          }
+        }
+      }, _callee4, null, [[0, 10]]);
+    }));
+
+    function fetchAirShows() {
+      return _fetchAirShows.apply(this, arguments);
+    }
+
+    return fetchAirShows;
+  }(),
+  fetchPopularShows: function () {
+    var _fetchPopularShows = _asyncToGenerator(
+    /*#__PURE__*/
+    regeneratorRuntime.mark(function _callee5() {
+      var _request5, res;
+
+      return regeneratorRuntime.wrap(function _callee5$(_context5) {
+        while (1) {
+          switch (_context5.prev = _context5.next) {
+            case 0:
+              _context5.prev = 0;
+              _context5.next = 3;
+              return fetch("https://api.themoviedb.org/3/tv/popular?api_key=".concat(apiKey, "&page=1"));
+
+            case 3:
+              _request5 = _context5.sent;
+              _context5.next = 6;
+              return _request5.json();
+
+            case 6:
+              res = _context5.sent;
+              return _context5.abrupt("return", res);
+
+            case 10:
+              _context5.prev = 10;
+              _context5.t0 = _context5["catch"](0);
+              alert('Data could not be fetched!' + ' ' + _context5.t0);
+
+            case 13:
+            case "end":
+              return _context5.stop();
+          }
+        }
+      }, _callee5, null, [[0, 10]]);
+    }));
+
+    function fetchPopularShows() {
+      return _fetchPopularShows.apply(this, arguments);
+    }
+
+    return fetchPopularShows;
+  }(),
+  fetchTopShows: function () {
+    var _fetchTopShows = _asyncToGenerator(
+    /*#__PURE__*/
+    regeneratorRuntime.mark(function _callee6() {
+      var _request6, res;
+
+      return regeneratorRuntime.wrap(function _callee6$(_context6) {
+        while (1) {
+          switch (_context6.prev = _context6.next) {
+            case 0:
+              _context6.prev = 0;
+              _context6.next = 3;
+              return fetch("https://api.themoviedb.org/3/tv/top_rated?api_key=".concat(apiKey, "&page=1"));
+
+            case 3:
+              _request6 = _context6.sent;
+              _context6.next = 6;
+              return _request6.json();
+
+            case 6:
+              res = _context6.sent;
+              return _context6.abrupt("return", res);
+
+            case 10:
+              _context6.prev = 10;
+              _context6.t0 = _context6["catch"](0);
+              alert('Data could not be fetched!' + ' ' + _context6.t0);
+
+            case 13:
+            case "end":
+              return _context6.stop();
+          }
+        }
+      }, _callee6, null, [[0, 10]]);
+    }));
+
+    function fetchTopShows() {
+      return _fetchTopShows.apply(this, arguments);
+    }
+
+    return fetchTopShows;
+  }(),
+  fetchDiscoverMovies: function () {
+    var _fetchDiscoverMovies = _asyncToGenerator(
+    /*#__PURE__*/
+    regeneratorRuntime.mark(function _callee7(sortBy, year, vote, genres, page) {
+      var _request7, res;
+
+      return regeneratorRuntime.wrap(function _callee7$(_context7) {
+        while (1) {
+          switch (_context7.prev = _context7.next) {
+            case 0:
+              _context7.prev = 0;
+              _context7.next = 3;
+              return fetch("https://api.themoviedb.org/3/discover/movie?api_key=".concat(apiKey, "&sort_by=").concat(sortBy, "&year=").concat(year, "&vote_average.gte=").concat(vote, "&with_genres=").concat(genres, "&page=").concat(page));
+
+            case 3:
+              _request7 = _context7.sent;
+              _context7.next = 6;
+              return _request7.json();
+
+            case 6:
+              res = _context7.sent;
+              return _context7.abrupt("return", res);
+
+            case 10:
+              _context7.prev = 10;
+              _context7.t0 = _context7["catch"](0);
+              alert('Data could not be fetched!' + ' ' + _context7.t0);
+
+            case 13:
+            case "end":
+              return _context7.stop();
+          }
+        }
+      }, _callee7, null, [[0, 10]]);
+    }));
+
+    function fetchDiscoverMovies(_x, _x2, _x3, _x4, _x5) {
+      return _fetchDiscoverMovies.apply(this, arguments);
+    }
+
+    return fetchDiscoverMovies;
+  }(),
+  // Default = ce filme se afiseaza pe pagina daca nu cauti nimic
+  fetchDiscoverMoviesDefault: function () {
+    var _fetchDiscoverMoviesDefault = _asyncToGenerator(
+    /*#__PURE__*/
+    regeneratorRuntime.mark(function _callee8() {
+      var _request8, res;
+
+      return regeneratorRuntime.wrap(function _callee8$(_context8) {
+        while (1) {
+          switch (_context8.prev = _context8.next) {
+            case 0:
+              _context8.prev = 0;
+              _context8.next = 3;
+              return fetch("https://api.themoviedb.org/3/discover/movie?api_key=".concat(apiKey, "&sort_by=popularity.desc&year=&vote_average.gte=&with_genres=&page=1}"));
+
+            case 3:
+              _request8 = _context8.sent;
+              _context8.next = 6;
+              return _request8.json();
+
+            case 6:
+              res = _context8.sent;
+              return _context8.abrupt("return", res);
+
+            case 10:
+              _context8.prev = 10;
+              _context8.t0 = _context8["catch"](0);
+              alert('Data could not be fetched!' + ' ' + _context8.t0);
+
+            case 13:
+            case "end":
+              return _context8.stop();
+          }
+        }
+      }, _callee8, null, [[0, 10]]);
+    }));
+
+    function fetchDiscoverMoviesDefault() {
+      return _fetchDiscoverMoviesDefault.apply(this, arguments);
+    }
+
+    return fetchDiscoverMoviesDefault;
+  }(),
+  fetchDiscoverShows: function () {
+    var _fetchDiscoverShows = _asyncToGenerator(
+    /*#__PURE__*/
+    regeneratorRuntime.mark(function _callee9(sortBy, year, vote, genres, page) {
+      var _request9, res;
+
+      return regeneratorRuntime.wrap(function _callee9$(_context9) {
+        while (1) {
+          switch (_context9.prev = _context9.next) {
+            case 0:
+              _context9.prev = 0;
+              _context9.next = 3;
+              return fetch("https://api.themoviedb.org/3/discover/tv?api_key=".concat(apiKey, "&sort_by=").concat(sortBy, "&first_air_date_year=").concat(year, "&vote_average.gte=").concat(vote, "&with_genres=").concat(genres, "&page=").concat(page));
+
+            case 3:
+              _request9 = _context9.sent;
+              _context9.next = 6;
+              return _request9.json();
+
+            case 6:
+              res = _context9.sent;
+              return _context9.abrupt("return", res);
+
+            case 10:
+              _context9.prev = 10;
+              _context9.t0 = _context9["catch"](0);
+              alert('Data could not be fetched!' + ' ' + _context9.t0);
+
+            case 13:
+            case "end":
+              return _context9.stop();
+          }
+        }
+      }, _callee9, null, [[0, 10]]);
+    }));
+
+    function fetchDiscoverShows(_x6, _x7, _x8, _x9, _x10) {
+      return _fetchDiscoverShows.apply(this, arguments);
+    }
+
+    return fetchDiscoverShows;
+  }(),
+  // Default = ce seriale se afiseaza pe pagina daca nu cauti nimic
+  fetchDiscoverShowsDefault: function () {
+    var _fetchDiscoverShowsDefault = _asyncToGenerator(
+    /*#__PURE__*/
+    regeneratorRuntime.mark(function _callee10() {
+      var _request10, res;
+
+      return regeneratorRuntime.wrap(function _callee10$(_context10) {
+        while (1) {
+          switch (_context10.prev = _context10.next) {
+            case 0:
+              _context10.prev = 0;
+              _context10.next = 3;
+              return fetch("https://api.themoviedb.org/3/discover/tv?api_key=".concat(apiKey, "&sort_by=popularity.desc&first_air_date_year=&vote_average.gte=&with_genres=&page=1"));
+
+            case 3:
+              _request10 = _context10.sent;
+              _context10.next = 6;
+              return _request10.json();
+
+            case 6:
+              res = _context10.sent;
+              return _context10.abrupt("return", res);
+
+            case 10:
+              _context10.prev = 10;
+              _context10.t0 = _context10["catch"](0);
+              alert('Data could not be fetched!' + ' ' + _context10.t0);
+
+            case 13:
+            case "end":
+              return _context10.stop();
+          }
+        }
+      }, _callee10, null, [[0, 10]]);
+    }));
+
+    function fetchDiscoverShowsDefault() {
+      return _fetchDiscoverShowsDefault.apply(this, arguments);
+    }
+
+    return fetchDiscoverShowsDefault;
+  }(),
+  // Default = ce filme se afiseaza pe pagina daca nu cauti nimic
+  fetchSearchMoviesDefault: function () {
+    var _fetchSearchMoviesDefault = _asyncToGenerator(
+    /*#__PURE__*/
+    regeneratorRuntime.mark(function _callee11() {
+      var _request11, res;
+
+      return regeneratorRuntime.wrap(function _callee11$(_context11) {
+        while (1) {
+          switch (_context11.prev = _context11.next) {
+            case 0:
+              _context11.prev = 0;
+              _context11.next = 3;
+              return fetch("https://api.themoviedb.org/3/trending/movie/week?api_key=".concat(apiKey));
+
+            case 3:
+              _request11 = _context11.sent;
+              _context11.next = 6;
+              return _request11.json();
+
+            case 6:
+              res = _context11.sent;
+              return _context11.abrupt("return", res);
+
+            case 10:
+              _context11.prev = 10;
+              _context11.t0 = _context11["catch"](0);
+              alert('Data could not be fetched!' + ' ' + _context11.t0);
+
+            case 13:
+            case "end":
+              return _context11.stop();
+          }
+        }
+      }, _callee11, null, [[0, 10]]);
+    }));
+
+    function fetchSearchMoviesDefault() {
+      return _fetchSearchMoviesDefault.apply(this, arguments);
+    }
+
+    return fetchSearchMoviesDefault;
+  }(),
+  fetchSearchMovies: function () {
+    var _fetchSearchMovies = _asyncToGenerator(
+    /*#__PURE__*/
+    regeneratorRuntime.mark(function _callee12(movie, page) {
+      var _request12, res;
+
+      return regeneratorRuntime.wrap(function _callee12$(_context12) {
+        while (1) {
+          switch (_context12.prev = _context12.next) {
+            case 0:
+              _context12.prev = 0;
+              _context12.next = 3;
+              return fetch("https://api.themoviedb.org/3/search/movie?api_key=".concat(apiKey, "&query=").concat(movie, "&page=").concat(page));
+
+            case 3:
+              _request12 = _context12.sent;
+              _context12.next = 6;
+              return _request12.json();
+
+            case 6:
+              res = _context12.sent;
+              return _context12.abrupt("return", res);
+
+            case 10:
+              _context12.prev = 10;
+              _context12.t0 = _context12["catch"](0);
+              alert('Data could not be fetched!' + ' ' + _context12.t0);
+
+            case 13:
+            case "end":
+              return _context12.stop();
+          }
+        }
+      }, _callee12, null, [[0, 10]]);
+    }));
+
+    function fetchSearchMovies(_x11, _x12) {
+      return _fetchSearchMovies.apply(this, arguments);
+    }
+
+    return fetchSearchMovies;
+  }(),
+  // Default = ce seriale se afiseaza pe pagina daca nu cauti nimic
+  fetchSearchShowsDefault: function () {
+    var _fetchSearchShowsDefault = _asyncToGenerator(
+    /*#__PURE__*/
+    regeneratorRuntime.mark(function _callee13() {
+      var _request13, res;
+
+      return regeneratorRuntime.wrap(function _callee13$(_context13) {
+        while (1) {
+          switch (_context13.prev = _context13.next) {
+            case 0:
+              _context13.prev = 0;
+              _context13.next = 3;
+              return fetch("https://api.themoviedb.org/3/trending/tv/week?api_key=".concat(apiKey));
+
+            case 3:
+              _request13 = _context13.sent;
+              _context13.next = 6;
+              return _request13.json();
+
+            case 6:
+              res = _context13.sent;
+              return _context13.abrupt("return", res);
+
+            case 10:
+              _context13.prev = 10;
+              _context13.t0 = _context13["catch"](0);
+              alert('Data could not be fetched!' + ' ' + _context13.t0);
+
+            case 13:
+            case "end":
+              return _context13.stop();
+          }
+        }
+      }, _callee13, null, [[0, 10]]);
+    }));
+
+    function fetchSearchShowsDefault() {
+      return _fetchSearchShowsDefault.apply(this, arguments);
+    }
+
+    return fetchSearchShowsDefault;
+  }(),
+  fetchSearchShows: function () {
+    var _fetchSearchShows = _asyncToGenerator(
+    /*#__PURE__*/
+    regeneratorRuntime.mark(function _callee14(movie, page) {
+      var _request14, res;
+
+      return regeneratorRuntime.wrap(function _callee14$(_context14) {
+        while (1) {
+          switch (_context14.prev = _context14.next) {
+            case 0:
+              _context14.prev = 0;
+              _context14.next = 3;
+              return fetch("https://api.themoviedb.org/3/search/tv?api_key=".concat(apiKey, "&query=").concat(movie, "&page=").concat(page));
+
+            case 3:
+              _request14 = _context14.sent;
+              _context14.next = 6;
+              return _request14.json();
+
+            case 6:
+              res = _context14.sent;
+              return _context14.abrupt("return", res);
+
+            case 10:
+              _context14.prev = 10;
+              _context14.t0 = _context14["catch"](0);
+              alert('Data could not be fetched!' + ' ' + _context14.t0);
+
+            case 13:
+            case "end":
+              return _context14.stop();
+          }
+        }
+      }, _callee14, null, [[0, 10]]);
+    }));
+
+    function fetchSearchShows(_x13, _x14) {
+      return _fetchSearchShows.apply(this, arguments);
+    }
+
+    return fetchSearchShows;
+  }(),
+  fetchMovieDetails: function () {
+    var _fetchMovieDetails = _asyncToGenerator(
+    /*#__PURE__*/
+    regeneratorRuntime.mark(function _callee15(movieId) {
+      var _request15, res;
+
+      return regeneratorRuntime.wrap(function _callee15$(_context15) {
+        while (1) {
+          switch (_context15.prev = _context15.next) {
+            case 0:
+              _context15.prev = 0;
+              _context15.next = 3;
+              return fetch("https://api.themoviedb.org/3/movie/".concat(movieId, "?api_key=").concat(apiKey, "&language=en-US&append_to_response=reviews,videos,credits"));
+
+            case 3:
+              _request15 = _context15.sent;
+              _context15.next = 6;
+              return _request15.json();
+
+            case 6:
+              res = _context15.sent;
+              return _context15.abrupt("return", res);
+
+            case 10:
+              _context15.prev = 10;
+              _context15.t0 = _context15["catch"](0);
+              alert('Data could not be fetched!' + ' ' + _context15.t0);
+
+            case 13:
+            case "end":
+              return _context15.stop();
+          }
+        }
+      }, _callee15, null, [[0, 10]]);
+    }));
+
+    function fetchMovieDetails(_x15) {
+      return _fetchMovieDetails.apply(this, arguments);
+    }
+
+    return fetchMovieDetails;
+  }(),
+  fetchShowDetails: function () {
+    var _fetchShowDetails = _asyncToGenerator(
+    /*#__PURE__*/
+    regeneratorRuntime.mark(function _callee16(showId) {
+      var _request16, res;
+
+      return regeneratorRuntime.wrap(function _callee16$(_context16) {
+        while (1) {
+          switch (_context16.prev = _context16.next) {
+            case 0:
+              _context16.prev = 0;
+              _context16.next = 3;
+              return fetch("https://api.themoviedb.org/3/tv/".concat(showId, "?api_key=").concat(apiKey, "&language=en-US&append_to_response=reviews,videos,credits"));
+
+            case 3:
+              _request16 = _context16.sent;
+              _context16.next = 6;
+              return _request16.json();
+
+            case 6:
+              res = _context16.sent;
+              return _context16.abrupt("return", res);
+
+            case 10:
+              _context16.prev = 10;
+              _context16.t0 = _context16["catch"](0);
+              alert('Data could not be fetched!' + ' ' + _context16.t0);
+
+            case 13:
+            case "end":
+              return _context16.stop();
+          }
+        }
+      }, _callee16, null, [[0, 10]]);
+    }));
+
+    function fetchShowDetails(_x16) {
+      return _fetchShowDetails.apply(this, arguments);
+    }
+
+    return fetchShowDetails;
+  }(),
+  // type = popular || top rated || now playing etc
+  fetchAllTypeMovies: function () {
+    var _fetchAllTypeMovies = _asyncToGenerator(
+    /*#__PURE__*/
+    regeneratorRuntime.mark(function _callee18(type) {
+      var urls, _ref, _ref2, result1, result2, result3, result4, result5, result6;
+
+      return regeneratorRuntime.wrap(function _callee18$(_context18) {
+        while (1) {
+          switch (_context18.prev = _context18.next) {
+            case 0:
+              urls = ["https://api.themoviedb.org/3/movie/".concat(type, "?api_key=").concat(apiKey, "&language=en-US&page=1"), "https://api.themoviedb.org/3/movie/".concat(type, "?api_key=").concat(apiKey, "&language=en-US&page=2"), "https://api.themoviedb.org/3/movie/".concat(type, "?api_key=").concat(apiKey, "&language=en-US&page=3"), "https://api.themoviedb.org/3/movie/".concat(type, "?api_key=").concat(apiKey, "&language=en-US&page=4"), "https://api.themoviedb.org/3/movie/".concat(type, "?api_key=").concat(apiKey, "&language=en-US&page=5"), "https://api.themoviedb.org/3/movie/".concat(type, "?api_key=").concat(apiKey, "&language=en-US&page=6")];
+              _context18.next = 3;
+              return Promise.all(urls.map(
+              /*#__PURE__*/
+              function () {
+                var _ref3 = _asyncToGenerator(
+                /*#__PURE__*/
+                regeneratorRuntime.mark(function _callee17(url) {
+                  var _request17, res;
+
+                  return regeneratorRuntime.wrap(function _callee17$(_context17) {
+                    while (1) {
+                      switch (_context17.prev = _context17.next) {
+                        case 0:
+                          _context17.prev = 0;
+                          _context17.next = 3;
+                          return fetch(url);
+
+                        case 3:
+                          _request17 = _context17.sent;
+                          _context17.next = 6;
+                          return _request17.json();
+
+                        case 6:
+                          res = _context17.sent;
+                          return _context17.abrupt("return", res);
+
+                        case 10:
+                          _context17.prev = 10;
+                          _context17.t0 = _context17["catch"](0);
+                          alert('Data could not be fetched!' + ' ' + _context17.t0);
+
+                        case 13:
+                        case "end":
+                          return _context17.stop();
+                      }
+                    }
+                  }, _callee17, null, [[0, 10]]);
+                }));
+
+                return function (_x18) {
+                  return _ref3.apply(this, arguments);
+                };
+              }()));
+
+            case 3:
+              _ref = _context18.sent;
+              _ref2 = _slicedToArray(_ref, 6);
+              result1 = _ref2[0];
+              result2 = _ref2[1];
+              result3 = _ref2[2];
+              result4 = _ref2[3];
+              result5 = _ref2[4];
+              result6 = _ref2[5];
+              return _context18.abrupt("return", Promise.resolve([].concat(_toConsumableArray(result1.results), _toConsumableArray(result2.results), _toConsumableArray(result3.results), _toConsumableArray(result4.results), _toConsumableArray(result5.results), _toConsumableArray(result6.results))));
+
+            case 12:
+            case "end":
+              return _context18.stop();
+          }
+        }
+      }, _callee18);
+    }));
+
+    function fetchAllTypeMovies(_x17) {
+      return _fetchAllTypeMovies.apply(this, arguments);
+    }
+
+    return fetchAllTypeMovies;
+  }(),
+  // type = popular || top rated || now playing etc
+  fetchAllTypeShows: function () {
+    var _fetchAllTypeShows = _asyncToGenerator(
+    /*#__PURE__*/
+    regeneratorRuntime.mark(function _callee20(type) {
+      var urls, _ref4, _ref5, result1, result2, result3, result4, result5, result6;
+
+      return regeneratorRuntime.wrap(function _callee20$(_context20) {
+        while (1) {
+          switch (_context20.prev = _context20.next) {
+            case 0:
+              urls = ["https://api.themoviedb.org/3/tv/".concat(type, "?api_key=").concat(apiKey, "&language=en-US&page=1"), "https://api.themoviedb.org/3/tv/".concat(type, "?api_key=").concat(apiKey, "&language=en-US&page=2"), "https://api.themoviedb.org/3/tv/".concat(type, "?api_key=").concat(apiKey, "&language=en-US&page=3"), "https://api.themoviedb.org/3/tv/".concat(type, "?api_key=").concat(apiKey, "&language=en-US&page=4"), "https://api.themoviedb.org/3/tv/".concat(type, "?api_key=").concat(apiKey, "&language=en-US&page=5"), "https://api.themoviedb.org/3/tv/".concat(type, "?api_key=").concat(apiKey, "&language=en-US&page=6")];
+              _context20.next = 3;
+              return Promise.all(urls.map(
+              /*#__PURE__*/
+              function () {
+                var _ref6 = _asyncToGenerator(
+                /*#__PURE__*/
+                regeneratorRuntime.mark(function _callee19(url) {
+                  var _request18, res;
+
+                  return regeneratorRuntime.wrap(function _callee19$(_context19) {
+                    while (1) {
+                      switch (_context19.prev = _context19.next) {
+                        case 0:
+                          _context19.prev = 0;
+                          _context19.next = 3;
+                          return fetch(url);
+
+                        case 3:
+                          _request18 = _context19.sent;
+                          _context19.next = 6;
+                          return _request18.json();
+
+                        case 6:
+                          res = _context19.sent;
+                          return _context19.abrupt("return", res);
+
+                        case 10:
+                          _context19.prev = 10;
+                          _context19.t0 = _context19["catch"](0);
+                          alert('Data could not be fetched!' + ' ' + _context19.t0);
+
+                        case 13:
+                        case "end":
+                          return _context19.stop();
+                      }
+                    }
+                  }, _callee19, null, [[0, 10]]);
+                }));
+
+                return function (_x20) {
+                  return _ref6.apply(this, arguments);
+                };
+              }()));
+
+            case 3:
+              _ref4 = _context20.sent;
+              _ref5 = _slicedToArray(_ref4, 6);
+              result1 = _ref5[0];
+              result2 = _ref5[1];
+              result3 = _ref5[2];
+              result4 = _ref5[3];
+              result5 = _ref5[4];
+              result6 = _ref5[5];
+              return _context20.abrupt("return", Promise.resolve([].concat(_toConsumableArray(result1.results), _toConsumableArray(result2.results), _toConsumableArray(result3.results), _toConsumableArray(result4.results), _toConsumableArray(result5.results), _toConsumableArray(result6.results))));
+
+            case 12:
+            case "end":
+              return _context20.stop();
+          }
+        }
+      }, _callee20);
+    }));
+
+    function fetchAllTypeShows(_x19) {
+      return _fetchAllTypeShows.apply(this, arguments);
+    }
+
+    return fetchAllTypeShows;
+  }()
+};
+exports.request = request;
 },{}],"js/moreDetails.js":[function(require,module,exports) {
 "use strict";
 
@@ -22381,14 +23254,13 @@ require("bootstrap/dist/js/bootstrap.min.js");
 
 var _lax = _interopRequireDefault(require("lax.js"));
 
+var _requests = require("./includes/requests.js");
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var id = sessionStorage.getItem("id");
-var api = "ce2eb2231a371296cf6ff11a39206d6e";
-fetch("https://api.themoviedb.org/3/movie/".concat(id, "?api_key=").concat(api, "&language=en-US&append_to_response=reviews,videos,credits")).then(function (res) {
-  return res.json();
-}).then(function (data) {
-  console.log(data);
+
+_requests.request.fetchMovieDetails(id).then(function (data) {
   var spokenLanguages = "";
   var trailer;
   var reviews = "";
@@ -22444,13 +23316,18 @@ fetch("https://api.themoviedb.org/3/movie/".concat(id, "?api_key=").concat(api, 
       return productionCountries += "<span class=\"details-content\"> ".concat(country.name, " </span>");
     }
   });
+
+  if (!casts.length) {
+    castOutput = "<p style='color: white'>No cast available</p>";
+  }
+
   casts.map(function (cast) {
     var src = 'https://image.tmdb.org/t/p/w300'.concat(cast.profile_path);
-    return castOutput += "\n\t\t\t\t<div>\n\t\t\t\t\t<img class=\"cast-image\" src= ".concat(src, " />\n\t\t\t\t\t<p class=\"cast-name\">").concat(cast.name, "</p>\n\t\t\t\t</div>\n\t\t\t\t");
+    return castOutput += "\n\t\t\t\t<div>\n\t\t\t\t\t<img class=\"img-fluid cast-image\" src= ".concat(src, " />\n\t\t\t\t\t<p class=\"cast-name\">").concat(cast.name, "</p>\n\t\t\t\t</div>\n\t\t\t\t");
   });
   output = "\n\t\t\t<div id=\"spinner-blur\" style=\"margin: 0 auto\" class=\"mb-5 spinner-border text-light\" style=\"width: 5rem !important; height: 5rem !important;\" role=\"status\">\n     \t\t\t<span class=\"sr-only\">Loading...</span>\n    \t\t</div>\n\t\t\t<div class=\"blur lax\" data-lax-opacity=\"0 1, 150 0\" data-lax-translate-y=\"0 0, 50 -150\" id=\"movie\">\n\t\t\t\t<div>\n\t\t\t\t\t<a onclick=\"window.history.back()\"><span class=\"carousel-control-prev-icon back-arrow\" aria-hidden=\"true\"></span></a>\n\t\t\t\t</div>\n\t\t\t\t<div class=\"lax movie-infos\">\n\t\t\t\t\t<h1 class=\"main-movie-title\">".concat(data.title, "</h1>\n\t\t\t\t\t<p class=\"main-movie-details\">\n\t\t\t\t\t\t").concat(data.release_date.split("-")[0], " &nbsp | &nbsp\n\t\t\t\t\t\t").concat(data.genres.slice(0, 2).map(function (genre) {
     return ' ' + genre.name;
-  }), " &nbsp | &nbsp\n\t\t\t\t\t\t").concat(data.original_language.toUpperCase(), " &nbsp | &nbsp \n\t\t\t\t\t\t").concat(data.runtime ? data.runtime + ' mins ' : '', "\t\t\t\n\t\t\t\t\t</p>\n\t\t\t\t\t<p class=\"main-movie-rating\">Rating: &nbsp ").concat(data.vote_average, " <span class=\"rating\"> / 10 (").concat(data.vote_count, ")</span>  </p> \n\t\t\t\t</div>\n\t\t\t</div>\n\t\t<div class=\"lax\" data-lax-translate-y=\"0 0, 500 -130\">\n\t\t\t<div class=\"container\">\n\t\t\t\t<h2 class=\"first-sub-header\">DESCRIPTION</h2>\n\t\t\t\t<p class=\"sub-header-content\"> ").concat(data.overview, " </p>\n\t\t\t\t<div class=\"slider-cast\">\n\t\t\t\t\t<h2 class=\"sub-header\">CAST</h2>\n\t\t\t\t\t<span class=\"carousel-control-prev-icon prevCast\" aria-hidden=\"true\"></span>\n\t\t\t\t    <span class=\"carousel-control-next-icon nextCast\" aria-hidden=\"true\"></span>\n\t\t\t\t    <div class=\"slick-carousel-cast\">\n\t\t\t\t\t").concat(castOutput, "\n\t\t\t\t    </div>\n\t\t\t\t</div>\n\t\t\t\t<div>\n\t\t\t\t\t<h2 class=\"sub-header\">TRAILER</h2>\n\t  \t\t\t\t").concat(trailer, "\n\t\t\t\t</div>\n\t\t\t\t<div>\n\t\t\t\t\t<h2 class=\"sub-header\">OTHER DETAILS</h2>\n\t\t\t\t\t<ul>\n\t\t\t\t\t\t<li class=\"details-li\">Budget: <span class=\"details-content\">$").concat(data.budget, " </span></li>\n\t\t\t\t\t\t<li class=\"details-li\">Revenue: <span class=\"details-content\">$").concat(data.revenue, " </span></li>\n\t\t\t\t\t\t<li class=\"details-li\">Status: <span class=\"details-content\"> ").concat(data.status, " </span></li>\n\t\t\t\t\t\t<li class=\"details-li\">Spoken Languages: ").concat(spokenLanguages, "</li>\n\t\t\t\t\t\t<li class=\"details-li\">Production Countries: ").concat(productionCountries, "</li>\n\t\t\t\t\t\t<li class=\"details-li\">Production Companies: ").concat(productionCompanies, "</li>\n\t\t\t\t\t\t<li class=\"details-li\"><a target=\"_blank\" class=\"blank-link\" href=\"https://www.imdb.com/title/").concat(data.imdb_id, "\"> View on IMDB </a> </li>\n\t\t\t\t\t</ul>\n\t\t\t\t</div>\n\t\t\t\t<div>\n\t\t\t\t\t<h2 class=\"sub-header\">REVIEWS</h2>\n\t\t\t\t\t").concat(reviews, "\n\t\t\t\t</div>\n\t\t\t</div>\n\t\t</div>\n\t\t<hr>\n\t\t<footer>\n\t\t   <p class=\"designed\">Designed and developed by Pop Stefan & Alex Popescu\n\t\t   <p class=\"copy\">&copy; 2020 Eco Network. All Rights Reserved. This site may contain mature content.</p>\n\t\t</footer>\n\t\t");
+  }), " &nbsp | &nbsp\n\t\t\t\t\t\t").concat(data.original_language.toUpperCase(), " &nbsp | &nbsp \n\t\t\t\t\t\t").concat(data.runtime ? data.runtime + ' mins ' : '', "\t\t\t\n\t\t\t\t\t</p>\n\t\t\t\t\t<p class=\"main-movie-rating\">Rating: &nbsp ").concat(data.vote_average, " <span class=\"rating\"> / 10 (").concat(data.vote_count, ")</span>  </p> \n\t\t\t\t</div>\n\t\t\t</div>\n\t\t<div class=\"lax\" data-lax-translate-y=\"0 0, 500 -130\">\n\t\t\t<div class=\"container\">\n\t\t\t\t<h2 class=\"first-sub-header\">DESCRIPTION</h2>\n\t\t\t\t<p class=\"sub-header-content\"> ").concat(data.overview, " </p>\n\t\t\t\t<div class=\"slider-cast\">\n\t\t\t\t\t<h2 class=\"sub-header\">CAST</h2>\n\t\t\t\t\t<span class=\"carousel-control-prev-icon prevCast\" aria-hidden=\"true\"></span>\n\t\t\t\t    <span class=\"carousel-control-next-icon nextCast\" aria-hidden=\"true\"></span>\n\t\t\t\t    <div class=\"slick-carousel-cast\">\n\t\t\t\t\t").concat(castOutput, "\n\t\t\t\t    </div>\n\t\t\t\t</div>\n\t\t\t\t<div>\n\t\t\t\t\t<h2 class=\"sub-header\">TRAILER</h2>\n\t  \t\t\t\t").concat(trailer, "\n\t\t\t\t</div>\n\t\t\t\t<div>\n\t\t\t\t\t<h2 class=\"sub-header\">OTHER DETAILS</h2>\n\t\t\t\t\t<ul class=\"list-details\">\n\t\t\t\t\t\t<li class=\"details-li\">Budget: <span class=\"details-content\">$").concat(data.budget, " </span></li>\n\t\t\t\t\t\t<li class=\"details-li\">Revenue: <span class=\"details-content\">$").concat(data.revenue, " </span></li>\n\t\t\t\t\t\t<li class=\"details-li\">Status: <span class=\"details-content\"> ").concat(data.status, " </span></li>\n\t\t\t\t\t\t<li class=\"details-li\">Spoken Languages: ").concat(spokenLanguages, "</li>\n\t\t\t\t\t\t<li class=\"details-li\">Production Countries: ").concat(productionCountries, "</li>\n\t\t\t\t\t\t<li class=\"details-li\">Production Companies: ").concat(productionCompanies, "</li>\n\t\t\t\t\t\t<li class=\"details-li\"><a target=\"_blank\" class=\"blank-link\" href=\"https://www.imdb.com/title/").concat(data.imdb_id, "\"> View on IMDB </a> </li>\n\t\t\t\t\t</ul>\n\t\t\t\t</div>\n\t\t\t\t<div>\n\t\t\t\t\t<h2 class=\"sub-header\">REVIEWS</h2>\n\t\t\t\t\t").concat(reviews, "\n\t\t\t\t</div>\n\t\t\t</div>\n\t\t</div>\n\t\t<hr>\n\t\t<footer>\n\t\t   <p class=\"designed\">Designed and developed by Pop Stefan & Alex Popescu\n\t\t   <p class=\"copy\">&copy; 2020 Eco Network. All Rights Reserved. This site may contain mature content.</p>\n\t\t</footer>\n\t\t");
   document.body.innerHTML = output;
   $('.slick-carousel-cast').slick({
     slidesToShow: 5,
@@ -22459,7 +23336,26 @@ fetch("https://api.themoviedb.org/3/movie/".concat(id, "?api_key=").concat(api, 
     infinite: true,
     nextArrow: $('.nextCast'),
     focusOnSelect: false,
-    prevArrow: $('.prevCast')
+    prevArrow: $('.prevCast'),
+    responsive: [{
+      breakpoint: 1300,
+      settings: {
+        slidesToShow: 4,
+        slidesToScroll: 1
+      }
+    }, {
+      breakpoint: 1024,
+      settings: {
+        slidesToShow: 3,
+        slidesToScroll: 1
+      }
+    }, {
+      breakpoint: 770,
+      settings: {
+        slidesToShow: 2,
+        slidesToScroll: 1
+      }
+    }]
   });
   var background = "\n\t\t\tbackground: linear-gradient(0deg, rgb(0, 0, 0) 5%, rgba(0, 0, 0, 0.45) 92%) \n\t\t\tno-repeat center/cover, \n\t\t\turl(https://image.tmdb.org/t/p/original".concat(data.backdrop_path, ") \n\t\t\tno-repeat center top/cover rgb(255, 255, 255)");
   document.getElementById("movie").setAttribute("style", background);
@@ -22468,8 +23364,6 @@ fetch("https://api.themoviedb.org/3/movie/".concat(id, "?api_key=").concat(api, 
     document.getElementById("movie").classList.add('noblur');
     document.getElementById("spinner-blur").style.display = "none";
   }, 200);
-}).catch(function (err) {
-  return console.log(err);
 }).finally(function () {
   _lax.default.setup(); // init
 
@@ -22482,7 +23376,7 @@ fetch("https://api.themoviedb.org/3/movie/".concat(id, "?api_key=").concat(api, 
 
   window.requestAnimationFrame(updateLax);
 });
-},{"core-js/modules/es6.array.copy-within":"../node_modules/core-js/modules/es6.array.copy-within.js","core-js/modules/es6.array.fill":"../node_modules/core-js/modules/es6.array.fill.js","core-js/modules/es6.array.find":"../node_modules/core-js/modules/es6.array.find.js","core-js/modules/es6.array.find-index":"../node_modules/core-js/modules/es6.array.find-index.js","core-js/modules/es7.array.flat-map":"../node_modules/core-js/modules/es7.array.flat-map.js","core-js/modules/es6.array.from":"../node_modules/core-js/modules/es6.array.from.js","core-js/modules/es7.array.includes":"../node_modules/core-js/modules/es7.array.includes.js","core-js/modules/es6.array.iterator":"../node_modules/core-js/modules/es6.array.iterator.js","core-js/modules/es6.array.of":"../node_modules/core-js/modules/es6.array.of.js","core-js/modules/es6.array.sort":"../node_modules/core-js/modules/es6.array.sort.js","core-js/modules/es6.array.species":"../node_modules/core-js/modules/es6.array.species.js","core-js/modules/es6.date.to-json":"../node_modules/core-js/modules/es6.date.to-json.js","core-js/modules/es6.date.to-primitive":"../node_modules/core-js/modules/es6.date.to-primitive.js","core-js/modules/es6.function.has-instance":"../node_modules/core-js/modules/es6.function.has-instance.js","core-js/modules/es6.function.name":"../node_modules/core-js/modules/es6.function.name.js","core-js/modules/es6.map":"../node_modules/core-js/modules/es6.map.js","core-js/modules/es6.math.acosh":"../node_modules/core-js/modules/es6.math.acosh.js","core-js/modules/es6.math.asinh":"../node_modules/core-js/modules/es6.math.asinh.js","core-js/modules/es6.math.atanh":"../node_modules/core-js/modules/es6.math.atanh.js","core-js/modules/es6.math.cbrt":"../node_modules/core-js/modules/es6.math.cbrt.js","core-js/modules/es6.math.clz32":"../node_modules/core-js/modules/es6.math.clz32.js","core-js/modules/es6.math.cosh":"../node_modules/core-js/modules/es6.math.cosh.js","core-js/modules/es6.math.expm1":"../node_modules/core-js/modules/es6.math.expm1.js","core-js/modules/es6.math.fround":"../node_modules/core-js/modules/es6.math.fround.js","core-js/modules/es6.math.hypot":"../node_modules/core-js/modules/es6.math.hypot.js","core-js/modules/es6.math.imul":"../node_modules/core-js/modules/es6.math.imul.js","core-js/modules/es6.math.log1p":"../node_modules/core-js/modules/es6.math.log1p.js","core-js/modules/es6.math.log10":"../node_modules/core-js/modules/es6.math.log10.js","core-js/modules/es6.math.log2":"../node_modules/core-js/modules/es6.math.log2.js","core-js/modules/es6.math.sign":"../node_modules/core-js/modules/es6.math.sign.js","core-js/modules/es6.math.sinh":"../node_modules/core-js/modules/es6.math.sinh.js","core-js/modules/es6.math.tanh":"../node_modules/core-js/modules/es6.math.tanh.js","core-js/modules/es6.math.trunc":"../node_modules/core-js/modules/es6.math.trunc.js","core-js/modules/es6.number.constructor":"../node_modules/core-js/modules/es6.number.constructor.js","core-js/modules/es6.number.epsilon":"../node_modules/core-js/modules/es6.number.epsilon.js","core-js/modules/es6.number.is-finite":"../node_modules/core-js/modules/es6.number.is-finite.js","core-js/modules/es6.number.is-integer":"../node_modules/core-js/modules/es6.number.is-integer.js","core-js/modules/es6.number.is-nan":"../node_modules/core-js/modules/es6.number.is-nan.js","core-js/modules/es6.number.is-safe-integer":"../node_modules/core-js/modules/es6.number.is-safe-integer.js","core-js/modules/es6.number.max-safe-integer":"../node_modules/core-js/modules/es6.number.max-safe-integer.js","core-js/modules/es6.number.min-safe-integer":"../node_modules/core-js/modules/es6.number.min-safe-integer.js","core-js/modules/es6.number.parse-float":"../node_modules/core-js/modules/es6.number.parse-float.js","core-js/modules/es6.number.parse-int":"../node_modules/core-js/modules/es6.number.parse-int.js","core-js/modules/es6.object.assign":"../node_modules/core-js/modules/es6.object.assign.js","core-js/modules/es7.object.define-getter":"../node_modules/core-js/modules/es7.object.define-getter.js","core-js/modules/es7.object.define-setter":"../node_modules/core-js/modules/es7.object.define-setter.js","core-js/modules/es7.object.entries":"../node_modules/core-js/modules/es7.object.entries.js","core-js/modules/es6.object.freeze":"../node_modules/core-js/modules/es6.object.freeze.js","core-js/modules/es6.object.get-own-property-descriptor":"../node_modules/core-js/modules/es6.object.get-own-property-descriptor.js","core-js/modules/es7.object.get-own-property-descriptors":"../node_modules/core-js/modules/es7.object.get-own-property-descriptors.js","core-js/modules/es6.object.get-own-property-names":"../node_modules/core-js/modules/es6.object.get-own-property-names.js","core-js/modules/es6.object.get-prototype-of":"../node_modules/core-js/modules/es6.object.get-prototype-of.js","core-js/modules/es7.object.lookup-getter":"../node_modules/core-js/modules/es7.object.lookup-getter.js","core-js/modules/es7.object.lookup-setter":"../node_modules/core-js/modules/es7.object.lookup-setter.js","core-js/modules/es6.object.prevent-extensions":"../node_modules/core-js/modules/es6.object.prevent-extensions.js","core-js/modules/es6.object.to-string":"../node_modules/core-js/modules/es6.object.to-string.js","core-js/modules/es6.object.is":"../node_modules/core-js/modules/es6.object.is.js","core-js/modules/es6.object.is-frozen":"../node_modules/core-js/modules/es6.object.is-frozen.js","core-js/modules/es6.object.is-sealed":"../node_modules/core-js/modules/es6.object.is-sealed.js","core-js/modules/es6.object.is-extensible":"../node_modules/core-js/modules/es6.object.is-extensible.js","core-js/modules/es6.object.keys":"../node_modules/core-js/modules/es6.object.keys.js","core-js/modules/es6.object.seal":"../node_modules/core-js/modules/es6.object.seal.js","core-js/modules/es6.object.set-prototype-of":"../node_modules/core-js/modules/es6.object.set-prototype-of.js","core-js/modules/es7.object.values":"../node_modules/core-js/modules/es7.object.values.js","core-js/modules/es6.promise":"../node_modules/core-js/modules/es6.promise.js","core-js/modules/es7.promise.finally":"../node_modules/core-js/modules/es7.promise.finally.js","core-js/modules/es6.reflect.apply":"../node_modules/core-js/modules/es6.reflect.apply.js","core-js/modules/es6.reflect.construct":"../node_modules/core-js/modules/es6.reflect.construct.js","core-js/modules/es6.reflect.define-property":"../node_modules/core-js/modules/es6.reflect.define-property.js","core-js/modules/es6.reflect.delete-property":"../node_modules/core-js/modules/es6.reflect.delete-property.js","core-js/modules/es6.reflect.get":"../node_modules/core-js/modules/es6.reflect.get.js","core-js/modules/es6.reflect.get-own-property-descriptor":"../node_modules/core-js/modules/es6.reflect.get-own-property-descriptor.js","core-js/modules/es6.reflect.get-prototype-of":"../node_modules/core-js/modules/es6.reflect.get-prototype-of.js","core-js/modules/es6.reflect.has":"../node_modules/core-js/modules/es6.reflect.has.js","core-js/modules/es6.reflect.is-extensible":"../node_modules/core-js/modules/es6.reflect.is-extensible.js","core-js/modules/es6.reflect.own-keys":"../node_modules/core-js/modules/es6.reflect.own-keys.js","core-js/modules/es6.reflect.prevent-extensions":"../node_modules/core-js/modules/es6.reflect.prevent-extensions.js","core-js/modules/es6.reflect.set":"../node_modules/core-js/modules/es6.reflect.set.js","core-js/modules/es6.reflect.set-prototype-of":"../node_modules/core-js/modules/es6.reflect.set-prototype-of.js","core-js/modules/es6.regexp.constructor":"../node_modules/core-js/modules/es6.regexp.constructor.js","core-js/modules/es6.regexp.flags":"../node_modules/core-js/modules/es6.regexp.flags.js","core-js/modules/es6.regexp.match":"../node_modules/core-js/modules/es6.regexp.match.js","core-js/modules/es6.regexp.replace":"../node_modules/core-js/modules/es6.regexp.replace.js","core-js/modules/es6.regexp.split":"../node_modules/core-js/modules/es6.regexp.split.js","core-js/modules/es6.regexp.search":"../node_modules/core-js/modules/es6.regexp.search.js","core-js/modules/es6.regexp.to-string":"../node_modules/core-js/modules/es6.regexp.to-string.js","core-js/modules/es6.set":"../node_modules/core-js/modules/es6.set.js","core-js/modules/es6.symbol":"../node_modules/core-js/modules/es6.symbol.js","core-js/modules/es7.symbol.async-iterator":"../node_modules/core-js/modules/es7.symbol.async-iterator.js","core-js/modules/es6.string.anchor":"../node_modules/core-js/modules/es6.string.anchor.js","core-js/modules/es6.string.big":"../node_modules/core-js/modules/es6.string.big.js","core-js/modules/es6.string.blink":"../node_modules/core-js/modules/es6.string.blink.js","core-js/modules/es6.string.bold":"../node_modules/core-js/modules/es6.string.bold.js","core-js/modules/es6.string.code-point-at":"../node_modules/core-js/modules/es6.string.code-point-at.js","core-js/modules/es6.string.ends-with":"../node_modules/core-js/modules/es6.string.ends-with.js","core-js/modules/es6.string.fixed":"../node_modules/core-js/modules/es6.string.fixed.js","core-js/modules/es6.string.fontcolor":"../node_modules/core-js/modules/es6.string.fontcolor.js","core-js/modules/es6.string.fontsize":"../node_modules/core-js/modules/es6.string.fontsize.js","core-js/modules/es6.string.from-code-point":"../node_modules/core-js/modules/es6.string.from-code-point.js","core-js/modules/es6.string.includes":"../node_modules/core-js/modules/es6.string.includes.js","core-js/modules/es6.string.italics":"../node_modules/core-js/modules/es6.string.italics.js","core-js/modules/es6.string.iterator":"../node_modules/core-js/modules/es6.string.iterator.js","core-js/modules/es6.string.link":"../node_modules/core-js/modules/es6.string.link.js","core-js/modules/es7.string.pad-start":"../node_modules/core-js/modules/es7.string.pad-start.js","core-js/modules/es7.string.pad-end":"../node_modules/core-js/modules/es7.string.pad-end.js","core-js/modules/es6.string.raw":"../node_modules/core-js/modules/es6.string.raw.js","core-js/modules/es6.string.repeat":"../node_modules/core-js/modules/es6.string.repeat.js","core-js/modules/es6.string.small":"../node_modules/core-js/modules/es6.string.small.js","core-js/modules/es6.string.starts-with":"../node_modules/core-js/modules/es6.string.starts-with.js","core-js/modules/es6.string.strike":"../node_modules/core-js/modules/es6.string.strike.js","core-js/modules/es6.string.sub":"../node_modules/core-js/modules/es6.string.sub.js","core-js/modules/es6.string.sup":"../node_modules/core-js/modules/es6.string.sup.js","core-js/modules/es7.string.trim-left":"../node_modules/core-js/modules/es7.string.trim-left.js","core-js/modules/es7.string.trim-right":"../node_modules/core-js/modules/es7.string.trim-right.js","core-js/modules/es6.typed.array-buffer":"../node_modules/core-js/modules/es6.typed.array-buffer.js","core-js/modules/es6.typed.int8-array":"../node_modules/core-js/modules/es6.typed.int8-array.js","core-js/modules/es6.typed.uint8-array":"../node_modules/core-js/modules/es6.typed.uint8-array.js","core-js/modules/es6.typed.uint8-clamped-array":"../node_modules/core-js/modules/es6.typed.uint8-clamped-array.js","core-js/modules/es6.typed.int16-array":"../node_modules/core-js/modules/es6.typed.int16-array.js","core-js/modules/es6.typed.uint16-array":"../node_modules/core-js/modules/es6.typed.uint16-array.js","core-js/modules/es6.typed.int32-array":"../node_modules/core-js/modules/es6.typed.int32-array.js","core-js/modules/es6.typed.uint32-array":"../node_modules/core-js/modules/es6.typed.uint32-array.js","core-js/modules/es6.typed.float32-array":"../node_modules/core-js/modules/es6.typed.float32-array.js","core-js/modules/es6.typed.float64-array":"../node_modules/core-js/modules/es6.typed.float64-array.js","core-js/modules/es6.weak-map":"../node_modules/core-js/modules/es6.weak-map.js","core-js/modules/es6.weak-set":"../node_modules/core-js/modules/es6.weak-set.js","core-js/modules/web.timers":"../node_modules/core-js/modules/web.timers.js","core-js/modules/web.immediate":"../node_modules/core-js/modules/web.immediate.js","core-js/modules/web.dom.iterable":"../node_modules/core-js/modules/web.dom.iterable.js","regenerator-runtime/runtime":"../node_modules/regenerator-runtime/runtime.js","bootstrap/dist/js/bootstrap.min.js":"../node_modules/bootstrap/dist/js/bootstrap.min.js","lax.js":"../node_modules/lax.js/lib/lax.min.js"}],"../node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
+},{"core-js/modules/es6.array.copy-within":"../node_modules/core-js/modules/es6.array.copy-within.js","core-js/modules/es6.array.fill":"../node_modules/core-js/modules/es6.array.fill.js","core-js/modules/es6.array.find":"../node_modules/core-js/modules/es6.array.find.js","core-js/modules/es6.array.find-index":"../node_modules/core-js/modules/es6.array.find-index.js","core-js/modules/es7.array.flat-map":"../node_modules/core-js/modules/es7.array.flat-map.js","core-js/modules/es6.array.from":"../node_modules/core-js/modules/es6.array.from.js","core-js/modules/es7.array.includes":"../node_modules/core-js/modules/es7.array.includes.js","core-js/modules/es6.array.iterator":"../node_modules/core-js/modules/es6.array.iterator.js","core-js/modules/es6.array.of":"../node_modules/core-js/modules/es6.array.of.js","core-js/modules/es6.array.sort":"../node_modules/core-js/modules/es6.array.sort.js","core-js/modules/es6.array.species":"../node_modules/core-js/modules/es6.array.species.js","core-js/modules/es6.date.to-json":"../node_modules/core-js/modules/es6.date.to-json.js","core-js/modules/es6.date.to-primitive":"../node_modules/core-js/modules/es6.date.to-primitive.js","core-js/modules/es6.function.has-instance":"../node_modules/core-js/modules/es6.function.has-instance.js","core-js/modules/es6.function.name":"../node_modules/core-js/modules/es6.function.name.js","core-js/modules/es6.map":"../node_modules/core-js/modules/es6.map.js","core-js/modules/es6.math.acosh":"../node_modules/core-js/modules/es6.math.acosh.js","core-js/modules/es6.math.asinh":"../node_modules/core-js/modules/es6.math.asinh.js","core-js/modules/es6.math.atanh":"../node_modules/core-js/modules/es6.math.atanh.js","core-js/modules/es6.math.cbrt":"../node_modules/core-js/modules/es6.math.cbrt.js","core-js/modules/es6.math.clz32":"../node_modules/core-js/modules/es6.math.clz32.js","core-js/modules/es6.math.cosh":"../node_modules/core-js/modules/es6.math.cosh.js","core-js/modules/es6.math.expm1":"../node_modules/core-js/modules/es6.math.expm1.js","core-js/modules/es6.math.fround":"../node_modules/core-js/modules/es6.math.fround.js","core-js/modules/es6.math.hypot":"../node_modules/core-js/modules/es6.math.hypot.js","core-js/modules/es6.math.imul":"../node_modules/core-js/modules/es6.math.imul.js","core-js/modules/es6.math.log1p":"../node_modules/core-js/modules/es6.math.log1p.js","core-js/modules/es6.math.log10":"../node_modules/core-js/modules/es6.math.log10.js","core-js/modules/es6.math.log2":"../node_modules/core-js/modules/es6.math.log2.js","core-js/modules/es6.math.sign":"../node_modules/core-js/modules/es6.math.sign.js","core-js/modules/es6.math.sinh":"../node_modules/core-js/modules/es6.math.sinh.js","core-js/modules/es6.math.tanh":"../node_modules/core-js/modules/es6.math.tanh.js","core-js/modules/es6.math.trunc":"../node_modules/core-js/modules/es6.math.trunc.js","core-js/modules/es6.number.constructor":"../node_modules/core-js/modules/es6.number.constructor.js","core-js/modules/es6.number.epsilon":"../node_modules/core-js/modules/es6.number.epsilon.js","core-js/modules/es6.number.is-finite":"../node_modules/core-js/modules/es6.number.is-finite.js","core-js/modules/es6.number.is-integer":"../node_modules/core-js/modules/es6.number.is-integer.js","core-js/modules/es6.number.is-nan":"../node_modules/core-js/modules/es6.number.is-nan.js","core-js/modules/es6.number.is-safe-integer":"../node_modules/core-js/modules/es6.number.is-safe-integer.js","core-js/modules/es6.number.max-safe-integer":"../node_modules/core-js/modules/es6.number.max-safe-integer.js","core-js/modules/es6.number.min-safe-integer":"../node_modules/core-js/modules/es6.number.min-safe-integer.js","core-js/modules/es6.number.parse-float":"../node_modules/core-js/modules/es6.number.parse-float.js","core-js/modules/es6.number.parse-int":"../node_modules/core-js/modules/es6.number.parse-int.js","core-js/modules/es6.object.assign":"../node_modules/core-js/modules/es6.object.assign.js","core-js/modules/es7.object.define-getter":"../node_modules/core-js/modules/es7.object.define-getter.js","core-js/modules/es7.object.define-setter":"../node_modules/core-js/modules/es7.object.define-setter.js","core-js/modules/es7.object.entries":"../node_modules/core-js/modules/es7.object.entries.js","core-js/modules/es6.object.freeze":"../node_modules/core-js/modules/es6.object.freeze.js","core-js/modules/es6.object.get-own-property-descriptor":"../node_modules/core-js/modules/es6.object.get-own-property-descriptor.js","core-js/modules/es7.object.get-own-property-descriptors":"../node_modules/core-js/modules/es7.object.get-own-property-descriptors.js","core-js/modules/es6.object.get-own-property-names":"../node_modules/core-js/modules/es6.object.get-own-property-names.js","core-js/modules/es6.object.get-prototype-of":"../node_modules/core-js/modules/es6.object.get-prototype-of.js","core-js/modules/es7.object.lookup-getter":"../node_modules/core-js/modules/es7.object.lookup-getter.js","core-js/modules/es7.object.lookup-setter":"../node_modules/core-js/modules/es7.object.lookup-setter.js","core-js/modules/es6.object.prevent-extensions":"../node_modules/core-js/modules/es6.object.prevent-extensions.js","core-js/modules/es6.object.to-string":"../node_modules/core-js/modules/es6.object.to-string.js","core-js/modules/es6.object.is":"../node_modules/core-js/modules/es6.object.is.js","core-js/modules/es6.object.is-frozen":"../node_modules/core-js/modules/es6.object.is-frozen.js","core-js/modules/es6.object.is-sealed":"../node_modules/core-js/modules/es6.object.is-sealed.js","core-js/modules/es6.object.is-extensible":"../node_modules/core-js/modules/es6.object.is-extensible.js","core-js/modules/es6.object.keys":"../node_modules/core-js/modules/es6.object.keys.js","core-js/modules/es6.object.seal":"../node_modules/core-js/modules/es6.object.seal.js","core-js/modules/es6.object.set-prototype-of":"../node_modules/core-js/modules/es6.object.set-prototype-of.js","core-js/modules/es7.object.values":"../node_modules/core-js/modules/es7.object.values.js","core-js/modules/es6.promise":"../node_modules/core-js/modules/es6.promise.js","core-js/modules/es7.promise.finally":"../node_modules/core-js/modules/es7.promise.finally.js","core-js/modules/es6.reflect.apply":"../node_modules/core-js/modules/es6.reflect.apply.js","core-js/modules/es6.reflect.construct":"../node_modules/core-js/modules/es6.reflect.construct.js","core-js/modules/es6.reflect.define-property":"../node_modules/core-js/modules/es6.reflect.define-property.js","core-js/modules/es6.reflect.delete-property":"../node_modules/core-js/modules/es6.reflect.delete-property.js","core-js/modules/es6.reflect.get":"../node_modules/core-js/modules/es6.reflect.get.js","core-js/modules/es6.reflect.get-own-property-descriptor":"../node_modules/core-js/modules/es6.reflect.get-own-property-descriptor.js","core-js/modules/es6.reflect.get-prototype-of":"../node_modules/core-js/modules/es6.reflect.get-prototype-of.js","core-js/modules/es6.reflect.has":"../node_modules/core-js/modules/es6.reflect.has.js","core-js/modules/es6.reflect.is-extensible":"../node_modules/core-js/modules/es6.reflect.is-extensible.js","core-js/modules/es6.reflect.own-keys":"../node_modules/core-js/modules/es6.reflect.own-keys.js","core-js/modules/es6.reflect.prevent-extensions":"../node_modules/core-js/modules/es6.reflect.prevent-extensions.js","core-js/modules/es6.reflect.set":"../node_modules/core-js/modules/es6.reflect.set.js","core-js/modules/es6.reflect.set-prototype-of":"../node_modules/core-js/modules/es6.reflect.set-prototype-of.js","core-js/modules/es6.regexp.constructor":"../node_modules/core-js/modules/es6.regexp.constructor.js","core-js/modules/es6.regexp.flags":"../node_modules/core-js/modules/es6.regexp.flags.js","core-js/modules/es6.regexp.match":"../node_modules/core-js/modules/es6.regexp.match.js","core-js/modules/es6.regexp.replace":"../node_modules/core-js/modules/es6.regexp.replace.js","core-js/modules/es6.regexp.split":"../node_modules/core-js/modules/es6.regexp.split.js","core-js/modules/es6.regexp.search":"../node_modules/core-js/modules/es6.regexp.search.js","core-js/modules/es6.regexp.to-string":"../node_modules/core-js/modules/es6.regexp.to-string.js","core-js/modules/es6.set":"../node_modules/core-js/modules/es6.set.js","core-js/modules/es6.symbol":"../node_modules/core-js/modules/es6.symbol.js","core-js/modules/es7.symbol.async-iterator":"../node_modules/core-js/modules/es7.symbol.async-iterator.js","core-js/modules/es6.string.anchor":"../node_modules/core-js/modules/es6.string.anchor.js","core-js/modules/es6.string.big":"../node_modules/core-js/modules/es6.string.big.js","core-js/modules/es6.string.blink":"../node_modules/core-js/modules/es6.string.blink.js","core-js/modules/es6.string.bold":"../node_modules/core-js/modules/es6.string.bold.js","core-js/modules/es6.string.code-point-at":"../node_modules/core-js/modules/es6.string.code-point-at.js","core-js/modules/es6.string.ends-with":"../node_modules/core-js/modules/es6.string.ends-with.js","core-js/modules/es6.string.fixed":"../node_modules/core-js/modules/es6.string.fixed.js","core-js/modules/es6.string.fontcolor":"../node_modules/core-js/modules/es6.string.fontcolor.js","core-js/modules/es6.string.fontsize":"../node_modules/core-js/modules/es6.string.fontsize.js","core-js/modules/es6.string.from-code-point":"../node_modules/core-js/modules/es6.string.from-code-point.js","core-js/modules/es6.string.includes":"../node_modules/core-js/modules/es6.string.includes.js","core-js/modules/es6.string.italics":"../node_modules/core-js/modules/es6.string.italics.js","core-js/modules/es6.string.iterator":"../node_modules/core-js/modules/es6.string.iterator.js","core-js/modules/es6.string.link":"../node_modules/core-js/modules/es6.string.link.js","core-js/modules/es7.string.pad-start":"../node_modules/core-js/modules/es7.string.pad-start.js","core-js/modules/es7.string.pad-end":"../node_modules/core-js/modules/es7.string.pad-end.js","core-js/modules/es6.string.raw":"../node_modules/core-js/modules/es6.string.raw.js","core-js/modules/es6.string.repeat":"../node_modules/core-js/modules/es6.string.repeat.js","core-js/modules/es6.string.small":"../node_modules/core-js/modules/es6.string.small.js","core-js/modules/es6.string.starts-with":"../node_modules/core-js/modules/es6.string.starts-with.js","core-js/modules/es6.string.strike":"../node_modules/core-js/modules/es6.string.strike.js","core-js/modules/es6.string.sub":"../node_modules/core-js/modules/es6.string.sub.js","core-js/modules/es6.string.sup":"../node_modules/core-js/modules/es6.string.sup.js","core-js/modules/es7.string.trim-left":"../node_modules/core-js/modules/es7.string.trim-left.js","core-js/modules/es7.string.trim-right":"../node_modules/core-js/modules/es7.string.trim-right.js","core-js/modules/es6.typed.array-buffer":"../node_modules/core-js/modules/es6.typed.array-buffer.js","core-js/modules/es6.typed.int8-array":"../node_modules/core-js/modules/es6.typed.int8-array.js","core-js/modules/es6.typed.uint8-array":"../node_modules/core-js/modules/es6.typed.uint8-array.js","core-js/modules/es6.typed.uint8-clamped-array":"../node_modules/core-js/modules/es6.typed.uint8-clamped-array.js","core-js/modules/es6.typed.int16-array":"../node_modules/core-js/modules/es6.typed.int16-array.js","core-js/modules/es6.typed.uint16-array":"../node_modules/core-js/modules/es6.typed.uint16-array.js","core-js/modules/es6.typed.int32-array":"../node_modules/core-js/modules/es6.typed.int32-array.js","core-js/modules/es6.typed.uint32-array":"../node_modules/core-js/modules/es6.typed.uint32-array.js","core-js/modules/es6.typed.float32-array":"../node_modules/core-js/modules/es6.typed.float32-array.js","core-js/modules/es6.typed.float64-array":"../node_modules/core-js/modules/es6.typed.float64-array.js","core-js/modules/es6.weak-map":"../node_modules/core-js/modules/es6.weak-map.js","core-js/modules/es6.weak-set":"../node_modules/core-js/modules/es6.weak-set.js","core-js/modules/web.timers":"../node_modules/core-js/modules/web.timers.js","core-js/modules/web.immediate":"../node_modules/core-js/modules/web.immediate.js","core-js/modules/web.dom.iterable":"../node_modules/core-js/modules/web.dom.iterable.js","regenerator-runtime/runtime":"../node_modules/regenerator-runtime/runtime.js","bootstrap/dist/js/bootstrap.min.js":"../node_modules/bootstrap/dist/js/bootstrap.min.js","lax.js":"../node_modules/lax.js/lib/lax.min.js","./includes/requests.js":"js/includes/requests.js"}],"../node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
 var global = arguments[3];
 var OVERLAY_ID = '__parcel__error__overlay__';
 var OldModule = module.bundle.Module;
@@ -22510,7 +23404,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "12443" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "3568" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

@@ -1,4 +1,6 @@
 
+// ID-urile fac referita la genul serialului ( info de la TMDB API )
+
 export const genres = [
     {
       id: 10759,

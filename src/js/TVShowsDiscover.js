@@ -164,6 +164,10 @@ import "@babel/polyfill";
 		})
 		.finally(() => {
 
+			// Lazy-Load pentru imagni
+
+       		// Imaginile sunt prezente doar cand user-ul este in viewport-ul unde se afla acestea
+
 			const images = document.querySelectorAll("[data-src]");
 
 			function preloadImage(img){

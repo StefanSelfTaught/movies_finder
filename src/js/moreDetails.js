@@ -1,17 +1,11 @@
 import "bootstrap/dist/js/bootstrap.min.js";
 import lax from "lax.js";
+import { request } from './includes/requests.js';
 import '@babel/polyfill';
 
-let id = sessionStorage.getItem("id");
-let api = "ce2eb2231a371296cf6ff11a39206d6e";
+		let id = sessionStorage.getItem("id");
 
-fetch(
-	`https://api.themoviedb.org/3/movie/${id}?api_key=${api}&language=en-US&append_to_response=reviews,videos,credits`
-)
-	.then(res => res.json())
-	.then(data => {
-
-		console.log(data);
+		request.fetchMovieDetails(id).then(data => {
 
 		let spokenLanguages = ""
 		let trailer;
@@ -95,12 +89,16 @@ fetch(
 
 		})
 
+		if(!casts.length) {
+			castOutput = "<p style='color: white'>No cast available</p>";
+		}
+
 		casts.map(cast => {
 			let src = 'https://image.tmdb.org/t/p/w300'.concat(cast.profile_path)
 			return (
 				castOutput += `
 				<div>
-					<img class="cast-image" src= ${src} />
+					<img class="img-fluid cast-image" src= ${src} />
 					<p class="cast-name">${cast.name}</p>
 				</div>
 				`
@@ -125,9 +123,7 @@ fetch(
 					</p>
 					<p class="main-movie-rating">Rating: &nbsp ${
 						data.vote_average
-					} <span class="rating"> / 10 (${
-			data.vote_count
-		})</span>  </p> 
+					} <span class="rating"> / 10 (${data.vote_count})</span>  </p> 
 				</div>
 			</div>
 		<div class="lax" data-lax-translate-y="0 0, 500 -130">
@@ -148,7 +144,7 @@ fetch(
 				</div>
 				<div>
 					<h2 class="sub-header">OTHER DETAILS</h2>
-					<ul>
+					<ul class="list-details">
 						<li class="details-li">Budget: <span class="details-content">$${data.budget} </span></li>
 						<li class="details-li">Revenue: <span class="details-content">$${data.revenue} </span></li>
 						<li class="details-li">Status: <span class="details-content"> ${data.status} </span></li>
@@ -181,6 +177,29 @@ fetch(
 	      nextArrow: $('.nextCast'),
 	      focusOnSelect: false,
 	      prevArrow: $('.prevCast'),
+	      responsive: [
+	        {
+	          breakpoint: 1300,
+	          settings: {
+	            slidesToShow: 4,
+	            slidesToScroll: 1
+	          }
+	        },
+	        {
+	          breakpoint: 1024,
+	          settings: {
+	            slidesToShow: 3,
+	            slidesToScroll: 1
+	          }
+	        },
+	        {
+	          breakpoint: 770,
+	          settings: {
+	            slidesToShow: 2,
+	            slidesToScroll: 1
+	          }
+	        }
+      	  ]
 	    });
 
 		let background = `
@@ -200,7 +219,6 @@ fetch(
 		}, 200)
 
 	})
-	.catch(err => console.log(err))
 	.finally(() => {
 	        lax.setup(); // init
 

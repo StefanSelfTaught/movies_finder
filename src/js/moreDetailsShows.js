@@ -1,17 +1,11 @@
 import "bootstrap/dist/js/bootstrap.min.js";
 import lax from "lax.js";
 import '@babel/polyfill';
+import { request } from './includes/requests.js';
 
-let id = sessionStorage.getItem("id");
-let api = "ce2eb2231a371296cf6ff11a39206d6e";
+		let id = sessionStorage.getItem("id");
 
-fetch(
-	`https://api.themoviedb.org/3/tv/${id}?api_key=${api}&language=en-US&append_to_response=reviews,videos,credits`
-)
-	.then(res => res.json())
-	.then(data => {
-
-		console.log(data);
+		request.fetchShowDetails(id).then(data => {
 
 		let createdBy;
 		let reviews = "";
@@ -89,12 +83,16 @@ fetch(
 
 		})
 
+		if(!casts.length) {
+			castOutput = "<p style='color: white'>No cast available</p>";
+		}
+
 		casts.map(cast => {
 			let src = 'https://image.tmdb.org/t/p/w300'.concat(cast.profile_path)
 			return (
 				castOutput += `
 				<div>
-					<img class="cast-image" src= ${src} />
+					<img class="img-fluid cast-image" src= ${src} />
 					<p class="cast-name">${cast.name}</p>
 				</div>
 				`
@@ -118,11 +116,9 @@ fetch(
 						${data.episode_run_time.length ? data.episode_run_time[0] + ' mins per episode' : ''} &nbsp | &nbsp 
 						${data.number_of_seasons + ' season(s) '}			
 					</p>
-					<p class="main-movie-rating">Rating: &nbsp ${
-						data.vote_average
-					} <span class="rating"> / 10 (${
-			data.vote_count
-		})</span>  </p> 
+					<p class="main-movie-rating">Rating: &nbsp ${data.vote_average} 
+						<span class="rating"> / 10 (${data.vote_count})</span>  
+					</p> 
 				</div>
 			</div>
 		<div class="lax" data-lax-translate-y="0 0, 500 -130">
@@ -143,7 +139,7 @@ fetch(
 				</div>
 				<div>
 					<h2 class="sub-header">OTHER DETAILS</h2>
-					<ul>
+					<ul class="list-details">
 						<li class="details-li">Created By: <span class="details-content">${createdBy} </span></li>
 						<li class="details-li">Last air date: <span class="details-content">${data.last_air_date} </span></li>
 						<li class="details-li">Networks: ${networks} </li>
@@ -174,6 +170,29 @@ fetch(
 	      nextArrow: $('.nextCast'),
 	      focusOnSelect: false,
 	      prevArrow: $('.prevCast'),
+	      responsive: [
+	        {
+	          breakpoint: 1300,
+	          settings: {
+	            slidesToShow: 4,
+	            slidesToScroll: 1
+	          }
+	        },
+	        {
+	          breakpoint: 1024,
+	          settings: {
+	            slidesToShow: 3,
+	            slidesToScroll: 1
+	          }
+	        },
+	        {
+	          breakpoint: 770,
+	          settings: {
+	            slidesToShow: 2,
+	            slidesToScroll: 1
+	          }
+	        }
+      	  ]
 	    });
 
 		let background = `
@@ -191,11 +210,10 @@ fetch(
 			document.getElementById("spinner-blur").style.display = "none";
 
 		}, 200)
-
-	})	
-	.catch(err => console.log(err))
+	})
 	.finally(() => {
-	        lax.setup(); // init
+
+	        lax.setup(); // initiaza animatia
 
 	        const updateLax = () => {
 	          lax.update(window.scrollY);

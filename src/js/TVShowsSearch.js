@@ -1,11 +1,28 @@
-import * as variables from './includes/variables.js';
 import { genres } from './includes/showsGenres.js';
 import { request } from './includes/requests.js';
 import "@babel/polyfill";
 
 (() => {
 
-  variables.trending2.innerHTML = variables.spinner2;
+  const spinner = `
+    <div class="mb-5 spinner-border text-light" style="width: 3rem; height: 3rem;" role="status">
+      <span class="sr-only">Loading...</span>
+    </div>`;
+
+  const spinner2 = `
+    <div style="margin: 0 auto" class="mb-5 spinner-border text-light" style="width: 5rem !important; height: 5rem !important;" role="status">
+      <span class="sr-only">Loading...</span>
+    </div>`;
+
+  const inputSearch = document.getElementById('inputSearch');
+  const trending2 = document.getElementById('trending-shows');
+  const previous = document.getElementById('previous');
+  const next = document.getElementById('next');
+  const moviesList = document.getElementById('moviesList');
+  const pagination = document.getElementById('pagination-container');
+
+  trending2.innerHTML = spinner2;
+
   request.fetchSearchShowsDefault().then(data => {
       let output = '';
       let genresArray = '';
@@ -27,7 +44,9 @@ import "@babel/polyfill";
           </div>
           `
       })
-        variables.trending2.innerHTML = output;
+
+        trending2.innerHTML = output;
+
         $('.slick-trending-shows').slick({
           slidesToShow: 8,
           lazyLoad: 'ondemand',
@@ -69,51 +88,52 @@ import "@babel/polyfill";
         });
     })
 
-  variables.inputSearch.addEventListener('input', (e) => {
+  inputSearch.addEventListener('input', (e) => {
     e.preventDefault();
     getMovies(e.target.value, 1);
   });
 
   let page = 1;
 
-  variables.next.addEventListener('click', () => {
+  next.addEventListener('click', () => {
     window.scrollTo(0, 240);
-    getMovies(variables.inputSearch.value, ++page);
+    getMovies(inputSearch.value, ++page);
   });
-  variables.previous.addEventListener('click', () => {
+  previous.addEventListener('click', () => {
     window.scrollTo(0, 240);
-    getMovies(variables.inputSearch.value, --page)
+    getMovies(inputSearch.value, --page)
   });
 
   const previousDisabled = page => {
     if(page == 1){
-      variables.previous.disabled = true;
-      variables.previous.classList.add('button-disabled');
+      previous.disabled = true;
+      previous.classList.add('button-disabled');
     } else {
-      variables.previous.disabled = false;
-      variables.previous.classList.remove('button-disabled');
+      previous.disabled = false;
+      previous.classList.remove('button-disabled');
     }
   }
 
   const nextDisabled = (page, totalPages) => {
     if(page === totalPages){
-      variables.next.disabled = true;
-      variables.next.classList.add('button-disabled');
+      next.disabled = true;
+      next.classList.add('button-disabled');
     } else {
-      variables.next.disabled = false;
-      variables.next.classList.remove('button-disabled');
+      next.disabled = false;
+      next.classList.remove('button-disabled');
     }
   }
 
   const getMovies = (movie, page) => {
 
-    if(variables.inputSearch.value.length > 0){
-      variables.moviesList.innerHTML = variables.spinner;
+    if(inputSearch.value.length > 0){
+      moviesList.innerHTML = spinner;
     }
 
     previousDisabled(page);
 
     if(movie.length > 0) {
+
     document.getElementById('slider-shows-search').style.display = 'none';
 
       request.fetchSearchShows(movie, page).then(data => {
@@ -138,8 +158,7 @@ import "@babel/polyfill";
                   <div class="details">
                     <h2>${movie.name}<br /><span>First Air Date: ${movie.first_air_date}</span></h2>
                     <div class="rating">
-                      <i class="fas fa-star"></i>
-                      <span>${movie.vote_average} / 10</span>
+                      <span class="card-v2-rating>${movie.vote_average} / 10</span>
                     </div>
                     <div class="info">
                       <p>
@@ -154,15 +173,19 @@ import "@babel/polyfill";
               `;
           })
           if(data.results.length !== 0){
-            variables.moviesList.innerHTML = output;
+            moviesList.innerHTML = output;
           } else {
-            variables.moviesList.innerHTML = `<h2 class="no-results">No results founded</h2>`;
-            variables.next.disabled = true;
-            variables.next.classList.add('button-disabled');
+            moviesList.innerHTML = `<h2 class="no-results">No results founded</h2>`;
+            next.disabled = true;
+            next.classList.add('button-disabled');
           }
-           variables.pagination.style.visibility = 'visible';
+           pagination.style.visibility = 'visible';
         })
         .finally(() => {
+
+          // Lazy-Load pentru imagni
+
+          // Imaginile sunt prezente doar cand user-ul este in viewport-ul unde se afla acestea
 
           const images = document.querySelectorAll("[data-src]");
 
@@ -196,8 +219,8 @@ import "@babel/polyfill";
         })
     } else {
       document.getElementById('slider-shows-search').style.display = 'block';
-      variables.moviesList.innerHTML = null;
-      variables.pagination.style.visibility = 'hidden';
+      moviesList.innerHTML = null;
+      pagination.style.visibility = 'hidden';
     }
   }
 })();
