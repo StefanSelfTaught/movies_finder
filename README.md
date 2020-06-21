@@ -1,0 +1,1 @@
+[![Netlify Status](https://api.netlify.com/api/v1/badges/120b57d4-e0a7-4fd7-b41a-fe81d33a65b0/deploy-status)](https://app.netlify.com/sites/stupefied-kalam-febd99/deploys)
