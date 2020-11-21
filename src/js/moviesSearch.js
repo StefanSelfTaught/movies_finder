@@ -1,5 +1,6 @@
 import { genres } from './includes/moviesGenres.js';
 import { request } from './includes/requests.js';
+import debounce from './includes/debounce.js';
 import '@babel/polyfill';
 
 (() => {
@@ -88,10 +89,12 @@ import '@babel/polyfill';
     })
   })
 
-  inputSearch.addEventListener('input', (e) => {
-    e.preventDefault();
-    getMovies(e.target.value, 1);
-  });
+  const inputTypingListener = debounce((e) => {
+     e.preventDefault()
+     getMovies(e.target.value, 1);
+  }, 700)
+
+  inputSearch.addEventListener('input', (e) => inputTypingListener(e));
 
   let page = 1;
 
@@ -136,6 +139,7 @@ import '@babel/polyfill';
       document.getElementById('slider-movies-search').style.display = 'none';
 
       request.fetchSearchMovies(movie, page).then(data => {
+          console.log(data)
           nextDisabled(page, data.total_pages);
           let output = '';
           data.results.map(movie => {
