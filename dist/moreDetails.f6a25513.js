@@ -23550,7 +23550,7 @@ _requests.request.fetchMovieDetails(id).then(function (data) {
   if (data.videos.results.length) {
     trailer = "\n\t\t\t<div class=\"embed-responsive embed-responsive-21by9\">\n\t\t\t\t<iframe width=\"200\" height=\"100\" style=\"border: 1px solid white; border-radius: 10px\" class=\"embed-responsive-item\" \n\t\t  \t\t\t\tsrc=https://www.youtube.com/embed/".concat(data.videos.results[0].key, "?rel=0 allowfullscreen>\n\t\t  \t\t</iframe>\n\t  \t\t</div>\n\t  \t\t");
   } else {
-    trailer = '<p>No trailer available</p>';
+    trailer = "<p>No trailer available</p>";
   }
 
   data.spoken_languages.slice(0, 2).map(function (lang, i) {
@@ -23569,7 +23569,7 @@ _requests.request.fetchMovieDetails(id).then(function (data) {
     var content;
 
     if (review.content.length > 400) {
-      content = review.content.split(" ").splice(0, 80).join(" ") + '...';
+      content = review.content.split(" ").splice(0, 80).join(" ") + "...";
     } else {
       content = review.content;
     }
@@ -23596,21 +23596,21 @@ _requests.request.fetchMovieDetails(id).then(function (data) {
   }
 
   casts.map(function (cast) {
-    var src = 'https://image.tmdb.org/t/p/w300'.concat(cast.profile_path);
+    var src = "https://image.tmdb.org/t/p/w300".concat(cast.profile_path);
     return castOutput += "\n\t\t\t\t<div>\n\t\t\t\t\t<img class=\"img-fluid cast-image\" src= ".concat(src, " />\n\t\t\t\t\t<p class=\"cast-name\">").concat(cast.name, "</p>\n\t\t\t\t</div>\n\t\t\t\t");
   });
   output = "\n\t\t\t<div id=\"spinner-blur\" style=\"margin: 0 auto\" class=\"mb-5 spinner-border text-light\" style=\"width: 5rem !important; height: 5rem !important;\" role=\"status\">\n     \t\t\t<span class=\"sr-only\">Loading...</span>\n    \t\t</div>\n\t\t\t<div class=\"blur lax\" data-lax-opacity=\"0 1, 150 0\" data-lax-translate-y=\"0 0, 50 -150\" id=\"movie\">\n\t\t\t\t<div>\n\t\t\t\t\t<a onclick=\"window.history.back()\"><span class=\"carousel-control-prev-icon back-arrow\" aria-hidden=\"true\"></span></a>\n\t\t\t\t</div>\n\t\t\t\t<div class=\"lax movie-infos\">\n\t\t\t\t\t<h1 class=\"main-movie-title\">".concat(data.title, "</h1>\n\t\t\t\t\t<p class=\"main-movie-details\">\n\t\t\t\t\t\t").concat(data.release_date.split("-")[0], " &nbsp | &nbsp\n\t\t\t\t\t\t").concat(data.genres.slice(0, 2).map(function (genre) {
-    return ' ' + genre.name;
-  }), " &nbsp | &nbsp\n\t\t\t\t\t\t").concat(data.original_language.toUpperCase(), " &nbsp | &nbsp \n\t\t\t\t\t\t").concat(data.runtime ? data.runtime + ' mins ' : '', "\t\t\t\n\t\t\t\t\t</p>\n\t\t\t\t\t<p class=\"main-movie-rating\">Rating: &nbsp ").concat(data.vote_average, " <span class=\"rating\"> / 10 (").concat(data.vote_count, ")</span>  </p> \n\t\t\t\t</div>\n\t\t\t</div>\n\t\t<div class=\"lax\" data-lax-translate-y=\"0 0, 500 -130\">\n\t\t\t<div class=\"container\">\n\t\t\t\t<h2 class=\"first-sub-header\">DESCRIPTION</h2>\n\t\t\t\t<p class=\"sub-header-content\"> ").concat(data.overview, " </p>\n\t\t\t\t<div class=\"slider-cast\">\n\t\t\t\t\t<h2 class=\"sub-header\">CAST</h2>\n\t\t\t\t\t<span class=\"carousel-control-prev-icon prevCast\" aria-hidden=\"true\"></span>\n\t\t\t\t    <span class=\"carousel-control-next-icon nextCast\" aria-hidden=\"true\"></span>\n\t\t\t\t    <div class=\"slick-carousel-cast\">\n\t\t\t\t\t").concat(castOutput, "\n\t\t\t\t    </div>\n\t\t\t\t</div>\n\t\t\t\t<div>\n\t\t\t\t\t<h2 class=\"sub-header\">TRAILER</h2>\n\t  \t\t\t\t").concat(trailer, "\n\t\t\t\t</div>\n\t\t\t\t<div>\n\t\t\t\t\t<h2 class=\"sub-header\">OTHER DETAILS</h2>\n\t\t\t\t\t<ul class=\"list-details\">\n\t\t\t\t\t\t<li class=\"details-li\">Budget: <span class=\"details-content\">$").concat(data.budget, " </span></li>\n\t\t\t\t\t\t<li class=\"details-li\">Revenue: <span class=\"details-content\">$").concat(data.revenue, " </span></li>\n\t\t\t\t\t\t<li class=\"details-li\">Status: <span class=\"details-content\"> ").concat(data.status, " </span></li>\n\t\t\t\t\t\t<li class=\"details-li\">Spoken Languages: ").concat(spokenLanguages, "</li>\n\t\t\t\t\t\t<li class=\"details-li\">Production Countries: ").concat(productionCountries, "</li>\n\t\t\t\t\t\t<li class=\"details-li\">Production Companies: ").concat(productionCompanies, "</li>\n\t\t\t\t\t\t<li class=\"details-li\"><a target=\"_blank\" class=\"blank-link\" href=\"https://www.imdb.com/title/").concat(data.imdb_id, "\"> View on IMDB </a> </li>\n\t\t\t\t\t</ul>\n\t\t\t\t</div>\n\t\t\t\t<div>\n\t\t\t\t\t<h2 class=\"sub-header\">REVIEWS</h2>\n\t\t\t\t\t").concat(reviews, "\n\t\t\t\t</div>\n\t\t\t</div>\n\t\t</div>\n\t\t<hr>\n\t\t<footer>\n\t\t   <p class=\"designed\">Designed and developed by Pop Stefan & Alex Popescu\n\t\t   <p class=\"copy\">&copy; 2020 Eco Network. All Rights Reserved. This site may contain mature content.</p>\n\t\t</footer>\n\t\t");
+    return " " + genre.name;
+  }), " &nbsp | &nbsp\n\t\t\t\t\t\t").concat(data.original_language.toUpperCase(), " &nbsp | &nbsp \n\t\t\t\t\t\t").concat(data.runtime ? data.runtime + " mins " : "", "\t\t\t\n\t\t\t\t\t</p>\n\t\t\t\t\t<p class=\"main-movie-rating\">Rating: &nbsp ").concat(data.vote_average, " <span class=\"rating\"> / 10 (").concat(data.vote_count, ")</span>  </p> \n\t\t\t\t</div>\n\t\t\t</div>\n\t\t<div class=\"lax\" data-lax-translate-y=\"0 0, 500 -130\">\n\t\t\t<div class=\"container\">\n\t\t\t\t<h2 class=\"first-sub-header\">DESCRIPTION</h2>\n\t\t\t\t<p class=\"sub-header-content\"> ").concat(data.overview, " </p>\n\t\t\t\t<div class=\"slider-cast\">\n\t\t\t\t\t<h2 class=\"sub-header\">CAST</h2>\n\t\t\t\t\t<span class=\"carousel-control-prev-icon prevCast\" aria-hidden=\"true\"></span>\n\t\t\t\t    <span class=\"carousel-control-next-icon nextCast\" aria-hidden=\"true\"></span>\n\t\t\t\t    <div class=\"slick-carousel-cast\">\n\t\t\t\t\t").concat(castOutput, "\n\t\t\t\t    </div>\n\t\t\t\t</div>\n\t\t\t\t<div>\n\t\t\t\t\t<h2 class=\"sub-header\">TRAILER</h2>\n\t  \t\t\t\t").concat(trailer, "\n\t\t\t\t</div>\n\t\t\t\t<div>\n\t\t\t\t\t<h2 class=\"sub-header\">OTHER DETAILS</h2>\n\t\t\t\t\t<ul class=\"list-details\">\n\t\t\t\t\t\t<li class=\"details-li\">Budget: <span class=\"details-content\">$").concat(data.budget, " </span></li>\n\t\t\t\t\t\t<li class=\"details-li\">Revenue: <span class=\"details-content\">$").concat(data.revenue, " </span></li>\n\t\t\t\t\t\t<li class=\"details-li\">Status: <span class=\"details-content\"> ").concat(data.status, " </span></li>\n\t\t\t\t\t\t<li class=\"details-li\">Spoken Languages: ").concat(spokenLanguages, "</li>\n\t\t\t\t\t\t<li class=\"details-li\">Production Countries: ").concat(productionCountries, "</li>\n\t\t\t\t\t\t<li class=\"details-li\">Production Companies: ").concat(productionCompanies, "</li>\n\t\t\t\t\t\t<li class=\"details-li\"><a target=\"_blank\" class=\"blank-link\" href=\"https://www.imdb.com/title/").concat(data.imdb_id, "\"> View on IMDB </a> </li>\n\t\t\t\t\t</ul>\n\t\t\t\t</div>\n\t\t\t\t<div>\n\t\t\t\t\t<h2 class=\"sub-header\">REVIEWS</h2>\n\t\t\t\t\t").concat(reviews, "\n\t\t\t\t</div>\n\t\t\t</div>\n\t\t</div>\n\t\t<hr>\n\t\t<footer>\n\t    <p class=\"designed\">Designed and developed by <a target=\"_blank\" href=\"https://github.com/StefanSelfTaught\">Pop Stefan</a></p>\n\t    <p class=\"copy\">&copy; 2020 Eco Network. All Rights Reserved. This site may contain mature content.</p>\n  \t</footer>\n\t\t");
   document.body.innerHTML = output;
-  $('.slick-carousel-cast').slick({
+  $(".slick-carousel-cast").slick({
     slidesToShow: 5,
-    lazyLoad: 'ondemand',
+    lazyLoad: "ondemand",
     slidesToScroll: 1,
     infinite: true,
-    nextArrow: $('.nextCast'),
+    nextArrow: $(".nextCast"),
     focusOnSelect: false,
-    prevArrow: $('.prevCast'),
+    prevArrow: $(".prevCast"),
     responsive: [{
       breakpoint: 1300,
       settings: {
@@ -23634,8 +23634,8 @@ _requests.request.fetchMovieDetails(id).then(function (data) {
   var background = "\n\t\t\tbackground: linear-gradient(0deg, rgb(0, 0, 0) 5%, rgba(0, 0, 0, 0.45) 92%) \n\t\t\tno-repeat center/cover, \n\t\t\turl(https://image.tmdb.org/t/p/original".concat(data.backdrop_path, ") \n\t\t\tno-repeat center top/cover rgb(255, 255, 255)");
   document.getElementById("movie").setAttribute("style", background);
   setTimeout(function () {
-    document.getElementById("movie").classList.remove('blur');
-    document.getElementById("movie").classList.add('noblur');
+    document.getElementById("movie").classList.remove("blur");
+    document.getElementById("movie").classList.add("noblur");
     document.getElementById("spinner-blur").style.display = "none";
   }, 200);
 }).finally(function () {
@@ -23678,7 +23678,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "9725" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "5161" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
